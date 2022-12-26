@@ -364,7 +364,7 @@ spec:
 
         annotations:
           nginx.ingress.kubernetes.io/rewrite-target: /
-          cert-manager.io/cluster-issuer: letsencrypt-staging
+          cert-manager.io/cluster-issuer: letsencrypt-production
           external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
           external-dns.home.arpa/enabled: "true"
         # If the dashboard has ssl: true the following will make sure the NGINX Ingress controller can expose the dashboard correctly
