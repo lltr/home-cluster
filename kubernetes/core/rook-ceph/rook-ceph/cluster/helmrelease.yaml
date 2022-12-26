@@ -22,25 +22,7 @@ spec:
     remediation:
       retries: 3
   values:
-    # Default values for a single rook-ceph cluster
-    # This is a YAML-formatted file.
-    # Declare variables to be passed into your templates.
-
-    # Namespace of the main rook operator
     operatorNamespace: rook-ceph
-
-    # The metadata.name of the CephCluster CR. The default name is the same as the namespace.
-    # clusterName: rook-ceph
-
-    # Ability to override the kubernetes version used in rendering the helm chart
-    # kubeVersion: 1.21
-
-    # Ability to override ceph.conf
-    # configOverride: |
-    #   [global]
-    #   mon_allow_pool_delete = true
-    #   osd_pool_default_size = 3
-    #   osd_pool_default_min_size = 2
 
     # Installs a debugging toolbox deployment
     toolbox:
@@ -52,24 +34,11 @@ spec:
         requests:
           cpu: "100m"
           memory: "128Mi"
-      # Set the priority class for the toolbox if desired
-      # priorityClassName: class
-
-    # monitoring requires Prometheus to be pre-installed
     monitoring:
       # enabling will also create RBAC rules to allow Operator to create ServiceMonitors
       enabled: true
       # whether to create the prometheus rules
       createPrometheusRules: true
-      # the namespace in which to create the prometheus rules, if different from the rook cluster namespace
-      # If you have multiple rook-ceph clusters in the same k8s cluster, choose the same namespace (ideally, namespace with prometheus
-      # deployed) to set rulesNamespace for all the clusters. Otherwise, you will get duplicate alerts with multiple alert definitions.
-      # rulesNamespaceOverride: kube-prometheus-stack
-
-      # Monitoring settings for external clusters:
-      # externalMgrEndpoints: <list of endpoints>
-      # externalMgrPrometheusPort: <port>
-      # allow adding custom labels and annotations to the prometheus rule
       prometheusRule:
         labels:
           release: kube-prometheus-stack
@@ -77,48 +46,7 @@ spec:
 
     # If true, create & use PSP resources. Set this to the same value as the rook-ceph chart.
     pspEnable: false
-
-    # imagePullSecrets option allow to pull docker images from private docker registry. Option will be passed to all service accounts.
-    # imagePullSecrets:
-    # - name: my-registry-secret
-
-    # All values below are taken from the CephCluster CRD
-    # More information can be found at [Ceph Cluster CRD](/Documentation/CRDs/ceph-cluster-crd.md)
     cephClusterSpec:
-      cephVersion:
-        # The container image used to launch the Ceph daemon pods (mon, mgr, osd, mds, rgw).
-        # v16 is Pacific, v17 is Quincy.
-        # RECOMMENDATION: In production, use a specific version tag instead of the general v16 flag, which pulls the latest release and could result in different
-        # versions running within the cluster. See tags available at https://hub.docker.com/r/ceph/ceph/tags/.
-        # If you want to be more precise, you can always use a timestamp tag such quay.io/ceph/ceph:v15.2.11-20200419
-        # This tag might not contain a new Ceph version, just security fixes from the underlying operating system, which will reduce vulnerabilities
-        image: quay.io/ceph/ceph:v17.2.5
-        # Whether to allow unsupported versions of Ceph. Currently `pacific` and `quincy` are supported.
-        # Future versions such as `reef` (v18) would require this to be set to `true`.
-        # Do not set to true in production.
-        allowUnsupported: false
-
-      # The path on the host where configuration files will be persisted. Must be specified.
-      # Important: if you reinstall the cluster, make sure you delete this directory from each host or else the mons will fail to start on the new cluster.
-      # In Minikube, the '/data' directory is configured to persist across reboots. Use "/data/rook" in Minikube environment.
-      dataDirHostPath: /var/lib/rook
-
-      # Whether or not upgrade should continue even if a check fails
-      # This means Ceph's status could be degraded and we don't recommend upgrading but you might decide otherwise
-      # Use at your OWN risk
-      # To understand Rook's upgrade process of Ceph, read https://rook.io/docs/rook/latest/ceph-upgrade.html#ceph-version-upgrades
-      skipUpgradeChecks: false
-
-      # Whether or not continue if PGs are not clean during an upgrade
-      continueUpgradeAfterChecksEvenIfNotHealthy: false
-
-      # WaitTimeoutForHealthyOSDInMinutes defines the time (in minutes) the operator would wait before an OSD can be stopped for upgrade or restart.
-      # If the timeout exceeds and OSD is not ok to stop, then the operator would skip upgrade for the current OSD and proceed with the next one
-      # if `continueUpgradeAfterChecksEvenIfNotHealthy` is `false`. If `continueUpgradeAfterChecksEvenIfNotHealthy` is `true`, then operator would
-      # continue with the upgrade of an OSD even if its not ok to stop after the timeout. This timeout won't be applied if `skipUpgradeChecks` is `true`.
-      # The default wait timeout is 10 minutes.
-      waitTimeoutForHealthyOSDInMinutes: 10
-
       mon:
         # Set the number of mons to be started. Generally recommended to be 3.
         # For highest availability, an odd number of mons should be specified.
@@ -143,33 +71,6 @@ spec:
       dashboard:
         enabled: true
         ssl: false
-        # serve the dashboard under a subpath (useful when you are accessing the dashboard via a reverse proxy)
-        # urlPrefix: /ceph-dashboard
-        # serve the dashboard at the given port.
-        # port: 8443
-        # Serve the dashboard using SSL (if using ingress to expose the dashboard and `ssl: true` you need to set
-        # the corresponding "backend protocol" annotation(s) for your ingress controller of choice)
-
-      # Network configuration, see: https://github.com/rook/rook/blob/master/Documentation/CRDs/ceph-cluster-crd.md#network-configuration-settings
-      # network:
-      #   # enable host networking
-      #   provider: host
-      #   # EXPERIMENTAL: enable the Multus network provider
-      #   provider: multus
-      #   selectors:
-      #     # The selector keys are required to be `public` and `cluster`.
-      #     # Based on the configuration, the operator will do the following:
-      #     #   1. if only the `public` selector key is specified both public_network and cluster_network Ceph settings will listen on that interface
-      #     #   2. if both `public` and `cluster` selector keys are specified the first one will point to 'public_network' flag and the second one to 'cluster_network'
-      #     #
-      #     # In order to work, each selector value must match a NetworkAttachmentDefinition object in Multus
-      #     #
-      #     # public: public-conf --> NetworkAttachmentDefinition object name in Multus
-      #     # cluster: cluster-conf --> NetworkAttachmentDefinition object name in Multus
-      #   # Provide internet protocol version. IPv6, IPv4 or empty string are valid options. Empty string would mean IPv4
-      #   ipFamily: "IPv6"
-      #   # Ceph daemons to listen on both IPv4 and Ipv6 networks
-      #   dualStack: false
 
       # enable the crash collector for ceph daemon crash collection
       crashCollector:
@@ -186,11 +87,6 @@ spec:
 
       # automate [data cleanup process](https://github.com/rook/rook/blob/master/Documentation/ceph-teardown.md#delete-the-data-on-hosts) in cluster destruction.
       cleanupPolicy:
-        # Since cluster cleanup is destructive to data, confirmation is required.
-        # To destroy all Rook data on hosts during uninstall, confirmation must be set to "yes-really-destroy-data".
-        # This value should only be set when the cluster is about to be deleted. After the confirmation is set,
-        # Rook will immediately stop configuring the cluster and only wait for the delete command.
-        # If the empty string is set, Rook will not destroy any data on hosts during uninstall.
         confirmation: ""
         # sanitizeDisks represents settings for sanitizing OSD disks on cluster deletion
         sanitizeDisks:
@@ -343,25 +239,6 @@ spec:
 
     ingress:
       dashboard:
-        # annotations:
-        #   external-dns.alpha.kubernetes.io/hostname: dashboard.example.com
-        #   nginx.ingress.kubernetes.io/rewrite-target: /ceph-dashboard/$2
-        #   kubernetes.io/ingress.class: nginx
-        # If the dashboard has ssl: true the following will make sure the NGINX Ingress controller can expose the dashboard correctly
-        #   nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-        #   nginx.ingress.kubernetes.io/server-snippet: |
-        #     proxy_ssl_verify off;
-        # host:
-        #   name: dashboard.example.com
-        #   path: "/ceph-dashboard(/|$)(.*)"
-        # tls:
-        # - hosts:
-        #     - dashboard.example.com
-        #   secretName: testsecret-tls
-        ## Note: Only one of ingress class annotation or the `ingressClassName:` can be used at a time
-        ## to set the ingress class
-        # ingressClassName: nginx
-
         annotations:
           nginx.ingress.kubernetes.io/rewrite-target: /
           cert-manager.io/cluster-issuer: letsencrypt-production
@@ -370,14 +247,12 @@ spec:
         # If the dashboard has ssl: true the following will make sure the NGINX Ingress controller can expose the dashboard correctly
           # nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
         host:
-          name: "rook-ceph.${SECRET_DOMAIN}"
+          name: &host "rook-ceph.${SECRET_DOMAIN}"
           path: "/"
-        # tls:
-        # - hosts:
-        #     - rook-ceph.srv1.com
-        #   secretName: rook-ceph-dashboard-cert
-        # Note: Only one of ingress class annotation or the `ingressClassName:` can be used at a time
-        # to set the ingress class
+        tls:
+        - hosts:
+            - *host
+          secretName: rook-ceph-tls
         ingressClassName: nginx
 
 
