@@ -1,0 +1,27 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: cluster-core-ingress-nginx
+  namespace: flux-system
+  labels:
+    substitution.flux.home.arpa/enabled: "true"
+spec:
+  dependsOn:
+    - name: cluster-core-cert-manager
+    - name: cluster-core-cert-manager-issuers
+    - name: cluster-core-metallb
+    - name: cluster-core-metallb-config
+  path: ./kubernetes/core/networking/ingress-nginx/app
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: home-kubernetes
+  healthChecks:
+    - apiVersion: helm.toolkit.fluxcd.io/v2beta1
+      kind: HelmRelease
+      name: ingress-nginx
+      namespace: networking
+  interval: 30m
+  retryInterval: 1m
+  timeout: 3m
