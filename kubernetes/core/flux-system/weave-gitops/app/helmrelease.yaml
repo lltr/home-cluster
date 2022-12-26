@@ -32,7 +32,8 @@ spec:
         cert-manager.io/cluster-issuer: letsencrypt-production
         nginx.ingress.kubernetes.io/whitelist-source-range: |
           10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
-        hajimari.io/icon: sawtooth-wave
+        external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
+        external-dns.home.arpa/enabled: "true"
       hosts:
         - host: &host "gitops.${SECRET_DOMAIN}"
           paths:
