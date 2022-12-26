@@ -1,0 +1,10 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cluster-settings
+  namespace: flux-system
+data:
+  TIMEZONE: "Asia/Singapore"
+  METALLB_LB_RANGE: "192.168.0.201-192.168.0.255"
+  METALLB_INGRESS_ADDR: "192.168.0.201"
