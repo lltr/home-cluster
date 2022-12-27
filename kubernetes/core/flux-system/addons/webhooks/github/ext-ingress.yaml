@@ -1,0 +1,25 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ext-webhook-receiver
+  namespace: flux-system
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: &host "flux.gpcs.io"
+      http:
+        paths:
+          - path: /hook/
+            pathType: Prefix
+            backend:
+              service:
+                name: webhook-receiver
+                port:
+                  number: 80
+  tls:
+    - hosts:
+        - *host
+      secretName: ext-flux-receiver-tls
