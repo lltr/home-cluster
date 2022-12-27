@@ -3,7 +3,7 @@
 
   <img src="https://camo.githubusercontent.com/5b298bf6b0596795602bd771c5bddbb963e83e0f/68747470733a2f2f692e696d6775722e636f6d2f7031527a586a512e706e67" align="center" width="144px" height="144px"/>
 
-  ### My home Kubernetes Talos cluster
+  ### My Talos cluster
 
 </div>
 
@@ -23,7 +23,7 @@ This repository is built off the [onedr0p/flux-cluster-template](https://github.
 
 ### Cluster management
 
-- [Talos](https://www.talos.dev): Using bare talosctl
+- [Talos](https://www.talos.dev): Using bare talosctl, talhelper * *soon*!
 - [fluxcd](https://fluxcd.io/): Sync kubernetes cluster with this repository.
 - [SOPS](https://toolkit.fluxcd.io/guides/mozilla-sops/): Encrypts secrets which is safe to store - even to a public repository.
 - [yq v4](https://github.com/mikefarah/yq): Command tool
@@ -39,7 +39,7 @@ This repository is built off the [onedr0p/flux-cluster-template](https://github.
 ### Storage
 
 - [rook-ceph](https://rook.io): Cloud native distributed block storage for Kubernetes
-- [nfs-subdir-external-provisioner](https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner): Provides persistent volumes from NFS server.
+- [nfs-subdir-external-provisioner](https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner): Provides persistent volumes from NFS server. * *soon*
 
 ### Metrics
 
@@ -50,7 +50,7 @@ This repository is built off the [onedr0p/flux-cluster-template](https://github.
 
 ## 💻 Systems
 
-| Machine             | RAM  | OS Disk         | Storage                      |
+| System              | RAM  | OS Disk         | Storage                      |
 | ------------------- | ---- | --------------- | ---------------------------- |
 | 3x Intel 12NUCWSHi5 | 64GB | 500GB 870EVO    | 2TB 970EVO+ NVMe (rook-ceph) |
 | 1x Intel 11NUCPAHi3 | 32GB | 2TB 980PRO NVMe |                              |
