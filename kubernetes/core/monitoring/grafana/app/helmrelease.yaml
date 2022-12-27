@@ -69,3 +69,5 @@ spec:
       accessModes:
         - ReadWriteOnce
       size: 5Gi
+      extraPvcLabels:
+        snapshot.home.arpa/enabled: "true"
