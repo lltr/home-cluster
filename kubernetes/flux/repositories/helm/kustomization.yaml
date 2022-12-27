@@ -13,3 +13,4 @@ resources:
   - ./weave-gitops.yaml
   - ./kubernetes-dashboard.yaml
   - ./rook-release.yaml
+  - ./prometheus-community.yaml

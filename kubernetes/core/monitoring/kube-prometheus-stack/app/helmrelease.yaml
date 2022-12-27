@@ -1,0 +1,90 @@
+# yaml-language-server: $schema=https://kubernetes-schemas.devbu.io/helmrelease_v2beta1.json
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: kube-prometheus-stack
+  namespace: monitoring
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: kube-prometheus-stack
+      version: 43.2.0
+      sourceRef:
+        kind: HelmRepository
+        name: prometheus-community
+        namespace: flux-system
+  install:
+    createNamespace: true
+    crds: CreateReplace
+    remediation:
+      retries: 3
+  upgrade:
+    crds: CreateReplace
+    remediation:
+      retries: 3
+  dependsOn:
+    - name: rook-ceph-cluster
+      namespace: rook-ceph
+  values:
+    alertmanager:
+      ingress:
+        enabled: true
+        ingressClassName: nginx
+        annotations:
+          external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
+          external-dns.home.arpa/enabled: "true"
+          cert-manager.io/cluster-issuer: letsencrypt-production
+        pathType: Prefix
+        hosts:
+          - &host_alertmanager alertmanager.${SECRET_DOMAIN}
+        tls:
+          - secretName: alertmanager-tls
+            hosts:
+              - *host_alertmanager
+    grafana:
+      enabled: false
+
+    ## Component scraping kube proxy
+    ##
+    kubeProxy:
+      enabled: false
+
+    ## Deploy a Prometheus instance
+    ##
+    prometheus:
+      ingress:
+        enabled: true
+        ingressClassName: nginx
+        annotations:
+          external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
+          external-dns.home.arpa/enabled: "true"
+          cert-manager.io/cluster-issuer: letsencrypt-production
+        pathType: Prefix
+        hosts:
+          - &host_prometheus prometheus.${SECRET_DOMAIN}
+        tls:
+          - secretName: prometheus-tls
+            hosts:
+              - *host_prometheus
+
+      ## Settings affecting prometheusSpec
+      ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#prometheusspec
+      ##
+      prometheusSpec:
+        retention: 180d
+        retentionSize: "95GB"
+        podAntiAffinity: "hard"
+        storageSpec:
+          volumeClaimTemplate:
+            spec:
+              storageClassName: "ceph-block"
+              resources:
+                requests:
+                  storage: 100Gi
+
+        additionalScrapeConfigsSecret:
+          enabled: true
+          name: additional-scrape-configs
+          key: prometheus-additional.yaml
+

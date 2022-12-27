@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: additional-scrape-configs
+    namespace: monitoring
+data:
+    prometheus-additional.yaml: ENC[AES256_GCM,data:fZEJvJRo6OuU2IP8ZTHePeAqCmqOkBMu01LSIUPh+z5S7JdO90svNZ+q+e+LJcTSO+WYK8Y0NjAsPnpOrBHxyyx370nzfLdHNVULa4TByfYkgckOcUaWwg3kXNkCfGHs5g6J8szahjSixdvBBPSiGTg51yZFIeltBRzCgtcg3JOjwqiHbvSLUKBN69FvmaaDRIfnxP82fgnjv/DZcW4LZuibm1vp4Rmcftgg8vUzy5h9b7NOvXXlCU6QpYB7KvTMTRnxmGV7LuePiVj5ifEA0oYkGs0UNghFXv+rqYC/sbD54fF2IlgANsuICjk/3NDSgJn3alcGLfLpSVP3SOMsgMEIN70VA6f6pyTMZX0972VOWpdqp2fWNpultZ8pGM1EUNqx5t6Y8WaBCq2eqhOuASizKcG1bLpqn3569JeynkGw+AQBkMyqgAMq/iF+I3A24IJUZPbIbIb4NWz9qGu+syMeK2Vpv51uGkEdHPDPiLlk/nDLnQM6qEL8HRA5kxIh6qLsBuRmt1mbhKhVP2Dv7GUp8LoQV8Vmsz27qNmH1hJ7qJqXDo2LTAPDPMCRpnjeEM9EhFH78lgUQBV59fmGFtiXb2xCkEDHgCSsSjmsN7OTX/DwuOKkQKjRCNz6FVJi/a2+TqRKkKEd4E4v5JYibrTDrWhgzSOSrqH2vWDTJ8nKbPSEDNe4On3t9x8mVr3sXyzqR1GTK0Sw5zpPp03D1WYLwZVon0h+p7xmCWB5+PxXjLLaWqcQaLGk833N/qt1m3L+VOUpeBy614risPZY7/5hJ+cyQ0/Nm5PrQRB73MU=,iv:bcwsb9QshuvrSv08IWULqejyBN+mbaZQCY3+7d08DjU=,tag:xgQi+gkXWOmGlXXRxdk0iA==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1k8xaut2yz4ttudhtwxk0jf8ckrav2rugjup5vyqu3tyzp2lxhgxq93u2mf
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBBVHVmNWdPdEl3MXd2U2M0
+            MlhVVmlEOXhaYkJTWm81S1JmZlNGLzJCbTNJCk1OOXNsMDRvbVZMME16Rm5kRDFX
+            V0RlM1BTd2t5U1hWU0hhSkhEYndWRDgKLS0tIEFGVXkyeU9NU2dsRm04cWsvSXlC
+            OTZTbEx0c0RLd3IrQTNBTitkWkhsWncK0MSzJYP89hHbyuQZKVyRiemMAS/4pLE9
+            An4OTnt/6+MI7XHyN5rzY4xjlS64mV4pEnVzjVF35r3eTflsZDGpqg==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2022-12-26T17:54:47Z"
+    mac: ENC[AES256_GCM,data:dq9Vpqm7UxW4cntqywV2TxSn3t+zKIqZicDWk+dycEVwbUNnVtXavKTPfuRCwyY6WR0rnNm4dRNyjmtx1m4x+lh6RJ80jvZKqB98ymUsKfoEkvV9vQg8P8ukiZJR7x/i1YqZRYCLvcwUA5Q0kCdv4vmNHz+z9gwUrwTyBtQ8Ftc=,iv:UVT19F/rBguF3CHdKnOILa5Q+YUc3CZ5yqm/tTLobYk=,tag:ydE/UjLdAaKzEb9PCGb0AA==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.7.3
