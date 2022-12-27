@@ -14,3 +14,4 @@ resources:
   - ./kubernetes-dashboard.yaml
   - ./rook-release.yaml
   - ./prometheus-community.yaml
+  - ./grafana.yaml
