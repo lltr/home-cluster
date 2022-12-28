@@ -1,0 +1,64 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: etherpad
+  namespace: development
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: app-template
+      version: 1.2.0
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  values:
+    image:
+      repository: etherpad/etherpad
+      pullPolicy: IfNotPresent
+      tag: latest
+
+    env:
+      TZ: "${TIMEZONE}"
+
+    service:
+      main:
+        ports:
+          http:
+            port: 9001
+
+    ingress:
+      main:
+        enabled: true
+        annotations:
+          cert-manager.io/cluster-issuer: letsencrypt-production
+        ingressClassName: "nginx"
+        hosts:
+            host: &host "etherpad.${SECRET_DOMAIN}"
+            paths:
+                path: /
+                pathType: Prefix
+        tls:
+          - secretName: etherpad-tls
+            hosts:
+              - *host
+
+      # -- Configure persistence settings for the chart under this key.
+      # persistence:
+      #   config:
+      #     enabled: true
+      #     type: pvc
+      #     accessMode: ReadWriteOnce
+      #     size: 1Gi
+      #     mountPath: /opt
+
+
