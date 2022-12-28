@@ -42,7 +42,9 @@ spec:
         main:
           enabled: false
           ports:
-            port: 20200
+            http:
+              enabled: false
+              port: 20200
 
       persistence:
         config:
