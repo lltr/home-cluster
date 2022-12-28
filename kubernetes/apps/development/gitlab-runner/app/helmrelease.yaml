@@ -22,6 +22,8 @@ spec:
     remediation:
       retries: 3
   values:
+    podAnnotations:
+      reloader.stakater.com/search: "true"
     gitlabUrl: https://gitlab.com/
     rbac:
       create: true
