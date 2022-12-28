@@ -43,7 +43,7 @@ spec:
         config:
           enabled: true
           type: configMap
-          name: cloudflared-tunnel-config
+          name: cloudflared-config
           mountPath: /etc/cloudflared/config
         # By default, the credentials file will be created under ~/.cloudflared/<tunnel ID>.json
         # when you run `cloudflared tunnel create`. You can move it into a secret by using:
