@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   - ./uptime-kuma/ks.yaml
+  - ./prometheus-smartctl-exporter/ks.yaml
