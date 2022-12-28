@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   - ./tailscale-relay/ks.yaml
+  - ./cloudflared/ks.yaml

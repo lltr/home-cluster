@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cloudflared-tunnel-config
+  namespace: networking
+  labels:
+    app.kubernetes.io/name: cloudflared
+  annotations:
+    reloader.stakater.com/match: "true"
+data:
+  config.yaml: |
+    # Name of the tunnel you want to run
+    tunnel: home-cluster
+    credentials-file: /etc/cloudflared/creds/credentials.json
+    # Serves the metrics server under /metrics and the readiness server under /ready
+    metrics: 0.0.0.0:2000
+    no-autoupdate: true
+
+    ingress:
+    ### Proxy nginx to the k8s ingress (ingress-nginx) to hand off to Services
+    # internet --> cloudflared tunnel --> local DNS --> ingress --> service
+    ### NOTE: relies on split-brain DNS / local overrides
+    # - hostname: status.gpcs.io
+    #   service: https://status.${SECRET_DOMAIN}
+
+    ### Proxy traffic to the Kubernetes Services directly
+    - hostname: echo.gpcs.io
+      service: https://echo-server.default:8080
+
+    ### "Else" rule matches any traffic which didn't match a previous rule, and responds with HTTP 404.
+    - service: http_status:404

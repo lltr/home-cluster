@@ -8,7 +8,6 @@ metadata:
     cert-manager.io/cluster-issuer: letsencrypt-production
     external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
     external-dns.home.arpa/enabled: "true"
-    hajimari.io/enable: "false"
 spec:
   ingressClassName: nginx
   rules:
