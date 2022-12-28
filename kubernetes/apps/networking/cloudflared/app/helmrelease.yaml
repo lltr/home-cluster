@@ -26,41 +26,37 @@ spec:
       annotations:
         reloader.stakater.com/search: "true"
         # configmap.reloader.stakater.com/reload: "cloudflared-tunnel"
-      image:
-        repository: cloudflare/cloudflared
-        tag: latest
-      args:
-        - tunnel
-        - --config
-        - /etc/cloudflared/config/config.yaml
-        - run
+    image:
+      repository: cloudflare/cloudflared
+      tag: latest
+    args:
+      - tunnel
+      - --config
+      - /etc/cloudflared/config/config.yaml
+      - run
 
-      ingress:
-        main:
-          enabled: false
-      service:
-        main:
-          enabled: false
-          ports:
-            http:
-              enabled: false
-              port: 20200
+    ingress:
+      main:
+        enabled: false
+    service:
+      main:
+        enabled: false
 
-      persistence:
-        config:
-          enabled: true
-          type: configMap
-          name: cloudflared-config
-          mountPath: /etc/cloudflared/config
-        # By default, the credentials file will be created under ~/.cloudflared/<tunnel ID>.json
-        # when you run `cloudflared tunnel create`. You can move it into a secret by using:
-        # ```sh
-        # kubectl create secret generic tunnel-credentials \
-        # --from-file=credentials.json=/Users/yourusername/.cloudflared/<tunnel ID>.json
-        # ```
-        creds:
-          enabled: true
-          type: secret
-          name: cloudflared-credentials
-          mountPath: /etc/cloudflared/creds
+    persistence:
+      config:
+        enabled: true
+        type: configMap
+        name: cloudflared-config
+        mountPath: /etc/cloudflared/config
+      # By default, the credentials file will be created under ~/.cloudflared/<tunnel ID>.json
+      # when you run `cloudflared tunnel create`. You can move it into a secret by using:
+      # ```sh
+      # kubectl create secret generic tunnel-credentials \
+      # --from-file=credentials.json=/Users/yourusername/.cloudflared/<tunnel ID>.json
+      # ```
+      creds:
+        enabled: true
+        type: secret
+        name: cloudflared-credentials
+        mountPath: /etc/cloudflared/creds
 
