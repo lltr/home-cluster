@@ -26,6 +26,18 @@ spec:
       existingSecret: grafana-secret
       userKey: gf_security_admin_user
       passwordKey: gf_security_admin_password
+    dashboardProviders:
+      dashboardproviders.yaml:
+        apiVersion: 1
+        providers:
+          - name: "default"
+            orgId: 1
+            folder: ""
+            type: file
+            disableDeletion: false
+            editable: true
+            options:
+              path: /var/lib/grafana/dashboards/default
     datasources:
       datasources.yaml:
         apiVersion: 1
@@ -33,10 +45,19 @@ spec:
           - name: Prometheus
             type: prometheus
             access: proxy
-            url: http://kube-prometheus-stack-prometheus:9090
+            url: http://kube-prometheus-stack-prometheus.monitoring:9090
             isDefault: true
+          - name: Alertmanager
+            type: alertmanager
+            access: proxy
+            url: http://kube-prometheus-stack-alertmanager.monitoring:9093
+            jsonData:
+              implementation: prometheus
     sidecar:
       dashboards:
+        enabled: true
+        searchNamespace: ALL
+      datasources:
         enabled: true
         searchNamespace: ALL
     plugins:
