@@ -43,6 +43,7 @@ spec:
         enabled: false
         ports:
           http:
+            enabled: false
             port: 55555
 
     persistence:
