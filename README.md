@@ -5,6 +5,8 @@
 
   ### My Talos Kubernetes cluster
 
+  ![External-Status](https://img.shields.io/uptimerobot/status/m793353196-e4e90f5680b8c3200714f8f6?label=EXTERNAL%20STATUS&style=for-the-badge)
+
 </div>
 
 ---
