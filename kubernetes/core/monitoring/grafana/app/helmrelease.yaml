@@ -26,18 +26,6 @@ spec:
       existingSecret: grafana-secret
       userKey: gf_security_admin_user
       passwordKey: gf_security_admin_password
-    dashboardProviders:
-      dashboardproviders.yaml:
-        apiVersion: 1
-        providers:
-          - name: "default"
-            orgId: 1
-            folder: ""
-            type: file
-            disableDeletion: false
-            editable: true
-            options:
-              path: /var/lib/grafana/dashboards/default
     datasources:
       datasources.yaml:
         apiVersion: 1
@@ -55,9 +43,6 @@ spec:
               implementation: prometheus
     sidecar:
       dashboards:
-        enabled: true
-        searchNamespace: ALL
-      datasources:
         enabled: true
         searchNamespace: ALL
     plugins:

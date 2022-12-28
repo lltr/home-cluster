@@ -4,4 +4,3 @@ namespace: monitoring
 resources:
   - ./helmrelease.yaml
   - ./grafana-secret.sops.yaml
-  - https://raw.githubusercontent.com/prometheus-operator/kube-prometheus/v0.11.0/manifests/grafana-dashboardDefinitions.yaml
