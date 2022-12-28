@@ -20,8 +20,8 @@ data:
     ### Proxy nginx to the k8s ingress (ingress-nginx) to hand off to Services
     # internet --> cloudflared tunnel --> local DNS --> ingress --> service
     ### NOTE: relies on split-brain DNS / local overrides
-    # - hostname: "status.${SECRET_EXT_DOMAIN}"
-    #   service: https://status.${SECRET_DOMAIN}
+    - hostname: "${SECRET_OTHER_DOMAIN_1}"
+      service: https://etherpad.${SECRET_DOMAIN}
 
     ### Proxy traffic directly to ingress-nginx controller service (ingress created)
     - hostname: "status.${SECRET_EXT_DOMAIN}"

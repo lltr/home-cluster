@@ -4,3 +4,4 @@ kind: Kustomization
 namespace: development
 resources:
   - ./helmrelease.yaml
+  - ./ext-ingress.yaml
