@@ -41,6 +41,8 @@ spec:
         enabled: true
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-production
+          external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
+          external-dns.home.arpa/enabled: "true"
         ingressClassName: "nginx"
         hosts:
             host: &host "etherpad.${SECRET_DOMAIN}"
