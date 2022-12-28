@@ -45,7 +45,7 @@ spec:
           external-dns.home.arpa/enabled: "true"
         ingressClassName: "nginx"
         hosts:
-            host: &host "etherpad.${SECRET_DOMAIN}"
+          - host: &host "etherpad.${SECRET_DOMAIN}"
             paths:
                 path: /
                 pathType: Prefix
