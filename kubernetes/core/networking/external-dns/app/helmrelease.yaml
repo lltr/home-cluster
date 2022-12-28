@@ -46,6 +46,7 @@ spec:
     domainFilters:
       - "${SECRET_DOMAIN}"
       - "${SECRET_EXT_DOMAIN}"
+      - "${SECRET_OTHER_DOMAIN_1}"
     serviceMonitor:
       enabled: true
     podAnnotations:
