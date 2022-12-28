@@ -25,7 +25,7 @@ data:
 
     ### Proxy traffic to the Kubernetes Services directly
     - hostname: echo.gpcs.io
-      service: https://echo-server.default:8080
+      service: http://echo-server.default:8080
 
     ### "Else" rule matches any traffic which didn't match a previous rule, and responds with HTTP 404.
     - service: http_status:404
