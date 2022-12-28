@@ -41,9 +41,9 @@ spec:
     service:
       main:
         enabled: false
-      ports:
-        http:
-          port: 55555
+        ports:
+          http:
+            port: 55555
 
     persistence:
       config:
