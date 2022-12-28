@@ -20,11 +20,17 @@ data:
     ### Proxy nginx to the k8s ingress (ingress-nginx) to hand off to Services
     # internet --> cloudflared tunnel --> local DNS --> ingress --> service
     ### NOTE: relies on split-brain DNS / local overrides
-    # - hostname: status.gpcs.io
+    # - hostname: "status.${SECRET_EXT_DOMAIN}"
     #   service: https://status.${SECRET_DOMAIN}
 
+    ### Proxy traffic directly to ingress-nginx controller service
+    - hostname: "echo.${SECRET_EXT_DOMAIN}"
+      service: http://ingress-nginx-controller.networking
+
     ### Proxy traffic to the Kubernetes Services directly
-    - hostname: echo.gpcs.io
+    - hostname: "status.${SECRET_EXT_DOMAIN}"
+      service: http://uptime-kuma.monitoring:3001
+    - hostname: "flux.${SECRET_EXT_DOMAIN}"
       service: http://echo-server.default:8080
 
     ### "Else" rule matches any traffic which didn't match a previous rule, and responds with HTTP 404.
