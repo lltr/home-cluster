@@ -47,7 +47,7 @@ spec:
         hosts:
           - host: &host "etherpad.${SECRET_DOMAIN}"
             paths:
-                path: /
+              - path: /
                 pathType: Prefix
         tls:
           - secretName: etherpad-tls
