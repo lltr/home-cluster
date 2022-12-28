@@ -38,9 +38,8 @@ spec:
       enabled: true
       # Specify namespace to load the monitor if not in the same namespace
       # Add Extra labels if needed. Prometeus operator may need them to find it.
-      extraLabels: {}
-      release: kube-prometheus-stack
-      # release: prometheus-operator
+      extraLabels:
+        release: kube-prometheus-stack
 
     prometheusRules:
       enabled: false
