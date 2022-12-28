@@ -35,6 +35,9 @@ spec:
         - /etc/cloudflared/config/config.yaml
         - run
 
+      ingress:
+        main:
+          enabled: false
       service:
         main:
           enabled: false
