@@ -16,3 +16,4 @@ resources:
   - ./prometheus-community.yaml
   - ./grafana.yaml
   - ./mvisonneau.yaml
+  - ./gitlab.yaml

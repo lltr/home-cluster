@@ -1,0 +1,31 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: gitlab-runner
+  namespace: development
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: gitlab-runner
+      version: 0.48.0
+      sourceRef:
+        kind: HelmRepository
+        name: gitlab
+        namespace: flux-system
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  values:
+    gitlabUrl: https://gitlab.com/
+    rbac:
+      create: true
+    runners:
+      secret: gitlab-runner-secret
+
+
