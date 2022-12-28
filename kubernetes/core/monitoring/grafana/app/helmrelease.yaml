@@ -26,30 +26,27 @@ spec:
       existingSecret: grafana-secret
       userKey: gf_security_admin_user
       passwordKey: gf_security_admin_password
-    datasources:
-      datasources.yaml:
-        apiVersion: 1
-        datasources:
-          - name: Prometheus
-            type: prometheus
-            access: proxy
-            url: http://kube-prometheus-stack-prometheus.monitoring:9090
-            isDefault: true
-          - name: Alertmanager
-            type: alertmanager
-            access: proxy
-            url: http://kube-prometheus-stack-alertmanager.monitoring:9093
-            jsonData:
-              implementation: prometheus
+    # datasources:
+    #   datasources.yaml:
+    #     apiVersion: 1
+    #     datasources:
+    #       - name: Prometheus
+    #         type: prometheus
+    #         access: proxy
+    #         url: http://kube-prometheus-stack-prometheus.monitoring:9090
+    #         isDefault: true
+    #       - name: Alertmanager
+    #         type: alertmanager
+    #         access: proxy
+    #         url: http://kube-prometheus-stack-alertmanager.monitoring:9093
+    #         jsonData:
+    #           implementation: prometheus
     sidecar:
       dashboards:
         enabled: true
         searchNamespace: ALL
     plugins:
-      - natel-discrete-panel
-      - pr0ps-trackmap-panel
       - grafana-piechart-panel
-      - vonage-status-panel
       - grafana-worldmap-panel
       - grafana-clock-panel
     serviceMonitor:
