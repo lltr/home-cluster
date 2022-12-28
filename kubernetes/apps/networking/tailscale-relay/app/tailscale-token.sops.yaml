@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: tailscale-token-secret
+    namespace: networking
+stringData:
+    tailscale-token: ENC[AES256_GCM,data:xoSL52ezrh/uw3YA6U5O0ColWdHV/GtepUGW5e9kckmGGQ6zPzGNfgSBooREBo1VaMkXcnyJRSA=,iv:zyQksBqvSmvuU6X4UtJ+1jexp0K5TLaVIKvCkT1v/wQ=,tag:5fdcq6kSQBDmVKEXY2KCDw==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1k8xaut2yz4ttudhtwxk0jf8ckrav2rugjup5vyqu3tyzp2lxhgxq93u2mf
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA2azJHYWh1WUtWbGhRamM4
+            VXZCcnRmUVlpSE0yNmFMTmppT2ZZZjhqL0ZnCmsva2ZOSVVRNWhIQjF1NHgyN1F2
+            aHZkSlM0ajRlUDhIdnpHa09jWUtxdjQKLS0tIEppQmlVTFNYdkM3ejVYaWxwQm9T
+            ZndUS1NPQy8vd3RsWjBCME9xMHB3VGsK7eIPpeOQJKOcLfdGd5xSyjaVD01w77kX
+            O8w0g//KmkKHPFba7GwCQHil3J9Qsv4QmMKKFHnrjs3kGHVlBPpLkg==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2022-12-28T08:59:55Z"
+    mac: ENC[AES256_GCM,data:Ta5Ex/TQ2KnQCSYsKEmfTuu3Q/ZLvSO6WrM/MkTokZ8bzGV2wiYDGcM9UDZ5T6BBoL9tx6gCD1vOQW2o8oxAyLs2pGC+Zg/N4EpzsAys10FCAgKNMsprZtyRq8XLXE747BTR28m88PnVPUgGeePJ7jQtk3egNwgh69nfBWl4CXc=,iv:lkbbJd75d3ud/AdwukPrx3uI7fGbDDlKgcVXBY6YUS0=,tag:PCox0W3Tw1uqh6KD2VaBgg==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.7.3

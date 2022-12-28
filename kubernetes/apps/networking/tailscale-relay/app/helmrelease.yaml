@@ -44,3 +44,8 @@ spec:
         TAILSCALE_ADVERTISE_EXIT_NODE: "true"
         TAILSCALE_ADVERTISE_ROUTES: "${SECRET_HOME_NETWORK_CIDR}"
         TAILSCALE_HOST_ROUTES: "true"
+  valuesFrom:
+    - kind: Secret
+      name: tailscale-token-secret
+      valuesKey: tailscale-token
+      targetPath: config.authKey
