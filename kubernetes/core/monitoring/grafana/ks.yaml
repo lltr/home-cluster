@@ -33,7 +33,7 @@ spec:
   path: ./kubernetes/core/monitoring/grafana/dashboards
   sourceRef:
     kind: GitRepository
-    name: flux-system
+    name: home-kubernetes
   interval: 30m
   prune: false
   wait: true
