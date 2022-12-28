@@ -69,6 +69,6 @@ spec:
       accessModes:
         - ReadWriteOnce
       size: 5Gi
-      existingClaim: grafana
+      # existingClaim: grafana
       extraPvcLabels:
         snapshot.home.arpa/enabled: "true"
