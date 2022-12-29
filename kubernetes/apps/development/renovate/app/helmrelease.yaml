@@ -36,4 +36,4 @@ spec:
     - targetPath: renovate.config
       kind: Secret
       name: renovate-secrets
-      valuesKey: config
+      valuesKey: config.json
