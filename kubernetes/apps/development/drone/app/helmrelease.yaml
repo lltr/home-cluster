@@ -45,10 +45,8 @@ spec:
             - *host
     persistentVolume:
       enabled: true
-      accessModes:
-        - ReadWriteOnce
+      existingClaim: drone
       mountPath: /data
-      size: 10Gi
     env:
       DRONE_SERVER_HOST: *host
       DRONE_SERVER_PROTO: https

@@ -5,3 +5,4 @@ namespace: development
 resources:
   - ./helmrelease.yaml
   - ./drone-secrets.sops.yaml
+  - ./pvc.yaml
