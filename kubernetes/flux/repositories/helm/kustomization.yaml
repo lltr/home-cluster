@@ -19,3 +19,4 @@ resources:
   - ./gitlab.yaml
   - ./drone.yaml
   - ./gitea-charts.yaml
+  - ./renovate.yaml

@@ -7,3 +7,4 @@ resources:
   - ./etherpad/ks.yaml
   - ./drone/ks.yaml
   - ./gitea/ks.yaml
+  - ./renovate/ks.yaml
