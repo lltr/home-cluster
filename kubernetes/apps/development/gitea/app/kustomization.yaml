@@ -5,3 +5,4 @@ namespace: development
 resources:
   - ./helmrelease.yaml
   - ./gitea-secrets.sops.yaml
+  - ./pvc-data.yaml
