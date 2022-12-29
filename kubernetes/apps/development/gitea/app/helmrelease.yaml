@@ -50,10 +50,7 @@ spec:
 
     persistence:
       enabled: true
-      # existingClaim: gitea-data
-      size: 30Gi
-      accessModes:
-        - ReadWriteOnce
+      existingClaim: gitea-data
 
     gitea:
       admin:
