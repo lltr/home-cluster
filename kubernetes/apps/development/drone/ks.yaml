@@ -9,7 +9,7 @@ metadata:
 spec:
   dependsOn:
     - name: cluster-apps-gitea
-  path: ./kubernetes/apps/development/drone/app
+  path: ./kubernetes/apps/development/gitea/app
   prune: true
   sourceRef:
     kind: GitRepository
