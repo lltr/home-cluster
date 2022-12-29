@@ -48,9 +48,6 @@ spec:
           hosts:
             - *host
 
-    memcached:
-      enabled: false
-
     persistence:
       enabled: true
       existingClaim:
