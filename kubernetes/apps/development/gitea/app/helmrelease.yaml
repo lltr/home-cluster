@@ -1,0 +1,104 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: gitea
+  namespace: development
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: gitea
+      version: 6.0.3
+      sourceRef:
+        kind: HelmRepository
+        name: gitea-charts
+        namespace: flux-system
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  values:
+    image:
+      repository: gitea/gitea
+      tag: 1.17.4
+      rootless: true # only possible when running 1.14 or later
+
+    containerSecurityContext:
+      capabilities:
+        add: ["SYS_CHROOT"]
+
+    ingress:
+      enabled: true
+      className: nginx
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-production
+        external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
+        external-dns.home.arpa/enabled: "true"
+      hosts:
+        - host: &host gitea.${SECRET_DOMAIN}
+          paths:
+            - path: /
+              pathType: Prefix
+      tls:
+        - secretName: gitea-tls
+          hosts:
+            - *host
+
+    memcached:
+      enabled: false
+
+    persistence:
+      enabled: true
+      existingClaim:
+      size: 30Gi
+      accessModes:
+        - ReadWriteOnce
+      labels:
+        snapshot.home.arpa/enabled: "true"
+
+    gitea:
+      admin:
+        email: gitea@${SECRET_DOMAIN}
+        username: gitea_admin
+
+      metrics:
+        enabled: true
+        serviceMonitor:
+          enabled: true
+          namespace: monitoring
+          additionalLabels:
+            release: kube-prometheus-stack
+
+      config:
+        service:
+          DISABLE_REGISTRATION: false
+          REQUIRE_SIGNIN_VIEW: true
+          SHOW_REGISTRATION_BUTTON: false
+        webhook:
+          ALLOWED_HOST_LIST: private
+
+    podAnnotations:
+      reloader.stakater.com/search: "true"
+
+    postgresql:
+      enabled: true
+      global:
+        postgresql:
+          postgresqlDatabase: gitea
+          postgresqlUsername: gitea
+          servicePort: 5432
+      persistence:
+        size: 10Gi
+  valuesFrom:
+    - targetPath: gitea.admin.password
+      kind: Secret
+      name: gitea-secrets
+      valuesKey: adminPassword
+    - targetPath: postgresql.global.postgresql.postgresqlPassword
+      kind: Secret
+      name: gitea-secrets
+      valuesKey: postgresqlPassword

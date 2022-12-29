@@ -18,3 +18,4 @@ resources:
   - ./mvisonneau.yaml
   - ./gitlab.yaml
   - ./drone.yaml
+  - ./gitea-charts.yaml

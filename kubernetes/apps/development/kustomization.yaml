@@ -6,3 +6,4 @@ resources:
   - ./gitlab-runner/ks.yaml
   - ./etherpad/ks.yaml
   - ./drone/ks.yaml
+  - ./gitea/ks.yaml
