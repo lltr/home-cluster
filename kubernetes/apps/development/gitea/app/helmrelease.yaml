@@ -58,7 +58,7 @@ spec:
       accessModes:
         - ReadWriteOnce
       labels:
-        snapshot.home.arpa/enabled: "true"
+        - snapshot.home.arpa/enabled: "true"
 
     gitea:
       admin:
