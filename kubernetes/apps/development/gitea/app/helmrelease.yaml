@@ -57,8 +57,6 @@ spec:
       size: 30Gi
       accessModes:
         - ReadWriteOnce
-      labels:
-        snapshot.home.arpa/enabled: "true"
 
     gitea:
       admin:
@@ -93,6 +91,7 @@ spec:
           servicePort: 5432
       persistence:
         size: 10Gi
+
   valuesFrom:
     - targetPath: gitea.admin.password
       kind: Secret
