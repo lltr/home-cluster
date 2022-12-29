@@ -1,0 +1,69 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: drone
+  namespace: development
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: drone
+      version: 0.6.4
+      sourceRef:
+        kind: HelmRepository
+        name: drone
+        namespace: flux-system
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  values:
+    image:
+      repository: drone/drone
+      tag: 2.16.0
+    podAnnotations:
+      reloader.stakater.com/search: "true"
+    ingress:
+      enabled: true
+      className: nginx
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-production
+        external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
+        external-dns.home.arpa/enabled: "true"
+      hosts:
+        - host: &host drone.${SECRET_DOMAIN}
+          paths:
+            - path: /
+              pathType: Prefix
+      tls:
+        - secretName: drone-tls
+          hosts:
+            - *host
+    persistentVolume:
+      enabled: true
+      accessModes:
+        - ReadWriteOnce
+      mountPath: /data
+      size: 10Gi
+    env:
+      DRONE_SERVER_HOST: *host
+      DRONE_SERVER_PROTO: https
+      DRONE_GITEA_SERVER: https://gitea.${SECRET_DOMAIN}
+      DRONE_GIT_ALWAYS_AUTH: true
+  valuesFrom:
+    - targetPath: env.DRONE_GITEA_CLIENT_ID
+      kind: Secret
+      name: drone-secrets
+      valuesKey: DRONE_GITEA_CLIENT_ID
+    - targetPath: env.DRONE_GITEA_CLIENT_SECRET
+      kind: Secret
+      name: drone-secrets
+      valuesKey: DRONE_GITEA_CLIENT_SECRET
+    - targetPath: env.DRONE_RPC_SECRET
+      kind: Secret
+      name: drone-secrets
+      valuesKey: DRONE_RPC_SECRET
