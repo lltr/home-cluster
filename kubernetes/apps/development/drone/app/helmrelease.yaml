@@ -49,6 +49,8 @@ spec:
         - ReadWriteOnce
       mountPath: /data
       size: 10Gi
+      labels:
+          snapshot.home.arpa/enabled: "true"
     env:
       DRONE_SERVER_HOST: *host
       DRONE_SERVER_PROTO: https
