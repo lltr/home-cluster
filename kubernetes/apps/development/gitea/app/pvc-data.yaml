@@ -3,7 +3,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: gitea-data
   labels:
-    app.kubernetes.io/name: gitea-data
+    app.kubernetes.io/name: gitea
+    app.kubernetes.io/instance: gitea
     snapshot.home.arpa/enabled: "true"
 spec:
   accessModes:
