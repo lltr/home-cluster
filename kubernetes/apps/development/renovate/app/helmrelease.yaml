@@ -27,13 +27,13 @@ spec:
       schedule: '0 1 * * *'
     pod:
       annotations:
-        reloader.stakater.com/match: "true"
+        reloader.stakater.com/search: "true"
     image:
       repository: renovate/renovate
       tag: 34.76.0
       pullPolicy: IfNotPresent
   valuesFrom:
-    - targetPath: renovate.config
+    - targetPath: renovate.existingConfigFile
       kind: Secret
       name: renovate-secrets
       valuesKey: config.json
