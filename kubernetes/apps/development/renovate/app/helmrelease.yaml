@@ -32,8 +32,19 @@ spec:
       repository: renovate/renovate
       tag: 34.76.0
       pullPolicy: IfNotPresent
-  valuesFrom:
-    - targetPath: renovate.existingConfigFile
-      kind: Secret
-      name: renovate-secrets
-      valuesKey: config.json
+    renovate:
+      existingConfigFile: "/etc/secrets/config.json"
+    extraVolumeMounts:
+    - name: renovate-secrets
+      mountPath: "/etc/secrets"
+      readOnly: true
+    extraVolumes:
+      - name: renovate-secrets
+        secret:
+          secretName: renovate-secrets
+          optional: false
+  # valuesFrom:
+  #   - targetPath: renovate.existingConfigFile
+  #     kind: Secret
+  #     name: renovate-secrets
+  #     valuesKey: config.json
