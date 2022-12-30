@@ -75,6 +75,7 @@ spec:
         serviceMonitorSelectorNilUsesHelmValues: false
         podMonitorSelectorNilUsesHelmValues: false
         probeSelectorNilUsesHelmValues: false
+        ruleSelectorNilUsesHelmValues: false
         retention: 180d
         retentionSize: "95GB"
         podAntiAffinity: "hard"
