@@ -43,8 +43,8 @@ spec:
         secret:
           secretName: renovate-secrets
           optional: false
-  # valuesFrom:
-  #   - targetPath: renovate.existingConfigFile
-  #     kind: Secret
-  #     name: renovate-secrets
-  #     valuesKey: config.json
+  valuesFrom:
+    - targetPath: env.GITHUB_COM_TOKEN
+      kind: Secret
+      name: renovate-secrets
+      valuesKey: GITHUB_COM_TOKEN
