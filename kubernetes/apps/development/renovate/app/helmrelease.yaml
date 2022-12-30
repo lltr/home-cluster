@@ -35,9 +35,9 @@ spec:
     renovate:
       existingConfigFile: "/etc/secrets/config.json"
     extraVolumeMounts:
-    - name: renovate-secrets
-      mountPath: "/etc/secrets"
-      readOnly: true
+      - name: renovate-secrets
+        mountPath: "/etc/secrets"
+        readOnly: true
     extraVolumes:
       - name: renovate-secrets
         secret:
