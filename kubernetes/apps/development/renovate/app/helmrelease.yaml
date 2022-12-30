@@ -30,7 +30,7 @@ spec:
         reloader.stakater.com/match: "true"
     image:
       repository: renovate/renovate
-      tag: 34.73.1
+      tag: 34.76.0
       pullPolicy: IfNotPresent
   valuesFrom:
     - targetPath: renovate.config
