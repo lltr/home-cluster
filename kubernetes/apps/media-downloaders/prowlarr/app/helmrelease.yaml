@@ -24,7 +24,7 @@ spec:
   values:
     image:
       repository: ghcr.io/onedr0p/prowlarr-nightly
-      tag: 0.4.11.2114@sha256:65c24aab131fa188265f0660e333f790e94551f044c0c05201e4112aaa27346b
+      tag: 1.0.1.2211
       pullPolicy: IfNotPresent
     env:
       TZ: ${TIMEZONE}
@@ -39,6 +39,8 @@ spec:
         enabled: true
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-production
+          external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
+          external-dns.home.arpa/enabled: "true"
         ingressClassName: "nginx"
         hosts:
             host: &host prowlarr.${SECRET_DOMAIN}
