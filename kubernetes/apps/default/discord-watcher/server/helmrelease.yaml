@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: watcher-server
+  name: discord-watcher-server
   namespace: default
 spec:
   interval: 15m
@@ -40,4 +40,4 @@ spec:
             port: 8082
     envFrom:
       - secretRef:
-          name: watcher-server-secrets
+          name: discord-watcher-server-secrets

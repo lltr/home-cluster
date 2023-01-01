@@ -4,4 +4,4 @@ kind: Kustomization
 namespace: default
 resources:
   - ./helmrelease.yaml
-  - ./watcher-server-secrets.sops.yaml
+  - ./server-secrets.sops.yaml
