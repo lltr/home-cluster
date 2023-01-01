@@ -35,7 +35,7 @@ spec:
         sabnzbd.default.svc,
         sabnzbd.default.svc.cluster,
         sabnzbd.default.svc.cluster.local,
-        sabnzbd.downloaders,
+        sabnzbd.media-downloaders,
         sabnzbd.${SECRET_DOMAIN}
 
     service:
