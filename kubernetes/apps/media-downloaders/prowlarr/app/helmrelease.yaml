@@ -43,9 +43,9 @@ spec:
           external-dns.home.arpa/enabled: "true"
         ingressClassName: "nginx"
         hosts:
-            host: &host prowlarr.${SECRET_DOMAIN}
+          - host: &host prowlarr.${SECRET_DOMAIN}
             paths:
-                path: /
+              - path: /
                 pathType: Prefix
         tls:
           - secretName: prowlarr-tls
