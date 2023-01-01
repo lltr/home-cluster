@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: watcher-listener
+  name: discord-watcher-listener
   namespace: default
 spec:
   interval: 15m
@@ -25,13 +25,19 @@ spec:
     controller:
       replicas: 1
       strategy: Recreate
+      annotations:
+        reloader.stakater.com/search: "true"
     image:
       repository: cr.gpcs.io/watcher/discord-watcher-listener
       pullPolicy: Always
       tag: "latest"
-    imagePullSecrets: harbor-registry-secret
+    imagePullSecrets:
+      - name: harbor-registry-secret
     service:
       main:
         ports:
           http:
-            port: 8081
+            port: 8082
+    envFrom:
+      - secretRef:
+          name: discord-watcher-listener-secrets
