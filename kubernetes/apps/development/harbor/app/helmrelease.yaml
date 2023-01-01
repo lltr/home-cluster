@@ -23,7 +23,7 @@ spec:
       retries: 3
   values:
     expose:
-      type: ingress
+      type: clusterIP
       tls:
         enabled: true
         certSource: secret
@@ -46,11 +46,9 @@ spec:
         harbor:
           annotations: {}
     externalURL: https://cr.${SECRET_EXT_DOMAIN}
-
     ipFamily:
       ipv6:
         enabled: false
-
     persistence:
       enabled: true
       persistentVolumeClaim:
@@ -67,6 +65,7 @@ spec:
           existingClaim: "harbor-redis"
         trivy:
           existingClaim: "harbor-trivy"
+
       imageChartStorage:
         # Specify whether to disable `redirect` for images and chart storage, for
         # backends which not supported it (such as using minio for `s3` storage type), please disable
@@ -103,7 +102,6 @@ spec:
       type: RollingUpdate
     # debug, info, warning, error or fatal
     logLevel: info
-
     existingSecretSecretKey: "harbor-secrets"
 
     portal:
@@ -116,6 +114,8 @@ spec:
         repository: goharbor/harbor-core
         tag: dev
       revisionHistoryLimit: 3
+      podAnnotations:
+        secret.reloader.stakater.com/reload: "harbor-secrets"
     jobservice:
       image:
         repository: goharbor/harbor-jobservice
@@ -130,7 +130,6 @@ spec:
         image:
           repository: goharbor/harbor-registryctl
           tag: dev
-
       upload_purging:
         enabled: true
         # remove files in _upload directories which exist for a period of time, default is one week.
@@ -200,7 +199,6 @@ spec:
       image:
         repository: goharbor/harbor-exporter
         tag: dev
-
     metrics:
       enabled: true
       core:
@@ -217,8 +215,6 @@ spec:
         port: 8001
       serviceMonitor:
         enabled: true
-        # additionalLabels:
-        #   release: kube-prometheus-stack
     trace:
       enabled: false
     cache:
