@@ -25,8 +25,10 @@ spec:
     expose:
       type: ingress
       tls:
-        # enabled: true
-        certSource: none
+        enabled: true
+        certSource: secret
+        secret:
+          secretName: "harbor-tls"
       ingress:
         hosts:
           core: cr.${SECRET_EXT_DOMAIN}
