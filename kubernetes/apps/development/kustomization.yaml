@@ -8,3 +8,4 @@ resources:
   - ./drone/ks.yaml
   - ./gitea/ks.yaml
   - ./renovate/ks.yaml
+  - ./harbor/ks.yaml

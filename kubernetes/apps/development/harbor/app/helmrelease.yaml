@@ -1,0 +1,241 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: harbor
+  namespace: development
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: harbor
+      version: 1.11.0
+      sourceRef:
+        kind: HelmRepository
+        name: harbor
+        namespace: flux-system
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  values:
+    expose:
+      type: ingress
+      tls:
+        enabled: true
+        certSource: none
+      ingress:
+        hosts:
+          core: cr.${SECRET_EXT_DOMAIN}
+        controller: default
+        className: "nginx"
+        annotations:
+          ingress.kubernetes.io/ssl-redirect: "true"
+          ingress.kubernetes.io/proxy-body-size: "0"
+          nginx.ingress.kubernetes.io/ssl-redirect: "true"
+          nginx.ingress.kubernetes.io/proxy-body-size: "0"
+          cert-manager.io/cluster-issuer: letsencrypt-production
+          external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
+          external-dns.alpha.kubernetes.io/target: "${SECRET_CLOUDFLARED_TUNNEL_ID}.cfargotunnel.com"
+          external-dns.home.arpa/enabled: "true"
+        harbor:
+          annotations: {}
+    externalURL: https://cr.${SECRET_EXT_DOMAIN}
+
+    ipFamily:
+      ipv6:
+        enabled: false
+
+    persistence:
+      enabled: true
+      resourcePolicy: "keep"
+      persistentVolumeClaim:
+        registry:
+          existingClaim: "harbor-registry"
+        jobservice:
+          jobLog:
+            existingClaim: "habor-jobservice"
+          scanDataExports:
+            existingClaim: "harbor-jobservice-scandata"
+        database:
+          existingClaim: "harbor-database"
+        redis:
+          existingClaim: "harbor-redis"
+        trivy:
+          existingClaim: "harbor-trivy"
+      imageChartStorage:
+        # Specify whether to disable `redirect` for images and chart storage, for
+        # backends which not supported it (such as using minio for `s3` storage type), please disable
+        # it. To disable redirects, simply set `disableredirect` to `true` instead.
+        disableredirect: false
+        type: filesystem
+        filesystem:
+          rootdirectory: /storage
+          #maxthreads: 100
+        s3:
+          # Set an existing secret for S3 accesskey and secretkey
+          # keys in the secret should be AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY for chartmuseum
+          # keys in the secret should be REGISTRY_STORAGE_S3_ACCESSKEY and REGISTRY_STORAGE_S3_SECRETKEY for registry
+          #existingSecret: ""
+          region: us-west-1
+          bucket: bucketname
+          #accesskey: awsaccesskey
+          #secretkey: awssecretkey
+          #regionendpoint: http://myobjects.local
+          #encrypt: false
+          #keyid: mykeyid
+          #secure: true
+          #skipverify: false
+          #v4auth: true
+          #chunksize: "5242880"
+          #rootdirectory: /s3/object/name/prefix
+          #storageclass: STANDARD
+          #multipartcopychunksize: "33554432"
+          #multipartcopymaxconcurrency: 100
+          #multipartcopythresholdsize: "33554432"
+
+    imagePullPolicy: IfNotPresent
+    updateStrategy:
+      type: RollingUpdate
+    # debug, info, warning, error or fatal
+    logLevel: info
+
+    existingSecretSecretKey: "harbor-secrets"
+
+    portal:
+      image:
+        repository: goharbor/harbor-portal
+        tag: dev
+      revisionHistoryLimit: 3
+    core:
+      image:
+        repository: goharbor/harbor-core
+        tag: dev
+      revisionHistoryLimit: 3
+    jobservice:
+      image:
+        repository: goharbor/harbor-jobservice
+        tag: dev
+      revisionHistoryLimit: 3
+    registry:
+      registry:
+        image:
+          repository: goharbor/registry-photon
+          tag: dev
+      controller:
+        image:
+          repository: goharbor/harbor-registryctl
+          tag: dev
+
+      upload_purging:
+        enabled: true
+        # remove files in _upload directories which exist for a period of time, default is one week.
+        age: 168h
+        # the interval of the purge operations
+        interval: 24h
+        dryrun: false
+      revisionHistoryLimit: 3
+    chartmuseum:
+      enabled: false
+    trivy:
+      enabled: true
+      image:
+        repository: goharbor/trivy-adapter-photon
+        tag: dev
+      revisionHistoryLimit: 3
+    notary:
+      enabled: false
+
+    database:
+      # if external database is used, set "type" to "external"
+      # and fill the connection informations in "external" section
+      type: internal
+      internal:
+        image:
+          repository: goharbor/harbor-db
+          tag: dev
+      external:
+        host: "192.168.0.1"
+        port: "5432"
+        username: "user"
+        password: "password"
+        coreDatabase: "registry"
+        # if using existing secret, the key must be "password"
+        existingSecret: ""
+      maxIdleConns: 100
+      maxOpenConns: 900
+      podAnnotations: {}
+
+    redis:
+      type: internal
+      internal:
+        image:
+          repository: goharbor/redis-photon
+          tag: dev
+      external:
+        # support redis, redis+sentinel
+        # addr for redis: <host_redis>:<port_redis>
+        # addr for redis+sentinel: <host_sentinel1>:<port_sentinel1>,<host_sentinel2>:<port_sentinel2>,<host_sentinel3>:<port_sentinel3>
+        addr: "192.168.0.2:6379"
+        # The name of the set of Redis instances to monitor, it must be set to support redis+sentinel
+        sentinelMasterSet: ""
+        # The "coreDatabaseIndex" must be "0" as the library Harbor
+        # used doesn't support configuring it
+        coreDatabaseIndex: "0"
+        jobserviceDatabaseIndex: "1"
+        registryDatabaseIndex: "2"
+        chartmuseumDatabaseIndex: "3"
+        trivyAdapterIndex: "5"
+        password: ""
+        # If using existingSecret, the key must be REDIS_PASSWORD
+        existingSecret: ""
+      podAnnotations: {}
+
+    exporter:
+      replicas: 1
+      revisionHistoryLimit: 3
+      image:
+        repository: goharbor/harbor-exporter
+        tag: dev
+
+    metrics:
+      enabled: true
+      core:
+        path: /metrics
+        port: 8001
+      registry:
+        path: /metrics
+        port: 8001
+      jobservice:
+        path: /metrics
+        port: 8001
+      exporter:
+        path: /metrics
+        port: 8001
+
+      serviceMonitor:
+        enabled: true
+        additionalLabels:
+          release: kube-prometheus-stack
+    trace:
+      enabled: false
+    cache:
+      enabled: false
+      expireHours: 24
+
+  valuesFrom:
+    - targetPath: harborAdminPassword
+      kind: Secret
+      name: harbor-secrets
+      valuesKey: harborAdminPassword
+    - targetPath: database.internal.password
+      kind: Secret
+      name: harbor-secrets
+      valuesKey: databaseInternalPassword
+    - targetPath: trivy.gitHubToken
+      kind: Secret
+      name: harbor-secrets
+      valuesKey: GITHUB_COM_TOKEN

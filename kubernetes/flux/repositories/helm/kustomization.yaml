@@ -20,3 +20,4 @@ resources:
   - ./drone.yaml
   - ./gitea-charts.yaml
   - ./renovate.yaml
+  - ./harbor.yaml
