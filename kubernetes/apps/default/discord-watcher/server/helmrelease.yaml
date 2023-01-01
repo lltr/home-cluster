@@ -28,7 +28,7 @@ spec:
       annotations:
         reloader.stakater.com/search: "true"
     image:
-      repository: cr.gpcs.io/watcher/discord-watcher-server
+      repository: cr.${SECRET_EXT_DOMAIN}/watcher/discord-watcher-server
       pullPolicy: Always
       tag: "latest"
     imagePullSecrets:
