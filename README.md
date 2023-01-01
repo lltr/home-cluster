@@ -13,7 +13,7 @@
 
 ## Overview
 
-This is a mono repository for my home infrastructure and Kubernetes cluster. [Flux](https://github.com/fluxcd/flux2) watches my [cluster](https://github.com/lltr/home-cluster) directory and makes the changes to my cluster based on the YAML manifests.
+This is a mono repository for my home infrastructure and Kubernetes cluster. [Flux](https://github.com/fluxcd/flux2) watches my cluster directory and makes the changes to my cluster based on the YAML manifests.
 
 This repository is built off the [onedr0p/flux-cluster-template](https://github.com/onedr0p/flux-cluster-template) repository.
 
@@ -23,7 +23,7 @@ This repository is built off the [onedr0p/flux-cluster-template](https://github.
 
 ### Cluster management
 
-- [Talos](https://www.talos.dev): Using bare talosctl, talhelper * *soon*!
+- [Talos](https://www.talos.dev): Using bare talosctl
 - [fluxcd](https://fluxcd.io/): Sync kubernetes cluster with this repository.
 - [SOPS](https://toolkit.fluxcd.io/guides/mozilla-sops/): Encrypts secrets which is safe to store - even to a public repository.
 - [yq v4](https://github.com/mikefarah/yq): Command tool
@@ -57,5 +57,4 @@ The Git repository contains the following directories under `kubernetes` and are
 
 ## 🤝 Thanks
 
-* [k8s-at-home Discord](https://discord.gg/k8s-at-home)
-* [k8s-at-home-search](https://nanne.dev/k8s-at-home-search/)
+[k8s-at-home Discord](https://discord.gg/k8s-at-home), [k8s-at-home-search](https://nanne.dev/k8s-at-home-search/)
