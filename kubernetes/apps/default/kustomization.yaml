@@ -5,4 +5,4 @@ resources:
   - ./namespace.yaml
   - ./harbor-registry-secret.sops.yaml
   - ./echo-server/ks.yaml
-  - ./watcher/ks.yaml
+  - ./discord-watcher/ks.yaml
