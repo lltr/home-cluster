@@ -25,7 +25,7 @@ spec:
     expose:
       type: ingress
       tls:
-        enabled: true
+        # enabled: true
         certSource: none
       ingress:
         hosts:
@@ -216,8 +216,8 @@ spec:
         port: 8001
       serviceMonitor:
         enabled: true
-        additionalLabels:
-          release: kube-prometheus-stack
+        # additionalLabels:
+        #   release: kube-prometheus-stack
     trace:
       enabled: false
     cache:
