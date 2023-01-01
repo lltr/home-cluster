@@ -29,7 +29,8 @@ spec:
       repository: cr.gpcs.io/watcher/discord-watcher-server
       pullPolicy: Always
       tag: "latest"
-    imagePullSecrets: harbor-registry-secret
+    imagePullSecrets:
+      - name: harbor-registry-secret
     service:
       main:
         ports:
