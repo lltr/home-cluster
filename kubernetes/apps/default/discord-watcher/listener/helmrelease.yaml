@@ -38,6 +38,11 @@ spec:
         ports:
           http:
             port: 8081
+    probes:
+      liveness:
+        enabled: false
+      readiness:
+        enabled: false
     envFrom:
       - secretRef:
           name: discord-watcher-listener-secrets
