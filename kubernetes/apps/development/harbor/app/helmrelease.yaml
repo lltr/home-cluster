@@ -57,7 +57,7 @@ spec:
           existingClaim: "harbor-registry"
         jobservice:
           jobLog:
-            existingClaim: "habor-jobservice"
+            existingClaim: "harbor-jobservice"
           scanDataExports:
             existingClaim: "harbor-jobservice-scandata"
         database:
