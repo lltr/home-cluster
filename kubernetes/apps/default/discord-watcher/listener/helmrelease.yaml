@@ -43,6 +43,8 @@ spec:
         enabled: false
       readiness:
         enabled: false
+      startup:
+        enabled: false
     envFrom:
       - secretRef:
           name: discord-watcher-listener-secrets
