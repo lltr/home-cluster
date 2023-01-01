@@ -9,3 +9,4 @@ resources:
   - ./radarr/ks.yaml
   # Downloaders
   - ./sabnzbd/ks.yaml
+  - ./qbittorrent/ks.yaml
