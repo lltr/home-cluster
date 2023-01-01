@@ -25,6 +25,8 @@ spec:
     controller:
       replicas: 1
       strategy: Recreate
+      annotations:
+        reloader.stakater.com/search: "true"
     image:
       repository: cr.gpcs.io/watcher/discord-watcher-server
       pullPolicy: Always
@@ -36,3 +38,6 @@ spec:
         ports:
           http:
             port: 8082
+    envFrom:
+      - secretRef:
+          name: watcher-server-secrets
