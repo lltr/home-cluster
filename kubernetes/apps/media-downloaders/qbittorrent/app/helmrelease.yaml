@@ -60,9 +60,9 @@ spec:
                 proxy_set_header Accept-Encoding "";
         ingressClassName: "nginx"
         hosts:
-            host: &host qbittorrent.${SECRET_DOMAIN}
+          - host: &host qbittorrent.${SECRET_DOMAIN}
             paths:
-                path: /
+              - path: /
                 pathType: Prefix
         tls:
           - secretName: qbittorrent-tls
