@@ -145,7 +145,6 @@ spec:
       image:
         repository: goharbor/trivy-adapter-photon
         tag: dev
-      revisionHistoryLimit: 3
     notary:
       enabled: false
 
