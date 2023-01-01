@@ -4,6 +4,7 @@ metadata:
   name: drone
   labels:
     app.kubernetes.io/name: drone
+    app.kubernetes.io/instance: drone
     snapshot.home.arpa/enabled: "true"
 spec:
   accessModes:

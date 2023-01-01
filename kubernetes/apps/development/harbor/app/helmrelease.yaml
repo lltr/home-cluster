@@ -51,7 +51,6 @@ spec:
 
     persistence:
       enabled: true
-      resourcePolicy: "keep"
       persistentVolumeClaim:
         registry:
           existingClaim: "harbor-registry"
