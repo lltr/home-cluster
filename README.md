@@ -50,7 +50,8 @@ The Git repository contains the following directories under `kubernetes` and are
 ├─📁 bootstrap     # Flux installation
 ├─📁 flux          # Main Flux configuration of repository
 ├─📁 core          # Core applications deployed into the cluster grouped by namespace
-└─📁 apps          # Apps deployed after core into the cluster grouped by namespace
+├─📁 apps          # Apps deployed after core into the cluster grouped by namespace
+└─📁 archive       # Archived applications
 ```
 
 ---
