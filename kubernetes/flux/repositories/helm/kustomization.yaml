@@ -21,3 +21,4 @@ resources:
   - ./gitea-charts.yaml
   - ./renovate.yaml
   - ./harbor.yaml
+  - ./wrmilling.yaml
