@@ -35,8 +35,7 @@ spec:
       hosts:
         - host: &host "code.${SECRET_DOMAIN}"
           paths:
-            - path: /
-              pathType: Prefix
+            - /
       tls:
         - secretName: code-server-tls
           hosts:
