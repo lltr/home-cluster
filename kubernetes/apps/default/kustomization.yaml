@@ -7,3 +7,4 @@ resources:
   - ./etherpad/ks.yaml
   - ./echo-server/ks.yaml
   - ./discord-watcher/ks.yaml
+  - ./changedetection/ks.yaml
