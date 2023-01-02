@@ -46,3 +46,8 @@ spec:
     extraVars:
       - name: DISABLE_TELEMETRY
         value: "true"
+  valuesFrom:
+    - targetPath: env.PASSWORD
+      kind: Secret
+      name: code-server-password
+      valuesKey: password
