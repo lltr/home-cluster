@@ -1,0 +1,76 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: &app influxdb
+  namespace: databases
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: influxdb
+      version: 5.4.14
+      sourceRef:
+        kind: HelmRepository
+        name: bitnami
+        namespace: flux-system
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  values:
+    image:
+      registry: docker.io
+      repository: bitnami/influxdb
+      tag: 2.5.1-debian-11-r0
+
+    auth:
+      enabled: true
+      usePasswordFiles: false
+
+    influxdb:
+      podAnnotations:
+        reloader.stakater.com/search: "true"
+      service:
+        type: LoadBalancer
+        ports:
+          http: 8086
+          rpc: 8088
+        loadBalancerIP: ""
+
+    ingress:
+      enabled: true
+      tls: true
+      hostname: influxdb.${SECRET_DOMAIN}
+      path: /
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-production
+        external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
+        external-dns.home.arpa/enabled: "true"
+      ingressClassName: "nginx"
+
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+
+    persistence:
+      enabled: true
+      existingClaim: "influxdb-data"
+
+  valuesFrom:
+    - targetPath: auth.admin.username
+      kind: Secret
+      name: influxdb-secrets
+      valuesKey: admin-username
+    - targetPath: auth.admin.password
+      kind: Secret
+      name: influxdb-secrets
+      valuesKey: admin-password
+    - targetPath: auth.admin.token
+      kind: Secret
+      name: influxdb-secrets
+      valuesKey: admin-token
