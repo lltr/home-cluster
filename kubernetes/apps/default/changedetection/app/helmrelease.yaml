@@ -55,6 +55,7 @@ spec:
         tls:
           - hosts:
               - *host
+            secretName: changedetection-tls
     podSecurityContext:
       runAsUser: 1000
       runAsGroup: 1000
