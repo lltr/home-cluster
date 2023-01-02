@@ -31,7 +31,7 @@ This repository is built off the [onedr0p/flux-cluster-template](https://github.
 
 ### Core components
 
-- [Flannel](https://github.com/flannel-io/flannel): Container Network Interface for networking between pods.
+- [flannel](https://github.com/flannel-io/flannel): Container Network Interface for networking between pods.
 - [metallb](https://github.com/metallb/metallb): Bare-metal load balancer.
 - [cert-manager](https://cert-manager.io/docs/): Configured to create TLS certs for all ingress services automatically using LetsEncrypt.
 - [ingress-nginx](https://kubernetes.github.io/ingress-nginx/): Ingress controller for services.
