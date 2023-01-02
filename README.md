@@ -13,7 +13,7 @@
 
 ## Overview
 
-This is a mono repository for my home infrastructure and Kubernetes cluster. [Flux](https://github.com/fluxcd/flux2) watches my cluster directory and makes the changes to my cluster based on the YAML manifests.
+This is a mono repository for my home Kubernetes cluster. [Flux](https://github.com/fluxcd/flux2) watches the cluster directory and makes changes to the cluster based on the YAML manifests.
 
 This repository is built off the [onedr0p/flux-cluster-template](https://github.com/onedr0p/flux-cluster-template) repository.
 
@@ -58,4 +58,4 @@ The Git repository contains the following directories under `kubernetes` and are
 
 ## 🤝 Thanks
 
-[k8s-at-home Discord](https://discord.gg/k8s-at-home), [k8s-at-home-search](https://nanne.dev/k8s-at-home-search/)
+[k8s-at-home](https://discord.gg/k8s-at-home), [k8s-at-home-search](https://nanne.dev/k8s-at-home-search/)
