@@ -8,3 +8,4 @@ resources:
   - ./gitea/ks.yaml
   - ./renovate/ks.yaml
   - ./harbor/ks.yaml
+  - ./code-server/ks.yaml
