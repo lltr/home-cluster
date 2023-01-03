@@ -63,4 +63,3 @@ spec:
         type: secret
         name: cloudflared-credentials
         mountPath: /etc/cloudflared/creds
-

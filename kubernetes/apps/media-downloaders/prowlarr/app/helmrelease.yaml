@@ -67,4 +67,3 @@ spec:
         storageClass: ceph-block
         labels:
           snapshot.home.arpa/enabled: "true"
-

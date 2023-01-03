@@ -95,4 +95,3 @@ spec:
       labels: {}
       ## Here annotations can be added to the serviceMonitor
       annotations: {}
-

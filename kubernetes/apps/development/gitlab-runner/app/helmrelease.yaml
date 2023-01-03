@@ -29,5 +29,3 @@ spec:
       create: true
     runners:
       secret: gitlab-runner-secret
-
-

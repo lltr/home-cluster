@@ -73,4 +73,3 @@ spec:
         server: ${SECRET_NFS_IP}
         path: /volume1/media
         mountPath: /media
-

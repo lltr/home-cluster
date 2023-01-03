@@ -244,15 +244,15 @@ spec:
           cert-manager.io/cluster-issuer: letsencrypt-production
           external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
           external-dns.home.arpa/enabled: "true"
-        # If the dashboard has ssl: true the following will make sure the NGINX Ingress controller can expose the dashboard correctly
+          # If the dashboard has ssl: true the following will make sure the NGINX Ingress controller can expose the dashboard correctly
           # nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
         host:
           name: &host "rook-ceph.${SECRET_DOMAIN}"
           path: "/"
         tls:
-        - hosts:
-            - *host
-          secretName: rook-ceph-tls
+          - hosts:
+              - *host
+            secretName: rook-ceph-tls
         ingressClassName: nginx
 
 
@@ -412,5 +412,3 @@ spec:
           parameters:
             # note: objectStoreNamespace and objectStoreName are configured by the chart
             region: us-east-1
-
-
