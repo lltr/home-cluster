@@ -14,7 +14,6 @@ spec:
         kind: HelmRepository
         name: gitlab
         namespace: flux-system
-  maxHistory: 3
   install:
     createNamespace: true
     remediation:

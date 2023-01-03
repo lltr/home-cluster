@@ -14,7 +14,6 @@ spec:
         kind: HelmRepository
         name: bjw-s
         namespace: flux-system
-  maxHistory: 3
   install:
     createNamespace: true
     remediation:
@@ -57,7 +56,7 @@ spec:
 
     # Configure persistence settings for the chart under this key.
     persistence:
-      config:
+      data:
         enabled: true
         type: pvc
         accessMode: ReadWriteOnce
