@@ -15,7 +15,7 @@ patches:
         path: /spec/template/metadata/labels/snapshot.home.arpa/enabled
         value: true
       - op: add
-        path: /metadata/labels/test23
+        path: /spec/template/metadata/labels/test23
         value: true
     target:
       kind: PersistentVolumeClaim
