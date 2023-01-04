@@ -50,3 +50,5 @@ jobs:
         with:
           configurationFile: "${{ env.RENOVATE_CONFIG_FILE }}"
           token: "${{ steps.generate-token.outputs.token }}"
+        env:
+          RENOVATE_BOT_GPG_KEY: ${{ secrets.BOT_GPG_KEY }}
