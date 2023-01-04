@@ -17,6 +17,7 @@ on:
     paths:
       - ".github/renovate.json5"
       - ".github/renovate/**.json5"
+      - ".github/renovate/privateKey.js"
 
 env:
   LOG_LEVEL: debug
