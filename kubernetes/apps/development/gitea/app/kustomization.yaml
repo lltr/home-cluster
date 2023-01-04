@@ -9,8 +9,11 @@ resources:
 patches:
   - patch: |
       - op: add
-        path: /spec/template/metadata/labels
+        path: /metadata/labels
         value: snapshot.home.arpa/enabled=true
+      - op: add
+        path: /spec/template/metadata/labels
+        value: snapshot.home.arpa/enabled: true
     target:
       kind: PersistentVolumeClaim
       name: data-gitea-postgresql-0
