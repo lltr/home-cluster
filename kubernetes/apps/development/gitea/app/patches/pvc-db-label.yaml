@@ -1,0 +1,5 @@
+metadata:
+  name: data-gitea-postgresql-0
+  labels:
+    snapshot.home.arpa/enabled: "true"
+    app.kubernetes.io/name: postgresql
