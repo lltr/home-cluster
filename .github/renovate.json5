@@ -12,7 +12,6 @@
     "github>lltr/home-cluster//.github/renovate/commitMessage.json5",
     "github>lltr/home-cluster//.github/renovate/labels.json5",
     "github>lltr/home-cluster//.github/renovate/semanticCommits.json5",
-    "github>lltr/home-cluster//.github/renovate/privateKey.js",
     "helpers:pinGitHubActionDigests"
   ],
   "platform": "github",
