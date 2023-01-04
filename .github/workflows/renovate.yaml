@@ -37,7 +37,7 @@ jobs:
 
       - name: Import GPG key
         id: import_gpg
-        uses: crazy-max/ghaction-import-gpg@4c65c687307523ba52326ed829da04bc892ce413 # v2
+        uses: crazy-max/ghaction-import-gpg@111c56156bcc6918c056dbef52164cfa583dc549 # v5
         with:
           git_user_signingkey: true
           git_commit_gpgsign: true
