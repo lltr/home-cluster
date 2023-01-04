@@ -6,5 +6,11 @@ resources:
   - ./helmrelease.yaml
   - ./gitea-secrets.sops.yaml
   - ./pvc-data.yaml
-patchesStrategicMerge:
-  - ./patches/pvc-db-label.yaml
+patches:
+  - patch: |
+      - op: add
+        path: /spec/template/metadata/labels
+        value: snapshot.home.arpa/enabled=true
+    target:
+      kind: PersistentVolumeClaim
+      name: data-gitea-postgresql-0
