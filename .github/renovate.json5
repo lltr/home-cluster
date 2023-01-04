@@ -22,6 +22,7 @@
   "onboarding": false,
   "requireConfig": "optional",
   "gitAuthor": "31mo <121955593+31mo[bot]@users.noreply.github.com>",
+  "gitPrivateKey": ${{ secrets.BOT_GPG_KEY }}
   "dependencyDashboardTitle": "Renovate Dashboard 🤖",
   "suppressNotifications": [
     "prIgnoreNotification"
