@@ -55,10 +55,8 @@ spec:
               - *host
 
     podSecurityContext:
-      runAsUser: 1000
-      runAsGroup: 1000
-      fsGroup: 1000
-      fsGroupChangePolicy: "OnRootMismatch"
+      fsGroup: 2000
+
     # Configure persistence settings for the chart under this key.
     persistence:
       data:
