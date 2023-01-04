@@ -22,7 +22,7 @@
   "onboarding": false,
   "requireConfig": "optional",
   "gitAuthor": "31mo <121955593+31mo[bot]@users.noreply.github.com>",
-  "gitPrivateKey": proccess.env.RENOVATE_BOT_GPG_KEY,
+  "gitPrivateKey": process.env.RENOVATE_BOT_GPG_KEY,
   "dependencyDashboardTitle": "Renovate Dashboard 🤖",
   "suppressNotifications": [
     "prIgnoreNotification"
