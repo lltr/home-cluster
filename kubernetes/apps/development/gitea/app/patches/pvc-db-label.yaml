@@ -3,6 +3,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: data-gitea-postgresql-0
+  namespace: development
   labels:
     app.kubernetes.io/name: postgresql
     snapshot.home.arpa/enabled: "true"
