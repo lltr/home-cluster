@@ -15,14 +15,15 @@ on:
     - cron: 0 * * * *
   push:
     paths:
-      - ".github/renovate.json5"
+      - ".github/renovate-config.js"
       - ".github/renovate/**.json5"
-      - ".github/renovate/privateKey.js"
 
 env:
   LOG_LEVEL: debug
   RENOVATE_DRY_RUN: false
-  RENOVATE_CONFIG_FILE: .github/renovate.json5
+  RENOVATE_CONFIG_FILE: .github/renovate-config.js
+  RENOVATE_BOT_GPG_KEY: ${{ secrets.BOT_GPG_KEY }}
+
 
 jobs:
   renovate:
@@ -51,5 +52,3 @@ jobs:
         with:
           configurationFile: "${{ env.RENOVATE_CONFIG_FILE }}"
           token: "${{ steps.generate-token.outputs.token }}"
-        env:
-          RENOVATE_BOT_GPG_KEY: ${{ secrets.BOT_GPG_KEY }}

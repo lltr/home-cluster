@@ -1,0 +1,59 @@
+module.exports = {
+  "extends": [
+    "config:base",
+    "docker:enableMajor",
+    ":disableRateLimiting",
+    ":dependencyDashboard",
+    ":semanticCommits",
+    ":enablePreCommit",
+    ":automergeDigest",
+    ":automergeBranch",
+    "github>lltr/home-cluster//.github/renovate/autoMerge.json5",
+    "github>lltr/home-cluster//.github/renovate/commitMessage.json5",
+    "github>lltr/home-cluster//.github/renovate/labels.json5",
+    "github>lltr/home-cluster//.github/renovate/semanticCommits.json5",
+    "helpers:pinGitHubActionDigests"
+  ],
+  "platform": "github",
+  "username": "31mo[bot]",
+  "repositories": [
+    "lltr/home-cluster"
+  ],
+  "onboarding": false,
+  "requireConfig": "optional",
+  "gitAuthor": "31mo <121955593+31mo[bot]@users.noreply.github.com>",
+  "gitPrivateKey": process.env.RENOVATE_BOT_GPG_KEY,
+  "dependencyDashboardTitle": "Renovate Dashboard 🤖",
+  "suppressNotifications": [
+    "prIgnoreNotification"
+  ],
+  "rebaseWhen": "conflicted",
+  "commitBodyTable": true,
+  "dependencyDashboard": true,
+  "schedule": ["every saturday"],
+  "pre-commit": {
+    "enabled": true
+  },
+  "flux": {
+    "fileMatch": ["kubernetes/.+\\.ya?ml$"]
+  },
+  "helm-values": {
+    "fileMatch": ["kubernetes/.+\\.ya?ml$"]
+  },
+  "kubernetes": {
+    "fileMatch": ["kubernetes/.+\\.ya?ml$"]
+  },
+  "regexManagers": [
+    {
+      "description": "Process various other dependencies",
+      "fileMatch": [
+        "kubernetes/.+\\.ya?ml$"
+      ],
+      "matchStrings": [
+        "datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)( versioning=(?<versioning>\\S+))?\n.*?\"(?<currentValue>.*)\"\n"
+      ],
+      "datasourceTemplate": "{{#if datasource}}{{{datasource}}}{{else}}github-releases{{/if}}",
+      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
+    }
+  ]
+}
