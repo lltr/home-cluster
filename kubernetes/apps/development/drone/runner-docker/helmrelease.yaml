@@ -27,7 +27,7 @@ spec:
       repository: drone/drone-runner-docker
       pullPolicy: IfNotPresent
       # Overrides the image tag whose default is the chart appVersion.
-      tag: 1.8.2
+      tag: 1.8.3
     podAnnotations:
       reloader.stakater.com/search: "true"
     dind:
