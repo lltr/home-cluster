@@ -25,7 +25,7 @@ spec:
   values:
     image:
       repository: jlongster/actual-server
-      tag: 23.1.12
+      tag: 23.1.12-alpine
       pullPolicy: IfNotPresent
     nameOverride: actual
     env:
@@ -53,13 +53,7 @@ spec:
               - *host
             secretName: actual-tls
     persistence:
-      server-files:
+      data:
         enabled: true
-        type: pvc
-        mountPath: /app/server-files
-        existingClaim: actual-server-files
-      user-files:
-        enabled: true
-        type: pvc
-        mountPath: /app/user-files
-        existingClaim: actual-user-files
+        existingClaim: actual-data
+        mountPath: /data
