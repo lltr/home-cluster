@@ -25,7 +25,7 @@ spec:
   values:
     image:
       repository: jlongster/actual-server
-      tag: 23.1.12-alpine
+      tag: 23.2.9-alpine
       pullPolicy: IfNotPresent
     nameOverride: actual
     env:
