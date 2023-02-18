@@ -32,6 +32,8 @@ spec:
       usePasswordFiles: false
 
     influxdb:
+      updateStrategy:
+        type: OnDelete
       podAnnotations:
         reloader.stakater.com/search: "true"
       service:
