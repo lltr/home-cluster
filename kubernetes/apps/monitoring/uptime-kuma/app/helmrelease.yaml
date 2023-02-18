@@ -24,7 +24,7 @@ spec:
   values:
     image:
       repository: louislam/uptime-kuma
-      tag: 1.19.6-alpine
+      tag: 1.20.1-alpine
     env:
       TZ: "${TIMEZONE}"
     persistence:
