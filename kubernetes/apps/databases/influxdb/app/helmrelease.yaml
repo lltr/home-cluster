@@ -33,7 +33,7 @@ spec:
 
     influxdb:
       updateStrategy:
-        type: OnDelete
+        type: Recreate
       podAnnotations:
         reloader.stakater.com/search: "true"
       service:
