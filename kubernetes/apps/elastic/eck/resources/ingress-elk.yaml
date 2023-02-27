@@ -12,7 +12,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: &host "elk.${SECRET_DOMAIN}"
+    - host: "elk.${SECRET_DOMAIN}"
       http:
         paths:
           - backend:
