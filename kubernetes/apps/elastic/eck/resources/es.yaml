@@ -6,6 +6,10 @@ metadata:
   namespace: elastic
 spec:
   version: 8.6.1
+  http:
+    tls:
+      selfSignedCertificate:
+        disabled: true
   nodeSets:
   - name: default
     count: 1
