@@ -48,6 +48,8 @@ spec:
         harbor:
           annotations: {}
     externalURL: https://cr.${SECRET_EXT_DOMAIN}
+    updateStrategy:
+      type: Recreate
     ipFamily:
       ipv6:
         enabled: false
