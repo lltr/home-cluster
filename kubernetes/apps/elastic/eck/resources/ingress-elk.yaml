@@ -1,0 +1,52 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: elk
+  namespace: elastic
+  annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: HTTP
+    nginx.ingress.kubernetes.io/proxy-ssl-verify: "off"
+    external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
+    external-dns.home.arpa/enabled: "true"
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: &host "elk.${SECRET_DOMAIN}"
+      http:
+        paths:
+          - backend:
+              service:
+                name: main-es-http
+                port:
+                  number: 9200
+            path: /
+            pathType: Prefix
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: kibana
+  namespace: elastic
+  annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: HTTPS
+    cert-manager.io/cluster-issuer: letsencrypt-production
+    external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
+    external-dns.home.arpa/enabled: "true"
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - &host "kibana.${SECRET_DOMAIN}"
+      secretName: kibana-tls
+  rules:
+    - host: *host
+      http:
+        paths:
+          - backend:
+              service:
+                name: main-kb-http
+                port:
+                  number: 5601
+            path: /
+            pathType: Prefix
