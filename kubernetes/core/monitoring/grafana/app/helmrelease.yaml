@@ -51,6 +51,8 @@ spec:
       - grafana-clock-panel
     serviceMonitor:
       enabled: true
+    deploymentStrategy:
+      type: Recreate
     rbac:
       pspEnabled: false
     ingress:
