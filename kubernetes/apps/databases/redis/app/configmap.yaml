@@ -13,7 +13,7 @@ data:
     - name: Redis
       type: redis-datasource
       access: proxy
-      url: redis://redis-node-0.redis-headless.dbms.svc.cluster.local:26379,redis://redis-node-1.redis-headless.dbms.svc.cluster.local:26379,redis://redis-node-2.redis-headless.dbms.svc.cluster.local:26379
+      url: redis://redis-node-0.redis-headless.databases.svc.cluster.local:26379,redis://redis-node-1.redis-headless.databases.svc.cluster.local:26379,redis://redis-node-2.redis-headless.databases.svc.cluster.local:26379
       jsonData:
         client: sentinel
         sentinelName: redis-master
