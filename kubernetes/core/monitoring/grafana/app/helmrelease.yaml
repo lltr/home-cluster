@@ -26,25 +26,43 @@ spec:
       existingSecret: grafana-secret
       userKey: gf_security_admin_user
       passwordKey: gf_security_admin_password
-    # datasources:
-    #   datasources.yaml:
-    #     apiVersion: 1
-    #     datasources:
-    #       - name: Prometheus
-    #         type: prometheus
-    #         access: proxy
-    #         url: http://kube-prometheus-stack-prometheus.monitoring:9090
-    #         isDefault: true
-    #       - name: Alertmanager
-    #         type: alertmanager
-    #         access: proxy
-    #         url: http://kube-prometheus-stack-alertmanager.monitoring:9093
-    #         jsonData:
-    #           implementation: prometheus
     sidecar:
       dashboards:
         enabled: true
         searchNamespace: ALL
+    datasources:
+      datasources.yaml:
+        apiVersion: 1
+        datasources:
+          - name: Prometheus
+            type: prometheus
+            access: proxy
+            url: http://kube-prometheus-stack-prometheus.monitoring:9090
+            isDefault: true
+          - name: Alertmanager
+            type: alertmanager
+            access: proxy
+            url: http://kube-prometheus-stack-alertmanager.monitoring:9093
+            jsonData:
+              implementation: prometheus
+    dashboardProviders:
+      dashboardproviders.yaml:
+        apiVersion: 1
+        providers:
+          - name: 'default'
+            orgId: 1
+            folder: ''
+            type: file
+            disableDeletion: false
+            editable: true
+            options:
+              path: /var/lib/grafana/dashboards/default
+    dashboards:
+      default:
+        redis-sentinel:
+          gnetId: 12776
+          revision: 2
+          datasource: Redis
     plugins:
       - grafana-piechart-panel
       - grafana-worldmap-panel
