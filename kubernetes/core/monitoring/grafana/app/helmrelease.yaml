@@ -49,6 +49,7 @@ spec:
       - grafana-piechart-panel
       - grafana-worldmap-panel
       - grafana-clock-panel
+      - redis-datasource
     serviceMonitor:
       enabled: true
     deploymentStrategy:
