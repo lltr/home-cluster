@@ -11,15 +11,16 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: &host "ha.${SECRET_DOMAIN}"
-    http:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: external-service-homeassistant
-            port:
-              number: 8123
+    - host: &host "ha.${SECRET_DOMAIN}"
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: external-service-homeassistant
+                port:
+                  number: 8123
   tls:
   - hosts:
     - *host
