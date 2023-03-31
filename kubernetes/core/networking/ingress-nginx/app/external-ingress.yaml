@@ -5,7 +5,7 @@ metadata:
   name: external-ingress-homeassistant
   namespace: networking
   annotations:
-    # cert-manager.io/cluster-issuer: letsencrypt-production
+    cert-manager.io/cluster-issuer: letsencrypt-production
     external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
     external-dns.home.arpa/enabled: "true"
 spec:
@@ -21,8 +21,8 @@ spec:
                 name: external-service-homeassistant
                 port:
                   number: 8123
-  # tls:
-  # - hosts:
-  #   - *host
-  #   secretName: tls-external-homeassistant
+  tls:
+  - hosts:
+    - *host
+    secretName: tls-external-homeassistant
 
