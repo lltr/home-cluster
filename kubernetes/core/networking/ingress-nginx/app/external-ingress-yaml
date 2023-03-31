@@ -1,0 +1,27 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: external-ingress-homeassistant
+  namespace: networking
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+    external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
+    external-dns.home.arpa/enabled: "true"
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: &host "ha.${SECRET_DOMAIN}"
+    http:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: external-service-homeassistant
+            port:
+              number: 8123
+  tls:
+  - hosts:
+    - *host
+    secretName: tls-external-homeassistant
+
