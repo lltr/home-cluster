@@ -13,7 +13,7 @@ spec:
     server: ${SECRET_NFS_IP}
     path: /volume1/minio
   # Note: The first two options are strictly for NFSv4.2
-  mountOptions: ["nfsvers=4.2", "nconnect=8", "hard", "noatime"]
+  mountOptions: ["nfsvers=4.1", "nconnect=8", "hard", "noatime"]
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
