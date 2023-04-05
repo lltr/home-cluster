@@ -103,6 +103,7 @@ spec:
                 service:
                   port: *console-port
         tls:
+          - secretName: minio-tls
           - hosts:
               - *console-host
       s3:
@@ -125,6 +126,7 @@ spec:
                 service:
                   port: *api-port
         tls:
+          - secretName: minio-s3-tls
           - hosts:
               - *api-host
     podSecurityContext:
