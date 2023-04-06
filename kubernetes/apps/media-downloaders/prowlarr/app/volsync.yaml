@@ -2,31 +2,26 @@
 apiVersion: v1
 kind: Secret
 metadata:
-  name: sonarr-restic-secret
+  name: prowlarr-restic-secret
 type: Opaque
 stringData:
-  # The repository url
-  RESTIC_REPOSITORY: "${SECRET_RESTIC_MINIO_REPOSITORY}/sonarr"
-  # The repository encryption key
+  RESTIC_REPOSITORY: "${SECRET_RESTIC_MINIO_REPOSITORY}/prowlarr"
   RESTIC_PASSWORD: "${SECRET_RESTIC_MINIO_PASSWORD}"
-  # ENV vars specific to the back end
-  # https://restic.readthedocs.io/en/stable/030_preparing_a_new_repo.html
   AWS_ACCESS_KEY_ID: "${SECRET_MINIO_ACCESS_KEY}"
   AWS_SECRET_ACCESS_KEY: "${SECRET_MINIO_SECRET_KEY}"
 ---
-# yaml-language-server: $schema=https://kubernetes-schemas.devbu.io/replicationsource_v1alpha1.json
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: sonarr
+  name: prowlarr
 spec:
-  sourcePVC: sonarr-config
+  sourcePVC: prowlarr-config
   trigger:
-    schedule: "*/3 * * * *"
+    schedule: "0 22 */3 * *"
   restic:
     copyMethod: Snapshot
     pruneIntervalDays: 10
-    repository: sonarr-restic-secret
+    repository: prowlarr-restic-secret
     cacheCapacity: 2Gi
     volumeSnapshotClassName: csi-ceph-blockpool
     storageClassName: ceph-block
