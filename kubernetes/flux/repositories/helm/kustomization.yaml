@@ -23,3 +23,5 @@ resources:
   - ./harbor.yaml
   - ./wrmilling.yaml
   - ./elastic.yaml
+  - ./backube.yaml
+  - ./piraeus.yaml
