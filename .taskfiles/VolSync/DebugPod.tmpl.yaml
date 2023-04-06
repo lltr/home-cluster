@@ -12,6 +12,9 @@ spec:
       image: docker.io/restic/restic:0.14.0
       command: ["/bin/sh", "-c"]
       args: ["restic snapshots; sleep 86400"]
+      # set to root to mount repo for browsing
+      # securityContext:
+      #   privileged: true
       envFrom:
         - secretRef:
             name: "${rsrc}-restic-secret"
