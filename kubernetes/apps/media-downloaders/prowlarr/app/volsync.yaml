@@ -32,4 +32,4 @@ spec:
     retain:
       daily: 14
       weekly: 2
-      monthly: 2
+      within: 3w
