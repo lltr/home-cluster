@@ -32,4 +32,3 @@ spec:
       daily: 14
       weekly: 4
       monthly: 2
-      within: 3m

@@ -32,4 +32,3 @@ spec:
     retain:
       daily: 14
       weekly: 2
-      within: 1m
