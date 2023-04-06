@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Secret
 metadata:
-  name: grinfluxdbafana-restic-secret
+  name: influxdb-restic-secret
 type: Opaque
 stringData:
   RESTIC_REPOSITORY: "${SECRET_RESTIC_MINIO_REPOSITORY}/influxdb"
