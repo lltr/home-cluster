@@ -18,7 +18,7 @@ spec:
       fsGroup: 568
     # IMPORTANT NOTE:
     #   Set to the last X number of snapshots to restore from
-    previous: 1
+    # previous: 0
     # OR;
     # IMPORTANT NOTE:
     #   On bootstrap set `restoreAsOf` to the time the old cluster was destroyed.
