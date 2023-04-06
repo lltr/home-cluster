@@ -20,7 +20,7 @@ spec:
     schedule: "0 18 * * *"
   restic:
     copyMethod: Snapshot
-    pruneIntervalDays: 15
+    pruneIntervalDays: 14
     repository: grafana-restic-secret
     volumeSnapshotClassName: csi-ceph-blockpool
     storageClassName: ceph-block
@@ -29,4 +29,6 @@ spec:
       runAsGroup: 568
       fsGroup: 568
     retain:
-      last: 14
+      daily: 14
+      weekly: 2
+      monthly: 2
