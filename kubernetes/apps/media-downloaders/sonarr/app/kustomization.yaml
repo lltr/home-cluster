@@ -4,3 +4,4 @@ kind: Kustomization
 namespace: media-downloaders
 resources:
   - ./helmrelease.yaml
+  - ./volsync.yaml
