@@ -20,7 +20,7 @@ spec:
     schedule: "0 18 * * *"
   restic:
     copyMethod: Snapshot
-    pruneIntervalDays: 10
+    pruneIntervalDays: 8
     repository: gitea-restic-secret
     volumeSnapshotClassName: csi-ceph-blockpool
     storageClassName: ceph-block
@@ -29,5 +29,4 @@ spec:
       runAsGroup: 568
       fsGroup: 568
     retain:
-      daily: 10
-      within: 7d
+      last: 7

@@ -20,7 +20,7 @@ spec:
     schedule: "0 18 * * *"
   restic:
     copyMethod: Snapshot
-    pruneIntervalDays: 10
+    pruneIntervalDays: 8
     repository: prowlarr-restic-secret
     cacheCapacity: 1Gi
     volumeSnapshotClassName: csi-ceph-blockpool
@@ -30,5 +30,4 @@ spec:
       runAsGroup: 568
       fsGroup: 568
     retain:
-      daily: 10
-      within: 3d
+      last: 7
