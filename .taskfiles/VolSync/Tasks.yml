@@ -14,10 +14,25 @@ vars:
   wipeJobTemplate: "{{.ROOT_DIR}}/.taskfiles/VolSync/WipeJob.tmpl.yaml"
   waitForJobScript: "{{.ROOT_DIR}}/.taskfiles/VolSync/wait-for-job.sh"
   listJobTemplate: "{{.ROOT_DIR}}/.taskfiles/VolSync/ListJob.tmpl.yaml"
+  debugJobTemplate: "{{.ROOT_DIR}}/.taskfiles/VolSync/DebugJob.tmpl.yaml"
   unlockJobTemplate: "{{.ROOT_DIR}}/.taskfiles/VolSync/UnlockJob.tmpl.yaml"
   ts: '{{now | date "150405"}}'
 
 tasks:
+
+  debug:
+    desc: Creates a debug pod for given ReplicationSource (ex. task vs:pod rsrc=plex [namespace=default])
+    silent: true
+    cmds:
+      - envsubst < <(cat {{.debugJobTemplate}}) | kubectl apply -f -
+      - bash {{.waitForJobScript}} debug-{{.rsrc}}-{{.ts}} {{.namespace}}
+    vars:
+      rsrc: '{{ or .rsrc (fail "ReplicationSource `rsrc` is required") }}'
+      namespace: '{{.namespace | default "default"}}'
+    env: *task-vars
+    preconditions:
+      - sh: test -f {{.waitForJobScript}}
+      - sh: test -f {{.debugJobTemplate}}
 
   list:
     desc: List all snapshots taken by restic for a given ReplicationSource (ex. task vs:list rsrc=plex [namespace=default])
