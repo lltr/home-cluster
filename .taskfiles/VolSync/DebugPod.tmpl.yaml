@@ -1,0 +1,17 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "debug-${rsrc}-${ts}"
+  namespace: "${namespace}"
+spec:
+  automountServiceAccountToken: false
+  restartPolicy: OnFailure
+  containers:
+    - name: debug
+      image: docker.io/restic/restic:0.14.0
+      command: ["/bin/sh", "-c"]
+      args: ["restic snapshots; sleep 86400"]
+      envFrom:
+        - secretRef:
+            name: "${rsrc}-restic-secret"
