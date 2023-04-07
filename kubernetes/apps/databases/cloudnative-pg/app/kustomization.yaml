@@ -4,7 +4,7 @@ kind: Kustomization
 namespace: databases
 resources:
   - ./helmrelease.yaml
-  - ./cloudnative-pg-secret.yaml
+  - ./externalsecret.yaml
 configMapGenerator:
   - name: cloudnative-pg-dashboard
     files:
