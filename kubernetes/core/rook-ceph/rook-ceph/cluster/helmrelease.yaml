@@ -37,7 +37,6 @@ spec:
     monitoring:
       enabled: true
       createPrometheusRules: true
-      rulesNamespaceOverride: monitoring
       # prometheusRule:
       #   labels:
       #     release: kube-prometheus-stack
