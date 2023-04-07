@@ -74,7 +74,7 @@ spec:
         server:
           DISABLE_SSH: false
           DOMAIN: "gitea.${SECRET_DOMAIN}"
-          ROOT_URL: "https://git.${SECRET_DOMAIN}"
+          ROOT_URL: "https://gitea.${SECRET_DOMAIN}"
           ENABLE_GZIP: true
           LFS_START_SERVER: true
         database:
