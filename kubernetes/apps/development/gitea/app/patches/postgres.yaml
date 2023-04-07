@@ -10,23 +10,7 @@ spec:
     initContainers:
       init-db:
         image: ghcr.io/lltr/postgres-initdb:15.2
-        env:
-          - name: POSTGRES_HOST
-            value: ${POSTGRES_HOST}
-          - name: POSTGRES_DB
-            value: authelia
-          - name: POSTGRES_SUPER_PASS
-            valueFrom:
-              secretKeyRef:
-                name: postgres-superuser
-                key: password
-          - name: POSTGRES_USER
-            valueFrom:
-              secretKeyRef:
-                name: authelia-secret
-                key: AUTHELIA_STORAGE_POSTGRES_USERNAME
-          - name: POSTGRES_PASS
-            valueFrom:
-              secretKeyRef:
-                name: authelia-secret
-                key: AUTHELIA_STORAGE_POSTGRES_PASSWORD
+        imagePullPolicy: IfNotPresent
+        envFrom:
+          - secretRef:
+              name: gitea-secrets

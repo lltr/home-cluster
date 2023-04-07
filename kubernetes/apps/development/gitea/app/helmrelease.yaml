@@ -67,6 +67,8 @@ spec:
             release: kube-prometheus-stack
 
       config:
+        database:
+          DB_TYPE: postgres
         service:
           DISABLE_REGISTRATION: false
           REQUIRE_SIGNIN_VIEW: true
@@ -78,7 +80,7 @@ spec:
       reloader.stakater.com/search: "true"
 
     postgresql:
-      enabled: true
+      enabled: false
       global:
         postgresql:
           postgresqlDatabase: gitea
@@ -94,5 +96,22 @@ spec:
       valuesKey: adminPassword
     - targetPath: postgresql.global.postgresql.postgresqlPassword
       kind: Secret
-      name: gitea-secrets
+      name: gitea-secret-sops
       valuesKey: postgresqlPassword
+    # Postgres Init DB
+    - targetPath: gitea.config.database.USER
+      kind: Secret
+      name: gitea-secrets
+      valuesKey: POSTGRES_USER
+    - targetPath: gitea.config.database.PASSWD
+      kind: Secret
+      name: gitea-secrets
+      valuesKey: POSTGRES_PASS
+    - targetPath: gitea.config.database.NAME
+      kind: Secret
+      name: gitea-secrets
+      valuesKey: POSTGRES_DB
+    - targetPath: gitea.config.database.HOST
+      kind: Secret
+      name: gitea-secrets
+      valuesKey: POSTGRES_HOST
