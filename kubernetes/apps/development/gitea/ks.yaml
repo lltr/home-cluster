@@ -7,6 +7,8 @@ metadata:
   labels:
     substitution.flux.home.arpa/enabled: "true"
 spec:
+  dependsOn:
+    - name: cluster-apps-volsync
   path: ./kubernetes/apps/development/gitea/app
   prune: true
   sourceRef:

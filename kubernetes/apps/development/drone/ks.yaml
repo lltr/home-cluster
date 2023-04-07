@@ -9,6 +9,7 @@ metadata:
 spec:
   dependsOn:
     - name: cluster-apps-gitea
+    - name: cluster-apps-volsync
   path: ./kubernetes/apps/development/drone/app
   prune: true
   sourceRef:
