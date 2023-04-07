@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   - ./harbor-registry-external-secret.yaml
+  # - ./harbor-registry-secret.sops.yaml
   - ./etherpad/ks.yaml
   - ./discord-watcher/ks.yaml
   - ./changedetection/ks.yaml
