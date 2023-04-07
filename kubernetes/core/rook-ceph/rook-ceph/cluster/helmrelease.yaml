@@ -35,14 +35,12 @@ spec:
           cpu: "100m"
           memory: "128Mi"
     monitoring:
-      # enabling will also create RBAC rules to allow Operator to create ServiceMonitors
       enabled: true
-      # whether to create the prometheus rules
       createPrometheusRules: true
-      prometheusRule:
-        labels:
-          release: kube-prometheus-stack
-        annotations: {}
+      # prometheusRule:
+      #   labels:
+      #     release: kube-prometheus-stack
+      #   annotations: {}
 
     # If true, create & use PSP resources. Set this to the same value as the rook-ceph chart.
     pspEnable: false
