@@ -7,3 +7,5 @@ resources:
   - ./gitea-secrets.sops.yaml
   - ./pvc-data.yaml
   - ./volsync.yaml
+# patchesStrategicMerge:
+#   - ./patches/postgres.yaml
