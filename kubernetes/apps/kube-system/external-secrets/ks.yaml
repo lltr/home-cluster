@@ -4,6 +4,8 @@ kind: Kustomization
 metadata:
   name: cluster-apps-external-secrets
   namespace: flux-system
+  labels:
+    substitution.flux.home.arpa/enabled: "true"
 spec:
   path: ./kubernetes/apps/kube-system/external-secrets/app
   prune: true
