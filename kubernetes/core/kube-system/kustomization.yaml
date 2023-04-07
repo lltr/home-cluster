@@ -5,3 +5,6 @@ resources:
   - ./namespace.yaml
   - ./metrics-server/ks.yaml
   - ./reloader/ks.yaml
+  - ./snapshot-controller/ks.yaml
+  - ./local-path-provisioner/ks.yaml
+  - ./external-secrets/ks.yaml
