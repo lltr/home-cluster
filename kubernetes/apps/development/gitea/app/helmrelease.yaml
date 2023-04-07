@@ -81,23 +81,23 @@ spec:
 
     postgresql:
       enabled: false
-      global:
-        postgresql:
-          postgresqlDatabase: gitea
-          postgresqlUsername: gitea
-          servicePort: 5432
-      persistence:
-        size: 10Gi
+      # global:
+      #   postgresql:
+      #     postgresqlDatabase: gitea
+      #     postgresqlUsername: gitea
+      #     servicePort: 5432
+      # persistence:
+      #   size: 10Gi
 
   valuesFrom:
     - targetPath: gitea.admin.password
       kind: Secret
       name: gitea-secrets
       valuesKey: adminPassword
-    - targetPath: postgresql.global.postgresql.postgresqlPassword
-      kind: Secret
-      name: gitea-secret-sops
-      valuesKey: postgresqlPassword
+    # - targetPath: postgresql.global.postgresql.postgresqlPassword
+    #   kind: Secret
+    #   name: gitea-secret-sops
+    #   valuesKey: postgresqlPassword
     # Postgres Init DB
     - targetPath: gitea.config.database.USER
       kind: Secret
@@ -129,6 +129,29 @@ spec:
                   initContainers:
                     - name: init-db
                       image: ghcr.io/lltr/postgres-initdb:15.2
-                      envFrom:
-                        - secretRef:
-                            name: gitea-secrets
+                      env:
+                        - name: POSTGRES_HOST
+                          valueFrom:
+                            secretKeyRef:
+                              name: gitea-secrets
+                              key: POSTGRES_HOST
+                        - name: POSTGRES_DB
+                          valueFrom:
+                            secretKeyRef:
+                              name: gitea-secrets
+                              key: POSTGRES_DB
+                        - name: POSTGRES_SUPER_PASS
+                          valueFrom:
+                            secretKeyRef:
+                              name: gitea-secrets
+                              key: POSTGRES_SUPER_PASS
+                        - name: POSTGRES_USER
+                          valueFrom:
+                            secretKeyRef:
+                              name: gitea-secrets
+                              key: POSTGRES_USER
+                        - name: POSTGRES_PASS
+                          valueFrom:
+                            secretKeyRef:
+                              name: gitea-secrets
+                              key: POSTGRES_PASS
