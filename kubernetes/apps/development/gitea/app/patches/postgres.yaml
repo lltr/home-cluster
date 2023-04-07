@@ -1,16 +1,15 @@
 ---
-# yaml-language-server: $schema=https://kubernetes-schemas.devbu.io/helmrelease_v2beta1.json
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
-kind: HelmRelease
+kind: StatefulSet
+apiVersion: apps/v1
 metadata:
   name: gitea
-  namespace: development
 spec:
-  values:
-    initContainers:
-      init-db:
-        image: ghcr.io/lltr/postgres-initdb:15.2
-        imagePullPolicy: IfNotPresent
-        envFrom:
-          - secretRef:
-              name: gitea-secrets
+  template:
+    spec:
+      initContainers:
+        init-db:
+          image: ghcr.io/lltr/postgres-initdb:15.2
+          imagePullPolicy: IfNotPresent
+          envFrom:
+            - secretRef:
+                name: gitea-secrets
