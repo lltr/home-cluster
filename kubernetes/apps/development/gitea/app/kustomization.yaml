@@ -8,5 +8,5 @@ resources:
   - ./pvc-data.yaml
   - ./volsync.yaml
   - ./externalsecrets.yaml
-patchesStrategicMerge:
-  - ./patches/postgres.yaml
+# patchesStrategicMerge:
+#   - ./patches/postgres.yaml

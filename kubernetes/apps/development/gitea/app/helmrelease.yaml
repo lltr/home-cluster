@@ -115,3 +115,20 @@ spec:
       kind: Secret
       name: gitea-secrets
       valuesKey: POSTGRES_HOST
+
+  postRenderers:
+    - kustomize:
+        patchesStrategicMerge:
+          - kind: StatefulSet
+            apiVersion: apps/v1
+            metadata:
+              name: gitea
+            spec:
+              template:
+                spec:
+                  initContainers:
+                    - name: init-db
+                      image: ghcr.io/lltr/postgres-initdb:15.2
+                      envFrom:
+                        - secretRef:
+                            name: gitea-secrets
