@@ -60,7 +60,7 @@ spec:
         port: 3000
       ssh:
         type: LoadBalancer
-        port: 2222
+        port: 22
         externalTrafficPolicy: Local
         externalIPs:
           - "${SECRET_GITEA_SSH_IP}"
@@ -86,7 +86,7 @@ spec:
         APP_NAME: Gitea Server
         server:
           DISABLE_SSH: false
-          SSH_PORT: 2222
+          SSH_PORT: 22
           SSH_LISTEN_PORT: 2222
           SSH_DOMAIN: ssh.gitea.${SECRET_DOMAIN}
           DOMAIN: "gitea.${SECRET_DOMAIN}"
