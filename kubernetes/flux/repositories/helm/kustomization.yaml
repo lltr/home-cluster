@@ -25,3 +25,4 @@ resources:
   - ./elastic.yaml
   - ./backube.yaml
   - ./piraeus.yaml
+  - ./cloudnative-pg.yaml
