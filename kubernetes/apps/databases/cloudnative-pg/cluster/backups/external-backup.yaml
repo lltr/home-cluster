@@ -50,4 +50,4 @@ spec:
             - name: backups
               nfs:
                 server: "${SECRET_NFS_IP}"
-                path: /mnt/storage/backups/postgresql
+                path: /volume1/postgres
