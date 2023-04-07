@@ -7,8 +7,6 @@ metadata:
   labels:
     substitution.flux.home.arpa/enabled: "true"
 spec:
-  dependsOn:
-    - name: cluster-core-snapshot-controller
   path: ./kubernetes/apps/volsync/volsync/app
   prune: true
   sourceRef:
