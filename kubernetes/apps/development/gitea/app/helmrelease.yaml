@@ -69,6 +69,9 @@ spec:
       config:
         database:
           DB_TYPE: postgres
+          NAME: gitea
+          SCHEMA: public
+          SSL_MODE: disable
         service:
           DISABLE_REGISTRATION: false
           REQUIRE_SIGNIN_VIEW: true
