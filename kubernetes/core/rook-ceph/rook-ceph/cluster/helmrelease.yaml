@@ -35,7 +35,7 @@ spec:
           cpu: "100m"
           memory: "128Mi"
     monitoring:
-      enabled: false
+      enabled: true
       createPrometheusRules: true
       rulesNamespaceOverride: monitoring
       # prometheusRule:
