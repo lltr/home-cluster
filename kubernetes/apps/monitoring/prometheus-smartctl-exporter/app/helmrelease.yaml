@@ -53,7 +53,7 @@ spec:
       repository: quay.io/prometheuscommunity/smartctl-exporter
       pullPolicy: IfNotPresent
       # Overrides the image tag whose default is the chart appVersion.
-      tag: "v0.8.0"
+      tag: "v0.9.1"
 
     rbac:
       create: true
