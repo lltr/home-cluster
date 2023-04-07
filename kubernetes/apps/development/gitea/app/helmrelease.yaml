@@ -52,6 +52,19 @@ spec:
           hosts:
             - *host
 
+    service:
+      annotations:
+        prometheus.io/probe: "true"
+        prometheus.io/protocol: "tcp"
+      http:
+        port: 3000
+      ssh:
+        type: LoadBalancer
+        port: 22
+        externalTrafficPolicy: Local
+        externalIPs:
+          - "${SVC_GITEA_IP}"
+
     persistence:
       enabled: true
       existingClaim: gitea-data
@@ -73,6 +86,9 @@ spec:
         APP_NAME: Gitea Server
         server:
           DISABLE_SSH: false
+          SSH_PORT: 22
+          SSH_LISTEN_PORT: 22
+          SSH_DOMAIN: ssh.gitea.${SECRET_DOMAIN}
           DOMAIN: "gitea.${SECRET_DOMAIN}"
           ROOT_URL: "https://gitea.${SECRET_DOMAIN}"
           ENABLE_GZIP: true
@@ -87,6 +103,10 @@ spec:
           SHOW_REGISTRATION_BUTTON: false
         webhook:
           ALLOWED_HOST_LIST: private
+        respository:
+          DEFAULT_PRIVATE: true
+        admin:
+          DISABLE_REGULAR_ORG_CREATION: true
 
     podAnnotations:
       reloader.stakater.com/search: "true"
