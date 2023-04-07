@@ -62,8 +62,6 @@ spec:
         type: LoadBalancer
         port: 22
         externalTrafficPolicy: Local
-        externalIPs:
-          - "${SVC_GITEA_IP}"
 
     persistence:
       enabled: true
