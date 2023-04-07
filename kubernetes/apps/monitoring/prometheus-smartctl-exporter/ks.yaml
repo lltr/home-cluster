@@ -7,8 +7,6 @@ metadata:
   labels:
     substitution.flux.home.arpa/enabled: "true"
 spec:
-  dependsOn:
-    - name: cluster-core-kube-prometheus-stack
   path: ./kubernetes/apps/monitoring/prometheus-smartctl-exporter/app
   prune: true
   sourceRef:
