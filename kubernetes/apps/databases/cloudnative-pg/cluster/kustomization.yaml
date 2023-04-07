@@ -5,5 +5,4 @@ namespace: databases
 resources:
   - backups
   - ./cluster.yaml
-  - ./cnpg-cluster-secrets.sops.yaml
   - ./scheduledbackup.yaml

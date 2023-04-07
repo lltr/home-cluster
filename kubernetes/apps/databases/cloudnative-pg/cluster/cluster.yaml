@@ -28,8 +28,8 @@ spec:
       serverName: postgres-v1
       s3Credentials:
         accessKeyId:
-          name: postgres-minio
+          name: cloudnative-pg-secret
           key: MINIO_ACCESS_KEY
         secretAccessKey:
-          name: postgres-minio
+          name: cloudnative-pg-secret
           key: MINIO_SECRET_KEY
