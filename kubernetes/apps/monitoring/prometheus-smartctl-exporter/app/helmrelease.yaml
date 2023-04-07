@@ -24,8 +24,8 @@ spec:
   values:
     config:
       devices:
-        - /dev/sda
-        - /dev/nvme0n1
+        - sda
+        - nvme0n1
 
     common:
       config:
