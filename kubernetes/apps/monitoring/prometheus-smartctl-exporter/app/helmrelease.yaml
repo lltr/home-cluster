@@ -22,11 +22,6 @@ spec:
     remediation:
       retries: 3
   values:
-    config:
-      devices:
-        - sda
-        - nvme0n1
-
     common:
       config:
         bind_to: "0.0.0.0:9633"
@@ -36,18 +31,11 @@ spec:
 
     serviceMonitor:
       enabled: true
-      # Specify namespace to load the monitor if not in the same namespace
-      # Add Extra labels if needed. Prometeus operator may need them to find it.
       extraLabels:
         release: kube-prometheus-stack
 
     prometheusRules:
       enabled: false
-      # Specify namespace to load the monitor if not in the same namespace
-      # namespace: prometheus-operator
-      # Add Extra labels if needed. Prometeus operator may need them to find it.
-      extraLabels: {}
-      # release: prometheus-operator
 
     image:
       repository: quay.io/prometheuscommunity/smartctl-exporter
