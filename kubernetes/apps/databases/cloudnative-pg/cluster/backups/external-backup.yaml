@@ -1,0 +1,53 @@
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: &app cloudnative-pg-external-backup
+  namespace: databases
+spec:
+  schedule: "@daily"
+  jobTemplate:
+    spec:
+      ttlSecondsAfterFinished: 86400
+      template:
+        spec:
+          automountServiceAccountToken: false
+          restartPolicy: OnFailure
+          containers:
+            - name: *app
+              image: prodrigestivill/postgres-backup-local:15-alpine@sha256:7aa41ceb208752f0423d6496c1d7672cc298a88572a25aa835f4f64fd975bad5
+              env:
+                - name: POSTGRES_HOST
+                  value: ${POSTGRES_HOST}
+                - name: POSTGRES_DB
+                  value: ""
+                - name: POSTGRES_USER
+                  valueFrom:
+                    secretKeyRef:
+                      name: postgres-superuser
+                      key: username
+                - name: POSTGRES_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: postgres-superuser
+                      key: password
+                - name: POSTGRES_EXTRA_OPTS
+                  value: "-Z9 --schema=public --blobs"
+                - name: BACKUP_KEEP_DAYS
+                  value: "7"
+                - name: BACKUP_KEEP_WEEKS
+                  value: "4"
+                - name: BACKUP_KEEP_MONTHS
+                  value: "3"
+                - name: HEALTHCHECK_PORT
+                  value: "8080"
+              command:
+                - "/backup.sh"
+              volumeMounts:
+                - name: backups
+                  mountPath: /backups
+          volumes:
+            - name: backups
+              nfs:
+                server: "${SECRET_NFS_IP}"
+                path: /volume1/postgres
