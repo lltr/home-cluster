@@ -4,9 +4,6 @@ kind: Kustomization
 namespace: development
 resources:
   - ./helmrelease.yaml
-  - ./gitea-secrets.sops.yaml
   - ./pvc-data.yaml
   - ./volsync.yaml
   - ./externalsecrets.yaml
-# patchesStrategicMerge:
-#   - ./patches/postgres.yaml
