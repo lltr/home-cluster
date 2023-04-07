@@ -17,7 +17,7 @@ metadata:
 spec:
   sourcePVC: prometheus-kube-prometheus-stack-prometheus-db-prometheus-kube-prometheus-stack-prometheus-0
   trigger:
-    schedule: "10 18 * * *"
+    schedule: "5 18 * * *"
   restic:
     copyMethod: Snapshot
     pruneIntervalDays: 14
@@ -30,5 +30,4 @@ spec:
       fsGroup: 568
     retain:
       daily: 14
-      weekly: 4
-      monthly: 2
+      weekly: 2
