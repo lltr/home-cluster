@@ -8,7 +8,7 @@ metadata:
     substitution.flux.home.arpa/enabled: "true"
 spec:
   dependsOn:
-    - name: cluster-apps-cloudnative-pg
+    - name: cluster-apps-cloudnative-pg-app
     - name: cluster-apps-glauth
     - name: cluster-core-external-secrets-stores
     - name: cluster-apps-redis
