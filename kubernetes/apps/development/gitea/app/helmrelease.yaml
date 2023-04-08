@@ -117,6 +117,11 @@ spec:
           MINIO_ENDPOINT: minio.default.svc.cluster.local:9000
           MINIO_BUCKET: gitea
           MINIO_USE_SSL: false
+        lfs:
+          STORAGE_TYPE: minio
+          MINIO_ENDPOINT: minio.default.svc.cluster.local:9000
+          MINIO_BUCKET: gitea
+          MINIO_USE_SSL: false
 
     podAnnotations:
       reloader.stakater.com/search: "true"
@@ -164,6 +169,16 @@ spec:
       kind: Secret
       name: gitea-secrets
       valuesKey: GITEA_MINIO_SECRET_KEY
+    # LFS
+    - targetPath: gitea.config.lfs.MINIO_ACCESS_KEY_ID
+      kind: Secret
+      name: gitea-secrets
+      valuesKey: GITEA_MINIO_ACCESS_KEY
+    - targetPath: gitea.config.lfs.MINIO_SECRET_ACCESS_KEY
+      kind: Secret
+      name: gitea-secrets
+      valuesKey: GITEA_MINIO_SECRET_KEY
+
 
   postRenderers:
     - kustomize:
