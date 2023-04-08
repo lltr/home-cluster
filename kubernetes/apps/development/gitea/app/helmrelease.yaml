@@ -118,6 +118,12 @@ spec:
           MINIO_ENDPOINT: minio.default.svc.cluster.local:9000
           MINIO_BUCKET: gitea
           MINIO_USE_SSL: false
+        mailer:
+          ENABLED: true
+          MAILER_TYPE: smtp
+          SMTP_ADDR: smtp-relay.default.svc.cluster.local
+          SMTP_PORT: 2525
+          FROM: "Gitea <gitea@${SECRET_DOMAIN}>"
 
     podAnnotations:
       reloader.stakater.com/search: "true"
