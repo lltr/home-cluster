@@ -20,7 +20,7 @@ spec:
                 - name: POSTGRES_HOST
                   value: ${POSTGRES_HOST}
                 - name: POSTGRES_DB
-                  value: ""
+                  value: "gitea"
                 - name: POSTGRES_USER
                   valueFrom:
                     secretKeyRef:
