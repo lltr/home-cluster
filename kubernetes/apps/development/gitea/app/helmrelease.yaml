@@ -122,6 +122,7 @@ spec:
           MINIO_ENDPOINT: minio.default.svc.cluster.local:9000
           MINIO_BUCKET: gitea
           MINIO_USE_SSL: false
+          MINIO_BASE_PATH: lfs/
 
     podAnnotations:
       reloader.stakater.com/search: "true"
