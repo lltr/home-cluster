@@ -142,11 +142,11 @@ spec:
       name: gitea-secrets
       valuesKey: POSTGRES_HOST
     # Storage
-    - targetPath: gitea.config.attachment.MINIO_ACCESS_KEY_ID
+    - targetPath: gitea.config.storage.MINIO_ACCESS_KEY_ID
       kind: Secret
       name: gitea-secrets
       valuesKey: GITEA_MINIO_ACCESS_KEY
-    - targetPath: gitea.config.attachment.MINIO_SECRET_ACCESS_KEY
+    - targetPath: gitea.config.storage.MINIO_SECRET_ACCESS_KEY
       kind: Secret
       name: gitea-secrets
       valuesKey: GITEA_MINIO_SECRET_KEY
