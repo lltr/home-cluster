@@ -42,6 +42,7 @@ spec:
         cert-manager.io/cluster-issuer: letsencrypt-production
         external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
         external-dns.home.arpa/enabled: "true"
+        nginx.ingress.kubernetes.io/proxy-body-size: 512m
       hosts:
         - host: &host gitea.${SECRET_DOMAIN}
           paths:
@@ -117,12 +118,6 @@ spec:
           MINIO_ENDPOINT: minio.default.svc.cluster.local:9000
           MINIO_BUCKET: gitea
           MINIO_USE_SSL: false
-        lfs:
-          STORAGE_TYPE: minio
-          MINIO_ENDPOINT: minio.default.svc.cluster.local:9000
-          MINIO_BUCKET: gitea
-          MINIO_USE_SSL: false
-          MINIO_BASE_PATH: lfs/
 
     podAnnotations:
       reloader.stakater.com/search: "true"
