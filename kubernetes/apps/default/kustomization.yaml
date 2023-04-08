@@ -10,3 +10,4 @@ resources:
   - ./kubernetes-dashboard/ks.yaml
   - ./actual/ks.yaml
   - ./minio/ks.yaml
+  - ./glauth/ks.yaml
