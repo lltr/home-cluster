@@ -110,7 +110,7 @@ spec:
         enabled: true
         type: configMap
         name: authelia-configmap
-        subPath: configuration.yml
+        subPath: configuration.yaml
         mountPath: /config/configuration.yaml
         readOnly: false
     topologySpreadConstraints:
