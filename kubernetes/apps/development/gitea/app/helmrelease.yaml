@@ -123,7 +123,6 @@ spec:
           PROTOCOL: smtp
           SMTP_ADDR: smtp-relay.default.svc.cluster.local
           SMTP_PORT: 2525
-          FROM: "Gitea <gitea@${SECRET_DOMAIN}>"
 
     podAnnotations:
       reloader.stakater.com/search: "true"
@@ -162,6 +161,11 @@ spec:
       kind: Secret
       name: gitea-secrets
       valuesKey: GITEA_MINIO_SECRET_KEY
+    # Mailer
+    - targetPath: gitea.config.mailer.FROM
+      kind: Secret
+      name: gitea-secrets
+      valuesKey: GITEA_SMTP_FROM
 
 
   postRenderers:
