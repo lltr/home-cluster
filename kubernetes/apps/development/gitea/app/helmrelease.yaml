@@ -42,7 +42,7 @@ spec:
         cert-manager.io/cluster-issuer: letsencrypt-production
         external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
         external-dns.home.arpa/enabled: "true"
-        nginx.ingress.kubernetes.io/proxy-body-size: 512m
+        nginx.ingress.kubernetes.io/proxy-body-size: "8000m"
       hosts:
         - host: &host gitea.${SECRET_DOMAIN}
           paths:
