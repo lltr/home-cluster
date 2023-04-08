@@ -109,7 +109,7 @@ spec:
           DISABLE_REGULAR_ORG_CREATION: true
         storage:
           STORAGE_TYPE: minio
-          MINIO_ENDPOINT: http://minio.default.svc.cluster.local:9000/
+          MINIO_ENDPOINT: minio.default.svc.cluster.local:9000
           MINIO_BUCKET: gitea
           MINIO_USE_SSL: false
 
