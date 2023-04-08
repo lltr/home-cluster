@@ -107,6 +107,11 @@ spec:
           DEFAULT_PRIVATE: true
         admin:
           DISABLE_REGULAR_ORG_CREATION: true
+        storage:
+          STORAGE_TYPE: minio
+          MINIO_ENDPOINT: http://minio.default.svc.cluster.local:9000/
+          MINIO_BUCKET: gitea
+          MINIO_USE_SSL: false
 
     podAnnotations:
       reloader.stakater.com/search: "true"
@@ -136,6 +141,15 @@ spec:
       kind: Secret
       name: gitea-secrets
       valuesKey: POSTGRES_HOST
+    # Storage
+    - targetPath: gitea.config.attachment.MINIO_ACCESS_KEY_ID
+      kind: Secret
+      name: gitea-secrets
+      valuesKey: GITEA_MINIO_ACCESS_KEY
+    - targetPath: gitea.config.attachment.MINIO_SECRET_ACCESS_KEY
+      kind: Secret
+      name: gitea-secrets
+      valuesKey: GITEA_MINIO_SECRET_KEY
 
   postRenderers:
     - kustomize:
