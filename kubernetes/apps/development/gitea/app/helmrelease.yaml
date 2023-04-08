@@ -106,6 +106,8 @@ spec:
           ALLOWED_HOST_LIST: private
         respository:
           DEFAULT_PRIVATE: true
+        cron:
+          ENABLED: true
         admin:
           DISABLE_REGULAR_ORG_CREATION: true
         storage:
