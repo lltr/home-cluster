@@ -108,9 +108,9 @@ spec:
           DEFAULT_PRIVATE: true
         cron:
           ENABLED: true
-          git_gc_repos:
-            ENABLED: true
-            SCHEDULE: "@every 168h"
+        cron.git_gc_repos:
+          ENABLED: true
+          SCHEDULE: "@every 168h"
         admin:
           DISABLE_REGULAR_ORG_CREATION: true
         storage:
