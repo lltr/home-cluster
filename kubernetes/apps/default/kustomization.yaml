@@ -11,3 +11,4 @@ resources:
   - ./actual/ks.yaml
   - ./minio/ks.yaml
   - ./glauth/ks.yaml
+  - ./authelia/ks.yaml
