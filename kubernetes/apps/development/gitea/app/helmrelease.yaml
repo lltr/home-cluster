@@ -123,6 +123,19 @@ spec:
           PROTOCOL: smtp
           SMTP_ADDR: smtp-relay.default.svc.cluster.local
           SMTP_PORT: 2525
+        openid:
+          ENABLE_OPENID_SIGNIN: false
+          ENABLE_OPENID_SIGNUP: true
+          WHITELISTED_URIS: "auth.${SECRET_DOMAIN}"
+
+      oauth:
+        - name: authelia
+          provider: openidConnect
+          key: gitea
+          autoDiscoverUrl: "https://auth.${SECRET_DOMAIN}/.well-known/openid-configuration"
+          groupClaimName: groups
+          adminGroup: admins
+          restrictedGroup: people
 
     podAnnotations:
       reloader.stakater.com/search: "true"
@@ -166,7 +179,11 @@ spec:
       kind: Secret
       name: gitea-secrets
       valuesKey: GITEA_SMTP_FROM
-
+    # OAuth
+    - targetPath: gitea.oauth.secret
+      kind: Secret
+      name: gitea-secrets
+      valuesKey: GITEA_OAUTH_CLIENT_SECRET
 
   postRenderers:
     - kustomize:
