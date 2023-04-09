@@ -179,7 +179,7 @@ spec:
       kind: Secret
       name: gitea-secrets
       valuesKey: GITEA_SMTP_FROM
-    # # OAuth
+    # # OAuth (doesnt work)
     # - targetPath: gitea.oauth.secret
     #   kind: Secret
     #   name: gitea-secrets

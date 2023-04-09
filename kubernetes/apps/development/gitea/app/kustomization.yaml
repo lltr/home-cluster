@@ -7,3 +7,4 @@ resources:
   - ./pvc-data.yaml
   - ./volsync.yaml
   - ./externalsecrets.yaml
+  - ./externalsecrets-oauth.yaml
