@@ -2,12 +2,12 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: cluster-core-weave-gitops
+  name: cluster-apps-weave-gitops
   namespace: flux-system
   labels:
     substitution.flux.home.arpa/enabled: "true"
 spec:
-  path: ./kubernetes/core/flux-system/weave-gitops/app
+  path: ./kubernetes/apps/flux-system/weave-gitops/app
   prune: true
   sourceRef:
     kind: GitRepository
