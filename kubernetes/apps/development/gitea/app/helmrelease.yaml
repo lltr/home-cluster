@@ -131,8 +131,7 @@ spec:
       oauth:
         - name: authelia
           provider: openidConnect
-          key: GITEA_OAUTH_CLIENT_SECRET
-          existingSecret: gitea-secrets
+          existingSecret: gitea-oauth-secret
           autoDiscoverUrl: "https://auth.${SECRET_DOMAIN}/.well-known/openid-configuration"
           groupClaimName: groups
           adminGroup: admins
