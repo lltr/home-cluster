@@ -10,6 +10,7 @@ spec:
   dependsOn:
     - name: cluster-core-rook-ceph-cluster
     - name: cluster-core-external-secrets-stores
+    - name: cluster-apps-volsync
   path: ./kubernetes/apps/monitoring/grafana/app
   prune: true
   sourceRef:
