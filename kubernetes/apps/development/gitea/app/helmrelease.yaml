@@ -131,7 +131,8 @@ spec:
       oauth:
         - name: authelia
           provider: openidConnect
-          key: gitea
+          key: GITEA_OAUTH_CLIENT_SECRET
+          existingSecret: gitea-secrets
           autoDiscoverUrl: "https://auth.${SECRET_DOMAIN}/.well-known/openid-configuration"
           groupClaimName: groups
           adminGroup: admins
@@ -179,11 +180,11 @@ spec:
       kind: Secret
       name: gitea-secrets
       valuesKey: GITEA_SMTP_FROM
-    # OAuth
-    - targetPath: gitea.oauth.secret
-      kind: Secret
-      name: gitea-secrets
-      valuesKey: GITEA_OAUTH_CLIENT_SECRET
+    # # OAuth
+    # - targetPath: gitea.oauth.secret
+    #   kind: Secret
+    #   name: gitea-secrets
+    #   valuesKey: GITEA_OAUTH_CLIENT_SECRET
 
   postRenderers:
     - kustomize:
