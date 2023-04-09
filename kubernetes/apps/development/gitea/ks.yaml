@@ -9,6 +9,7 @@ metadata:
 spec:
   dependsOn:
     - name: cluster-apps-volsync
+    - name: cluster-apps-authelia
   path: ./kubernetes/apps/development/gitea/app
   prune: true
   sourceRef:
