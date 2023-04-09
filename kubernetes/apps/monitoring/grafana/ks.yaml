@@ -32,7 +32,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-    - name: cluster-core-grafana
+    - name: cluster-apps-grafana
   path: ./kubernetes/apps/monitoring/grafana/dashboards
   sourceRef:
     kind: GitRepository
