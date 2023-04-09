@@ -13,6 +13,7 @@ configMapGenerator:
       - ./config/configuration.yml
 generatorOptions:
   disableNameSuffixHash: true
+  # Disable so env-sub will sub external-secrets in
   annotations:
     kustomize.toolkit.fluxcd.io/substitute: disabled
 labels:
