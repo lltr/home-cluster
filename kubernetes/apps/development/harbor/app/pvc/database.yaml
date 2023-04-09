@@ -6,7 +6,6 @@ metadata:
   labels:
     app.kubernetes.io/name: harbor-database
     app.kubernetes.io/instance: harbor
-    snapshot.home.arpa/enabled: "true"
 spec:
   accessModes:
     - ReadWriteOnce
