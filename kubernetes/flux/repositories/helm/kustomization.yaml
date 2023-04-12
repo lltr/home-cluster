@@ -28,4 +28,3 @@ resources:
   - ./cloudnative-pg.yaml
   - ./external-secrets.yaml
   - ./kyverno.yaml
-  - ./testvar.yaml
