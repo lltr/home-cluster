@@ -15,8 +15,6 @@
 
 This is a mono repository for my home Kubernetes cluster. [Flux](https://github.com/fluxcd/flux2) watches the cluster directory and makes changes to the cluster based on the YAML manifests.
 
-This repository is built off the [onedr0p/flux-cluster-template](https://github.com/onedr0p/flux-cluster-template) repository.
-
 ---
 
 ## 🎨 Cluster components
@@ -38,7 +36,8 @@ This repository is built off the [onedr0p/flux-cluster-template](https://github.
 - [external-dns](https://github.com/kubernetes-sigs/external-dns): External DNS manager for all ingress.
 - [rook-ceph](https://rook.io): Cloud native distributed block storage for Kubernetes
 - [Prometheus](https://prometheus.io/): Scraping metrics from the entire cluster
-- [Grafana](https://grafana.com): Visualization for the metrics from Prometheus
+- [Grafana](https://grafana.com): Visualization for the metrics from Prometheus and other datasources
+- [external-secrets](https://external-secrets.io/): Integrates external secrets management with OnePassword Connect
 
 ---
 
