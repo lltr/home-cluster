@@ -35,8 +35,8 @@ This is a mono repository for my home Kubernetes cluster. [Flux](https://github.
 - [ingress-nginx](https://kubernetes.github.io/ingress-nginx/): Ingress controller for services.
 - [external-dns](https://github.com/kubernetes-sigs/external-dns): External DNS manager for all ingress.
 - [rook-ceph](https://rook.io): Cloud native distributed block storage for Kubernetes
-- [Prometheus](https://prometheus.io/): Scraping metrics from the entire cluster
-- [Grafana](https://grafana.com): Visualization for the metrics from Prometheus and other datasources
+- [kube-prometheus-stack](https://prometheus.io/): Scraping metrics from the entire cluster
+- [grafana](https://grafana.com): Visualization for the metrics from Prometheus and other datasources
 - [external-secrets](https://external-secrets.io/): Integrates external secrets management with OnePassword Connect
 
 ---
