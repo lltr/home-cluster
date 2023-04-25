@@ -1,0 +1,8 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: discord-watcher-server
+  namespace: flux-system
+spec:
+  image: cr.${SECRET_EXT_DOMAIN}/watcher/discord-watcher-server
+  interval: 30m0s
