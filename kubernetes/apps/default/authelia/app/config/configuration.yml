@@ -43,6 +43,14 @@ identity_providers:
         scopes: ["openid", "profile", "groups", "email"]
         redirect_uris: ["https://gitea.${SECRET_DOMAIN}/user/oauth2/authelia/callback"]
         userinfo_signing_algorithm: none
+      - id: orchestra
+        secret: "${ORCHESTRA_OAUTH_CLIENT_SECRET}"
+        public: false
+        authorization_policy: one_factor
+        pre_configured_consent_duration: 1y
+        scopes: ["openid", "profile", "groups", "email"]
+        redirect_uris: ["http://localhost:3000/login/callback"]
+        userinfo_signing_algorithm: none
       # - id: weave-gitops
       #   description: Weave GitOps
       #   secret: "${WEAVEGITOPS_OAUTH_CLIENT_SECRET}"
