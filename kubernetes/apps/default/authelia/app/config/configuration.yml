@@ -19,6 +19,8 @@ access_control:
   rules:
     - domain: ["grafana.${SECRET_DOMAIN}"]
       policy: bypass
+    - domain: ["orchestra.${SECRET_DEV_DOMAIN}"]
+      policy: bypass
 
 identity_providers:
   oidc:
