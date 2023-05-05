@@ -13,3 +13,5 @@ resources:
   - ./pvc/database.yaml
   - ./pvc/redis.yaml
   - ./pvc/trivy.yaml
+  # Volsync
+  - ./volsync.yaml
