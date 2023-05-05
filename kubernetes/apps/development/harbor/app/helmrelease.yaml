@@ -115,7 +115,7 @@ spec:
     core:
       image:
         repository: goharbor/harbor-core
-        tag: v2.7.0
+        tag: dev
       revisionHistoryLimit: 3
       podAnnotations:
         secret.reloader.stakater.com/reload: "harbor-secrets"
