@@ -28,7 +28,7 @@ spec:
         reloader.stakater.com/auto: "true"
     image:
       repository: gitea/gitea
-      tag: 1.19.2
+      tag: 1.19.3
       rootless: true # only possible when running 1.14 or later
 
     containerSecurityContext:
