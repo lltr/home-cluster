@@ -25,7 +25,6 @@ spec:
     global:
       annotations:
         reloader.stakater.com/search: "true"
-        # configmap.reloader.stakater.com/reload: "cloudflared-tunnel"
     image:
       repository: cloudflare/cloudflared
       tag: latest
@@ -51,7 +50,9 @@ spec:
         enabled: true
         type: configMap
         name: cloudflared-config
-        mountPath: /etc/cloudflared/config
+        subPath: config.yaml
+        mountPath: /etc/cloudflared/config/config.yaml
+        readOnly: true
       # By default, the credentials file will be created under ~/.cloudflared/<tunnel ID>.json
       # when you run `cloudflared tunnel create`. You can move it into a secret by using:
       # ```sh
