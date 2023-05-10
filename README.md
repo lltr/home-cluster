@@ -38,6 +38,7 @@ This is a mono repository for my home Kubernetes cluster. [Flux](https://github.
 - [kube-prometheus-stack](https://prometheus.io/): Scraping metrics from the entire cluster
 - [grafana](https://grafana.com): Visualization for the metrics from Prometheus and other datasources
 - [external-secrets](https://external-secrets.io/): Integrates external secrets management with OnePassword Connect
+- [local-path-provisioner](https://github.com/rancher/local-path-provisioner) - Provision persistent local storage with Kubernetes to avoid write amplification for default soft replicated applications
 
 ---
 
