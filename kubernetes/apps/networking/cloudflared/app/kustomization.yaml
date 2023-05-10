@@ -4,5 +4,10 @@ kind: Kustomization
 namespace: networking
 resources:
   - ./helmrelease.yaml
-  - ./cloudflared-config.yaml
   - ./cloudflared-credentials.sops.yaml
+configMapGenerator:
+  - name: cloudflared-config
+    files:
+      - ./cloudflared-config.yaml
+generatorOptions:
+  disableNameSuffixHash: true
