@@ -15,7 +15,7 @@ access_control:
   default_policy: two_factor
   networks:
     - name: internal
-      networks: ["10.0.0.0/8", "192.168.0.0/23"]
+      networks: ["10.0.0.0/8", "192.168.0.0/24"]
   rules:
     - domain: ["grafana.${SECRET_DOMAIN}"]
       policy: bypass

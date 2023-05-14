@@ -94,7 +94,7 @@ spec:
           external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
           external-dns.home.arpa/enabled: "true"
           nginx.ingress.kubernetes.io/whitelist-source-range: |
-            10.0.0.0/8,192.168.0.0/23
+            10.0.0.0/8,192.168.0.0/24
         hosts:
           - host: &console-host minio.${SECRET_DOMAIN}
             paths:
