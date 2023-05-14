@@ -6,4 +6,4 @@ metadata:
   namespace: networking
 spec:
   type: ExternalName
-  externalName: 192.168.1.20
+  externalName: 192.168.0.150
