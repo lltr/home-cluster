@@ -26,7 +26,7 @@ spec:
       type: statefulset
     image:
       repository: ghcr.io/dgtlmoon/changedetection.io
-      tag: 0.42
+      tag: 0.43
     env:
       TZ: ${TIMEZONE}
       PORT: &port 5000
