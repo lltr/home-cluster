@@ -16,6 +16,8 @@ spec:
         namespace: flux-system
       interval: 30m
   values:
+    upgrade:
+      fromV2: true
     crds:
       install: true
 
