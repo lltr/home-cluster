@@ -31,6 +31,13 @@ spec:
     ## Number of replicas
     replicaCount: 2
 
+    # Disable cert-manager and nginx-ingress as required by the helm chart, which is already installed
+    cert-manager:
+      enabled: false
+
+    nginx:
+      enabled: false
+
     ## Here annotations can be added to the kubernetes dashboard deployment
     annotations: {}
     ## Here labels can be added to the kubernetes dashboard deployment
