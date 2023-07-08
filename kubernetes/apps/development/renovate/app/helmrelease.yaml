@@ -31,7 +31,7 @@ spec:
         reloader.stakater.com/search: "true"
     image:
       repository: renovate/renovate
-      tag: 35.159.7
+      tag: 36.5.2
       pullPolicy: IfNotPresent
     renovate:
       existingConfigFile: "/etc/secrets/config.json"
