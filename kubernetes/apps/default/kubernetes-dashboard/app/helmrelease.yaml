@@ -33,7 +33,7 @@ spec:
     #   pullSecrets: []
     app:
       scaling:
-        replicas: 2
+        replicas: 1
         revisionHistoryLimit: 3
       ingress:
         enabled: true
