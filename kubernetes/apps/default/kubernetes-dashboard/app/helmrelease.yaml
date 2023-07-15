@@ -48,6 +48,9 @@ spec:
           - secretName: kubernetes-dashboard-tls
             hosts:
               - *host
+        paths:
+          web: /
+          api: /api
     api:
       containers:
         args:
