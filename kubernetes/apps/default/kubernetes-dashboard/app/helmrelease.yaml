@@ -63,20 +63,21 @@ spec:
       annotations: {}
       labels: {}
 
-    ingress:
-      enabled: true
-      annotations:
-        nginx.ingress.kubernetes.io/rewrite-target: /
-        cert-manager.io/cluster-issuer: letsencrypt-production
-        external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
-        external-dns.home.arpa/enabled: "true"
-      className: "nginx"
-      hosts:
-        - &host "dashboard.${SECRET_DOMAIN}"
-      tls:
-        - secretName: kubernetes-dashboard-tls
-          hosts:
-            - *host
+    app:
+      ingress:
+        enabled: true
+        annotations:
+          nginx.ingress.kubernetes.io/rewrite-target: /
+          cert-manager.io/cluster-issuer: letsencrypt-production
+          external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
+          external-dns.home.arpa/enabled: "true"
+        className: "nginx"
+        hosts:
+          - &host "dashboard.${SECRET_DOMAIN}"
+        tls:
+          - secretName: kubernetes-dashboard-tls
+            hosts:
+              - *host
 
     serviceMonitor:
       enabled: false
