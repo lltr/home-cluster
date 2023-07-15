@@ -21,14 +21,19 @@ spec:
   upgrade:
     remediation:
       retries: 3
+  uninstall:
+    keepHistory: false
   values:
-    image:
-      repository: kubernetesui/dashboard
-      tag: "v2.7.0"  # If not defined, uses appVersion of Chart.yaml
-      pullPolicy: IfNotPresent
-      pullSecrets: []
+    env:
+      TZ: ${TIMEZONE}
+    extraArgs:
+      - --token-ttl=43200
+    # image:
+    #   repository: kubernetesui/dashboard
+    #   tag: "v2.7.0"  # If not defined, uses appVersion of Chart.yaml
+    #   pullPolicy: IfNotPresent
+    #   pullSecrets: []
 
-    ## Number of replicas
     replicaCount: 2
 
     ## Here annotations can be added to the kubernetes dashboard deployment
@@ -75,26 +80,8 @@ spec:
           hosts:
             - *host
 
-    # Global dashboard settings
-    settings:
-      {}
-
-    ## Pinned CRDs that will be displayed in dashboard's menu
-    pinnedCRDs:
-      []
-
-    ## PodSecurityContext for pod level securityContext
-    # securityContext:
-    #   runAsUser: 1001
-    #   runAsGroup: 2001
-
     serviceMonitor:
-      # Whether or not to create a Prometheus Operator service monitor.
       enabled: false
-      ## Here labels can be added to the serviceMonitor
-      labels: {}
-      ## Here annotations can be added to the serviceMonitor
-      annotations: {}
     cert-manager:
       enabled: false
       installCRDs: false
