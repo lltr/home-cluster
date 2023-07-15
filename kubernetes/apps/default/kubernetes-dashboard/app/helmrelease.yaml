@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: kubernetes-dashboard
-      version: 6.0.8
+      version: 7.0.2
       sourceRef:
         kind: HelmRepository
         name: kubernetes-dashboard
@@ -95,3 +95,10 @@ spec:
       labels: {}
       ## Here annotations can be added to the serviceMonitor
       annotations: {}
+    cert-manager:
+      enabled: false
+      installCRDs: false
+    nginx:
+      enabled: false
+    metrics-server:
+      enabled: false
