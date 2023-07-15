@@ -48,16 +48,19 @@ spec:
           - secretName: kubernetes-dashboard-tls
             hosts:
               - *host
-      web:
-        containers:
-          args:
-            - --token-ttl=43200
+    api:
+      containers:
+        args:
+          - --token-ttl=43200
+          - --enable-insecure-login=true
+          - --disable-settings-authorizer=true
 
+    metricsScraper:
+      enabled: true
     serviceMonitor:
       enabled: false
     cert-manager:
       enabled: false
-      installCRDs: false
     nginx:
       enabled: false
     metrics-server:
