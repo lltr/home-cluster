@@ -37,7 +37,6 @@ spec:
       ingress:
         enabled: true
         annotations:
-          # nginx.ingress.kubernetes.io/rewrite-target: /
           # cert-manager.io/cluster-issuer: letsencrypt-production
           external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
           external-dns.home.arpa/enabled: "true"
@@ -53,9 +52,6 @@ spec:
     api:
       containers:
         args:
-          - --disable-settings-authorizer
-          - --enable-insecure-login
-          - --enable-skip-login
           - --token-ttl=43200
 
     metricsScraper:
