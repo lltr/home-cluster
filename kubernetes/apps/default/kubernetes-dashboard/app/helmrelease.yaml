@@ -71,8 +71,6 @@ spec:
         external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
         external-dns.home.arpa/enabled: "true"
       className: "nginx"
-      paths:
-        - /
       hosts:
         - &host "dashboard.${SECRET_DOMAIN}"
       tls:
