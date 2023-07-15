@@ -38,12 +38,15 @@ spec:
         enabled: true
         annotations:
           nginx.ingress.kubernetes.io/rewrite-target: /
-          cert-manager.io/cluster-issuer: letsencrypt-production
+          # cert-manager.io/cluster-issuer: letsencrypt-production
           external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
           external-dns.home.arpa/enabled: "true"
         className: "nginx"
         hosts:
           - &host "dashboard.${SECRET_DOMAIN}"
+        issuer:
+          name: letsencrypt-production
+          scope: cluster
         tls:
           - secretName: kubernetes-dashboard-tls
             hosts:
