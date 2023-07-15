@@ -26,44 +26,14 @@ spec:
   values:
     env:
       TZ: ${TIMEZONE}
-    extraArgs:
-      - --token-ttl=43200
     # image:
     #   repository: kubernetesui/dashboard
     #   tag: "v2.7.0"  # If not defined, uses appVersion of Chart.yaml
     #   pullPolicy: IfNotPresent
     #   pullSecrets: []
-
-    replicaCount: 2
-
-    ## Here annotations can be added to the kubernetes dashboard deployment
-    annotations: {}
-    ## Here labels can be added to the kubernetes dashboard deployment
-    labels: {}
-
-    containerSecurityContext:
-      allowPrivilegeEscalation: false
-      readOnlyRootFilesystem: true
-      runAsUser: 1001
-      runAsGroup: 2001
-
-    affinity: {}
-    resources:
-      requests:
-        cpu: 100m
-        memory: 200Mi
-      limits:
-        cpu: 2
-        memory: 200Mi
-    protocolHttp: false
-
-    service:
-      type: ClusterIP
-      externalPort: 443
-      annotations: {}
-      labels: {}
-
     app:
+      scaling:
+        replicaCount: 2
       ingress:
         enabled: true
         annotations:
@@ -78,6 +48,10 @@ spec:
           - secretName: kubernetes-dashboard-tls
             hosts:
               - *host
+      web:
+        containers:
+          args:
+            - --token-ttl=43200
 
     serviceMonitor:
       enabled: false
