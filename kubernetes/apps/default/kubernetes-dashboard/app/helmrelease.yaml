@@ -56,7 +56,6 @@ spec:
           - --disable-settings-authorizer
           - --enable-insecure-login
           - --enable-skip-login
-          - --namespace=monitoring
           - --token-ttl=43200
 
     metricsScraper:
