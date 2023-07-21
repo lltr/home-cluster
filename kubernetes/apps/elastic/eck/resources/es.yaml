@@ -5,33 +5,33 @@ metadata:
   name: main
   namespace: elastic
 spec:
-  version: 8.6.1
+  version: 8.8.1
   http:
     tls:
       selfSignedCertificate:
         disabled: true
   nodeSets:
-  - name: default
-    count: 1
-    config:
-      node.store.allow_mmap: false
-    podTemplate:
-      spec:
-        containers:
-        - name: elasticsearch
-          resources:
-            requests:
-              memory: 4Gi
-              cpu: 2
-            limits:
-              memory: 4Gi
-              cpu: 3
-    volumeClaimTemplates:
-    - metadata:
-        name: elasticsearch-data # Do not change this name unless you set up a volume mount for the data path.
-      spec:
-        accessModes:
-        - ReadWriteOnce
-        resources:
-          requests:
-            storage: 15Gi
+    - name: default
+      count: 1
+      config:
+        node.store.allow_mmap: false
+      podTemplate:
+        spec:
+          containers:
+            - name: elasticsearch
+              resources:
+                requests:
+                  memory: 4Gi
+                  cpu: 2
+                limits:
+                  memory: 4Gi
+                  cpu: 3
+      volumeClaimTemplates:
+        - metadata:
+            name: elasticsearch-data # Do not change this name unless you set up a volume mount for the data path.
+          spec:
+            accessModes:
+              - ReadWriteOnce
+            resources:
+              requests:
+                storage: 15Gi
