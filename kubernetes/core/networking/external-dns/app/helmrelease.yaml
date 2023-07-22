@@ -47,6 +47,7 @@ spec:
       - "${SECRET_DOMAIN}"
       - "${SECRET_EXT_DOMAIN}"
       - "${SECRET_OTHER_DOMAIN_1}"
+      - "${SECRET_DEV_DOMAIN}"
     serviceMonitor:
       enabled: true
     podAnnotations:
