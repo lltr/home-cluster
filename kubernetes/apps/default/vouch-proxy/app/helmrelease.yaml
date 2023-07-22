@@ -28,6 +28,7 @@ spec:
         reloader.stakater.com/auto: "true"
     image:
       repository: quay.io/vouch/vouch-proxy
+      tag: latest
       pullPolicy: IfNotPresent
     nameOverride: vouch-proxy
     env:
