@@ -33,9 +33,6 @@ spec:
     nameOverride: vouch-proxy
     env:
       TZ: ${TIMEZONE}
-    envFrom:
-      - secretRef:
-          name: vouch-proxy-secrets
     service:
       main:
         ports:
@@ -58,3 +55,15 @@ spec:
           - hosts:
               - *host
             secretName: vouch-proxy-tls
+    persistence:
+      config:
+        enabled: true
+        type: secret
+        name: vouch-proxy-secrets
+        subPath: config.yaml
+        mountPath: /config/config.yaml
+        readOnly: true
+      data:
+        enabled: true
+        type: emptyDir
+        mountPath: /data
