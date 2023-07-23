@@ -53,10 +53,24 @@ spec:
         enabled: true
         ingressClassName: nginx
         annotations:
-          cert-manager.io/cluster-issuer: letsencrypt-staging
+          cert-manager.io/cluster-issuer: letsencrypt-production
           external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
           external-dns.home.arpa/enabled: "true"
-          hajimari.io/icon: video-input-antenna
+          nginx.ingress.kubernetes.io/auth-response-headers: X-Vouch-User
+          nginx.ingress.kubernetes.io/auth-signin: >-
+            https://vouch.optrix.cloud/login?url=$scheme://$http_host$request_uri&vouch-failcount=$auth_resp_failcount&X-Vouch-Token=$auth_resp_jwt&error=$auth_resp_err
+          nginx.ingress.kubernetes.io/auth-snippet: >
+            # these return values are used by the @error401 call
+            auth_request_set $auth_resp_jwt $upstream_http_x_vouch_jwt;
+            auth_request_set $auth_resp_err $upstream_http_x_vouch_err;
+            auth_request_set $auth_resp_failcount $upstream_http_x_vouch_failcount;
+            # when VP is hosted externally to k8s ensure the SSL cert is valid to
+            avoid MITM risk
+            # proxy_ssl_trusted_certificate /etc/ssl/certs/ca-certificates.crt;
+            # proxy_ssl_session_reuse on;
+            # proxy_ssl_verify_depth 2;
+            # proxy_ssl_verify on;
+          nginx.ingress.kubernetes.io/auth-url: https://vouch.optrix.cloud/validate
         hosts:
           - host: &host "{{ .Release.Name }}.${SECRET_DEV_DOMAIN}"
             paths:
