@@ -6,7 +6,7 @@ session:
       authelia_url: 'https://auth.${SECRET_DOMAIN}'
     - name: 'orchestra_session'
       domain: 'orchestra.${SECRET_DEV_DOMAIN}'
-      authelia_url: 'https://orchestra.${SECRET_DEV_DOMAIN}/auth/login'
+      authelia_url: 'https://orchestra.${SECRET_DEV_DOMAIN}/login'
   redis:
     high_availability:
       sentinel_name: redis-master
