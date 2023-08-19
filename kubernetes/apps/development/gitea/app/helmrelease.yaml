@@ -33,6 +33,8 @@ spec:
     containerSecurityContext:
       capabilities:
         add: ["SYS_CHROOT"]
+      runAsGroup: 568
+      runAsUser: 568
 
     ingress:
       enabled: true
