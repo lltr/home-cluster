@@ -70,7 +70,9 @@ spec:
 
     persistence:
       enabled: true
-      claimName: gitea-data
+      claimName: gitea-shared-storage
+      create: true
+      mount: true
 
     gitea:
       admin:
