@@ -194,7 +194,7 @@ spec:
   postRenderers:
     - kustomize:
         patchesStrategicMerge:
-          - kind: Deployment
+          - kind: StatefulSet
             apiVersion: apps/v1
             metadata:
               name: gitea
