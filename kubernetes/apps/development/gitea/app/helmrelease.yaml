@@ -192,12 +192,14 @@ spec:
             apiVersion: apps/v1
             metadata:
               name: gitea
+              namespace: development
             spec:
               template:
                 spec:
                   initContainers:
                     - name: init-db
                       image: ghcr.io/lltr/postgres-initdb:15.2
+                      imagePullPolicy: IfNotPresent
                       envFrom:
                         - secretRef:
                             name: gitea-secrets
