@@ -26,6 +26,8 @@ spec:
     image:
       repository: drone/drone
       tag: 2.19.0
+    updateStrategy:
+      type: Recreate
     podAnnotations:
       reloader.stakater.com/search: "true"
     ingress:
