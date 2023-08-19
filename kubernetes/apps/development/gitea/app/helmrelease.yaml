@@ -131,6 +131,8 @@ spec:
           ENABLE_OPENID_SIGNIN: false
           ENABLE_OPENID_SIGNUP: true
           WHITELISTED_URIS: "auth.${SECRET_DOMAIN}"
+        actions:
+          enabled: true
 
       oauth:
         - name: authelia
