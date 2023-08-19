@@ -145,7 +145,7 @@ spec:
     postgresql:
       enabled: false
     memcached:
-      enabled: false
+      enabled: true
     redis-cluster:
       enabled: false
 
@@ -191,21 +191,21 @@ spec:
     #   name: gitea-secrets
     #   valuesKey: GITEA_OAUTH_CLIENT_SECRET
 
-  # postRenderers:
-  #   - kustomize:
-  #       patchesStrategicMerge:
-  #         - kind: StatefulSet
-  #           apiVersion: apps/v1
-  #           metadata:
-  #             name: gitea
-  #             namespace: development
-  #           spec:
-  #             template:
-  #               spec:
-  #                 initContainers:
-  #                   - name: init-db
-  #                     image: ghcr.io/lltr/postgres-initdb:15.2
-  #                     imagePullPolicy: IfNotPresent
-  #                     envFrom:
-  #                       - secretRef:
-  #                           name: gitea-secrets
+  postRenderers:
+    - kustomize:
+        patchesStrategicMerge:
+          - kind: Deployment
+            apiVersion: apps/v1
+            metadata:
+              name: gitea
+              namespace: development
+            spec:
+              template:
+                spec:
+                  initContainers:
+                    - name: init-db
+                      image: ghcr.io/lltr/postgres-initdb:15.2
+                      imagePullPolicy: IfNotPresent
+                      envFrom:
+                        - secretRef:
+                            name: gitea-secrets
