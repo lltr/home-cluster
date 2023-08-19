@@ -68,7 +68,7 @@ spec:
 
     persistence:
       enabled: true
-      existingClaim: gitea-data
+      claimName: gitea-data
 
     gitea:
       admin:
@@ -143,6 +143,10 @@ spec:
     postgresql-ha:
       enabled: false
     postgresql:
+      enabled: false
+    memcached:
+      enabled: false
+    redis-cluster:
       enabled: false
 
   valuesFrom:
