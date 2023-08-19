@@ -151,6 +151,10 @@ spec:
     redis-cluster:
       enabled: true
       usePassword: false
+      cluster:
+        nodes: 3
+      persistence:
+        enabled: false
 
   valuesFrom:
     - targetPath: gitea.admin.password
