@@ -70,6 +70,8 @@ spec:
       claimName: gitea-data
       create: true
       mount: true
+      labels:
+        app.kubernetes.io/name: gitea
 
     gitea:
       admin:
