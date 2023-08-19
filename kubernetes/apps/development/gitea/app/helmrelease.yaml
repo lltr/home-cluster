@@ -148,10 +148,9 @@ spec:
       enabled: false
     postgresql:
       enabled: false
-    memcached:
-      enabled: true
     redis-cluster:
-      enabled: false
+      enabled: true
+      usePassword: false
 
   valuesFrom:
     - targetPath: gitea.admin.password
