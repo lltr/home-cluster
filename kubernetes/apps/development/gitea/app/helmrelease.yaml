@@ -68,6 +68,7 @@ spec:
     persistence:
       enabled: true
       claimName: gitea-data
+      create: true
       mount: true
 
     gitea:
