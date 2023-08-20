@@ -32,6 +32,8 @@ spec:
         - name: runner-data
           persistentVolumeClaim:
             claimName: runner-vol
+        - name: runner-cache
+          emptyDir: {}
       containers:
         - name: runner
           image: vegardit/gitea-act-runner:dind-latest
@@ -49,4 +51,6 @@ spec:
             privileged: true
           volumeMounts:
             - name: runner-data
-              mountPath: /data/.runner
+              mountPath: /data
+            - name: runner-cache
+              mountPath: /data/cache/actions
