@@ -42,12 +42,9 @@ spec:
     service:
       main:
         enabled: false
-    command: ["sh", "-c", "while ! nc -z localhost 2376 </dev/null; do echo 'waiting for docker daemon...'; sleep 5; done; /sbin/tini -- /opt/act/run.sh"]
+    command: ["sh", "-c", "while ! nc -z localhost 2375 </dev/null; do echo 'waiting for docker daemon...'; sleep 5; done; /sbin/tini -- /opt/act/run.sh"]
     securityContext:
       privileged: true
-      runAsUser: 1000
-      runAsGroup: 1000
-      fsGroup: 1000
 
     env:
       TZ: ${TIMEZONE}
