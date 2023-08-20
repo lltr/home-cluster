@@ -22,17 +22,11 @@ spec:
           emptyDir: {}
       containers:
         - name: runner
-          image: vegardit/gitea-act-runner:dind-rootless-latest
+          image: vegardit/gitea-act-runner:dind-latest
           imagePullPolicy: Always
           env:
-            - name: DOCKER_HOST
-              value: unix:///run/user/1000/docker.sock
-            - name: DOCKER_CERT_PATH
-              value: /certs/client
-            - name: DOCKER_TLS_VERIFY
-              value: "1"
-            - name: GITEA_INSTANCE_URL
-              value: http://gitea-http.development.svc.cluster.local:3000
+            - name: GITEA_RUNNER_JOB_CONTAINER_DOCKER_HOST
+              value: "unix:///var/run/docker.sock"
             - name: GITEA_RUNNER_REGISTRATION_TOKEN
               valueFrom:
                 secretKeyRef:
