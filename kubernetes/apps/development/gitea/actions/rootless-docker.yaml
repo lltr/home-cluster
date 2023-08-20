@@ -32,6 +32,7 @@ spec:
                 secretKeyRef:
                   name: gitea-actions-secrets
                   key: token
+
           securityContext:
             privileged: true
           volumeMounts:
