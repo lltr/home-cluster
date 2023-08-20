@@ -42,14 +42,11 @@ spec:
     service:
       main:
         enabled: false
-    podSecurityContext:
-      privileged: true
     securityContext:
       capabilities:
         add:
           - NET_ADMIN
           - SYS_ADMIN
-      allowPrivilegeEscalation: true
       privileged: true
 
     env:
