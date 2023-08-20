@@ -44,6 +44,7 @@ spec:
         enabled: false
     securityContext:
       privileged: true
+      fsGroup: 1000
 
     env:
       TZ: ${TIMEZONE}
@@ -55,4 +56,4 @@ spec:
     - targetPath: env.GITEA_RUNNER_REGISTRATION_TOKEN
       kind: Secret
       name: gitea-actions-secrets
-      valuesKey: GITEA_RUNNER_REGISTRATION_TOKEN
+      valuesKey: token
