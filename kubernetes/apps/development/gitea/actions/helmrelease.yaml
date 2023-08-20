@@ -29,8 +29,8 @@ spec:
       annotations:
         reloader.stakater.com/auto: "true"
     image:
-      repository: vegardit/gitea-act-runner
-      tag: dind-rootless-latest
+      repository: gitea/act_runner
+      tag: nightly-dind-rootless
       pullPolicy: IfNotPresent
     persistence:
       data:
@@ -43,16 +43,13 @@ spec:
       main:
         enabled: false
     securityContext:
-      capabilities:
-        add:
-          - NET_ADMIN
-          - SYS_ADMIN
       privileged: true
 
     env:
       TZ: ${TIMEZONE}
       GITEA_INSTANCE_URL: https://gitea.${SECRET_DOMAIN}
       GITEA_RUNNER_NAME: 'SHAREDRUNNER'
+      DOCKER_HOST: tcp://localhost:2375
 
   valuesFrom:
     - targetPath: env.GITEA_RUNNER_REGISTRATION_TOKEN
