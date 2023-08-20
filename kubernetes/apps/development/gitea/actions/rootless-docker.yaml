@@ -6,7 +6,8 @@ metadata:
     app: act-runner
   name: act-runner
 spec:
-  replicas: 1
+  # Two replicas means that if one is busy, the other can pick up jobs.
+  replicas: 2
   selector:
     matchLabels:
       app: act-runner
@@ -18,20 +19,34 @@ spec:
     spec:
       restartPolicy: Always
       volumes:
-        - name: docker-certs
-          emptyDir: {}
         - name: runner-data
-          persistentVolumeClaim:
-            claimName: act-runner-vol
-      containers:
-        - name: runner
-          image: gitea/act_runner:nightly
+          emptyDir: {}
+      # Initialise our configuration file using offline registration
+      # https://forgejo.org/docs/v1.21/admin/actions/#offline-registration
+      initContainers:
+        - name: runner-config-generation
+          image: code.forgejo.org/forgejo/runner:2.4.0
           command:
             [
               "sh",
               "-c",
-              "while ! nc -z localhost 2376 </dev/null; do echo 'waiting for docker daemon...'; sleep 5; done; /sbin/tini -- /opt/act/run.sh",
+              "cd /data && forgejo-runner create-runner-file --instance $GITEA_INSTANCE_URL --secret $RUNNER_SECRET --connect",
             ]
+          env:
+            - name: RUNNER_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: gitea-actions-secrets
+                  key: token
+            - name: GITEA_INSTANCE_URL
+              value: https://gitea.${SECRET_DOMAIN}
+          volumeMounts:
+            - name: runner-data
+              mountPath: /data
+      containers:
+        - name: runner
+          image: gitea/act_runner:nightly-dind-rootless
+          imagePullPolicy: Always
           env:
             - name: DOCKER_HOST
               value: tcp://localhost:2376
@@ -41,23 +56,8 @@ spec:
               value: "1"
             - name: GITEA_INSTANCE_URL
               value: https://gitea.${SECRET_DOMAIN}
-            - name: GITEA_RUNNER_REGISTRATION_TOKEN
-              valueFrom:
-                secretKeyRef:
-                  name: gitea-actions-secrets
-                  key: token
-          volumeMounts:
-            - name: docker-certs
-              mountPath: /certs
-            - name: runner-data
-              mountPath: /data
-        - name: daemon
-          image: docker:23.0.6-dind
-          env:
-            - name: DOCKER_TLS_CERTDIR
-              value: /certs
           securityContext:
             privileged: true
           volumeMounts:
-            - name: docker-certs
-              mountPath: /certs
+            - name: runner-data
+              mountPath: /data
