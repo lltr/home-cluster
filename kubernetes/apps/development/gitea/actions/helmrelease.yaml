@@ -25,24 +25,12 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    sidecars:
-      daemon:
-        image: docker:23.0.6-dind
-        imagePullPolicy: IfNotPresent
-        env:
-          - name: DOCKER_TLS_CERTDIR
-            value: /certs
-        securityContext:
-          privileged: true
-        volumeMounts:
-          - name: certs
-            mountPath: /certs
     controller:
       annotations:
         reloader.stakater.com/auto: "true"
     image:
-      repository: gitea/act_runner
-      tag: latest
+      repository: vegardit/gitea-act-runner
+      tag: dind-latest
       pullPolicy: IfNotPresent
     persistence:
       data:
@@ -51,25 +39,17 @@ spec:
         accessMode: ReadWriteOnce
         size: 1Gi
         mountPath: /data
-      certs:
-        enabled: true
-        type: emptyDir
-        size: 1Gi
-        mountPath: /certs
     service:
       main:
         enabled: false
-    command: ["sh", "-c", "while ! nc -z localhost 2376 </dev/null; do echo 'waiting for docker daemon...'; sleep 5; done; /sbin/tini -- /opt/act/run.sh"]
     securityContext:
+      privileged: true
+    podSecurityContext:
       privileged: true
 
     env:
       TZ: ${TIMEZONE}
-      GITEA_INSTANCE_URL: https://gitea.${SECRET_DOMAIN}
-      GITEA_RUNNER_NAME: 'SHAREDRUNNER'
-      DOCKER_HOST: tcp://localhost:2376
-      DOCKER_CERT_PATH: /certs/client
-      DOCKER_TLS_VERIFY: 1
+      GITEA_INSTANCE_URL: http://gitea-http.development.svc.cluster.local:3000
 
   valuesFrom:
     - targetPath: env.GITEA_RUNNER_REGISTRATION_TOKEN

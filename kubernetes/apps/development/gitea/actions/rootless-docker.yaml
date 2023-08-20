@@ -1,4 +1,15 @@
 ---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: runner-vol
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -19,7 +30,8 @@ spec:
       restartPolicy: Always
       volumes:
         - name: runner-data
-          emptyDir: {}
+          persistentVolumeClaim:
+            claimName: runner-vol
       containers:
         - name: runner
           image: vegardit/gitea-act-runner:dind-latest
