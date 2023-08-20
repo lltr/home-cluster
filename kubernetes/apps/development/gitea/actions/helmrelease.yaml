@@ -28,8 +28,6 @@ spec:
     controller:
       annotations:
         reloader.stakater.com/auto: "true"
-        container.apparmor.security.beta.kubernetes.io/buildkitd: unconfined
-        container.seccomp.security.alpha.kubernetes.io/buildkitd: unconfined
     image:
       repository: vegardit/gitea-act-runner
       tag: dind-rootless-latest
@@ -44,6 +42,9 @@ spec:
     service:
       main:
         enabled: false
+    podAnnotations:
+      container.apparmor.security.beta.kubernetes.io/buildkitd: unconfined
+      container.seccomp.security.alpha.kubernetes.io/buildkitd: unconfined
     podSecurityContext:
       runAsUser: 1000
       runAsGroup: 1000
