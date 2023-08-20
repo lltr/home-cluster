@@ -42,7 +42,7 @@ spec:
     service:
       main:
         enabled: false
-    command: ["sh", "-c", "while ! nc -z localhost 2375 </dev/null; do echo 'waiting for docker daemon...'; sleep 5; done; /sbin/tini -- /opt/act/run.sh"]
+    command: ["sh", "-c", "while ! nc -z localhost 2376 </dev/null; do echo 'waiting for docker daemon...'; sleep 5; done; /sbin/tini -- /opt/act/run.sh"]
     securityContext:
       privileged: true
 
@@ -50,7 +50,7 @@ spec:
       TZ: ${TIMEZONE}
       GITEA_INSTANCE_URL: https://gitea.${SECRET_DOMAIN}
       GITEA_RUNNER_NAME: 'SHAREDRUNNER'
-      DOCKER_HOST: tcp://localhost:2375
+      DOCKER_HOST: tcp://localhost:2376
 
   valuesFrom:
     - targetPath: env.GITEA_RUNNER_REGISTRATION_TOKEN
