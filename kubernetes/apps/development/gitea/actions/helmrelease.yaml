@@ -25,7 +25,7 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    initContainers:
+    sidecar:
       daemon:
         image: docker:23.0.6-dind
         imagePullPolicy: IfNotPresent
