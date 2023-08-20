@@ -30,13 +30,9 @@ spec:
       tag: 1.20.2
       rootless: true # only possible when running 1.14 or later
 
-    podSecurityContext:
-      fsGroup: 568
     containerSecurityContext:
       capabilities:
         add: ["SYS_CHROOT"]
-      runAsGroup: 568
-      runAsUser: 568
 
     ingress:
       enabled: true
