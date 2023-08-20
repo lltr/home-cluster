@@ -30,7 +30,7 @@ spec:
         reloader.stakater.com/auto: "true"
     image:
       repository: vegardit/gitea-act-runner
-      tag: dind-rootless-latest
+      tag: dind-latest
       pullPolicy: IfNotPresent
     persistence:
       data:
@@ -42,13 +42,9 @@ spec:
     service:
       main:
         enabled: false
-    podAnnotations:
-      container.apparmor.security.beta.kubernetes.io/buildkitd: unconfined
-      container.seccomp.security.alpha.kubernetes.io/buildkitd: unconfined
-    podSecurityContext:
-      runAsUser: 1000
-      runAsGroup: 1000
-      fsGroup: 1000
+    securityContext:
+      allowPrivilegeEscalation: true
+
     env:
       TZ: ${TIMEZONE}
       GITEA_INSTANCE_URL: https://gitea.${SECRET_DOMAIN}
