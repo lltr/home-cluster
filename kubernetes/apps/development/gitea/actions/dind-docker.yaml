@@ -49,4 +49,4 @@ spec:
             privileged: true
           volumeMounts:
             - name: runner-data
-              mountPath: /data
+              mountPath: /data/.runner
