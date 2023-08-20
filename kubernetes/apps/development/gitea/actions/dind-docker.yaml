@@ -49,6 +49,7 @@ spec:
 
           securityContext:
             privileged: true
+            fsGroup: 2000
           volumeMounts:
             - name: runner-data
               mountPath: /data
