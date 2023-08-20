@@ -50,6 +50,7 @@ spec:
           - NET_ADMIN
           - SYS_ADMIN
       allowPrivilegeEscalation: true
+      privileged: true
 
     env:
       TZ: ${TIMEZONE}
