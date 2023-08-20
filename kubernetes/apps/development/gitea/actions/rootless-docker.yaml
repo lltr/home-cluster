@@ -39,7 +39,7 @@ spec:
                   name: gitea-actions-secrets
                   key: token
             - name: GITEA_INSTANCE_URL
-              value: https://gitea.${SECRET_DOMAIN}
+              value: http://gitea-http.development.svc.cluster.local:3000
           volumeMounts:
             - name: runner-data
               mountPath: /data
@@ -55,7 +55,7 @@ spec:
             - name: DOCKER_TLS_VERIFY
               value: "1"
             - name: GITEA_INSTANCE_URL
-              value: https://gitea.${SECRET_DOMAIN}
+              value: http://gitea-http.development.svc.cluster.local:3000
           securityContext:
             privileged: true
           volumeMounts:
