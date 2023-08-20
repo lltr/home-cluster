@@ -1,0 +1,64 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: act-runner
+  name: act-runner
+spec:
+  # Two replicas means that if one is busy, the other can pick up jobs.
+  replicas: 2
+  selector:
+    matchLabels:
+      app: act-runner
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: act-runner
+    spec:
+      restartPolicy: Always
+      volumes:
+        - name: runner-data
+          emptyDir: {}
+      # Initialise our configuration file using offline registration
+      # https://forgejo.org/docs/v1.21/admin/actions/#offline-registration
+      initContainers:
+        - name: runner-config-generation
+          image: code.forgejo.org/forgejo/runner:2.4.0
+          command:
+            [
+              "sh",
+              "-c",
+              "cd /data && forgejo-runner create-runner-file --instance $GITEA_INSTANCE_URL --secret $RUNNER_SECRET --connect",
+            ]
+          env:
+            - name: RUNNER_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: gitea-actions-secrets
+                  key: token
+            - name: GITEA_INSTANCE_URL
+              value: https://gitea.${SECRET_DOMAIN}
+          volumeMounts:
+            - name: runner-data
+              mountPath: /data
+      containers:
+        - name: runner
+          image: gitea/act_runner:nightly-dind-rootless
+          imagePullPolicy: Always
+          env:
+            - name: DOCKER_HOST
+              value: tcp://localhost:2376
+            - name: DOCKER_CERT_PATH
+              value: /certs/client
+            - name: DOCKER_TLS_VERIFY
+              value: "1"
+            - name: GITEA_INSTANCE_URL
+              value: https://gitea.${SECRET_DOMAIN}
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: runner-data
+              mountPath: /data
