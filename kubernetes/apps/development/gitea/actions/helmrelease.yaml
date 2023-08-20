@@ -68,6 +68,8 @@ spec:
       GITEA_INSTANCE_URL: https://gitea.${SECRET_DOMAIN}
       GITEA_RUNNER_NAME: 'SHAREDRUNNER'
       DOCKER_HOST: tcp://localhost:2376
+      DOCKER_CERT_PATH: /certs/client
+      DOCKER_TLS_VERIFY: "1"
 
   valuesFrom:
     - targetPath: env.GITEA_RUNNER_REGISTRATION_TOKEN
