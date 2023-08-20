@@ -43,7 +43,9 @@ spec:
       main:
         enabled: false
     securityContext:
-      privileged: true
+      runAsUser: 1000
+      runAsGroup: 1000
+      fsGroup: 1000
     env:
       TZ: ${TIMEZONE}
       GITEA_INSTANCE_URL: 'https://gitea.{SECRET_DOMAIN}'
