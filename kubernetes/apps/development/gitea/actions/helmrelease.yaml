@@ -30,7 +30,7 @@ spec:
         reloader.stakater.com/auto: "true"
     image:
       repository: vegardit/gitea-act-runner
-      tag: dind-latest
+      tag: dind-rootless-latest
       pullPolicy: IfNotPresent
     persistence:
       data:
