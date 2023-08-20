@@ -42,6 +42,8 @@ spec:
     service:
       main:
         enabled: false
+    podSecurityContext:
+      fsGroup: 1000
     securityContext:
       privileged: true
       fsGroup: 1000
