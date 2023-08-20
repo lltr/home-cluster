@@ -38,7 +38,7 @@ spec:
             - name: RUNNER_SECRET
               valueFrom:
                 secretKeyRef:
-                  name: runner-secret
+                  name: gitea-actions-secrets
                   key: token
             - name: GITEA_INSTANCE_URL
               value: http://gitea-http.development.svc.cluster.local:3000
