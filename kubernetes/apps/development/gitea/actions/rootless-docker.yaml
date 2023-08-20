@@ -25,8 +25,8 @@ spec:
           image: vegardit/gitea-act-runner:dind-latest
           imagePullPolicy: Always
           env:
-            - name: GITEA_RUNNER_JOB_CONTAINER_DOCKER_HOST
-              value: "unix:///var/run/docker.sock"
+            - name: GITEA_INSTANCE_URL
+              value: http://gitea-http.development.svc.cluster.local:3000
             - name: GITEA_RUNNER_REGISTRATION_TOKEN
               valueFrom:
                 secretKeyRef:
