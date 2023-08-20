@@ -27,6 +27,8 @@ spec:
       labels:
         app: act-runner
     spec:
+      securityContext:
+        fsGroup: 2000
       restartPolicy: Always
       volumes:
         - name: runner-data
@@ -51,7 +53,6 @@ spec:
 
           securityContext:
             privileged: true
-            fsGroup: 2000
           volumeMounts:
             - name: runner-data
               mountPath: /data
