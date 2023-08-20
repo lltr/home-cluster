@@ -38,10 +38,12 @@ spec:
         type: pvc
         accessMode: ReadWriteOnce
         size: 1Gi
-        mountPath: /data/.runner
+        mountPath: /data
     service:
       main:
         enabled: false
+    podSecurityContext:
+      privileged: true
     securityContext:
       capabilities:
         add:
