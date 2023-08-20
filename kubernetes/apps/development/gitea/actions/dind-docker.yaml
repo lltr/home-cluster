@@ -41,6 +41,8 @@ spec:
           env:
             - name: GITEA_INSTANCE_URL
               value: http://gitea-http.development.svc.cluster.local:3000
+            - name: GITEA_RUNNER_ACTION_CACHE_DIR
+              value: /cache/actions
             - name: GITEA_RUNNER_REGISTRATION_TOKEN
               valueFrom:
                 secretKeyRef:
@@ -54,4 +56,4 @@ spec:
             - name: runner-data
               mountPath: /data
             - name: runner-cache
-              mountPath: /data/cache/actions
+              mountPath: /cache/actions
