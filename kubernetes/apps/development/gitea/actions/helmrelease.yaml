@@ -48,7 +48,7 @@ spec:
       fsGroup: 1000
     env:
       TZ: ${TIMEZONE}
-      GITEA_INSTANCE_URL: 'https://gitea.{SECRET_DOMAIN}'
+      GITEA_INSTANCE_URL: https://gitea.${SECRET_DOMAIN}
       GITEA_RUNNER_NAME: 'SHAREDRUNNER'
 
   valuesFrom:
