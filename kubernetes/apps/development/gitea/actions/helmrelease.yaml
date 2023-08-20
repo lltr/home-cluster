@@ -43,6 +43,10 @@ spec:
       main:
         enabled: false
     securityContext:
+      capabilities:
+        add:
+          - NET_ADMIN
+          - SYS_ADMIN
       allowPrivilegeEscalation: true
 
     env:
