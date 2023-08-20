@@ -47,6 +47,8 @@ spec:
               value: /cache/actions
             - name: ACT_CACHE_SERVER_DIR
               value: /cache/server
+            - name: GITEA_RUNNER_JOB_CONTAINER_NETWORK
+              value: host
             - name: GITEA_RUNNER_REGISTRATION_TOKEN
               valueFrom:
                 secretKeyRef:
