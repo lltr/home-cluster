@@ -1,0 +1,44 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: gitea-actions
+  namespace: development
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: app-template
+      version: 1.5.1
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  maxHistory: 3
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    controller:
+      annotations:
+        reloader.stakater.com/auto: "true"
+    image:
+      repository: vegardit/gitea-act-runner
+      tag: latest
+      pullPolicy: IfNotPresent
+    env:
+      TZ: ${TIMEZONE}
+      GITEA_INSTANCE_URL: 'https://gitea.{SECRET_DOMAIN}'
+      GITEA_RUNNER_NAME: 'SHAREDRUNNER'
+
+  valuesFrom:
+    - targetPath: env.GITEA_RUNNER_REGISTRATION_TOKEN
+      kind: Secret
+      name: gitea-actions-secrets
+      valuesKey: GITEA_RUNNER_REGISTRATION_TOKEN
