@@ -4,4 +4,4 @@ kind: Kustomization
 namespace: development
 resources:
   - ./helmrelease.yaml
-  - ./externalsecrets.yaml
+  - ./gitea-actions-secrets.sops.yaml
