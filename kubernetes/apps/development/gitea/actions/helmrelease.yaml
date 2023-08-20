@@ -30,8 +30,20 @@ spec:
         reloader.stakater.com/auto: "true"
     image:
       repository: vegardit/gitea-act-runner
-      tag: latest
+      tag: dind-rootless-latest
       pullPolicy: IfNotPresent
+    persistence:
+      data:
+        enabled: true
+        type: pvc
+        accessMode: ReadWriteOnce
+        size: 1Gi
+        mountPath: /data/.runner
+    service:
+      main:
+        enabled: false
+    securityContext:
+      privileged: true
     env:
       TZ: ${TIMEZONE}
       GITEA_INSTANCE_URL: 'https://gitea.{SECRET_DOMAIN}'
