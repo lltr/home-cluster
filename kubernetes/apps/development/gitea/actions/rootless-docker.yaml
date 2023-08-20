@@ -23,28 +23,6 @@ spec:
           emptyDir: {}
         - name: runner-data
           emptyDir: {}
-      # Initialise our configuration file using offline registration
-      # https://forgejo.org/docs/v1.21/admin/actions/#offline-registration
-      initContainers:
-        - name: runner-config-generation
-          image: code.forgejo.org/forgejo/runner:2.4.0
-          command:
-            [
-              "sh",
-              "-c",
-              "cd /data && forgejo-runner create-runner-file --instance $GITEA_INSTANCE_URL --secret $RUNNER_SECRET --connect",
-            ]
-          env:
-            - name: RUNNER_SECRET
-              valueFrom:
-                secretKeyRef:
-                  name: gitea-actions-secrets
-                  key: token
-            - name: GITEA_INSTANCE_URL
-              value: http://gitea-http.development.svc.cluster.local:3000
-          volumeMounts:
-            - name: runner-data
-              mountPath: /data
       containers:
         - name: runner
           image: gitea/act_runner:nightly
@@ -63,6 +41,11 @@ spec:
               value: "1"
             - name: GITEA_INSTANCE_URL
               value: http://gitea-http.development.svc.cluster.local:3000
+            - name: GITEA_RUNNER_REGISTRATION_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: gitea-actions-secrets
+                  key: token
           volumeMounts:
             - name: docker-certs
               mountPath: /certs
