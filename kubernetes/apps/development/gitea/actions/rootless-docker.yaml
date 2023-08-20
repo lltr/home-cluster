@@ -6,14 +6,14 @@ metadata:
     app: act-runner
   name: act-runner
 spec:
-  # Two replicas means that if one is busy, the other can pick up jobs.
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: act-runner
   strategy: {}
   template:
     metadata:
+      creationTimestamp: null
       labels:
         app: act-runner
     spec:
@@ -21,32 +21,11 @@ spec:
       volumes:
         - name: runner-data
           emptyDir: {}
-      # Initialise our configuration file using offline registration
-      # https://forgejo.org/docs/v1.21/admin/actions/#offline-registration
-      initContainers:
-        - name: runner-config-generation
-          image: code.forgejo.org/forgejo/runner:2.4.0
-          command:
-            [
-              "sh",
-              "-c",
-              "cd /data && forgejo-runner create-runner-file --instance $GITEA_INSTANCE_URL --secret $RUNNER_SECRET --connect",
-            ]
-          env:
-            - name: RUNNER_SECRET
-              valueFrom:
-                secretKeyRef:
-                  name: gitea-actions-secrets
-                  key: token
-            - name: GITEA_INSTANCE_URL
-              value: https://gitea.${SECRET_DOMAIN}
-          volumeMounts:
-            - name: runner-data
-              mountPath: /data
       containers:
         - name: runner
           image: gitea/act_runner:nightly-dind-rootless
           imagePullPolicy: Always
+          # command: ["sh", "-c", "while ! nc -z localhost 2376 </dev/null; do echo 'waiting for docker daemon...'; sleep 5; done; /sbin/tini -- /opt/act/run.sh"]
           env:
             - name: DOCKER_HOST
               value: tcp://localhost:2376
@@ -56,6 +35,11 @@ spec:
               value: "1"
             - name: GITEA_INSTANCE_URL
               value: https://gitea.${SECRET_DOMAIN}
+            - name: GITEA_RUNNER_REGISTRATION_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: gitea-actions-secrets
+                  key: token
           securityContext:
             privileged: true
           volumeMounts:
