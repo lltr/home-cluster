@@ -48,6 +48,7 @@ spec:
     enableServiceLinks: false
     service:
       main:
+        ipFamilyPolicy: PreferDualStack
         ports:
           http:
             port: &port 80
@@ -65,7 +66,7 @@ spec:
     #         scrapeTimeout: 10s
     probes:
       liveness: &probes
-        enabled: false
+        enabled: true
         custom: true
         spec:
           httpGet:
