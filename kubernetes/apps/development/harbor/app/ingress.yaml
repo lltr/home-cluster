@@ -30,7 +30,7 @@ spec:
                 name: harbor
                 port:
                   number: 443
-      tls:
-        - secretName: harbor-tls
-          hosts:
-            - *host
+  tls:
+    - hosts:
+        - *host
+      secretName: harbor-tls
