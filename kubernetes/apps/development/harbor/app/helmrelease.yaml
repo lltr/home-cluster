@@ -27,9 +27,9 @@ spec:
       type: ingress
       tls:
         enabled: true
-        certSource: none
-        # auto:
-        #   commonName: "harbor-tls"
+        certSource: auto
+        auto:
+          commonName: "harbor-tls"
         secret:
           secretName: "harbor-tls"
       ingress:
