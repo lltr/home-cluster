@@ -10,7 +10,6 @@ resources:
   - ./kubernetes-dashboard/ks.yaml
   - ./actual/ks.yaml
   - ./minio/ks.yaml
-  - ./glauth/ks.yaml
   - ./authelia/ks.yaml
   - ./smtp-relay/ks.yaml
   - ./vouch-proxy/ks.yaml
