@@ -36,9 +36,8 @@ spec:
         controller: default
         className: "nginx"
         annotations:
-          nginx.ingress.kubernetes.io/ssl-redirect: "true"
+          # nginx.ingress.kubernetes.io/ssl-redirect: "true"
           nginx.ingress.kubernetes.io/proxy-body-size: "0"
-          nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
           cert-manager.io/cluster-issuer: letsencrypt-production
           external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
           external-dns.home.arpa/enabled: "true"
