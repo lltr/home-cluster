@@ -24,25 +24,25 @@ spec:
       retries: 3
   values:
     expose:
-      type: clusterIP
+      type: ingress
       tls:
         # ! ingress=none/secret, clusterip=auto
-        certSource: auto
-        auto:
-          commonName: "cr.${SECRET_EXT_DOMAIN}"
-        # secret:
-        #   secretName: "harbor-manual-tls"
-      # ingress:
-      #   hosts:
-      #     core: cr.${SECRET_EXT_DOMAIN}
-      #   controller: default
-      #   className: "nginx"
-      #   annotations:
-      #     nginx.ingress.kubernetes.io/ssl-redirect: "true"
-      #     nginx.ingress.kubernetes.io/proxy-body-size: "0"
-      #     cert-manager.io/cluster-issuer: letsencrypt-production
-      #     external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
-      #     external-dns.home.arpa/enabled: "true"
+        certSource: secret
+        # auto:
+        #   commonName: "cr.${SECRET_EXT_DOMAIN}"
+        secret:
+          secretName: "harbor-staging-tls"
+      ingress:
+        hosts:
+          core: cr.${SECRET_EXT_DOMAIN}
+        controller: default
+        className: "nginx"
+        annotations:
+          nginx.ingress.kubernetes.io/ssl-redirect: "true"
+          nginx.ingress.kubernetes.io/proxy-body-size: "0"
+          cert-manager.io/cluster-issuer: letsencrypt-staging
+          external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
+          external-dns.home.arpa/enabled: "true"
     externalURL: https://cr.${SECRET_EXT_DOMAIN}
     ipFamily:
       ipv6:
