@@ -29,7 +29,7 @@ spec:
         enabled: true
         certSource: secret
         secret:
-          secretName: "harbor-ingress"
+          secretName: "harbor-tls"
       ingress:
         hosts:
           core: cr.${SECRET_EXT_DOMAIN}
