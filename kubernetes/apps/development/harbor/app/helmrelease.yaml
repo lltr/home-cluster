@@ -27,11 +27,9 @@ spec:
       type: ingress
       tls:
         enabled: true
-        certSource: auto
-        auto:
-          commonName: "harbor-tls"
+        certSource: secret
         secret:
-          secretName: "harbor-tls"
+          secretName: "harbor-ingress"
       ingress:
         hosts:
           core: cr.${SECRET_EXT_DOMAIN}
