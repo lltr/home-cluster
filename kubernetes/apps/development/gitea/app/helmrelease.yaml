@@ -135,7 +135,7 @@ spec:
           enabled: true
 
       oauth:
-        - name: Authelia
+        - name: authelia
           provider: openidConnect
           existingSecret: gitea-oauth-secret
           autoDiscoverUrl: "https://auth.${SECRET_DOMAIN}/.well-known/openid-configuration"
