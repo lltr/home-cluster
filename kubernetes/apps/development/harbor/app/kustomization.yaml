@@ -5,7 +5,7 @@ namespace: development
 resources:
   - ./helmrelease.yaml
   - ./harbor-secrets.sops.yaml
-  # - ./ingress.yaml
+  - ./ingress.yaml
   # PVCs
   - ./pvc/registry.yaml
   - ./pvc/jobservice.yaml
