@@ -10,11 +10,17 @@ metadata:
   annotations:
     # Ingress created for external-dns only, only when clusterip is used.
     # This file only used for proxying externally with cloudflare, tls terminated at cloudflare
-    external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
-    external-dns.alpha.kubernetes.io/target: "${SECRET_CLOUDFLARED_TUNNEL_ID}.cfargotunnel.com"
-    external-dns.home.arpa/enabled: "true"
+    # external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
+    # external-dns.alpha.kubernetes.io/target: "${SECRET_CLOUDFLARED_TUNNEL_ID}.cfargotunnel.com"
+    # external-dns.home.arpa/enabled: "true"
+    # nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    # nginx.ingress.kubernetes.io/proxy-body-size: "0"
+
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
     nginx.ingress.kubernetes.io/proxy-body-size: "0"
+    cert-manager.io/cluster-issuer: letsencrypt-production
+    external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
+    external-dns.home.arpa/enabled: "true"
 
 spec:
   ingressClassName: nginx
