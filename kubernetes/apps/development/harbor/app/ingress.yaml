@@ -20,7 +20,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: "cr.${SECRET_EXT_DOMAIN}"
+    - host: &host "cr.${SECRET_EXT_DOMAIN}"
       http:
         paths:
           - pathType: Prefix
@@ -30,3 +30,7 @@ spec:
                 name: harbor
                 port:
                   number: 443
+      tls:
+        - secretName: harbor-tls
+          hosts:
+            - *host
