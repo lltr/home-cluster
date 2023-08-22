@@ -24,7 +24,7 @@ spec:
       retries: 3
   values:
     expose:
-      type: clusterIP
+      type: ingress
       tls:
         enabled: true
         certSource: auto
@@ -32,25 +32,18 @@ spec:
           commonName: "harbor-tls"
         secret:
           secretName: "harbor-tls"
-      ClusterIP:
-        name: harbor
-        ports:
-          httpPort: 80
-          httpsPort: 443
-      # ingress:
-      #   hosts:
-      #     core: cr.${SECRET_EXT_DOMAIN}
-      #   controller: default
-      #   className: "nginx"
-      #   annotations:
-      #     ingress.kubernetes.io/ssl-redirect: "true"
-      #     ingress.kubernetes.io/proxy-body-size: "0"
-      #     nginx.ingress.kubernetes.io/ssl-redirect: "true"
-      #     nginx.ingress.kubernetes.io/proxy-body-size: "0"
-      #     cert-manager.io/cluster-issuer: letsencrypt-production
-      #     external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
-      #     external-dns.alpha.kubernetes.io/target: "${SECRET_CLOUDFLARED_TUNNEL_ID}.cfargotunnel.com"
-      #     external-dns.home.arpa/enabled: "true"
+      ingress:
+        hosts:
+          core: cr.${SECRET_EXT_DOMAIN}
+        controller: default
+        className: "nginx"
+        annotations:
+          nginx.ingress.kubernetes.io/ssl-redirect: "true"
+          nginx.ingress.kubernetes.io/proxy-body-size: "0"
+          cert-manager.io/cluster-issuer: letsencrypt-production
+          external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
+          external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
+          external-dns.home.arpa/enabled: "true"
     externalURL: https://cr.${SECRET_EXT_DOMAIN}
     ipFamily:
       ipv6:

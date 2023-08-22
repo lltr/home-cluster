@@ -8,20 +8,18 @@ metadata:
     app.kubernetes.io/instance: harbor
     app.kubernetes.io/name: harbor
   annotations:
-    # Ingress created for external-dns only.
-    # external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
-    external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
+    # Ingress created for external-dns only, only when clusterip is used.
+    # This file only used for proxying externally
+    external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
+    external-dns.alpha.kubernetes.io/target: "${SECRET_CLOUDFLARED_TUNNEL_ID}.cfargotunnel.com"
     external-dns.home.arpa/enabled: "true"
-    ingress.kubernetes.io/ssl-redirect: "true"
-    ingress.kubernetes.io/proxy-body-size: "0"
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
     nginx.ingress.kubernetes.io/proxy-body-size: "0"
-    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-    cert-manager.io/cluster-issuer: letsencrypt-production
+    # cert-manager.io/cluster-issuer: letsencrypt-production
 spec:
   ingressClassName: nginx
   rules:
-    - host: &host "cr.${SECRET_EXT_DOMAIN}"
+    - host: "cr.${SECRET_EXT_DOMAIN}"
       http:
         paths:
           - pathType: Prefix
@@ -31,7 +29,3 @@ spec:
                 name: harbor
                 port:
                   number: 443
-  tls:
-    - hosts:
-        - *host
-      secretName: harbor-tls
