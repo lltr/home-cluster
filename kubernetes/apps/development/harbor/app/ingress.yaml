@@ -32,7 +32,7 @@ spec:
             path: /
             backend:
               service:
-                name: harbor
+                name: harbor-nginx
                 port:
                   number: 443
   tls:

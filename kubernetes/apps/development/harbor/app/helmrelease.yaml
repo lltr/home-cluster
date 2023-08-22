@@ -26,6 +26,7 @@ spec:
     expose:
       type: clusterIP
       tls:
+        # ! ingress=none/secret, clusterip=auto
         certSource: auto
         auto:
           commonName: "harbor-auto-cert"
