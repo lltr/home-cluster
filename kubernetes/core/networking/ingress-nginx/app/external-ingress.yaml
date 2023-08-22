@@ -18,11 +18,10 @@ spec:
             path: /
             backend:
               service:
-                name: external-service-homeassistant
+                name: external-ip-homeassistant
                 port:
-                  number: 8123
+                  number: 80
   tls:
-  - hosts:
-    - *host
-    secretName: tls-external-homeassistant
-
+    - hosts:
+        - *host
+      secretName: tls-external-homeassistant
