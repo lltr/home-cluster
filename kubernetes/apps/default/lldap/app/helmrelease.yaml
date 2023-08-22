@@ -73,6 +73,7 @@ spec:
         tls:
           - hosts:
               - *host
+            secretName: lldap-tls
     persistence:
       data:
         enabled: true
