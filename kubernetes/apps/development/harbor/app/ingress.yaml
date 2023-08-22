@@ -9,7 +9,7 @@ metadata:
     app.kubernetes.io/name: harbor
   annotations:
     # Ingress created for external-dns only, only when clusterip is used.
-    # This file only used for proxying externally with cloudflare, tls terminated at cloudflare
+    # This file only used for proxying externally with cloudflare, tls terminated at cloudflare but cloudflare has 100MB max limit upload size
     external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
     external-dns.alpha.kubernetes.io/target: "${SECRET_CLOUDFLARED_TUNNEL_ID}.cfargotunnel.com"
     external-dns.home.arpa/enabled: "true"
