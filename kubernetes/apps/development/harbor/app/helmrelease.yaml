@@ -27,7 +27,7 @@ spec:
       type: clusterIP
       tls:
         # ! ingress=none/secret, clusterip=auto
-        certSource: none
+        certSource: auto
         auto:
           commonName: "cr.${SECRET_EXT_DOMAIN}"
         # secret:
