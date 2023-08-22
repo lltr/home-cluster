@@ -21,7 +21,7 @@ spec:
   ingressClassName: nginx
   rules:
     - host: &host "cr.${SECRET_EXT_DOMAIN}"
-      http:
+      https:
         paths:
           - pathType: Prefix
             path: /
