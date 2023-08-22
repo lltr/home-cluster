@@ -26,9 +26,11 @@ spec:
     expose:
       type: clusterIP
       tls:
-        certSource: secret
-        secret:
-          secretName: "harbor-manual-tls"
+        certSource: auto
+        auto:
+          commonName: "harbor-auto-cert"
+        # secret:
+        #   secretName: "harbor-manual-tls"
       # ingress:
       #   hosts:
       #     core: cr.${SECRET_EXT_DOMAIN}
