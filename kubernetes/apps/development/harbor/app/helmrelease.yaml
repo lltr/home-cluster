@@ -31,7 +31,7 @@ spec:
         # auto:
         #   commonName: "cr.${SECRET_EXT_DOMAIN}"
         secret:
-          secretName: "harbor-tls"
+          secretName: "harbor-staging-tls"
       ingress:
         hosts:
           core: cr.${SECRET_EXT_DOMAIN}
@@ -40,7 +40,7 @@ spec:
         annotations:
           nginx.ingress.kubernetes.io/ssl-redirect: "true"
           nginx.ingress.kubernetes.io/proxy-body-size: "0"
-          cert-manager.io/cluster-issuer: letsencrypt-production
+          cert-manager.io/cluster-issuer: letsencrypt-staging
           external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
           external-dns.home.arpa/enabled: "true"
     externalURL: https://cr.${SECRET_EXT_DOMAIN}
