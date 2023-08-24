@@ -1,0 +1,17 @@
+---
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: mongodb-devrs-certificate
+  namespace: databases
+spec:
+  secretName: mongodb-devrs-tls
+  issuerRef:
+    name: letsencrypt-production
+    kind: Issuer
+  commonName: "*.mongodb-devrs-svc.mongodb.svc.cluster.local"
+  dnsNames:
+    - "*.mongodb-devrs-svc.mongodb.svc.cluster.local"
+    - mongodb-devrs01.${SECRET_DOMAIN}
+    - mongodb-devrs02.${SECRET_DOMAIN}
+    - mongodb-devrs03.${SECRET_DOMAIN}
