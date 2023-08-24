@@ -45,9 +45,6 @@ spec:
           external-dns.home.arpa/enabled: "true"
           nginx.ingress.kubernetes.io/custom-http-errors: "418"
           nginx.ingress.kubernetes.io/proxy-connect-timeout: "480"
-          nginx.ingress.kubernetes.io/configuration-snippet: |
-            add_header X-Frame-Options DENY;
-            add_header Content-Security-Policy "frame-ancestors 'none'";
     externalURL: https://cr.${SECRET_EXT_DOMAIN}
     ipFamily:
       ipv6:
