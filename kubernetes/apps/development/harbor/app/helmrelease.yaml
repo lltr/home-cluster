@@ -43,18 +43,11 @@ spec:
           cert-manager.io/cluster-issuer: letsencrypt-production
           external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
           external-dns.home.arpa/enabled: "true"
-          nginx.org/server-snippets: |
-            location / {
-              proxy_hide_header 'X-Forwarded-Proto'
-            }
-
-            location /v2/ {
-              proxy_hide_header 'X-Forwarded-Proto'
-            }
-
-            location /service/ {
-              proxy_hide_header 'X-Forwarded-Proto'
-            }
+          nginx.ingress.kubernetes.io/custom-http-errors: "418"
+          nginx.ingress.kubernetes.io/proxy-connect-timeout: "480"
+          nginx.ingress.kubernetes.io/configuration-snippet: |
+            add_header X-Frame-Options DENY;
+            add_header Content-Security-Policy "frame-ancestors 'none'";
     externalURL: https://cr.${SECRET_EXT_DOMAIN}
     ipFamily:
       ipv6:
