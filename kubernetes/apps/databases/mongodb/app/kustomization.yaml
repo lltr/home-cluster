@@ -4,6 +4,6 @@ kind: Kustomization
 namespace: databases
 resources:
   - ./helmrelease.yaml
-  - ./ca-root-certificate.yaml
+  - ./ca-root-certificate.sops.yaml
   - ./ca-key-pair.sops.yaml
   - ./ca-issuer.yaml
