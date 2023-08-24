@@ -9,9 +9,9 @@ spec:
   issuerRef:
     name: letsencrypt-production
     kind: Issuer
-  commonName: "*.mongodb-devrs-svc.mongodb.svc.cluster.local"
+  commonName: "*.mongodb-devrs-svc.databases.svc.cluster.local"
   dnsNames:
-    - "*.mongodb-devrs-svc.mongodb.svc.cluster.local"
+    - "*.mongodb-devrs-svc.databases.svc.cluster.local"
     - mongodb-devrs01.${SECRET_DOMAIN}
     - mongodb-devrs02.${SECRET_DOMAIN}
     - mongodb-devrs03.${SECRET_DOMAIN}
