@@ -17,8 +17,8 @@ spec:
       enabled: true
       certificateKeySecretRef:
         name: mongodb-devrs-tls
-      caConfigMapRef:
-        name: letsencrypt-ca-configmap
+      caCertificateSecretRef:
+        name: mongodb-ca-root-certificate
     authentication:
       modes: ["SCRAM", "SCRAM-SHA-1"]
   users:

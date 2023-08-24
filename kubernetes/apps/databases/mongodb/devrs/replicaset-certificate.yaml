@@ -7,8 +7,8 @@ metadata:
 spec:
   secretName: mongodb-devrs-tls
   issuerRef:
-    name: letsencrypt-production
-    kind: ClusterIssuer
+    name: mongodb-issuer
+    kind: Issuer
   commonName: "*.mongodb-devrs-svc.databases.svc.cluster.local"
   dnsNames:
     - "*.mongodb-devrs-svc.databases.svc.cluster.local"

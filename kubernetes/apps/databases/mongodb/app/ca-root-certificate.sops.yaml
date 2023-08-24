@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: mongodb-ca-root-certificate
+    namespace: databases
+type: Opaque
+stringData:
+    ca.crt: ENC[AES256_GCM,data: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,iv:337R1P3ZWFSDXCyvUkb8SToNXnjtcxS+y4ealfAoRpk=,tag:NmbgKtTMPlHqqtlgz13Big==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1k8xaut2yz4ttudhtwxk0jf8ckrav2rugjup5vyqu3tyzp2lxhgxq93u2mf
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBvUWRweHMzb2VBMFZZZENM
+            TE1VNVpDbHo1dnBzbjZUcWRjYlhvV01MY1hJCjJVQmlweVhjVzdrOVhxcDdsb1dv
+            K1pMOVQvTWV5bkl5OG13eWp5T05EK3MKLS0tIGtzN0JSd1p1V291WURrT3lXSUFT
+            bjIyb25NL0U2ZE1DRElFdE5DUFZEUVkKKg3VGSbr4fWG+RFs8LvFqal4xCNrFv/y
+            B8E5dtGfioGAQRb4aKXUX59CEEe5XzC/R5eN4tEK9NqziMR73o30dA==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2023-08-24T14:39:58Z"
+    mac: ENC[AES256_GCM,data:4oHAQDM7NZZtWZdk02ERkHfwQeA5qJ29WYot7J0j2NAjyKJqRD0ngswLdUM3aV+Q9kZ44gsPlZR/+J9IQn2n9eyOFr0lryaIKwqBlZxk9EN8+JzgbUAWLCPSa5Z4m2/M3RGUqJW6fz0FfA3EyKEWmMz+3LgtTQ6GqwlCE1en1oI=,iv:zsS9xoAcsScVICVRg15kljFRuhUff8OwcMKBcZ23g4k=,tag:Td0kSKeMXw8JVxQR2qF02Q==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.7.3

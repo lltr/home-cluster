@@ -7,4 +7,3 @@ resources:
   - ./replicaset-secrets.sops.yaml
   - ./replicaset-certificate.yaml
   - ./replicaset-external-services.yaml
-  - ./letsencrypt-ca-configmap.yaml
