@@ -43,6 +43,18 @@ spec:
           cert-manager.io/cluster-issuer: letsencrypt-production
           external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
           external-dns.home.arpa/enabled: "true"
+          nginx.org/server-snippets: |
+            location / {
+              proxy_hide_header 'X-Forwarded-Proto'
+            }
+
+            location /v2/ {
+              proxy_hide_header 'X-Forwarded-Proto'
+            }
+
+            location /service/ {
+              proxy_hide_header 'X-Forwarded-Proto'
+            }
     externalURL: https://cr.${SECRET_EXT_DOMAIN}
     ipFamily:
       ipv6:
