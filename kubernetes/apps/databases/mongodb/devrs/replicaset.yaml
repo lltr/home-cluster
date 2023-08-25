@@ -7,7 +7,7 @@ metadata:
 spec:
   members: 3
   type: ReplicaSet
-  version: "6.0.5"
+  version: "6.0.9"
   replicaSetHorizons:
     - horizon: mongodb-devrs01.${SECRET_DOMAIN}:31181
     - horizon: mongodb-devrs02.${SECRET_DOMAIN}:31182
