@@ -13,7 +13,7 @@ metadata:
 spec:
   isCA: true
   commonName: my-selfsigned-ca
-  secretName: root-secret
+  secretName: selfsigned-root-secret
   privateKey:
     algorithm: ECDSA
     size: 256
@@ -28,4 +28,4 @@ metadata:
   name: selfsigned-issuer
 spec:
   ca:
-    secretName: root-secret
+    secretName: selfsigned-root-secret
