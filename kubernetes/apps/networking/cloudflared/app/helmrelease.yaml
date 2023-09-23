@@ -50,7 +50,7 @@ spec:
         enabled: true
         type: configMap
         name: cloudflared-config
-        subPath: config.yaml
+        subPath: cloudflared-config.yaml
         mountPath: /etc/cloudflared/config/cloudflared-config.yaml
         readOnly: true
       # By default, the credentials file will be created under ~/.cloudflared/<tunnel ID>.json
