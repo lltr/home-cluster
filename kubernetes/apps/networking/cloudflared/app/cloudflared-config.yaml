@@ -29,8 +29,9 @@ ingress:
   #   service: https://harbor.development:443
   #   originRequest:
   #     noTLSVerify: true
+
   - hostname: "go.${SECRET_EXT_DOMAIN}"
-    service: https://x.${SECRET_DEV_DOMAIN}
+    service: http://node-link-api.apps-platform-dev:3030
 
   ### "Else" rule matches any traffic which didn't match a previous rule, and responds with HTTP 404.
   - service: http_status:404
