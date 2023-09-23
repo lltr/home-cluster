@@ -31,7 +31,7 @@ spec:
     args:
       - tunnel
       - --config
-      - /etc/cloudflared/config/config.yaml
+      - /etc/cloudflared/config/cloudflared-config.yaml
       - run
 
     ingress:
@@ -51,7 +51,7 @@ spec:
         type: configMap
         name: cloudflared-config
         subPath: config.yaml
-        mountPath: /etc/cloudflared/config/config.yaml
+        mountPath: /etc/cloudflared/config/cloudflared-config.yaml
         readOnly: true
       # By default, the credentials file will be created under ~/.cloudflared/<tunnel ID>.json
       # when you run `cloudflared tunnel create`. You can move it into a secret by using:
