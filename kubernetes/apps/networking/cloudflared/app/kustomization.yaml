@@ -8,6 +8,6 @@ resources:
 configMapGenerator:
   - name: cloudflared-config
     files:
-      - ./cloudflared-config.yaml
+      - ./config.yaml
 generatorOptions:
   disableNameSuffixHash: true
