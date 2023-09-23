@@ -6,7 +6,7 @@ resources:
   - ./helmrelease.yaml
   - ./cloudflared-credentials.sops.yaml
 configMapGenerator:
-  - name: cloudflared-config
+  - name: cloudflared-config2
     files:
       - ./cloudflared-config.yaml
 generatorOptions:
