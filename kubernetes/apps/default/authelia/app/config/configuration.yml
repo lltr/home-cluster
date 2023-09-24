@@ -58,7 +58,7 @@ identity_providers:
         authorization_policy: one_factor
         pre_configured_consent_duration: 1d
         scopes: ["openid", "profile", "groups", "email"]
-        redirect_uris: ["http://localhost:8080/login/callback", "https://api.orchestra.${SECRET_DEV_DOMAIN}/login/callback", "https://vouch.${SECRET_DEV_DOMAIN}/auth"]
+        redirect_uris: ["http://localhost:8080/login/callback", "https://api.orchestra.${SECRET_DEV_DOMAIN}/login/callback"]
         userinfo_signing_algorithm: none
       # - id: weave-gitops
       #   description: Weave GitOps
