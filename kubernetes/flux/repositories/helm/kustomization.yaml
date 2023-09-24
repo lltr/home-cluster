@@ -17,7 +17,6 @@ resources:
   - ./grafana.yaml
   - ./mvisonneau.yaml
   - ./gitlab.yaml
-  - ./drone.yaml
   - ./gitea-charts.yaml
   - ./renovate.yaml
   - ./harbor.yaml
