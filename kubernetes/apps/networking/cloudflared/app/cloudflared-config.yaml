@@ -14,6 +14,9 @@ ingress:
     service: https://etherpad.${SECRET_DOMAIN}
 
   ### Proxy traffic directly to ingress-nginx controller service (ingress created)
+  - hostname: "external.${SECRET_DOMAIN}"
+    service: http://ingress-nginx-controller.networking
+
   - hostname: "status.${SECRET_EXT_DOMAIN}"
     service: http://ingress-nginx-controller.networking
   - hostname: "flux.${SECRET_EXT_DOMAIN}"
