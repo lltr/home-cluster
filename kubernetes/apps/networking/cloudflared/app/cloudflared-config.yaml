@@ -29,11 +29,7 @@ ingress:
     originRequest:
       originServerName: external.${SECRET_DOMAIN}"
 
-  # - hostname: "status.${SECRET_EXT_DOMAIN}"
-  #   service: http://ingress-nginx-controller.networking
   # - hostname: "flux.${SECRET_EXT_DOMAIN}"
-  #   service: http://ingress-nginx-controller.networking
-  # - hostname: "echo.${SECRET_EXT_DOMAIN}"
   #   service: http://ingress-nginx-controller.networking
 
   ### Proxy traffic to the Kubernetes Services directly
@@ -44,9 +40,6 @@ ingress:
   #   service: https://harbor.development:443
   #   originRequest:
   #     noTLSVerify: true
-
-  - hostname: "go.${SECRET_EXT_DOMAIN}"
-    service: http://node-link-api.appsplatform-dev:3030
 
   ### "Else" rule matches any traffic which didn't match a previous rule, and responds with HTTP 404.
   - service: http_status:404
