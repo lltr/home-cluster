@@ -20,6 +20,7 @@ spec:
           dnsZones:
             - "${SECRET_DOMAIN}"
             - "${SECRET_EXT_DOMAIN}"
+            - "${SECRET_REGISTRY_DOMAIN}"
             - "${SECRET_DEV_DOMAIN}"
             - "${SECRET_APPSPLATFORM_PRD_DOMAIN}"
 
@@ -45,5 +46,6 @@ spec:
           dnsZones:
             - "${SECRET_DOMAIN}"
             - "${SECRET_EXT_DOMAIN}"
+            - "${SECRET_REGISTRY_DOMAIN}"
             - "${SECRET_DEV_DOMAIN}"
             - "${SECRET_APPSPLATFORM_PRD_DOMAIN}"

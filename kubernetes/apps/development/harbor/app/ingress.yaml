@@ -26,7 +26,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: &host "cr.${SECRET_EXT_DOMAIN}"
+    - host: &host "${SECRET_REGISTRY_DOMAIN}"
       http:
         paths:
           - pathType: Prefix

@@ -29,12 +29,12 @@ spec:
         # ! ingress=none/secret, clusterip=auto
         certSource: secret
         # auto:
-        #   commonName: "cr.${SECRET_EXT_DOMAIN}"
+        #   commonName: "${SECRET_REGISTRY_DOMAIN}"
         secret:
           secretName: "harbor-tls"
       ingress:
         hosts:
-          core: cr.${SECRET_EXT_DOMAIN}
+          core: ${SECRET_REGISTRY_DOMAIN}
         controller: default
         className: "nginx"
         annotations:
@@ -45,7 +45,7 @@ spec:
           external-dns.home.arpa/enabled: "true"
           nginx.ingress.kubernetes.io/custom-http-errors: "418"
           nginx.ingress.kubernetes.io/proxy-connect-timeout: "480"
-    externalURL: https://cr.${SECRET_EXT_DOMAIN}
+    externalURL: https://${SECRET_REGISTRY_DOMAIN}
     ipFamily:
       ipv6:
         enabled: false

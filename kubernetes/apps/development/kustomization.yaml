@@ -5,5 +5,5 @@ resources:
   - ./namespace.yaml
   - ./gitlab-runner/ks.yaml
   - ./gitea/ks.yaml
-  - ./renovate/ks.yaml
+  # - ./renovate/ks.yaml
   - ./harbor/ks.yaml

@@ -4,5 +4,5 @@ metadata:
   name: discord-watcher-server
   namespace: flux-system
 spec:
-  image: cr.${SECRET_EXT_DOMAIN}/watcher/discord-watcher-server
+  image: ${SECRET_REGISTRY_DOMAIN}/watcher/discord-watcher-server
   interval: 30m0s
