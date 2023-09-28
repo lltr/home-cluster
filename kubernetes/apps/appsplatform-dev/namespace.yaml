@@ -5,3 +5,4 @@ metadata:
   name: appsplatform-dev
   labels:
     kustomize.toolkit.fluxcd.io/prune: disabled
+    cluster-secret.home.arpa/name: harbor-registry
