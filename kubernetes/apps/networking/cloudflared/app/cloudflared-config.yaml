@@ -5,6 +5,8 @@ credentials-file: /etc/cloudflared/creds/credentials.json
 # Serves the metrics server under /metrics and the readiness server under /ready
 metrics: 0.0.0.0:2000
 no-autoupdate: true
+originRequest:
+  http2Origin: true
 
 ingress:
   ### Proxy nginx to the k8s ingress (ingress-nginx) to hand off to Services
@@ -14,15 +16,25 @@ ingress:
     service: https://etherpad.${SECRET_DOMAIN}
 
   ### Proxy traffic directly to ingress-nginx controller service (ingress created)
-  - hostname: "external.${SECRET_DOMAIN}"
+  - hostname: "*.${SECRET_DEV_DOMAIN}"
     service: http://ingress-nginx-controller.networking
+    originRequest:
+      originServerName: external.${SECRET_DOMAIN}"
+  - hostname: "*.${SECRET_EXT_DOMAIN}"
+    service: http://ingress-nginx-controller.networking
+    originRequest:
+      originServerName: external.${SECRET_DOMAIN}"
+  - hostname: "*.${SECRET_APPSPLATFORM_PRD_DOMAIN}"
+    service: http://ingress-nginx-controller.networking
+    originRequest:
+      originServerName: external.${SECRET_DOMAIN}"
 
-  - hostname: "status.${SECRET_EXT_DOMAIN}"
-    service: http://ingress-nginx-controller.networking
-  - hostname: "flux.${SECRET_EXT_DOMAIN}"
-    service: http://ingress-nginx-controller.networking
-  - hostname: "echo.${SECRET_EXT_DOMAIN}"
-    service: http://ingress-nginx-controller.networking
+  # - hostname: "status.${SECRET_EXT_DOMAIN}"
+  #   service: http://ingress-nginx-controller.networking
+  # - hostname: "flux.${SECRET_EXT_DOMAIN}"
+  #   service: http://ingress-nginx-controller.networking
+  # - hostname: "echo.${SECRET_EXT_DOMAIN}"
+  #   service: http://ingress-nginx-controller.networking
 
   ### Proxy traffic to the Kubernetes Services directly
   # - hostname: "echo.${SECRET_EXT_DOMAIN}"
