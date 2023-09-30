@@ -63,6 +63,7 @@ spec:
               exclude:
                 - "networking"
                 - "databases"
+                - "development"
             nodeResourceUtilizationThresholds:
               thresholds:
                 cpu: 50
