@@ -28,3 +28,4 @@ resources:
   - ./external-secrets.yaml
   - ./kyverno.yaml
   - ./mongodb.yaml
+  - ./descheduler.yaml

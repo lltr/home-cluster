@@ -8,3 +8,4 @@ resources:
   - ./snapshot-controller/ks.yaml
   - ./local-path-provisioner/ks.yaml
   - ./external-secrets/ks.yaml
+  - ./descheduler/ks.yaml
