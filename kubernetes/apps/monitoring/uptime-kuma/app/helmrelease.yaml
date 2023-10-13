@@ -28,9 +28,6 @@ spec:
       tag: 1.23.2-alpine
     env:
       TZ: "${TIMEZONE}"
-      dns: >-
-        192.168.0.1
-        9.9.9.9
     persistence:
       data:
         enabled: true
