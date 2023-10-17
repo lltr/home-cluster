@@ -5,14 +5,14 @@ metadata:
   name: main
   namespace: elastic
 spec:
-  version: 8.8.1
+  version: 8.10.2
   http:
     tls:
       selfSignedCertificate:
         disabled: true
   nodeSets:
     - name: default
-      count: 1
+      count: 3
       config:
         node.store.allow_mmap: false
       podTemplate:

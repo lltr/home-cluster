@@ -5,7 +5,7 @@ metadata:
   name: main
   namespace: elastic
 spec:
-  version: 8.8.1
+  version: 8.10.2
   count: 1
   elasticsearchRef:
     name: main
