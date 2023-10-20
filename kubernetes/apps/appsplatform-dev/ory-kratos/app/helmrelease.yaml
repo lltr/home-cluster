@@ -34,6 +34,7 @@ spec:
       extraVolumeMounts:
         - name: config-volume
           mountPath: /etc/kratos/
+          subPath: config.yaml
       extraArgs:
         - -c
         - /etc/kratos/config.yaml
@@ -46,6 +47,7 @@ spec:
       extraVolumeMounts:
         - name: config-volume
           mountPath: /etc/kratos/
+          subPath: config.yaml
       extraArgs:
         - -c
         - /etc/kratos/config.yaml
