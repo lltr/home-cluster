@@ -39,7 +39,6 @@ spec:
         - /etc/kratos/config.yaml
       annotations:
         reloader.stakater.com/auto: "true"
-
     statefulSet:
       extraVolumes:
         - name: config-volume
@@ -58,14 +57,6 @@ spec:
       automigration:
         enabled: true
       development: true
-      config:
-        selfservice:
-          default_browser_return_url: http://127.0.0.1:4455/
-        identity:
-          default_schema_id: default
-          schemas:
-            - id: default
-              url: file:///etc/config/identity.default.schema.json
       identitySchemas:
         "identity.default.schema.json": |
           {
@@ -140,8 +131,8 @@ spec:
           - hosts:
               - *publichost
             secretName: kratos-public-tls
-  valuesFrom:
-    - targetPath: kratos.config.courier.smtp.connection_uri
-      kind: Secret
-      name: ory-kratos-secrets
-      valuesKey: smtpConnectionURI
+  # valuesFrom:
+  #   - targetPath: kratos.config.courier.smtp.connection_uri
+  #     kind: Secret
+  #     name: ory-kratos-secrets
+  #     valuesKey: smtpConnectionURI
