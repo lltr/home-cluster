@@ -26,6 +26,12 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    deployment:
+      annotations:
+        reloader.stakater.com/auto: "true"
+    statefulSet:
+      annotations:
+        reloader.stakater.com/auto: "true"
     kratos:
       automigration:
         enabled: true
