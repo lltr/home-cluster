@@ -34,14 +34,13 @@ spec:
       extraVolumeMounts:
         - name: config-volume
           mountPath: /etc/kratos
-          subPath: config.yaml
       extraArgs:
         - -c
         - /etc/kratos/config.yaml
       annotations:
         reloader.stakater.com/auto: "true"
 
-    statefulset:
+    statefulSet:
       extraVolumes:
         - name: config-volume
           secret:
@@ -49,7 +48,6 @@ spec:
       extraVolumeMounts:
         - name: config-volume
           mountPath: /etc/kratos
-          subPath: config.yaml
       extraArgs:
         - -c
         - /etc/kratos/config.yaml
