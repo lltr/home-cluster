@@ -97,7 +97,7 @@ spec:
 
     secret:
       enabled: false
-      # nameOverride: "ory-kratos-secrets"
+      nameOverride: "ory-kratos-secrets"
     ingress:
       admin:
         enabled: true
