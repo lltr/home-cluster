@@ -56,7 +56,7 @@ spec:
     kratos:
       automigration:
         enabled: true
-      development: true
+      development: false
       identitySchemas:
         "identity.default.schema.json": |
           {
