@@ -33,7 +33,7 @@ spec:
             secretName: ory-kratos-config
       extraVolumeMounts:
         - name: config-volume
-          mountPath: /etc/kratos/
+          mountPath: /etc/kratos
           subPath: config.yaml
       extraArgs:
         - -c
@@ -46,7 +46,7 @@ spec:
             secretName: ory-kratos-config
       extraVolumeMounts:
         - name: config-volume
-          mountPath: /etc/kratos/
+          mountPath: /etc/kratos
           subPath: config.yaml
       extraArgs:
         - -c
