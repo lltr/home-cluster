@@ -26,10 +26,48 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    deployment:
+      extraVolumes:
+        - name: config-volume
+          secret:
+            secretName: ory-kratos-config
+      extraVolumeMounts:
+        - name: config-volume
+          mountPath: /etc/kratos
+          subPath: config.yaml
+      extraArgs:
+        - -c
+        - /etc/kratos/config.yaml
+      annotations:
+        reloader.stakater.com/auto: "true"
+
+    statefulset:
+      extraVolumes:
+        - name: config-volume
+          secret:
+            secretName: ory-kratos-config
+      extraVolumeMounts:
+        - name: config-volume
+          mountPath: /etc/kratos
+          subPath: config.yaml
+      extraArgs:
+        - -c
+        - /etc/kratos/config.yaml
+      annotations:
+        reloader.stakater.com/auto: "true"
+
     kratos:
       automigration:
-        enabled: false
+        enabled: true
       development: true
+      config:
+        selfservice:
+          default_browser_return_url: http://127.0.0.1:4455/
+        identity:
+          default_schema_id: default
+          schemas:
+            - id: default
+              url: file:///etc/config/identity.default.schema.json
       identitySchemas:
         "identity.default.schema.json": |
           {
@@ -68,39 +106,9 @@ spec:
             }
           }
 
-    deployment:
-      extraVolumes:
-        - name: config-volume
-          secret:
-            secretName: ory-kratos-config
-      extraVolumeMounts:
-        - name: config-volume
-          mountPath: /etc/kratos
-          subPath: config.yaml
-      extraArgs:
-        - -c
-        - /etc/kratos/config.yaml
-      annotations:
-        reloader.stakater.com/auto: "true"
-
-    statefulset:
-      extraVolumes:
-        - name: config-volume
-          secret:
-            secretName: ory-kratos-config
-      extraVolumeMounts:
-        - name: config-volume
-          mountPath: /etc/kratos
-          subPath: config.yaml
-      extraArgs:
-        - -c
-        - /etc/kratos/config.yaml
-      annotations:
-        reloader.stakater.com/auto: "true"
-
-    # secret:
-    #   enabled: false
-    #   nameOverride: "ory-kratos-secrets"
+    secret:
+      enabled: false
+      nameOverride: "ory-kratos-secrets"
     ingress:
       admin:
         enabled: true
@@ -134,8 +142,8 @@ spec:
           - hosts:
               - *publichost
             secretName: kratos-public-tls
-  # valuesFrom:
-  #   - targetPath: kratos.config.courier.smtp.connection_uri
-  #     kind: Secret
-  #     name: ory-kratos-secrets
-  #     valuesKey: smtpConnectionURI
+  valuesFrom:
+    - targetPath: kratos.config.courier.smtp.connection_uri
+      kind: Secret
+      name: ory-kratos-secrets
+      valuesKey: smtpConnectionURI
