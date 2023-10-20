@@ -33,6 +33,11 @@ spec:
       config:
         selfservice:
           default_browser_return_url: http://127.0.0.1:4455/
+        identity:
+          default_schema_id: default
+          schemas:
+            - id: default
+              url: file:///etc/config/identity.default.schema.json
       identitySchemas:
         "identity.default.schema.json": |
           {
