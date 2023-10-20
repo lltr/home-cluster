@@ -85,6 +85,32 @@ spec:
                         "via": "email"
                       }
                     }
+                  },
+                  "name": {
+                    "type": "object",
+                    "properties": {
+                      "first": {
+                        "title": "First Name",
+                        "type": "string"
+                      },
+                      "last": {
+                        "title": "Last Name",
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "role": {
+                    "title": "Role",
+                    "type": "string",
+                    "default": "user",
+                    "enum": ["user", "admin", "moderator"]
+                  },
+                  "group": {
+                    "title": "Group",
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
                   }
                 },
                 "required": [
