@@ -112,3 +112,8 @@ spec:
           - hosts:
               - *publichost
             secretName: kratos-public-tls
+  valuesFrom:
+    - targetPath: kratos.config.courier.smtp.connection_uri
+      kind: Secret
+      name: ory-kratos-secrets
+      valuesKey: smtpConnectionURI
