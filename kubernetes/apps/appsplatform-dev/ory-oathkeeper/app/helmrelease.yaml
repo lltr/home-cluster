@@ -1,0 +1,142 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: ory-oathkeeper
+  namespace: appsplatform-dev
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: kratos
+      version: 0.36.0
+      sourceRef:
+        kind: HelmRepository
+        name: ory
+        namespace: flux-system
+  maxHistory: 3
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    deployment:
+      extraVolumes:
+        - name: config-volume
+          secret:
+            secretName: ory-oathkeeper-config
+      extraVolumeMounts:
+        - name: config-volume
+          mountPath: /etc/oathkeeper
+      extraArgs:
+        - -c
+        - /etc/oathkeeper/config.yaml
+      annotations:
+        reloader.stakater.com/auto: "true"
+    statefulSet:
+      extraVolumes:
+        - name: config-volume
+          secret:
+            secretName: ory-oathkeeper-config
+      extraVolumeMounts:
+        - name: config-volume
+          mountPath: /etc/oathkeeper
+      extraArgs:
+        - -c
+        - /etc/oathkeeper/config.yaml
+      annotations:
+        reloader.stakater.com/auto: "true"
+
+    oathkeeper:
+      automigration:
+        enabled: true
+      development: false
+      identitySchemas:
+        "identity.default.schema.json": |
+          {
+            "$id": "https://schemas.ory.sh/presets/kratos/identity.email.schema.json",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "title": "Person",
+            "type": "object",
+            "properties": {
+              "traits": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "title": "E-Mail",
+                    "ory.sh/kratos": {
+                      "credentials": {
+                        "password": {
+                          "identifier": true
+                        }
+                      },
+                      "recovery": {
+                        "via": "email"
+                      },
+                      "verification": {
+                        "via": "email"
+                      }
+                    }
+                  },
+                  "name": {
+                    "type": "object",
+                    "properties": {
+                      "first": {
+                        "title": "First Name",
+                        "type": "string"
+                      },
+                      "last": {
+                        "title": "Last Name",
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "role": {
+                    "title": "Role",
+                    "type": "string",
+                    "default": "user",
+                    "enum": ["user", "admin", "moderator"]
+                  },
+                  "group": {
+                    "title": "Group",
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": [
+                  "email"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+
+    secret:
+      enabled: false
+    ingress:
+      proxy:
+        enabled: true
+        className: "nginx"
+        annotations:
+          cert-manager.io/cluster-issuer: letsencrypt-production
+          external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
+          external-dns.home.arpa/enabled: "true"
+        hosts:
+          - host: &host oathkeeper.${SECRET_DEV_DOMAIN}
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - *host
+            secretName: oathkeeper-tls
