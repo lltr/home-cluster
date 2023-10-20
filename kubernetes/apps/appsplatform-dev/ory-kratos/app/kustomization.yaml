@@ -4,4 +4,5 @@ kind: Kustomization
 namespace: appsplatform-dev
 resources:
   - ./helmrelease.yaml
-  - ./kratos-secrets.sops.yaml
+  # - ./kratos-secrets.sops.yaml
+  - ./kratos-config.sops.yaml
