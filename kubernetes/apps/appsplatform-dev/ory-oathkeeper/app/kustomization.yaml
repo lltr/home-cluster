@@ -5,3 +5,4 @@ namespace: appsplatform-dev
 resources:
   - ./helmrelease.yaml
   - ./oathkeeper-config.sops.yaml
+  - ./accessrules.sops.yaml
