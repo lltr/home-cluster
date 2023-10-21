@@ -31,9 +31,14 @@ spec:
         - name: config-volume
           secret:
             secretName: ory-kratos-config
+        - name: identityschemas-volume
+          secret:
+            secretName: identityschemas-secret
       extraVolumeMounts:
         - name: config-volume
           mountPath: /etc/kratos
+        - name: identityschema-volume
+          mountPath: /etc/kratos/identityschemas
       extraArgs:
         - -c
         - /etc/kratos/config.yaml
@@ -57,73 +62,10 @@ spec:
       automigration:
         enabled: true
       development: false
-      identitySchemas:
-        "identity.default.schema.json": |
-          {
-            "$id": "https://schemas.ory.sh/presets/kratos/identity.email.schema.json",
-            "$schema": "http://json-schema.org/draft-07/schema#",
-            "title": "Person",
-            "type": "object",
-            "properties": {
-              "traits": {
-                "type": "object",
-                "properties": {
-                  "email": {
-                    "type": "string",
-                    "format": "email",
-                    "title": "E-Mail",
-                    "ory.sh/kratos": {
-                      "credentials": {
-                        "password": {
-                          "identifier": true
-                        }
-                      },
-                      "recovery": {
-                        "via": "email"
-                      },
-                      "verification": {
-                        "via": "email"
-                      }
-                    }
-                  },
-                  "name": {
-                    "type": "object",
-                    "properties": {
-                      "first": {
-                        "title": "First Name",
-                        "type": "string"
-                      },
-                      "last": {
-                        "title": "Last Name",
-                        "type": "string"
-                      }
-                    }
-                  },
-                  "role": {
-                    "title": "Role",
-                    "type": "string",
-                    "default": "user",
-                    "enum": ["user", "admin", "moderator"]
-                  },
-                  "group": {
-                    "title": "Group",
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "required": [
-                  "email"
-                ],
-                "additionalProperties": false
-              }
-            }
-          }
-
     secret:
       enabled: false
       nameOverride: "ory-kratos-secrets"
+
     ingress:
       admin:
         enabled: true

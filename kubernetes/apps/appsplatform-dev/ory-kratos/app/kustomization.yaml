@@ -6,3 +6,4 @@ resources:
   - ./helmrelease.yaml
   - ./kratos-secrets.sops.yaml
   - ./kratos-config.sops.yaml
+  - ./identityschemas.sops.yaml
