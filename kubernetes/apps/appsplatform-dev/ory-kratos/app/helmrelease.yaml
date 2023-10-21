@@ -49,9 +49,14 @@ spec:
         - name: config-volume
           secret:
             secretName: ory-kratos-config
+        - name: identityschemas-volume
+          secret:
+            secretName: identityschemas-secret
       extraVolumeMounts:
         - name: config-volume
           mountPath: /etc/kratos
+        - name: identityschema-volume
+          mountPath: /etc/kratos/identityschemas
       extraArgs:
         - -c
         - /etc/kratos/config.yaml
