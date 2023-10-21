@@ -37,7 +37,7 @@ spec:
       extraVolumeMounts:
         - name: config-volume
           mountPath: /etc/kratos
-        - name: identityschema-volume
+        - name: identityschemas-volume
           mountPath: /etc/kratos/identityschemas
       extraArgs:
         - -c
@@ -55,7 +55,7 @@ spec:
       extraVolumeMounts:
         - name: config-volume
           mountPath: /etc/kratos
-        - name: identityschema-volume
+        - name: identityschemas-volume
           mountPath: /etc/kratos/identityschemas
       extraArgs:
         - -c
