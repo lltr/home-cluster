@@ -116,7 +116,7 @@ spec:
           ENABLED: true
           SCHEDULE: "@every 168h"
         admin:
-          DISABLE_REGULAR_ORG_CREATION: true
+          DISABLE_REGULAR_ORG_CREATION: false
         storage:
           STORAGE_TYPE: minio
           MINIO_ENDPOINT: minio.default.svc.cluster.local:9000
