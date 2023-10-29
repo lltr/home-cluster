@@ -33,8 +33,8 @@ spec:
         containers:
           main:
             image:
-              repository: ghcr.io/lltr/excalidraw-collab
-              tag: latest@sha256:881e671feac4c38eebb7db9debbf060963113bc5d7cb2579f5f9e160ca05c585
+              repository: ghcr.io/ryan-mcd/excalidraw-collab
+              tag: "0.0.3184"
               pullPolicy: IfNotPresent
             resources:
               requests:
