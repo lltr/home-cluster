@@ -30,9 +30,6 @@ spec:
     controller:
       proxy:
         nameOverride: "{{ .Release.Name }}-gateway-proxy"
-        annotations:
-          metallb.universe.tf/loadBalancerIPs: |-
-            ${KONG_INGRESS_ADDR}
 
       enabled: true
 
@@ -60,6 +57,11 @@ spec:
       deployment:
         kong:
           enabled: true
+
+      proxy:
+        annotations:
+          metallb.universe.tf/loadBalancerIPs: |-
+            ${KONG_INGRESS_ADDR}
 
       admin:
         enabled: true
