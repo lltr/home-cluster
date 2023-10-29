@@ -33,8 +33,8 @@ spec:
         containers:
           main:
             image:
-              repository: ghcr.io/onedr0p/excalidraw
-              tag: latest@sha256:bafe3a1e529aac9e9d536199e77133b60bfce4413458ee0a46e48fb07095d23b
+              repository: ghcr.io/lltr/excalidraw-collab
+              tag: latest@sha256:881e671feac4c38eebb7db9debbf060963113bc5d7cb2579f5f9e160ca05c585
               pullPolicy: IfNotPresent
             resources:
               requests:
@@ -43,7 +43,7 @@ spec:
               limits:
                 memory: 50Mi
             env:
-              REACT_APP_WS_SERVER_URL: excalidraw-room.${SECRET_DOMAIN}
+              COLLAB_ADDR: excalidraw-room.${SECRET_DOMAIN}
         pod:
           topologySpreadConstraints:
             - maxSkew: 1
