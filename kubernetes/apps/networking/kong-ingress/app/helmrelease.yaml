@@ -65,8 +65,8 @@ spec:
 
       admin:
         enabled: true
-        type: LoadBalancer
-        # clusterIP: None
+        type: ClusterIP
+        clusterIP: None
 
       ingressController:
         enabled: false
