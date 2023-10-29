@@ -30,3 +30,4 @@ resources:
   - ./mongodb.yaml
   - ./descheduler.yaml
   - ./ory.yaml
+  - ./kong.yaml
