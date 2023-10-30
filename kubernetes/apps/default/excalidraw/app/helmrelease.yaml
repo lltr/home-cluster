@@ -33,7 +33,7 @@ spec:
         containers:
           main:
             image:
-              repository: ghcr.io/ryan-mcd/excalidraw-collab
+              repository: ghcr.io/lltr/excalidraw-collab
               tag: "0.0.3184"
               pullPolicy: IfNotPresent
             resources:
