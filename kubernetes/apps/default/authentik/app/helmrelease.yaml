@@ -1,0 +1,115 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: authentik
+  namespace: default
+spec:
+  interval: 30m
+  chart:
+    spec:
+      # renovate: registryUrl=https://charts.goauthentik.io
+      chart: authentik
+      version: 2023.10.2
+      sourceRef:
+        kind: HelmRepository
+        name: authentik-charts
+        namespace: flux-system
+      interval: 5m
+  maxHistory: 2
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  dependsOn:
+    - name: redis
+      namespace: databases
+  values:
+    image:
+      repository: ghcr.io/goauthentik/server
+      tag: 2023.10.2
+      pullPolicy: IfNotPresent
+    controllers:
+      annotations:
+        secret.reloader.stakater.com/reload: &secret authentik-secret
+    initContainers:
+      init-db:
+        image: ghcr.io/lltr/postgres-initdb:15.4
+        envFrom:
+          - secretRef:
+              name: *secret
+
+    authentik:
+      log_level: info
+      # secret_key: "${AUTHENTIK_SECRET_KEY}"
+      error_reporting:
+        enabled: false
+      disable_startup_analytics: true
+      # postgresql:
+        # host:
+        # port: 5432
+        # name:
+        # user:
+        # password:
+      redis:
+        host: "redis.databases.svc.cluster.local"
+      email:
+        host: "smtp-relay.default.svc.cluster.local"
+        port: 2525
+        use_tls: false
+        from: "Authentik <authentik@${SECRET_DOMAIN}>"
+
+    ingress:
+      enabled: true
+      ingressClassName: "nginx"
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-production
+        external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
+        external-dns.home.arpa/enabled: "true"
+      hosts:
+        - host: &host "authentik.${SECRET_DOMAIN}"
+          paths:
+            - path: "/"
+              pathType: Prefix
+      tls:
+        - hosts:
+            - *host
+          secretName: authentik-tls
+    postgresql:
+      enabled: false
+    redis:
+      enabled: false
+
+    resources:
+      requests:
+        cpu: 50m
+        memory: 600M
+      limits:
+        memory: 1251M
+  valuesFrom:
+    - kind: Secret
+      name: *secret
+      valuesKey: AUTHENTIK_SECRET_KEY
+      targetPath: authentik.secret_key
+    - kind: Secret
+      name: *secret
+      valuesKey: POSTGRES_HOST
+      targetPath: authentik.postgresql.host
+    - kind: Secret
+      name: *secret
+      valuesKey: POSTGRES_USER
+      targetPath: authentik.postgresql.user
+    - kind: Secret
+      name: *secret
+      valuesKey: POSTGRES_PASS
+      targetPath: authentik.postgresql.password
+    - kind: Secret
+      name: *secret
+      valuesKey: POSTGRES_DB
+      targetPath: authentik.postgresql.name
