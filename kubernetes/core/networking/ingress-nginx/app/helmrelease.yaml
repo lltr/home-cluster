@@ -28,6 +28,7 @@ spec:
   values:
     controller:
       replicaCount: 2
+      allowSnippetAnnotations: true
       extraEnvs:
         - name: TZ
           value: "${TIMEZONE}"
