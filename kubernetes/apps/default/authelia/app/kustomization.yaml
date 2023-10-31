@@ -5,12 +5,10 @@ namespace: default
 resources:
   - ./externalsecrets.yaml
   - ./helmrelease.yaml
-patchesStrategicMerge:
-  - ./patches/env.yaml
 configMapGenerator:
   - name: authelia-configmap
     files:
-      - ./config/configuration.yml
+      - configuration.yaml=./config/configuration.yaml
 generatorOptions:
   disableNameSuffixHash: true
   # Disable so env-sub will sub external-secrets in
