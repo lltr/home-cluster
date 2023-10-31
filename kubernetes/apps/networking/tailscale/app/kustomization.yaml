@@ -5,3 +5,4 @@ namespace: networking
 resources:
   - ./helmrelease.yaml
   - ./tailscale-token.sops.yaml
+  - ./rbac.yaml

@@ -2,10 +2,10 @@
 apiVersion: v1
 kind: Secret
 metadata:
-    name: tailscale-token-secret
+    name: tailscale-secret
     namespace: networking
 stringData:
-    tailscale-token: ENC[AES256_GCM,data:xoSL52ezrh/uw3YA6U5O0ColWdHV/GtepUGW5e9kckmGGQ6zPzGNfgSBooREBo1VaMkXcnyJRSA=,iv:zyQksBqvSmvuU6X4UtJ+1jexp0K5TLaVIKvCkT1v/wQ=,tag:5fdcq6kSQBDmVKEXY2KCDw==,type:str]
+    TS_AUTHKEY: ENC[AES256_GCM,data:BToXf8B706D18XWZ1jj+RzmEwaadioIdtza0TJu15WKNgB+2QCdWfAODZgfpQyz0Klg9mQf6/Qc=,iv:VhLuwYucxb5laL/21nNAp78qz5h02Hqi6c1y0FBBXnI=,tag:r1QYgBNbFo7hu0VMgZPHpw==,type:str]
 sops:
     kms: []
     gcp_kms: []
@@ -21,8 +21,8 @@ sops:
             ZndUS1NPQy8vd3RsWjBCME9xMHB3VGsK7eIPpeOQJKOcLfdGd5xSyjaVD01w77kX
             O8w0g//KmkKHPFba7GwCQHil3J9Qsv4QmMKKFHnrjs3kGHVlBPpLkg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2023-01-03T02:17:59Z"
-    mac: ENC[AES256_GCM,data:zT30udFVaUXAqqlviISP8BNIPckNTaCbJIbqIEwG64xj2wJjZEs1LfScmse9rJpRbbDzJeKfKLGNZoS53okc+6/k/34WAz3UlIX+W49TP02tz4o857Fid6jwOMdcuVYlvvgaiHVHQQQ1hOap2JIAuiXL2qnWrdZHwhwiTq4AjPQ=,iv:91oKPJWFKwsN0KsCph44NdNRIyZ2ZhuwXQG6RQdV2sk=,tag:a7XskrsxJwO/x5cyHAtk8Q==,type:str]
+    lastmodified: "2023-10-31T03:26:29Z"
+    mac: ENC[AES256_GCM,data:qf5pJGxWlp2uaXAVbw+4kOWMhDcFHpCqqxSkxL/tft2xdVzW4igzFcknMnwrllMVgXl18S1mFh7CavPuzOspnYsTNb3FgXD3B6vIHCrx++WaNj8UPIlk2XS1jho5pPrCNy6X895NiGTrQkQkriy4wQ0zf8mw4tEMp8mjMtmFx9c=,iv:H1QCf7DNuuT3TRg4whjuub3RHiZn7VLL8n/msXmeleQ=,tag:S7NBAQ0SP1yT4lVFm2o8Aw==,type:str]
     pgp: []
     encrypted_regex: ^(data|stringData)$
     version: 3.7.3
