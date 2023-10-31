@@ -6,7 +6,6 @@ module.exports = {
     ":dependencyDashboard",
     ":semanticCommits",
     ":enablePreCommit",
-    ":automergeDigest",
     ":automergeBranch",
     "github>lltr/home-cluster//.github/renovate/autoMerge.json5",
     "github>lltr/home-cluster//.github/renovate/commitMessage.json5",

@@ -51,6 +51,13 @@ spec:
                 memory: 128M
               limits:
                 memory: 256M
+            probes:
+              liveness:
+                enabled: false
+              readiness:
+                enabled: false
+              startup:
+                enabled: false
         pod:
           securityContext:
             runAsUser: 568
