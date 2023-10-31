@@ -14,7 +14,3 @@ generatorOptions:
   # Disable so env-sub will sub external-secrets in
   annotations:
     kustomize.toolkit.fluxcd.io/substitute: disabled
-labels:
-  - pairs:
-      app.kubernetes.io/name: authelia
-      app.kubernetes.io/instance: authelia
