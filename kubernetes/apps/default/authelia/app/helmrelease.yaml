@@ -46,41 +46,41 @@ spec:
             envFrom: &envFrom
               - secretRef:
                   name: authelia-secret
-    containers:
-      main:
-        image:
-          repository: ghcr.io/authelia/authelia
-          tag: v4.38.0-beta3@sha256:c888bc055deab08fa3fb344ea1c98eb791d20cb6283f0cf76f277a2923e573dc
-        env:
-          AUTHELIA_SERVER_ADDRESS: tcp://0.0.0.0:80
-          AUTHELIA_SERVER_DISABLE_HEALTHCHECK: "true"
-          AUTHELIA_TELEMETRY_METRICS_ADDRESS: tcp://0.0.0.0:8080
-          AUTHELIA_TELEMETRY_METRICS_ENABLED: "true"
-          AUTHELIA_THEME: dark
-          X_AUTHELIA_CONFIG: /config/configuration.yaml
-          X_AUTHELIA_CONFIG_FILTERS: expand-env
-        envFrom: *envFrom
-        probes:
-          liveness: &probes
-            enabled: true
-            custom: true
-            spec:
-              httpGet:
-                path: /api/health
-                port: &port 80
-              initialDelaySeconds: 0
-              periodSeconds: 10
-              timeoutSeconds: 1
-              failureThreshold: 3
-          readiness: *probes
-          startup:
-            enabled: false
-        resources:
-          requests:
-            cpu: 5m
-            memory: 10Mi
-          limits:
-            memory: 100Mi
+        containers:
+          main:
+            image:
+              repository: ghcr.io/authelia/authelia
+              tag: v4.38.0-beta3@sha256:c888bc055deab08fa3fb344ea1c98eb791d20cb6283f0cf76f277a2923e573dc
+            env:
+              AUTHELIA_SERVER_ADDRESS: tcp://0.0.0.0:80
+              AUTHELIA_SERVER_DISABLE_HEALTHCHECK: "true"
+              AUTHELIA_TELEMETRY_METRICS_ADDRESS: tcp://0.0.0.0:8080
+              AUTHELIA_TELEMETRY_METRICS_ENABLED: "true"
+              AUTHELIA_THEME: dark
+              X_AUTHELIA_CONFIG: /config/configuration.yaml
+              X_AUTHELIA_CONFIG_FILTERS: expand-env
+            envFrom: *envFrom
+            probes:
+              liveness: &probes
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /api/health
+                    port: &port 80
+                  initialDelaySeconds: 0
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
+              startup:
+                enabled: false
+            resources:
+              requests:
+                cpu: 5m
+                memory: 10Mi
+              limits:
+                memory: 100Mi
         pod:
           enableServiceLinks: false
           securityContext:
