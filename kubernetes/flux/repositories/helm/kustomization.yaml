@@ -31,3 +31,4 @@ resources:
   - ./descheduler.yaml
   - ./ory.yaml
   - ./kong.yaml
+  - ./authentik.yaml
