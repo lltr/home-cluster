@@ -57,7 +57,10 @@ spec:
         # user:
         # password:
       redis:
-        host: "redis.databases.svc.cluster.local"
+        host: "authentik-redis.default.svc.cluster.local"
+        password: ""
+      outposts:
+        docker_image_base: ghcr.io/goauthentik/%(type)s:%(version)s
       email:
         host: "smtp-relay.default.svc.cluster.local"
         port: 2525
@@ -112,3 +115,7 @@ spec:
       name: *secret
       valuesKey: POSTGRES_DB
       targetPath: authentik.postgresql.name
+    - kind: Secret
+      name: *secret
+      valuesKey: REDIS_PASS
+      targetPath: authentik.redis.password
