@@ -5,7 +5,7 @@ metadata:
     name: tailscale-secret
     namespace: networking
 stringData:
-    TS_AUTHKEY: ENC[AES256_GCM,data:BToXf8B706D18XWZ1jj+RzmEwaadioIdtza0TJu15WKNgB+2QCdWfAODZgfpQyz0Klg9mQf6/Qc=,iv:VhLuwYucxb5laL/21nNAp78qz5h02Hqi6c1y0FBBXnI=,tag:r1QYgBNbFo7hu0VMgZPHpw==,type:str]
+    TS_AUTHKEY: ENC[AES256_GCM,data:OhBmkIqUQwuVLEu3BUo+GePeUfbKw4sH//hzlTf/iQdj6UuI9kAvkdlDhGvPyXJVHBEqvZcTwQ8=,iv:e3w9eXvQxg53Z+3Mgqoyz6DWrFTRk/JoiTaiH+DaJCQ=,tag:lgOavO/w7sAEPVAYCdhptQ==,type:str]
 sops:
     kms: []
     gcp_kms: []
@@ -21,8 +21,8 @@ sops:
             ZndUS1NPQy8vd3RsWjBCME9xMHB3VGsK7eIPpeOQJKOcLfdGd5xSyjaVD01w77kX
             O8w0g//KmkKHPFba7GwCQHil3J9Qsv4QmMKKFHnrjs3kGHVlBPpLkg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2023-10-31T03:26:29Z"
-    mac: ENC[AES256_GCM,data:qf5pJGxWlp2uaXAVbw+4kOWMhDcFHpCqqxSkxL/tft2xdVzW4igzFcknMnwrllMVgXl18S1mFh7CavPuzOspnYsTNb3FgXD3B6vIHCrx++WaNj8UPIlk2XS1jho5pPrCNy6X895NiGTrQkQkriy4wQ0zf8mw4tEMp8mjMtmFx9c=,iv:H1QCf7DNuuT3TRg4whjuub3RHiZn7VLL8n/msXmeleQ=,tag:S7NBAQ0SP1yT4lVFm2o8Aw==,type:str]
+    lastmodified: "2023-10-31T03:43:27Z"
+    mac: ENC[AES256_GCM,data:0szntkCPI0HjE4LktY9ro5fzk/8GciqaMOfSezs9ANQ5RdL6H4cwrymAoEvc/wOA1/gaOIgLaE8CYxZUtOd24nqSxeDT6qoL9AqY7R3O1ehb+tOiqE9wfdQ942hP2UQmBFVckSvOW3bhpPkrwVRT9rMUxvJTJg2hi5HZXdyBKHk=,iv:ydlM9Pm7FKuyNj+p63CIGK2xqQt3GIDmiYfEnqJxbBg=,tag:2kL/+x1SYnXJjx5lfsAUyA==,type:str]
     pgp: []
     encrypted_regex: ^(data|stringData)$
     version: 3.7.3
