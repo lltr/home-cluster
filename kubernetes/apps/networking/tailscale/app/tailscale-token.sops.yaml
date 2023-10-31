@@ -4,6 +4,8 @@ kind: Secret
 metadata:
     name: tailscale-secret
     namespace: networking
+    annotations:
+        reloader.stakater.com/match: "true"
 stringData:
     TS_AUTHKEY: ENC[AES256_GCM,data:OhBmkIqUQwuVLEu3BUo+GePeUfbKw4sH//hzlTf/iQdj6UuI9kAvkdlDhGvPyXJVHBEqvZcTwQ8=,iv:e3w9eXvQxg53Z+3Mgqoyz6DWrFTRk/JoiTaiH+DaJCQ=,tag:lgOavO/w7sAEPVAYCdhptQ==,type:str]
 sops:
@@ -21,8 +23,8 @@ sops:
             ZndUS1NPQy8vd3RsWjBCME9xMHB3VGsK7eIPpeOQJKOcLfdGd5xSyjaVD01w77kX
             O8w0g//KmkKHPFba7GwCQHil3J9Qsv4QmMKKFHnrjs3kGHVlBPpLkg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2023-10-31T03:43:27Z"
-    mac: ENC[AES256_GCM,data:0szntkCPI0HjE4LktY9ro5fzk/8GciqaMOfSezs9ANQ5RdL6H4cwrymAoEvc/wOA1/gaOIgLaE8CYxZUtOd24nqSxeDT6qoL9AqY7R3O1ehb+tOiqE9wfdQ942hP2UQmBFVckSvOW3bhpPkrwVRT9rMUxvJTJg2hi5HZXdyBKHk=,iv:ydlM9Pm7FKuyNj+p63CIGK2xqQt3GIDmiYfEnqJxbBg=,tag:2kL/+x1SYnXJjx5lfsAUyA==,type:str]
+    lastmodified: "2023-10-31T03:44:56Z"
+    mac: ENC[AES256_GCM,data:4JhhZ1JcW2i1hv9OxesCQ2dcTzSTgHWtS69qpOE/e7YkDskxjvX0Gzj0FaCzFoAm+XjiAHUPQNQ62L1SOV0nKwtksDeMENjtffA9uvgRVLGB2A3Q2Wa3WQSelBR7yt3VDiXvXPf6mV5HfoROrpYsNsieeKaggoU2Eqj8GLQCBGk=,iv:/JcB3rgoiPCsS5YJNu6RKACxr9gGkZLSN+NW3A2YOt8=,tag:cdA2W0UATsc9m0mxee5EXg==,type:str]
     pgp: []
     encrypted_regex: ^(data|stringData)$
     version: 3.7.3
