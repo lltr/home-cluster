@@ -47,10 +47,6 @@ spec:
       extraArgs:
         - -c
         - /etc/oathkeeper/config/config.yaml
-        - -c
-        - /etc/oathkeeper/config/access-rules/access-rules.yaml
-        - -c
-        - /etc/oathkeeper/config/jwks/id_token.jwks.json
       annotations:
         reloader.stakater.com/auto: "true"
 
