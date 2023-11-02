@@ -35,26 +35,34 @@ spec:
         add: ["SYS_CHROOT"]
 
     ingress:
-      enabled: true
-      className: nginx
-      annotations:
-        cert-manager.io/cluster-issuer: letsencrypt-production
-        external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
-        external-dns.home.arpa/enabled: "true"
-        nginx.ingress.kubernetes.io/proxy-body-size: "8000m"
-        nginx.ingress.kubernetes.io/rewrite-target: /user/oauth2/Authelia/$2
-        nginx.ingress.kubernetes.io/use-regex: "true"
-      hosts:
-        - host: &host gitea.${SECRET_DOMAIN}
-          paths:
-            - path: /
-              pathType: Prefix
-            - path: /user/login.*$
-              pathType: Prefix
-      tls:
-        - secretName: gitea-tls
-          hosts:
-            - *host
+      main:
+        enabled: true
+        className: nginx
+        annotations:
+          cert-manager.io/cluster-issuer: letsencrypt-production
+          external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
+          external-dns.home.arpa/enabled: "true"
+          nginx.ingress.kubernetes.io/proxy-body-size: "8000m"
+        hosts:
+          - host: &host gitea.${SECRET_DOMAIN}
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - secretName: gitea-tls
+            hosts:
+              - *host
+      login:
+        enabled: true
+        className: nginx
+        annotations:
+          nginx.ingress.kubernetes.io/rewrite-target: /user/oauth2/Authelia/$2
+          nginx.ingress.kubernetes.io/use-regex: "true"
+        hosts:
+          - host: *host
+            paths:
+              - path: /user/login.*$
+                pathType: Prefix
 
     service:
       annotations:
