@@ -1,0 +1,30 @@
+# yamllint disable
+apiVersion: v1
+kind: Secret
+metadata:
+    name: ory-oathkeeper-jwks
+    annotations:
+        reloader.stakater.com/match: "true"
+type: Opaque
+stringData:
+    id_token.jwks.json: ""
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1k8xaut2yz4ttudhtwxk0jf8ckrav2rugjup5vyqu3tyzp2lxhgxq93u2mf
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBid0VNWjhPZWpCUWN6elgx
+            cXdCd0M2KzBMalp5L2ttMml2dXJCUEcxSkU0Cm16SzZjNVFGSVpZald6c2ZnQ0FY
+            T3pBeUF3VjNJOWtiRzF2S3B5VCsxem8KLS0tIGs1aCtLK1lsU1pBRHhPbWsvbTlN
+            MVFydnZMdDA4eFo1L3hEU3hUTHNOeEEKyQlKWtiz02JWm6A7QHrF+YzQV/0mytC7
+            sSuRV5ZQs8gv4zsKH2GjOh1FgVALkud4FVUAAdW7ma5u5DTiDQW3Cg==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2023-11-02T08:24:04Z"
+    mac: ENC[AES256_GCM,data:s7DD22FqcqipoV2C/ZaT9TqntlgfDzEDyMIs/lVmrUefGb3l7cHn8a3iWJFqP1jebUuTQ+ZeqIivyY2FBKo7VmI7cTgzVQ2UlxdQq4+ibLveupn6EwW+RyRKMfDHHsvfR6WRKH1dgeadjB9D/75qjwtYWP43/FRtEduPgzIJS8o=,iv:8sDksiPFk1ucs1dmFWsyu8NayaKaU5BNFTfz6HGEXPo=,tag:MgNNNhJI3H4EXKzwceHbuQ==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.7.3

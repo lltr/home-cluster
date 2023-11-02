@@ -31,12 +31,26 @@ spec:
         - name: config-volume
           secret:
             secretName: ory-oathkeeper-config
+        - name: access-rules-volume
+          secret:
+            secretName: ory-oathkeeper-access-rules
+        - name: jwks-volume
+          secret:
+            secretName: ory-oathkeeper-jwks
       extraVolumeMounts:
         - name: config-volume
+          mountPath: /etc/oathkeeper
+        - name: access-rules-volume
+          mountPath: /etc/oathkeeper
+        - name: jwks-volume
           mountPath: /etc/oathkeeper
       extraArgs:
         - -c
         - /etc/oathkeeper/config.yaml
+        - -c
+        - /etc/oathkeeper/access-rules.yaml
+        - -c
+        - /etc/oathkeeper/id_token.jwks.json
       annotations:
         reloader.stakater.com/auto: "true"
 
@@ -64,3 +78,35 @@ spec:
           - hosts:
               - *host
             secretName: oathkeeper-tls
+      proxy-kratos:
+        enabled: true
+        className: "nginx"
+        annotations:
+          cert-manager.io/cluster-issuer: letsencrypt-production
+          external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
+          external-dns.home.arpa/enabled: "true"
+        hosts:
+          - host: &host proxy-kratos.${SECRET_DEV_DOMAIN}
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - *host
+            secretName: proxy-kratos-tls
+      proxy-selfserviceui:
+        enabled: true
+        className: "nginx"
+        annotations:
+          cert-manager.io/cluster-issuer: letsencrypt-production
+          external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
+          external-dns.home.arpa/enabled: "true"
+        hosts:
+          - host: &host proxy-selfserviceui.${SECRET_DEV_DOMAIN}
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - *host
+            secretName: proxy-selfserviceui-tls

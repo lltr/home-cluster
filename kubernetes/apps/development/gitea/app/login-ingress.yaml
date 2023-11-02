@@ -6,7 +6,7 @@ metadata:
     ingressClassName: nginx
     nginx.ingress.kubernetes.io/rewrite-target: /user/oauth2/Authelia/$2
     nginx.ingress.kubernetes.io/use-regex: "true"
-  name: rewrite
+  name: gitea-login-rewrite
   namespace: development
 spec:
   rules:
