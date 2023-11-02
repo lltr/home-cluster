@@ -1,0 +1,27 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    ingressClassName: nginx
+    nginx.ingress.kubernetes.io/rewrite-target: /user/oauth2/Authelia/$2
+    nginx.ingress.kubernetes.io/use-regex: "true"
+  name: rewrite
+  namespace: development
+spec:
+  rules:
+    - host: &host gitea.${SECRET_DOMAIN}
+      http:
+        paths:
+          - backend:
+              service:
+                name: gitea-http
+                port:
+                  number: 3000
+            path: /user/login.*$
+            pathType: Prefix
+
+  tls:
+    - hosts:
+        - *host
+      secretName: gitea-tls
