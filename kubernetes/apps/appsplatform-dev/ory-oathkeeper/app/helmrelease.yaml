@@ -41,9 +41,9 @@ spec:
         - name: config-volume
           mountPath: /etc/oathkeeper/config
         - name: access-rules-volume
-          mountPath: /etc/oathkeeper/config/access-rules
+          mountPath: /etc/oathkeeper/rules
         - name: jwks-volume
-          mountPath: /etc/oathkeeper/config/jwks
+          mountPath: /etc/oathkeeper/jwks
       extraArgs:
         - -c
         - /etc/oathkeeper/config/config.yaml
