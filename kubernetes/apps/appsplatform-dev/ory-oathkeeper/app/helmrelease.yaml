@@ -41,16 +41,16 @@ spec:
         - name: config-volume
           mountPath: /etc/oathkeeper/config
         - name: access-rules-volume
-          mountPath: /etc/oathkeeper/access-rules
+          mountPath: /etc/oathkeeper/config/access-rules
         - name: jwks-volume
-          mountPath: /etc/oathkeeper/jwks
+          mountPath: /etc/oathkeeper/config/jwks
       extraArgs:
         - -c
         - /etc/oathkeeper/config/config.yaml
         - -c
-        - /etc/oathkeeper/access-rules/access-rules.yaml
+        - /etc/oathkeeper/config/access-rules/access-rules.yaml
         - -c
-        - /etc/oathkeeper/jwks/id_token.jwks.json
+        - /etc/oathkeeper/config/jwks/id_token.jwks.json
       annotations:
         reloader.stakater.com/auto: "true"
 
