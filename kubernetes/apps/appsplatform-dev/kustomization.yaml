@@ -5,3 +5,4 @@ resources:
   - ./namespace.yaml
   - ./dev-postgresql/ks.yaml
   - ./ory-kratos/ks.yaml
+  - ./ory-oathkeeper/ks.yaml
