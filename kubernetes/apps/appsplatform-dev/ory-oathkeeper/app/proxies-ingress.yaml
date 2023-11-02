@@ -1,0 +1,54 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: oathkeeper-proxy-selfserviceui
+  namespace: appsplatform-dev
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+    external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
+    external-dns.home.arpa/enabled: "true"
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - &host proxy-selfserviceui.${SECRET_DEV_DOMAIN}
+      secretName: proxy-selfserviceui-tls
+  rules:
+    - host: *host
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: ory-oathkeeper-proxy
+                port:
+                  number: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: oathkeeper-proxy-kratos
+  namespace: appsplatform-dev
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+    external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
+    external-dns.home.arpa/enabled: "true"
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - &host proxy-kratos.${SECRET_DEV_DOMAIN}
+      secretName: proxy-kratos-tls
+  rules:
+    - host: *host
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: ory-oathkeeper-proxy
+                port:
+                  number: 80

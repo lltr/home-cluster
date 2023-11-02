@@ -7,3 +7,4 @@ resources:
   - ./oathkeeper-config.sops.yaml
   - ./access-rules.sops.yaml
   - ./jwks.sops.yaml
+  - ./proxies-ingress.yaml
