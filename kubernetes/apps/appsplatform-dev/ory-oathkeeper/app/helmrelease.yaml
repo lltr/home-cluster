@@ -47,6 +47,8 @@ spec:
       extraArgs:
         - -c
         - /etc/oathkeeper/config/config.yaml
+      extraEnvs:
+        - AUTHENTICATORS_NOOP_ENABLED=true
       annotations:
         reloader.stakater.com/auto: "true"
 
