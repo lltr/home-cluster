@@ -56,7 +56,7 @@ spec:
     #   development: false
 
     secret:
-      enabled: true
+      enabled: false
     ingress:
       proxy:
         enabled: true
