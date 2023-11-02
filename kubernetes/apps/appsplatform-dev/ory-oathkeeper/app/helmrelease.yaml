@@ -39,21 +39,18 @@ spec:
             secretName: ory-oathkeeper-jwks
       extraVolumeMounts:
         - name: config-volume
-          mountPath: /etc/oathkeeper/config.yaml
-          subPath: config.yaml
+          mountPath: /etc/oathkeeper/config
         - name: access-rules-volume
-          mountPath: /etc/oathkeeper/access-rules.yaml
-          subPath: access-rules.yaml
+          mountPath: /etc/oathkeeper/access-rules
         - name: jwks-volume
-          mountPath: /etc/oathkeeper/id_token.jwks.json
-          subPath: id_token.jwks.json
+          mountPath: /etc/oathkeeper/jwks
       extraArgs:
         - -c
-        - /etc/oathkeeper/config.yaml
+        - /etc/oathkeeper/config/config.yaml
         - -c
-        - /etc/oathkeeper/access-rules.yaml
+        - /etc/oathkeeper/access-rules/access-rules.yaml
         - -c
-        - /etc/oathkeeper/id_token.jwks.json
+        - /etc/oathkeeper/jwks/id_token.jwks.json
       annotations:
         reloader.stakater.com/auto: "true"
 
