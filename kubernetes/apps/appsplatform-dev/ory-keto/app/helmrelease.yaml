@@ -48,9 +48,7 @@ spec:
     keto:
       automigration:
         enabled: true
-      customArgs:
-        - -c
-        - /etc/keto/config/config.yaml
+      customArgs: ["-c", "/etc/keto/config/config.yaml"]
         # namespaces:
         #   - id: 0
         #     name: access
