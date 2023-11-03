@@ -49,9 +49,12 @@ spec:
       automigration:
         enabled: true
       config:
-        namespaces:
-          - id: 0
-            name: access
+        customArgs:
+          - c
+          - /etc/keto/config/config.yaml
+        # namespaces:
+        #   - id: 0
+        #     name: access
     secret:
       enabled: false
       nameOverride: "ory-keto-secrets"
