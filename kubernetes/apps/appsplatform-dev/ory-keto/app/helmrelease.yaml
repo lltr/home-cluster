@@ -57,14 +57,14 @@ spec:
           external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
           external-dns.home.arpa/enabled: "true"
         hosts:
-          - host: &host keto.${SECRET_DEV_DOMAIN}
+          - host: &readhost keto-read.${SECRET_DEV_DOMAIN}
             paths:
-              - path: /read
+              - path: /
                 pathType: Prefix
         tls:
           - hosts:
-              - *host
-            secretName: keto-tls
+              - *readhost
+            secretName: keto-read-tls
       write:
         enabled: true
         className: "nginx"
@@ -73,11 +73,11 @@ spec:
           external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
           external-dns.home.arpa/enabled: "true"
         hosts:
-          - host: *host
+          - host: &writehost keto-write.${SECRET_DEV_DOMAIN}
             paths:
               - path: /write
                 pathType: Prefix
         tls:
           - hosts:
-              - *host
-            secretName: keto-tls
+              - *writehost
+            secretName: keto-write-tls
