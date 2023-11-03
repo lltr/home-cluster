@@ -28,44 +28,28 @@ spec:
   values:
     deployment:
       extraVolumes:
-        # - name: config-volume
-        #   secret:
-        #     secretName: ory-keto-config
+        - name: config-volume
+          secret:
+            secretName: ory-keto-config
         - name: namespaces-volume
           secret:
             secretName: ory-keto-namespaces
       extraVolumeMounts:
-        # - name: config-volume
-        #   mountPath: /etc/keto/config
+        - name: config-volume
+          mountPath: /etc/keto/config
         - name: namespaces-volume
           mountPath: /etc/keto/namespaces
-      # extraArgs:
-      #   - -c
-      #   - /etc/keto/config/config.yaml
+      extraArgs:
+        - -c
+        - /etc/keto/config/config.yaml
       annotations:
         reloader.stakater.com/auto: "true"
 
     keto:
       automigration:
         enabled: true
-      config:
-        dsn: fromEnv
-        # namespaces: file:///etc/keto/namespaces/namespaces.keto.ts
-        namespaces: http://192.168.0.188/namespaces.keto.ts
-
-        serve:
-          metrics:
-            port: 4468
-            host: 0.0.0.0
-          read:
-            port: 4466
-            host: 0.0.0.0
-          write:
-            port: 4467
-            host: 0.0.0.0
-
-        log:
-          level: debug
+      customArgs:
+        ["serve", "-c", "/etc/keto/config/config.yaml"]
 
     secret:
       enabled: false
