@@ -48,10 +48,24 @@ spec:
     keto:
       automigration:
         enabled: true
-      customArgs: ["-c", "/etc/keto/config/config.yaml"]
-        # namespaces:
-        #   - id: 0
-        #     name: access
+      config:
+        dsn: fromEnv
+        namespaces: file:///etc/keto/namespaces/namespaces.keto.ts
+
+        serve:
+          metrics:
+            port: 4468
+            host: 0.0.0.0
+          read:
+            port: 4466
+            host: 0.0.0.0
+          write:
+            port: 4467
+            host: 0.0.0.0
+
+        log:
+          level: debug
+
     secret:
       enabled: false
       nameOverride: "ory-keto-secrets"
