@@ -37,7 +37,7 @@ spec:
       extraVolumeMounts:
         - name: config-volume
           mountPath: /etc/keto/config
-        - name: config-volume
+        - name: namespaces-volume
           mountPath: /etc/keto/namespaces
       extraArgs:
         - -c
