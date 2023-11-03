@@ -50,7 +50,8 @@ spec:
         enabled: true
       config:
         dsn: fromEnv
-        namespaces: file:///etc/keto/namespaces/namespaces.keto.ts
+        # namespaces: file:///etc/keto/namespaces/namespaces.keto.ts
+        namespaces: http://192.168.0.188/namespaces.keto.ts
 
         serve:
           metrics:
