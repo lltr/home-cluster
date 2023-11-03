@@ -75,7 +75,7 @@ spec:
         hosts:
           - host: &writehost keto-write.${SECRET_DEV_DOMAIN}
             paths:
-              - path: /write
+              - path: /
                 pathType: Prefix
         tls:
           - hosts:
