@@ -43,7 +43,6 @@ spec:
     keto:
       automigration:
         enabled: true
-      development: false
     secret:
       enabled: false
       nameOverride: "ory-keto-secrets"
