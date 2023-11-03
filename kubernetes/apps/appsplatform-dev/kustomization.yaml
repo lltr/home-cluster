@@ -6,3 +6,4 @@ resources:
   - ./dev-postgresql/ks.yaml
   - ./ory-kratos/ks.yaml
   - ./ory-oathkeeper/ks.yaml
+  - ./ory-keto/ks.yaml

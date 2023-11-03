@@ -1,0 +1,30 @@
+# yamllint disable
+apiVersion: v1
+kind: Secret
+metadata:
+    name: ory-keto-config
+    annotations:
+        reloader.stakater.com/match: "true"
+type: Opaque
+stringData:
+    config.yaml: ENC[AES256_GCM,data:ymWD7nFWIrYf1T0LXKQ76Dvn/RmSM4xhxfNoIDyX+iMAe2+7JMYWZctwuZo+J2mQRzQ7BYhLOcmrvbTnkh+VvVGkLMRnxreJmu5Y5PWR8Cc5kmJUYB//zYyJL0bwm2la+THuFSOJslZy2UzGUbbqcMLS300f9lJLerig0hN/0QyZE2TEF8tE4tnTHflTyOnyqFwKzFWd9iq7Rnga4i0iJS5313104t386mkiHIpot52Hwqu2y6miUvGLwnG8i1ZfMyTlG8JAhv5YiLgz76ZmXQ==,iv:g5eXBsQMVOPGgKKlUaSDrNmM0F2kz4mIPLHj6Eas8oc=,tag:TfDW3ixXPV1FN2sl+DrhYQ==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1k8xaut2yz4ttudhtwxk0jf8ckrav2rugjup5vyqu3tyzp2lxhgxq93u2mf
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBid0VNWjhPZWpCUWN6elgx
+            cXdCd0M2KzBMalp5L2ttMml2dXJCUEcxSkU0Cm16SzZjNVFGSVpZald6c2ZnQ0FY
+            T3pBeUF3VjNJOWtiRzF2S3B5VCsxem8KLS0tIGs1aCtLK1lsU1pBRHhPbWsvbTlN
+            MVFydnZMdDA4eFo1L3hEU3hUTHNOeEEKyQlKWtiz02JWm6A7QHrF+YzQV/0mytC7
+            sSuRV5ZQs8gv4zsKH2GjOh1FgVALkud4FVUAAdW7ma5u5DTiDQW3Cg==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2023-11-03T04:53:46Z"
+    mac: ENC[AES256_GCM,data:3SBnqdyS1l9lFAAM/1VEXFRR68np+uBnfT0oR/0qgUKe+03jkX3XwW00eq3FtwtXRXsnMqip0WKYyqEHH5dnU2IETKzbzGrZlUwBpoDvFyzkJhh6/F35xfhF2ZzAh42eP41E9vbZJfm0TGfNPlMNywD5AmcNNru3o2zaf2E7utw=,iv:RzdXThqA64Ko9N+59GSJhTkYiNtExlZSSm2oYaVh9k0=,tag:ajLRsjYTKJyviZiqeqKEig==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.7.3
