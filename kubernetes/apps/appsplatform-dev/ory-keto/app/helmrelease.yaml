@@ -28,20 +28,20 @@ spec:
   values:
     deployment:
       extraVolumes:
-        - name: config-volume
-          secret:
-            secretName: ory-keto-config
+        # - name: config-volume
+        #   secret:
+        #     secretName: ory-keto-config
         - name: namespaces-volume
           secret:
             secretName: ory-keto-namespaces
       extraVolumeMounts:
-        - name: config-volume
-          mountPath: /etc/keto/config
+        # - name: config-volume
+        #   mountPath: /etc/keto/config
         - name: namespaces-volume
           mountPath: /etc/keto/namespaces
-      extraArgs:
-        - -c
-        - /etc/keto/config/config.yaml
+      # extraArgs:
+      #   - -c
+      #   - /etc/keto/config/config.yaml
       annotations:
         reloader.stakater.com/auto: "true"
 
