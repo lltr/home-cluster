@@ -31,12 +31,17 @@ spec:
         - name: config-volume
           secret:
             secretName: ory-keto-config
+        - name: namespaces-volume
+          secret:
+            secretName: ory-keto-namespaces
       extraVolumeMounts:
         - name: config-volume
-          mountPath: /etc/keto
+          mountPath: /etc/keto/config
+        - name: config-volume
+          mountPath: /etc/keto/namespaces
       extraArgs:
         - -c
-        - /etc/keto/config.yaml
+        - /etc/keto/config/config.yaml
       annotations:
         reloader.stakater.com/auto: "true"
 

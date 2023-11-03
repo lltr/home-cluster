@@ -2,12 +2,12 @@
 apiVersion: v1
 kind: Secret
 metadata:
-    name: ory-keto-config
+    name: ory-keto-namespaces
     annotations:
         reloader.stakater.com/match: "true"
 type: Opaque
 stringData:
-    config.yaml: ENC[AES256_GCM,data:2mJSi9GhtNRwYAqpQddLkiObwGz1gMBDYBDAczfQqD8nHc87xZnkZNxJbqVcoKGN4hYOFinQpbTn/AKCP1B6XXkDq9wiz4f9Zek7i9aCUzm8rHRr5viNYVynx7enOFYPu5b5HiqGBJqbTyvpHuFhSB4F5oCzBvC2UcLYa8wDBzCG/gWyQqebFZ6ntJAFBaZMfTOAefXY91Bko69DzxUVjgffDl6FNzMJH/6gYHuZdF0uuBeHIQ1NcVEmUHnaYQV9y2lOuMUqOIV2mCUDH3PVfc3dGZOof4eb9YvCmlGs2U5dNj6q,iv:L40Z4CMZylISv8T6SQ3AXbTF2b9fuuMXqFlowiOAeAE=,tag:AuhHIC3IVXWjSXZeRNySeQ==,type:str]
+    namespaces.keto.ts: ENC[AES256_GCM,data:n4rqfnHF3D61euIzpiVZtBSorcLLIKemgz88PDYqwrFdF71NhmQr55am2GjH3F+Nm3+pHMTJbI2f4pCjnaZ/ApJcta1E+PA6VLD01ogyDe1HvYZIJmMPGYcYu+7r,iv:mcpTH9J5xNky1Uc7xfyowPicv6NwpBqhfNJ2gGDe2fs=,tag:yxN27iq/3ADa5JVnEvKyPQ==,type:str]
 sops:
     kms: []
     gcp_kms: []
@@ -23,8 +23,8 @@ sops:
             MVFydnZMdDA4eFo1L3hEU3hUTHNOeEEKyQlKWtiz02JWm6A7QHrF+YzQV/0mytC7
             sSuRV5ZQs8gv4zsKH2GjOh1FgVALkud4FVUAAdW7ma5u5DTiDQW3Cg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2023-11-03T10:29:51Z"
-    mac: ENC[AES256_GCM,data:06vU5WKrGMZC70JPzTxkn0i04ED8mnFPiHVgTrFTvdH+DOleaUIggMZkfd77Du9gMvhK3N4d5CpahlwySAoVtwwRGCccN5M9LnG7TONF65Clpbh9eBSiRl5+6S5p0RAHoNJdSWIlqnCPGzq+5Fs41FzPNWy2GkUf+xelIhXl+Bk=,iv:Idp/jzo7gI5hLDTvcooxe/wzCruvvihd3KgOP9RaFvU=,tag:4Oy4PPAlUZNZk0f6ks9Kow==,type:str]
+    lastmodified: "2023-11-03T10:37:31Z"
+    mac: ENC[AES256_GCM,data:VV5GsEHKTysfEpcEYeT2HusgpRr4baOIEPFD3l4imZmTe1LoOgbVSM5BdvRQT7jkJsFx0WMpHXvrR0OdsJzkxZZnDYz2yMvqLxIIfVSnimS8PItdTx70TWFXVUS92oaHN6D1bItRCFGoHdw+zEBBRXM3TwwEXU7hj1jV+CP39xQ=,iv:4U/CxCq+XOxExY+ybJw7/4qwSfx3US9MGGEeuWs9hSI=,tag:RU75K+rDE+GGFpKyn3IxxA==,type:str]
     pgp: []
     encrypted_regex: ^(data|stringData)$
     version: 3.7.3

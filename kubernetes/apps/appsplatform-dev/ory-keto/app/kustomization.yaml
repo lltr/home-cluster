@@ -6,3 +6,4 @@ resources:
   - ./helmrelease.yaml
   - ./keto-secrets.sops.yaml
   - ./keto-config.sops.yaml
+  - ./namespaces.keto.ts.sops.yaml
