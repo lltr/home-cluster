@@ -36,6 +36,8 @@ spec:
               tag: v1.6.0-noroot
             env:
               TZ: ${TIMEZONE}
+              PURGE_DAYS: 14
+              MAX_UPLOAD_SIZE: 500000
             envFrom:
               - secretRef:
                   name: transfersh-secret
