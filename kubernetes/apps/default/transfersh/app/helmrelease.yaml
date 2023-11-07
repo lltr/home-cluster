@@ -40,7 +40,7 @@ spec:
             envFrom:
               - secretRef:
                   name: transfersh-secret
-            command: ["--provider", "local"]
+            args: ["--provider", "local"]
         pod:
           securityContext:
             runAsUser: 5000
