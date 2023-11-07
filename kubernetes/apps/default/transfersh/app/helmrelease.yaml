@@ -36,7 +36,7 @@ spec:
               tag: v1.6.0-noroot
             env:
               TZ: ${TIMEZONE}
-              PURGE_DAYS: 14
+              PURGE_DAYS: 7
               MAX_UPLOAD_SIZE: 102400
             envFrom:
               - secretRef:
