@@ -17,4 +17,4 @@ resources:
   # - ./echo-server/ks.yaml
   - ./excalidraw/ks.yaml
   - ./authentik/ks.yaml
-  # - ./transfersh/ks.yaml
+  - ./transfersh/ks.yaml
