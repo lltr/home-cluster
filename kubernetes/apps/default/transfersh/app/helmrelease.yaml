@@ -59,7 +59,7 @@ spec:
           external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
           external-dns.home.arpa/enabled: "true"
         hosts:
-          - host: &host transfer.${SECRET_DOMAIN}
+          - host: &host transfer.${SECRET_EXT_DOMAIN}
             paths:
               - path: /
                 service:
@@ -68,4 +68,4 @@ spec:
         tls:
           - hosts:
               - *host
-            secretName: transfersh-tls
+            secretName: transfersh-ext-tls
