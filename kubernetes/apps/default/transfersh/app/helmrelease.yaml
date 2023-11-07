@@ -36,11 +36,10 @@ spec:
               tag: v1.6.0-noroot
             env:
               TZ: ${TIMEZONE}
-              BASEDIR: /tmp/
             envFrom:
               - secretRef:
                   name: transfersh-secret
-            args: ["--provider", "local"]
+            args: ["--provider", "s3"]
         pod:
           securityContext:
             runAsUser: 5000
