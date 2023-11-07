@@ -56,7 +56,7 @@ spec:
         className: nginx
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-production
-          external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
+          external-dns.alpha.kubernetes.io/target: "external.${SECRET_DOMAIN}"
           external-dns.home.arpa/enabled: "true"
         hosts:
           - host: &host transfer.${SECRET_EXT_DOMAIN}
