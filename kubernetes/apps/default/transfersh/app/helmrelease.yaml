@@ -37,6 +37,7 @@ spec:
             env:
               TZ: ${TIMEZONE}
               PURGE_DAYS: 7
+              PURGE_INTERVAL: 12
               MAX_UPLOAD_SIZE: 102400
             envFrom:
               - secretRef:
