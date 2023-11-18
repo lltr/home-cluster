@@ -28,7 +28,7 @@ spec:
   values:
     initContainers:
       01-init-db:
-        image: ghcr.io/lltr/postgres-initdb:15.4
+        image: ghcr.io/lltr/postgres-initdb:15.5
         imagePullPolicy: IfNotPresent
         envFrom: &envFrom
           - secretRef:
