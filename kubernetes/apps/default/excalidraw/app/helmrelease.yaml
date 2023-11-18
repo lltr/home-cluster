@@ -34,7 +34,7 @@ spec:
           main:
             image:
               repository: ghcr.io/lltr/excalidraw-collab
-              tag: "v0.16.1"
+              tag: "v0.17.0"
               pullPolicy: IfNotPresent
             resources:
               requests:
