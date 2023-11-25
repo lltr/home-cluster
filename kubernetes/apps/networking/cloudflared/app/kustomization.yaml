@@ -11,3 +11,5 @@ configMapGenerator:
       - ./cloudflared-config.yaml
 generatorOptions:
   disableNameSuffixHash: true
+  annotations:
+    reloader.stakater.com/match: "true"
