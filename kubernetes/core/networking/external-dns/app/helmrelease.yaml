@@ -45,11 +45,12 @@ spec:
     txtOwnerId: default
     domainFilters:
       - "${SECRET_DOMAIN}"
+      - "${SECRET_EXT_INFRA_DOMAIN}"
       - "${SECRET_EXT_DOMAIN}"
       - "${SECRET_REGISTRY_DOMAIN}"
       - "${SECRET_SHORT_DOMAIN}"
       - "${SECRET_OTHER_DOMAIN_1}"
-      - "${SECRET_DEV_DOMAIN}"
+      - "${SECRET_INTERNAL_DEPLOY_DOMAIN}"
       - "${SECRET_APPSPLATFORM_PRD_DOMAIN}"
     serviceMonitor:
       enabled: true

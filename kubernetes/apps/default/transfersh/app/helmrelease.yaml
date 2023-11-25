@@ -59,10 +59,10 @@ spec:
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-production
           external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
-          external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_EXT_DOMAIN}"
+          external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_SHORT_DOMAIN}"
           external-dns.home.arpa/enabled: "true"
         hosts:
-          - host: &host transfer.${SECRET_EXT_DOMAIN}
+          - host: &host t.${SECRET_SHORT_DOMAIN}
             paths:
               - path: /
                 service:

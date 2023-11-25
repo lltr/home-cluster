@@ -17,24 +17,25 @@ ingress:
   - hostname: "${SECRET_SHORT_DOMAIN}"
     service: http://ingress-nginx-controller.networking
     originRequest:
-      originServerName: "ingress.${SECRET_EXT_DOMAIN}"
+      originServerName: "ingress.${SECRET_EXT_INFRA_DOMAIN}"
 
   ### Proxy traffic directly to ingress-nginx controller service (ingress created)
-  - hostname: "*.${SECRET_DEV_DOMAIN}"
+  - hostname: "*.${SECRET_INTERNAL_DEPLOY_DOMAIN}"
     service: http://ingress-nginx-controller.networking
     originRequest:
-      originServerName: "ingress.${SECRET_EXT_DOMAIN}"
-  - hostname: "*.${SECRET_EXT_DOMAIN}"
+      originServerName: "ingress.${SECRET_EXT_INFRA_DOMAIN}"
+  - hostname: "*.${SECRET_EXT_INFRA_DOMAIN}"
     service: http://ingress-nginx-controller.networking
     originRequest:
-      originServerName: "ingress.${SECRET_EXT_DOMAIN}"
+      originServerName: "ingress.${SECRET_EXT_INFRA_DOMAIN}"
   - hostname: "*.${SECRET_APPSPLATFORM_PRD_DOMAIN}"
     service: http://ingress-nginx-controller.networking
     originRequest:
-      originServerName: "ingress.${SECRET_EXT_DOMAIN}"
-
-  # - hostname: "flux.${SECRET_EXT_DOMAIN}"
-  #   service: http://ingress-nginx-controller.networking
+      originServerName: "ingress.${SECRET_EXT_INFRA_DOMAIN}"
+  - hostname: "*.${SECRET_B1_DOMAIN}"
+    service: http://ingress-nginx-controller.networking
+    originRequest:
+      originServerName: "ingress.${SECRET_EXT_INFRA_DOMAIN}"
 
   ### Proxy traffic to the Kubernetes Services directly
   # - hostname: "echo.${SECRET_EXT_DOMAIN}"

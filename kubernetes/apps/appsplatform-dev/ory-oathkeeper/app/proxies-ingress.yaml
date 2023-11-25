@@ -12,7 +12,7 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - &host proxy-selfserviceui.${SECRET_DEV_DOMAIN}
+        - &host proxy-selfserviceui.${SECRET_INTERNAL_DEPLOY_DOMAIN}
       secretName: proxy-selfserviceui-tls
   rules:
     - host: *host
@@ -39,7 +39,7 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - &host proxy-kratos.${SECRET_DEV_DOMAIN}
+        - &host proxy-kratos.${SECRET_INTERNAL_DEPLOY_DOMAIN}
       secretName: proxy-kratos-tls
   rules:
     - host: *host

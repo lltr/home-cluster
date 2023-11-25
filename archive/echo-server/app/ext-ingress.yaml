@@ -18,7 +18,7 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - &host "echo.${SECRET_EXT_DOMAIN}"
+        - &host "echo.${SECRET_EXT_INFRA_DOMAIN}"
       secretName: ext-echo-server-tls
   rules:
     - host: *host

@@ -47,7 +47,7 @@ spec:
           external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
           external-dns.home.arpa/enabled: "true"
         hosts:
-          - host: &host "vouch.${SECRET_DEV_DOMAIN}"
+          - host: &host "vouch.${SECRET_INTERNAL_DEPLOY_DOMAIN}"
             paths:
               - path: /
                 pathType: Prefix

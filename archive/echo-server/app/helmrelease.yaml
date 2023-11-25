@@ -71,7 +71,7 @@ spec:
           #   # proxy_ssl_verify on;
           # nginx.ingress.kubernetes.io/auth-url: https://vouch.optrix.cloud/
         hosts:
-          - host: &host "{{ .Release.Name }}.${SECRET_DEV_DOMAIN}"
+          - host: &host "{{ .Release.Name }}.${SECRET_INTERNAL_DEPLOY_DOMAIN}"
             paths:
               - path: /
                 pathType: Prefix

@@ -80,7 +80,7 @@ spec:
           external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
           external-dns.home.arpa/enabled: "true"
         hosts:
-          - host: &adminhost kratos-admin.${SECRET_DEV_DOMAIN}
+          - host: &adminhost kratos-admin.${SECRET_INTERNAL_DEPLOY_DOMAIN}
             paths:
               - path: /
                 pathType: Prefix
@@ -96,7 +96,7 @@ spec:
           external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
           external-dns.home.arpa/enabled: "true"
         hosts:
-          - host: &publichost kratos.${SECRET_DEV_DOMAIN}
+          - host: &publichost kratos.${SECRET_INTERNAL_DEPLOY_DOMAIN}
             paths:
               - path: /
                 pathType: Prefix

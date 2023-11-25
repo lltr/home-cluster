@@ -64,7 +64,7 @@ spec:
           external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
           external-dns.home.arpa/enabled: "true"
         hosts:
-          - host: &readhost keto-read.${SECRET_DEV_DOMAIN}
+          - host: &readhost keto-read.${SECRET_INTERNAL_DEPLOY_DOMAIN}
             paths:
               - path: /
                 pathType: Prefix
@@ -80,7 +80,7 @@ spec:
           external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
           external-dns.home.arpa/enabled: "true"
         hosts:
-          - host: &writehost keto-write.${SECRET_DEV_DOMAIN}
+          - host: &writehost keto-write.${SECRET_INTERNAL_DEPLOY_DOMAIN}
             paths:
               - path: /
                 pathType: Prefix
