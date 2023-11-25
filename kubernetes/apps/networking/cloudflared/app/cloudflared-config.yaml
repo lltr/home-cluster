@@ -22,16 +22,13 @@ ingress:
   ### Proxy traffic directly to ingress-nginx controller service (ingress created)
   - hostname: "*.${SECRET_DEV_DOMAIN}"
     service: http://ingress-nginx-controller.networking
-    originRequest:
-      originServerName: "ingress.${SECRET_EXT_DOMAIN}"
+
   - hostname: "*.${SECRET_EXT_DOMAIN}"
     service: http://ingress-nginx-controller.networking
-    originRequest:
-      originServerName: "ingress.${SECRET_EXT_DOMAIN}"
+
   - hostname: "*.${SECRET_APPSPLATFORM_PRD_DOMAIN}"
     service: http://ingress-nginx-controller.networking
-    originRequest:
-      originServerName: "ingress.${SECRET_EXT_DOMAIN}"
+
 
   # - hostname: "flux.${SECRET_EXT_DOMAIN}"
   #   service: http://ingress-nginx-controller.networking
