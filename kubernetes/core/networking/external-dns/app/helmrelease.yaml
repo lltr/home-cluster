@@ -48,6 +48,7 @@ spec:
       - "${SECRET_EXT_INFRA_DOMAIN}"
       - "${SECRET_EXT_DOMAIN}"
       - "${SECRET_REGISTRY_DOMAIN}"
+      - "${SECRET_PACKAGES_DOMAIN}"
       - "${SECRET_SHORT_DOMAIN}"
       - "${SECRET_B1_DOMAIN}"
       - "${SECRET_INTERNAL_DEPLOY_DOMAIN}"
