@@ -50,7 +50,6 @@ spec:
       - "${SECRET_REGISTRY_DOMAIN}"
       - "${SECRET_SHORT_DOMAIN}"
       - "${SECRET_B1_DOMAIN}"
-      - "${SECRET_OTHER_DOMAIN_1}"
       - "${SECRET_INTERNAL_DEPLOY_DOMAIN}"
       - "${SECRET_APPSPLATFORM_PRD_DOMAIN}"
     serviceMonitor:
