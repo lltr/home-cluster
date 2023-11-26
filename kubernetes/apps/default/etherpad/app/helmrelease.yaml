@@ -53,6 +53,24 @@ spec:
           - secretName: etherpad-tls
             hosts:
               - *host
+      ext:
+        enabled: true
+        annotations:
+          cert-manager.io/cluster-issuer: letsencrypt-production
+          external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
+          external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_EXT_INFRA_DOMAIN}"
+          external-dns.home.arpa/enabled: "true"
+          nginx.ingress.kubernetes.io/app-root: /p/pad
+        ingressClassName: "nginx"
+        hosts:
+          - host: &host "notes.${SECRET_EXT_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - secretName: ext-etherpad-tls
+            hosts:
+              - *host
 
     podSecurityContext:
       fsGroup: 2000
