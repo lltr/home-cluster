@@ -63,7 +63,7 @@ spec:
           nginx.ingress.kubernetes.io/app-root: /p/pad
         ingressClassName: "nginx"
         hosts:
-          - host: &exthost "notes.${SECRET_EXT_DOMAIN}"
+          - host: &exthost "noted.${SECRET_EXT_DOMAIN}"
             paths:
               - path: /
                 pathType: Prefix
