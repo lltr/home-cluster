@@ -32,3 +32,4 @@ resources:
   - ./ory.yaml
   - ./kong.yaml
   - ./authentik.yaml
+  - ./go-skynet.yaml
