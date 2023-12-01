@@ -20,4 +20,4 @@ resources:
   - ./transfersh/ks.yaml
   - ./owncast/ks.yaml
   - ./ittools/ks.yaml
-  - ./localai/ks.yaml
+  # - ./localai/ks.yaml
