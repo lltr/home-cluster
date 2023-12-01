@@ -5,6 +5,7 @@ namespace: flux-system
 resources:
   - ./externalsecrets.yaml
   - ./helmrelease.yaml
+  - ./rbac.yaml
 labels:
   - pairs:
       app.kubernetes.io/name: weave-gitops
