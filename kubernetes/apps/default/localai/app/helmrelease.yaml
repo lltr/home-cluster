@@ -67,10 +67,9 @@ spec:
           size: 20Gi
           accessModes:
             - ReadWriteOnce
-          annotations: {}
 
     service:
-      type: LoadBalancer
+      type: ClusterIP
       ports:
         http:
           port: 8080
@@ -79,8 +78,6 @@ spec:
       enabled: true
       ingressClassName: nginx
       annotations:
-        nginx.ingress.kubernetes.io/whitelist-source-range: |
-          10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
         cert-manager.io/cluster-issuer: letsencrypt-production
         external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
         external-dns.home.arpa/enabled: "true"
