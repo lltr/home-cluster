@@ -1,26 +1,11 @@
 ---
 apiVersion: rbac.authorization.k8s.io/v1
-kind: RoleBinding
-metadata:
-  name: authelia-admin-group-read-resources
-  namespace: gitops-dashboard
-subjects:
-  - kind: Group
-    name: wego-admin
-    namespace: gitops-dashboard
-roleRef:
-  kind: Role
-  name: wego-admin-role
-  apiGroup: rbac.authorization.k8s.io
-
----
-apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: authelia-admin-group-read-resources-cr
+  name: wego-admin-oidc
 subjects:
   - kind: Group
-    name: wego-admin
+    name: Infrastructure
     apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: ClusterRole
