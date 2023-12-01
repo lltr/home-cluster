@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       # renovate: registryUrl=https://go-skynet.github.io/helm-charts/
-      chart: go-skynet
+      chart: localai
       version: 2.1.2
       sourceRef:
         kind: HelmRepository
