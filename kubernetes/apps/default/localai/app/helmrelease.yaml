@@ -58,7 +58,7 @@ spec:
     models:
       forceDownload: false
       list:
-        - url: "https://s3.{SECRET_DOMAIN}/public/ggml-gpt4all-j.bin"
+        - url: "http://minio.default.svc.cluster.local:9000/public/ggml-gpt4all-j.bin"
         - url: "https://huggingface.co/TheBloke/Llama-2-7B-Chat-GGML/resolve/main/llama-2-7b-chat.ggmlv3.q4_0.bin"
         # basicAuth: base64EncodedCredentials
       persistence:
