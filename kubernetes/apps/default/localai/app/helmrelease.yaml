@@ -32,7 +32,7 @@ spec:
     deployment:
       image: quay.io/go-skynet/local-ai:latest
       env:
-        threads: 14
+        threads: 12
         context_size: 512
         rebuild: false
         debug: true
@@ -67,7 +67,6 @@ spec:
           size: 20Gi
           accessModes:
             - ReadWriteOnce
-          storageClass: ceph-block
 
     service:
       type: ClusterIP
