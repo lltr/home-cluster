@@ -67,6 +67,7 @@ spec:
           size: 20Gi
           accessModes:
             - ReadWriteOnce
+          storageClass: ceph-block
 
     service:
       type: ClusterIP
