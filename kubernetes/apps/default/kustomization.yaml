@@ -18,3 +18,4 @@ resources:
   - ./excalidraw/ks.yaml
   - ./authentik/ks.yaml
   - ./transfersh/ks.yaml
+  - ./owncast/ks.yaml
