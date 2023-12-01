@@ -24,7 +24,8 @@ spec:
   values:
     adminUser:
       create: true
-      username: admin
+      createSecret: false
+      username: ${SECRET_USERNAME}
     oidcSecret:
       create: true
       clientID: weave-gitops
