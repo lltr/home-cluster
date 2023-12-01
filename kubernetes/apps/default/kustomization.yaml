@@ -19,3 +19,4 @@ resources:
   - ./authentik/ks.yaml
   - ./transfersh/ks.yaml
   - ./owncast/ks.yaml
+  - ./ittools/ks.yaml
