@@ -101,7 +101,7 @@ identity_providers:
         public: false
         authorization_policy: one_factor
         pre_configured_consent_duration: 1y
-        scopes: ["openid", "profile", "offline_access", "email"]
+        scopes: ["openid", "profile", "offline_access", "groups", "email"]
         redirect_uris: ["https://gitops.${SECRET_DOMAIN}/oauth2/callback"]
         userinfo_signing_algorithm: none
       - id: orchestra
