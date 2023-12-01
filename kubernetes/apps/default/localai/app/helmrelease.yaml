@@ -28,6 +28,7 @@ spec:
     keepHistory: false
   values:
     replicaCount: 1
+    fullnameOverride: "localai"
     deployment:
       image: quay.io/go-skynet/local-ai:latest
       env:
