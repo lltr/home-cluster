@@ -19,5 +19,5 @@ resources:
   - ./authentik/ks.yaml
   - ./transfersh/ks.yaml
   - ./owncast/ks.yaml
-  - ./ittools/ks.yaml
+  # - ./ittools/ks.yaml
   - ./localai/ks.yaml
