@@ -5,15 +5,16 @@ metadata:
   name: &app changedetection
   namespace: default
 spec:
-  interval: 15m
+  interval: 30m
   chart:
     spec:
       chart: app-template
-      version: 1.5.1
+      version: 2.3.0
       sourceRef:
         kind: HelmRepository
         name: bjw-s
         namespace: flux-system
+  maxHistory: 2
   install:
     createNamespace: true
     remediation:
@@ -22,18 +23,29 @@ spec:
     remediation:
       retries: 3
   values:
-    controller:
-      type: statefulset
-    image:
-      repository: ghcr.io/dgtlmoon/changedetection.io
-      tag: 0.45
-    env:
-      TZ: ${TIMEZONE}
-      PORT: &port 5000
-      USE_X_SETTINGS: 1
-      PLAYWRIGHT_DRIVER_URL: ws://localhost:3000/?stealth=1&--disable-web-security=true&--user-data-dir=~/tmp/cache
-      PUID: 1000
-      PGID: 1000
+    controllers:
+      main:
+        type: statefulset
+        replicas: 1
+        strategy: RollingUpdate
+        containers:
+          main:
+            image:
+              repository: ghcr.io/dgtlmoon/changedetection.io
+              tag: 0.45
+              pullPolicy: IfNotPresent
+            env:
+              TZ: ${TIMEZONE}
+              PORT: &port 5000
+              USE_X_SETTINGS: 1
+              PLAYWRIGHT_DRIVER_URL: ws://localhost:3000/?stealth=1&--disable-web-security=true&--user-data-dir=~/tmp/cache
+              PUID: 1000
+              PGID: 1000
+            securityContext:
+              runAsUser: 1000
+              runAsGroup: 1000
+              fsGroup: 1000
+              fsGroupChangePolicy: "OnRootMismatch"
     service:
       main:
         ports:
@@ -56,11 +68,6 @@ spec:
           - hosts:
               - *host
             secretName: changedetection-tls
-    podSecurityContext:
-      runAsUser: 1000
-      runAsGroup: 1000
-      fsGroup: 1000
-      fsGroupChangePolicy: "OnRootMismatch"
     persistence:
       config:
         enabled: true
