@@ -16,10 +16,10 @@ sources:
     type: vector
     version: "2"
 
-  opnsense_logs:
-    address: 0.0.0.0:6001
-    type: vector
-    version: "2"
+  # opnsense_logs:
+  #   address: 0.0.0.0:6001
+  #   type: vector
+  #   version: "2"
 
   journald_source:
     type: vector
@@ -48,24 +48,22 @@ sources:
     host_key: __host
 
 transforms:
-  # talos_kernel_logs_xform:
-  #   type: remap
-  #   inputs:
-  #     - talos_kernel_logs
-  #   source: |-
-  #     .__host = replace!(.__host, "192.168.8.101", "talos-node-1")
-  #     .__host = replace(.__host, "192.168.8.102", "talos-node-2")
-  #     .__host = replace(.__host, "192.168.8.103", "talos-node-3")
-  #     .__host = replace(.__host, "192.168.8.104", "talos-node-4")
-  # talos_service_logs_xform:
-  #   type: remap
-  #   inputs:
-  #     - talos_service_logs
-  #   source: |-
-  #     .__host = replace!(.__host, "192.168.8.101", "talos-node-1")
-  #     .__host = replace(.__host, "192.168.8.102", "talos-node-2")
-  #     .__host = replace(.__host, "192.168.8.103", "talos-node-3")
-  #     .__host = replace(.__host, "192.168.8.104", "talos-node-4")
+  talos_kernel_logs_xform:
+    type: remap
+    inputs:
+      - talos_kernel_logs
+    source: |-
+      .__host = replace!(.__host, "192.168.0.12", "talos-node-1")
+      .__host = replace(.__host, "192.168.0.13", "talos-node-2")
+      .__host = replace(.__host, "192.168.0.14", "talos-node-3")
+  talos_service_logs_xform:
+    type: remap
+    inputs:
+      - talos_service_logs
+    source: |-
+      .__host = replace!(.__host, "192.168.0.12", "talos-node-1")
+      .__host = replace(.__host, "192.168.0.13", "talos-node-2")
+      .__host = replace(.__host, "192.168.0.14", "talos-node-3")
   kubernetes_remap:
     type: remap
     inputs:
@@ -96,19 +94,19 @@ sinks:
       k8s_node: '{{ kubernetes.pod_node_name }}'
       k8s_pod: '{{ kubernetes.pod_name }}'
 
-  loki_opnsense:
-    type: loki
-    inputs:
-      - opnsense_logs
-    endpoint: http://loki-gateway.monitoring.svc.cluster.local:80
-    encoding:
-      codec: json
-    batch:
-      max_bytes: 400000
-    out_of_order_action: rewrite_timestamp
-    labels:
-      hostname: '{{ host }}'
-      syslog_identifier: '{{SYSLOG_IDENTIFIER }}'
+  # loki_opnsense:
+  #   type: loki
+  #   inputs:
+  #     - opnsense_logs
+  #   endpoint: http://loki-gateway.monitoring.svc.cluster.local:80
+  #   encoding:
+  #     codec: json
+  #   batch:
+  #     max_bytes: 400000
+  #   out_of_order_action: rewrite_timestamp
+  #   labels:
+  #     hostname: '{{ host }}'
+  #     syslog_identifier: '{{SYSLOG_IDENTIFIER }}'
 
   loki_journal:
     type: loki
@@ -128,8 +126,7 @@ sinks:
   talos_kernel:
     type: loki
     inputs:
-      - talos_kernel_logs
-    #   - talos_kernel_logs_xform
+      - talos_kernel_logs_xform
     endpoint: http://loki-gateway.monitoring.svc.cluster.local:80
     encoding:
       codec: json
@@ -145,8 +142,7 @@ sinks:
   talos_service:
     type: loki
     inputs:
-      - talos_service_logs
-    #   - talos_service_logs_xform
+      - talos_service_logs_xform
     endpoint: http://loki-gateway.monitoring.svc.cluster.local:80
     encoding:
       codec: json

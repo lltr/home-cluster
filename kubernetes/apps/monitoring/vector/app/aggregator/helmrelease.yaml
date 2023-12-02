@@ -70,9 +70,9 @@ spec:
           kubernetes-logs:
             enabled: true
             port: 6000
-          opnsense-logs:
-            enabled: true
-            port: 6001
+          # opnsense-logs:
+          #   enabled: true
+          #   port: 6001
           journald-logs:
             enabled: true
             port: 6002
