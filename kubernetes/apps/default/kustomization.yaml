@@ -6,7 +6,7 @@ resources:
   - ./harbor-registry-cluster-external-secret.yaml
   - ./etherpad/ks.yaml
   - ./discord-watcher/ks.yaml
-  - ./changedetection/ks.yaml
+  # - ./changedetection/ks.yaml
   - ./kubernetes-dashboard/ks.yaml
   - ./actual/ks.yaml
   - ./minio/ks.yaml
