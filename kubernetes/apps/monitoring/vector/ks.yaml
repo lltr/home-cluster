@@ -7,7 +7,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-    - name: cluster-apps-external-secrets-stores
+    - name: cluster-core-external-secrets-stores
   path: ./kubernetes/apps/monitoring/vector
   prune: true
   sourceRef:
