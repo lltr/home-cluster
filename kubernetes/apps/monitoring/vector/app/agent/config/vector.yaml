@@ -1,8 +1,22 @@
 ---
 data_dir: /vector-data-dir
 sources:
-  kubernetes_logs:
+  journald_source:
+    type: journald
+    journal_directory: /var/log/journal
+  kubernetes_source:
     type: kubernetes_logs
+    use_apiserver_cache: true
+    pod_annotation_fields:
+      container_image: container_image
+      container_name: container_name
+      pod_labels: pod_labels
+      pod_name: pod_name
+      pod_annotations: ""
+    namespace_annotation_fields:
+      namespace_labels: ""
+    node_annotation_fields:
+      node_labels: ""
   talos_kernel_logs:
     type: socket
     mode: udp
@@ -13,10 +27,16 @@ sources:
     address: 127.0.0.1:12001
 
 sinks:
+  journald_sink:
+    type: vector
+    compression: true
+    version: "2"
+    address: vector-aggregator.monitoring.svc.cluster.local:6000
+    inputs: ["journald_source"]
   kubernetes_sink:
     type: vector
     inputs:
-      - kubernetes_logs
+      - kubernetes_source
     address: "vector-aggregator.monitoring:6000"
     version: "2"
   talos_kernel_sink:
