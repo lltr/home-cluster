@@ -127,7 +127,8 @@ sinks:
 
   talos_kernel:
     type: loki
-    # inputs:
+    inputs:
+      - talos_kernel_logs
     #   - talos_kernel_logs_xform
     endpoint: http://loki-gateway.monitoring.svc.cluster.local:80
     encoding:
@@ -143,7 +144,8 @@ sinks:
 
   talos_service:
     type: loki
-    # inputs:
+    inputs:
+      - talos_service_logs
     #   - talos_service_logs_xform
     endpoint: http://loki-gateway.monitoring.svc.cluster.local:80
     encoding:
