@@ -25,7 +25,6 @@ spec:
     adminUser:
       create: true
       createSecret: false
-      username: ${SECRET_USERNAME}
     # oidcSecret:
     #   create: true
     #   clientID: weave-gitops
@@ -62,3 +61,8 @@ spec:
           verbs: ["get", "list", "patch"]
     podAnnotations:
       secret.reloader.stakater.com/reload: cluster-user-auth, oidc-auth
+  valuesFrom:
+    - kind: Secret
+      name: cluster-user-auth
+      valuesKey: username
+      targetPath: adminUser.username
