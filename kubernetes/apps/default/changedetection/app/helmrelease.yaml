@@ -76,5 +76,7 @@ spec:
       config:
         enabled: true
         existingClaim: changedetection-config
-        globalMounts:
-          - path: /datastore
+        advancedMounts:
+          main:
+            main:
+              - path: /datastore

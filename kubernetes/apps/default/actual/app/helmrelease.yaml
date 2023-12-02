@@ -62,4 +62,7 @@ spec:
       data:
         enabled: true
         existingClaim: actual-data
-        mountPath: /data
+        advancedMounts:
+          main:
+            main:
+              - path: /data
