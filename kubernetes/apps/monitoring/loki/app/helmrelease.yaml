@@ -121,7 +121,9 @@ spec:
         enabled: true
         ingressClassName: "nginx"
         annotations:
-          hajimari.io/enable: "false"
+          cert-manager.io/cluster-issuer: letsencrypt-production
+          external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
+          external-dns.home.arpa/enabled: "true"
         hosts:
           - host: &host loki.${SECRET_DOMAIN}
             paths:
@@ -130,6 +132,7 @@ spec:
         tls:
           - hosts:
               - *host
+            secretName: loki-gateway-tls
     read:
       replicas: 2
       affinity: |
