@@ -29,8 +29,8 @@ spec:
         containers:
           main:
             image:
-              repository: jlongster/actual-server
-              tag: 23.10.0-alpine
+              repository: ghcr.io/actualbudget/actual-server
+              tag: 23.11.0-alpine
               pullPolicy: IfNotPresent
             env:
               TZ: ${TIMEZONE}
