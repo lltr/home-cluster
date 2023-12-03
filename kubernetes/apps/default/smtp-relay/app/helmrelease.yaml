@@ -36,7 +36,6 @@ spec:
       tag: 0.7.0
     env:
       DEBUG: "true"
-      SMTP_PORT: "465"
     envFrom:
       - secretRef:
           name: smtp-relay-secret
