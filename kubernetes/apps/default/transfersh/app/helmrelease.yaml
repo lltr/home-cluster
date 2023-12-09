@@ -33,7 +33,7 @@ spec:
           main:
             image:
               repository: dutchcoders/transfer.sh
-              tag: v1.6.0-noroot
+              tag: v1.6.1-noroot
             env:
               TZ: ${TIMEZONE}
               PURGE_DAYS: 7
