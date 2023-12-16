@@ -31,7 +31,7 @@ spec:
           main:
             image:
               repository: ghcr.io/frooodle/s-pdf
-              tag: 0.16.1@sha256:1b834aa7b2ece0722a7961006cc36d3730fc0a5f11c681567bea997c1796294c
+              tag: 0.17.0@sha256:b671a21039f1ce38bae4b0cabc7a30abf42556845e9335a62cd84751b2230870
               pullPolicy: IfNotPresent
             env:
               TZ: ${TIMEZONE}
