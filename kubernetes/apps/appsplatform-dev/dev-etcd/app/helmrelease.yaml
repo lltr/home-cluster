@@ -29,6 +29,7 @@ spec:
     global:
       storageClass: local-path
     replicaCount: 3
+    initialClusterToken: 'etcd-appsplatform-dev'
     auth:
       token:
         ttl: 10000h
