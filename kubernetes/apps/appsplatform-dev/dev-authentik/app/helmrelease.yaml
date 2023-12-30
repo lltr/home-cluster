@@ -48,7 +48,7 @@ spec:
         # user:
         # password:
       redis:
-        host: "authentik-redis.default.svc.cluster.local"
+        host: "dev-authentik-redis.appsplatform-dev.svc.cluster.local"
         # password: ""
       outposts:
         docker_image_base: ghcr.io/goauthentik/%(type)s:%(version)s
