@@ -56,7 +56,7 @@ spec:
         host: "smtp-relay.default.svc.cluster.local"
         port: 2525
         use_tls: false
-        from: "Authentik <authentik@${SECRET_DOMAIN}>"
+        from: "Authentik <authentik-dev@${SECRET_DOMAIN}>"
 
     ingress:
       enabled: true
