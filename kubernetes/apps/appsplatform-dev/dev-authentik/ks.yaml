@@ -4,6 +4,8 @@ kind: Kustomization
 metadata:
   name: cluster-apps-dev-authentik-redis
   namespace: flux-system
+  labels:
+    substitution.flux.home.arpa/enabled: "true"
 spec:
   interval: 30m
   path: "./kubernetes/apps/appsplatform-dev/dev-authentik/redis"
