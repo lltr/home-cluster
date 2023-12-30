@@ -1,0 +1,42 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: cluster-apps-dev-authentik-redis
+  namespace: flux-system
+spec:
+  interval: 30m
+  path: "./kubernetes/apps/appsplatform-dev/dev-authentik/redis"
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: home-kubernetes
+  wait: true
+  dependsOn:
+    - name: cluster-core-external-secrets-stores
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: cluster-apps-dev-authentik
+  namespace: flux-system
+  labels:
+    substitution.flux.home.arpa/enabled: "true"
+spec:
+  dependsOn:
+    - name: cluster-apps-appsplatform-dev-postgresql
+    - name: cluster-apps-smtp-relay
+    - name: cluster-apps-dev-authentik-redis
+  path: ./kubernetes/apps/appsplatform-dev/dev-authentik/app
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: home-kubernetes
+  healthChecks:
+    - apiVersion: helm.toolkit.fluxcd.io/v2beta1
+      kind: HelmRelease
+      name: dev-authentik
+      namespace: appsplatform-dev
+  interval: 30m
+  retryInterval: 1m
+  timeout: 3m
