@@ -4,15 +4,9 @@ kind: Kustomization
 namespace: development
 resources:
   - ./helmrelease.yaml
+  - ./pvc
   - ./harbor-secrets.sops.yaml
   # - ./ingress.yaml
-  # PVCs
-  - ./pvc/registry.yaml
-  - ./pvc/jobservice.yaml
-  - ./pvc/jobservice-scandata.yaml
-  - ./pvc/database.yaml
-  - ./pvc/redis.yaml
-  - ./pvc/trivy.yaml
   # Volsync
   - ./volsync.yaml
 
