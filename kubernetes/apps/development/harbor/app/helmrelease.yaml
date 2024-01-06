@@ -220,10 +220,10 @@ spec:
       kind: Secret
       name: harbor-secrets
       valuesKey: harborAdminPassword
-    - targetPath: database.internal.password
-      kind: Secret
-      name: harbor-secrets
-      valuesKey: databaseInternalPassword
+    # - targetPath: database.internal.password
+    #   kind: Secret
+    #   name: harbor-secrets
+    #   valuesKey: databaseInternalPassword
     - targetPath: trivy.gitHubToken
       kind: Secret
       name: harbor-secrets
