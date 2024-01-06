@@ -4,9 +4,9 @@ kind: Kustomization
 namespace: development
 resources:
   # PVCs
-  - ./pvc/registry.yaml
-  - ./pvc/jobservice.yaml
-  - ./pvc/jobservice-scandata.yaml
-  - ./pvc/database.yaml
-  - ./pvc/redis.yaml
-  - ./pvc/trivy.yaml
+  - ./registry.yaml
+  - ./jobservice.yaml
+  - ./jobservice-scandata.yaml
+  - ./database.yaml
+  - ./redis.yaml
+  - ./trivy.yaml
