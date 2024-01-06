@@ -157,7 +157,7 @@ spec:
           repository: goharbor/harbor-db
           tag: dev
       external:
-        host: postgres-v1-rw.datahub.svc.cluster.local
+        host: postgres-rw.databases.svc.cluster.local
         port: "5432"
         username: harbor
         existingSecret: harbor-secrets
