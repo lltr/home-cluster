@@ -151,22 +151,16 @@ spec:
     database:
       # if external database is used, set "type" to "external"
       # and fill the connection informations in "external" section
-      type: internal
+      type: external
       internal:
         image:
           repository: goharbor/harbor-db
           tag: dev
       external:
-        host: "192.168.0.1"
+        host: postgres-v1-rw.datahub.svc.cluster.local
         port: "5432"
-        username: "user"
-        password: "password"
-        coreDatabase: "registry"
-        # if using existing secret, the key must be "password"
-        existingSecret: ""
-      maxIdleConns: 100
-      maxOpenConns: 900
-      podAnnotations: {}
+        username: harbor
+        existingSecret: harbor-secrets
 
     redis:
       type: internal

@@ -15,3 +15,6 @@ resources:
   - ./pvc/trivy.yaml
   # Volsync
   - ./volsync.yaml
+
+patchesStrategicMerge:
+  - ./patches/postgres.yaml
