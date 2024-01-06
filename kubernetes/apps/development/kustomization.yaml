@@ -6,4 +6,4 @@ resources:
   - ./gitlab-runner/ks.yaml
   - ./gitea/ks.yaml
   # - ./renovate/ks.yaml
-  # - ./harbor/ks.yaml
+  - ./harbor/ks.yaml
