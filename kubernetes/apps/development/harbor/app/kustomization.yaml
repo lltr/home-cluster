@@ -9,6 +9,3 @@ resources:
   # - ./ingress.yaml
   # Volsync
   - ./volsync.yaml
-
-patchesStrategicMerge:
-  - ./patches/postgres.yaml
