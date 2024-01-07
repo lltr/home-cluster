@@ -197,3 +197,21 @@ spec:
       kind: Secret
       name: harbor-secrets
       valuesKey: GITHUB_COM_TOKEN
+  postRenderers:
+    - kustomize:
+        patchesStrategicMerge:
+          - kind: Deployment
+            apiVersion: apps/v1
+            metadata:
+              name: harbor-core
+              namespace: development
+            spec:
+              template:
+                spec:
+                  initContainers:
+                    - name: init-db
+                      image: ghcr.io/lltr/postgres-initdb:15.5
+                      imagePullPolicy: IfNotPresent
+                      envFrom:
+                        - secretRef:
+                            name: harbor-secrets

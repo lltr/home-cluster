@@ -10,5 +10,5 @@ resources:
   # Volsync
   - ./volsync.yaml
 
-patchesStrategicMerge:
-  - ./patches/postgres.yaml
+# patchesStrategicMerge:
+#   - ./patches/postgres.yaml
