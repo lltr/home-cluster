@@ -203,7 +203,7 @@ spec:
           - kind: Deployment
             apiVersion: apps/v1
             metadata:
-              name: harbor-core
+              name: harbor
               namespace: development
             spec:
               template:
