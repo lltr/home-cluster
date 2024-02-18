@@ -7,5 +7,5 @@ resources:
   - ./ory-kratos/ks.yaml
   - ./ory-oathkeeper/ks.yaml
   - ./ory-keto/ks.yaml
-  - ./dev-etcd/ks.yaml
+  # - ./dev-etcd/ks.yaml
   - ./dev-authentik/ks.yaml
