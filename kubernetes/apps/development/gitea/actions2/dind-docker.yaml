@@ -38,7 +38,7 @@ spec:
           emptyDir: {}
       containers:
         - name: runner
-          image: vegardit/gitea-act-runner:dind-0.2.5
+          image: vegardit/gitea-act-runner:dind-0.2.6
           imagePullPolicy: Always
           env:
             - name: GITEA_INSTANCE_URL
