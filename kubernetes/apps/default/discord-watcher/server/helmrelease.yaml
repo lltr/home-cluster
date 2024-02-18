@@ -28,7 +28,7 @@ spec:
       annotations:
         reloader.stakater.com/search: "true"
     image:
-      repository: ${SECRET_REGISTRY_DOMAIN}/watcher/discord-watcher-server
+      repository: ${SECRET_REGISTRY_DOMAIN}/gitlab-llim/ldev/go/standard/discord-watcher-server
       pullPolicy: Always
       tag: "latest"
     imagePullSecrets:
