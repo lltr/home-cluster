@@ -30,19 +30,13 @@ spec:
     - name: redis
       namespace: databases
   values:
-    image:
-      repository: ghcr.io/goauthentik/server
-      tag: 2024.2.1
-      pullPolicy: IfNotPresent
-    controllers:
-      annotations:
+    global:
+      image:
+        repository: ghcr.io/goauthentik/server
+        tag: 2024.2.1
+        pullPolicy: IfNotPresent
+      podAnnotations:
         secret.reloader.stakater.com/reload: &secret authentik-secret
-    initContainers:
-      init-db:
-        image: ghcr.io/lltr/postgres-initdb:15.5
-        envFrom:
-          - secretRef:
-              name: *secret
 
     authentik:
       log_level: info
@@ -67,33 +61,47 @@ spec:
         use_tls: false
         from: "Authentik <authentik@${SECRET_DOMAIN}>"
 
-    ingress:
-      enabled: true
-      ingressClassName: "nginx"
-      annotations:
-        cert-manager.io/cluster-issuer: letsencrypt-production
-        external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
-        external-dns.home.arpa/enabled: "true"
-      hosts:
-        - host: &host "authentik.${SECRET_DOMAIN}"
-          paths:
-            - path: "/"
-              pathType: Prefix
-      tls:
-        - hosts:
-            - *host
-          secretName: authentik-tls
+    server:
+      pdb:
+        enabled: true
+        minAvailable: 1
+        maxUnavailable: 1
+      ingress:
+        enabled: true
+        ingressClassName: "nginx"
+        annotations:
+          cert-manager.io/cluster-issuer: letsencrypt-production
+          external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
+          external-dns.home.arpa/enabled: "true"
+        hosts:
+          - host: &host "authentik.${SECRET_DOMAIN}"
+            paths:
+              - path: "/"
+                pathType: Prefix
+        tls:
+          - hosts:
+              - *host
+            secretName: authentik-tls
+      metrics:
+        serviceMonitor:
+          enabled: true
+      resources:
+        requests:
+          cpu: 50m
+          memory: 600M
+        limits:
+          memory: 1251M
+      initContainers:
+        - name: init-db
+          image: ghcr.io/lltr/postgres-initdb:15.5
+          envFrom:
+            - secretRef:
+                name: *secret
     postgresql:
       enabled: false
     redis:
       enabled: false
 
-    resources:
-      requests:
-        cpu: 50m
-        memory: 600M
-      limits:
-        memory: 1251M
   valuesFrom:
     - kind: Secret
       name: *secret
