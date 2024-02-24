@@ -16,7 +16,7 @@ resources:
   - ./lldap/ks.yaml
   # - ./echo-server/ks.yaml
   - ./excalidraw/ks.yaml
-  # - ./authentik/ks.yaml
+  - ./authentik/ks.yaml
   - ./transfersh/ks.yaml
   - ./owncast/ks.yaml
   - ./ittools/ks.yaml
