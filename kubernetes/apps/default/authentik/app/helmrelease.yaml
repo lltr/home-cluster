@@ -93,7 +93,7 @@ spec:
           memory: 1251M
       initContainers:
         - name: init-db
-          image: ghcr.io/lltr/postgres-initdb:15.5
+          image: ghcr.io/lltr/postgres-initdb:15.6
           envFrom:
             - secretRef:
                 name: *secret
