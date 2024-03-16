@@ -41,7 +41,7 @@ spec:
           init-db:
             image:
               repository: ghcr.io/lltr/postgres-initdb
-              tag: 15.5
+              tag: 15.6
               pullPolicy: IfNotPresent
             envFrom: &envFrom
               - secretRef:
