@@ -31,7 +31,7 @@ spec:
           main:
             image:
               repository: owncast/owncast
-              tag: 0.1.2
+              tag: 0.1.3
               pullPolicy: IfNotPresent
             env:
               TZ: ${TIMEZONE}
