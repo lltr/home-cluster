@@ -27,7 +27,7 @@ spec:
   values:
     image:
       repository: gitea/gitea
-      tag: 1.21.8
+      tag: 1.21.11
       rootless: true # only possible when running 1.14 or later
 
     containerSecurityContext:
