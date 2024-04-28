@@ -10,6 +10,7 @@ spec:
       protocol: TCP
       targetPort: 8123
   clusterIP: None
+  externalTrafficPolicy: Local
   type: ClusterIP
 ---
 apiVersion: v1
