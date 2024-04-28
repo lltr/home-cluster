@@ -6,6 +6,7 @@ resources:
   - ./helmrelease.yaml
   - ./external-services.yaml
   - ./external-ingress.yaml
+  - ./tunnel-ext-ingress.yaml
 configMapGenerator:
   - name: cloudflare-networks
     files:
