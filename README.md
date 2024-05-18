@@ -5,7 +5,26 @@
 
   ### My Talos Kubernetes cluster
 
-  [![External-Status](https://img.shields.io/uptimerobot/status/m793353196-e4e90f5680b8c3200714f8f6?label=EXTERNAL%20LINK%20STATUS&style=for-the-badge)](https://uptimerobot.com)
+</div>
+
+<div align="center">
+
+  [![External-Status-Page](https://img.shields.io/uptimerobot/status/m793353196-e4e90f5680b8c3200714f8f6?style=for-the-badge&label=EXTERNAL%20STATUS)](https://uptimerobot.com)
+
+</div>
+
+<div align="center">
+
+  [![Talos](https://img.shields.io/endpoint?url=https%3A%2F%2Fkromgo.securetunnel.link%2Fquery%3Fformat%3Dendpoint%26metric%3Dtalos_version&style=for-the-badge&logo=talos&logoColor=white&label=%20&color=blue)](https://talos.dev)
+  [![Kubernetes](https://img.shields.io/endpoint?url=https%3A%2F%2Fkromgo.securetunnel.link%2Fquery%3Fformat%3Dendpoint%26metric%3Dkubernetes_version&style=for-the-badge&logo=kubernetes&logoColor=white&label=%20&color=blue)](https://talos.dev)
+
+</div>
+
+<div align="center">
+
+  [![Age-Days](https://img.shields.io/endpoint?url=https%3A%2F%2Fkromgo.securetunnel.link%2Fquery%3Fformat%3Dendpoint%26metric%3Dcluster_age_days&style=flat-square&logoColor=white&label=Age)](https://github.com/kashalls/kromgo/)&nbsp;&nbsp;
+  [![Uptime-Days](https://img.shields.io/endpoint?url=https%3A%2F%2Fkromgo.securetunnel.link%2Fquery%3Fformat%3Dendpoint%26metric%3Dcluster_uptime_days&style=flat-square&logoColor=white&label=Uptime)](https://github.com/kashalls/kromgo/)&nbsp;&nbsp;
+  [![Node-Count](https://img.shields.io/endpoint?url=https%3A%2F%2Fkromgo.securetunnel.link%2Fquery%3Fformat%3Dendpoint%26metric%3Dcluster_node_count&style=flat-square&logoColor=white&label=Nodes)](https://github.com/kashalls/kromgo/)&nbsp;&nbsp;
 
 </div>
 
@@ -24,7 +43,6 @@ This is a mono repository for my home Kubernetes cluster. [Flux](https://github.
 - [Talos](https://www.talos.dev): Using bare talosctl
 - [fluxcd](https://fluxcd.io/): Sync kubernetes cluster with this repository.
 - [SOPS](https://toolkit.fluxcd.io/guides/mozilla-sops/): Encrypts secrets which is safe to store - even to a public repository.
-- [yq v4](https://github.com/mikefarah/yq): Command tool
 - [go-task](https://github.com/go-task/task): Custom helper commands
 
 ### Core components
