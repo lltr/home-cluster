@@ -23,10 +23,10 @@ spec:
     remediation:
       retries: 3
   values:
-    # image:
-    #   registry: docker.io
-    #   repository: bitnami/influxdb
-    #   tag: 2.7.6-debian-12-r8
+    image:
+      registry: docker.io
+      repository: bitnami/influxdb
+      tag: 2.7.6-debian-12-r8
 
     auth:
       enabled: true
