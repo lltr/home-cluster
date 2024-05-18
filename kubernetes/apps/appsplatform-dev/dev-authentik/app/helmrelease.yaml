@@ -80,12 +80,6 @@ spec:
     redis:
       enabled: false
 
-    resources:
-      requests:
-        cpu: 50m
-        memory: 600M
-      limits:
-        memory: 1251M
   valuesFrom:
     - kind: Secret
       name: *secret
