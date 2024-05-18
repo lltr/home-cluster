@@ -72,7 +72,7 @@ spec:
           external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_EXT_INFRA_DOMAIN}"
           external-dns.home.arpa/enabled: "true"
         hosts:
-          - host: &host "auth.${SECRET_EXT_DOMAIN}"
+          - host: &host auth.${SECRET_EXT_DOMAIN}
             paths:
               - path: "/"
                 pathType: Prefix
