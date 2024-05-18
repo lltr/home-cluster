@@ -120,15 +120,6 @@ spec:
             secretName: loki-gateway-tls
     read:
       replicas: 2
-      affinity: |
-        podAntiAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-            - weight: 1
-              podAffinityTerm:
-                labelSelector:
-                  matchLabels:
-                    {{- include "loki.writeSelectorLabels" . | nindent 12 }}
-                topologyKey: kubernetes.io/hostname
       persistence:
         storageClass: ceph-block
       extraVolumeMounts:
@@ -139,29 +130,11 @@ spec:
           emptyDir: {}
     write:
       replicas: 2
-      affinity: |
-        podAntiAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-            - weight: 1
-              podAffinityTerm:
-                labelSelector:
-                  matchLabels:
-                    {{- include "loki.writeSelectorLabels" . | nindent 12 }}
-                topologyKey: kubernetes.io/hostname
       persistence:
         size: 20Gi
         storageClass: ceph-block
     backend:
       replicas: 2
-      affinity: |
-        podAntiAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-            - weight: 1
-              podAffinityTerm:
-                labelSelector:
-                  matchLabels:
-                    {{- include "loki.writeSelectorLabels" . | nindent 12 }}
-                topologyKey: kubernetes.io/hostname
       persistence:
         storageClass: ceph-block
       extraVolumeMounts:
