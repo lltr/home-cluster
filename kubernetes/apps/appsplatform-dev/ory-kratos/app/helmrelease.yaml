@@ -70,6 +70,21 @@ spec:
     secret:
       enabled: false
       nameOverride: "ory-kratos-secrets"
+    job:
+      extraEnv:
+        - name: DSN
+          valueFrom:
+            secretKeyRef:
+              name: ory-kratos-secrets
+              key: dsn
+    cronjob:
+      cleanup:
+        extraEnv:
+          - name: DSN
+            valueFrom:
+              secretKeyRef:
+                name: ory-kratos-secrets
+                key: dsn
 
     ingress:
       admin:
