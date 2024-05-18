@@ -5,6 +5,8 @@ kind: Kustomization
 metadata:
   name: &app cluster-apps-kromgo
   namespace: flux-system
+  labels:
+    substitution.flux.home.arpa/enabled: "true"
 spec:
   targetNamespace: monitoring
   commonMetadata:
