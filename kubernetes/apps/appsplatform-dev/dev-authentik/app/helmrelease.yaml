@@ -27,12 +27,12 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    image:
-      repository: ghcr.io/goauthentik/server
-      tag: 2023.10.7
-      pullPolicy: IfNotPresent
-    controllers:
-      annotations:
+    global:
+      image:
+        repository: ghcr.io/goauthentik/server
+        tag: 2023.10.7
+        pullPolicy: IfNotPresent
+      podAnnotations:
         secret.reloader.stakater.com/reload: &secret dev-authentik-secret
 
     authentik:
