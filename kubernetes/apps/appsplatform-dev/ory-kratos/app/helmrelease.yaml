@@ -68,7 +68,7 @@ spec:
         enabled: true
       development: false
     secret:
-      enabled: false
+      enabled: true
       nameOverride: "ory-kratos-secrets"
 
     ingress:
