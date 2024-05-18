@@ -74,6 +74,7 @@ spec:
         hosts:
           - &host auth.${SECRET_EXT_DOMAIN}
         paths: ["/"]
+        pathType: Prefix
         tls:
           - hosts:
               - *host
