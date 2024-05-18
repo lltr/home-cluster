@@ -5,4 +5,4 @@ resources:
   - ./namespace.yaml
   - ./dev-postgresql/ks.yaml
   - ./dev-etcd/ks.yaml
-  - ./dev-authentik/ks.yaml
+  # - ./dev-authentik/ks.yaml
