@@ -58,27 +58,38 @@ spec:
         use_tls: false
         from: "Authentik <authentik-dev@${SECRET_DOMAIN}>"
 
-    ingress:
-      enabled: true
-      ingressClassName: "nginx"
-      annotations:
-        cert-manager.io/cluster-issuer: letsencrypt-production
-        external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
-        external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_EXT_INFRA_DOMAIN}"
-        external-dns.home.arpa/enabled: "true"
-      hosts:
-        - host: &host "auth.${SECRET_EXT_DOMAIN}"
-          paths:
-            - path: "/"
-              pathType: Prefix
-      tls:
-        - hosts:
-            - *host
-          secretName: dev-authentik-tls
-    postgresql:
-      enabled: false
-    redis:
-      enabled: false
+    server:
+      pdb:
+        enabled: true
+        minAvailable: 1
+        maxUnavailable: 1
+      ingress:
+        enabled: true
+        ingressClassName: "nginx"
+        annotations:
+          cert-manager.io/cluster-issuer: letsencrypt-production
+          external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
+          external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_EXT_INFRA_DOMAIN}"
+          external-dns.home.arpa/enabled: "true"
+        hosts:
+          - host: &host "auth.${SECRET_EXT_DOMAIN}"
+            paths:
+              - path: "/"
+                pathType: Prefix
+        tls:
+          - hosts:
+              - *host
+            secretName: dev-authentik-tls
+      resources:
+        requests:
+          cpu: 50m
+          memory: 600M
+        limits:
+          memory: 1251M
+      postgresql:
+        enabled: false
+      redis:
+        enabled: false
 
   valuesFrom:
     - kind: Secret
