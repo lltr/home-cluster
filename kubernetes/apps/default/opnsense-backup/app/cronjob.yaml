@@ -14,7 +14,7 @@ spec:
             - name: bash-script-container
               image: ghcr.io/onedr0p/alpine:3.17.0@sha256:8e1eb13c3ca5c038f3bf22a5fe9e354867f97f98a78027c44b7c76fce81fa61d
               command: ["/bin/sh", "-c"]
-              args: ["/scripts/script.sh"]
+              args: ["ls /backups && /scripts/script.sh"]
               volumeMounts:
                 - name: backup-script-volume
                   mountPath: /scripts
