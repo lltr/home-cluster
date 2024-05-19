@@ -15,8 +15,7 @@ spec:
               args: ["/scripts/script.sh"]
               volumeMounts:
                 - name: backup-script-volume
-                  mountPath: /scripts/script.sh
-                  subPath: script.sh
+                  mountPath: /scripts
                 - name: backup-volume
                   mountPath: /backups
           restartPolicy: OnFailure
