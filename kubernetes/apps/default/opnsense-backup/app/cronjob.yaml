@@ -18,8 +18,6 @@ spec:
                   mountPath: /etc/scripts/script.sh
                 - name: backup-volume
                   mountPath: /backups
-              securityContext:
-                privileged: true
           restartPolicy: OnFailure
           volumes:
             - name: backup-script-volume
