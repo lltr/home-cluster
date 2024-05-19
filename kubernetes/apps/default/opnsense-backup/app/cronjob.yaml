@@ -1,0 +1,29 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: opnsense-weekly-backup
+spec:
+  schedule: "0 0 * * 0"  # This sets the schedule to run at midnight (00:00) every Sunday
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: bash-script-container
+              image: alpine:latest  # Use an image that has bash installed
+              command: ["/bin/sh", "-c"]
+              args: ["/etc/scripts/script.sh"]
+              volumeMounts:
+                - name: backup-script-volume
+                  mountPath: /etc/scripts
+                  readOnly: true
+                - name: backup-volume
+                  mountPath: /backups
+              restartPolicy: OnFailure
+              volumes:
+                - name: backup-script-volume
+                  secret:
+                    secretName: backup-script-secret  # Secret containing your script
+                - name: backup-volume
+                  persistentVolumeClaim:
+                    claimName: opnsense-backups-nfs
