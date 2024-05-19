@@ -15,7 +15,7 @@ spec:
   healthChecks:
     - apiVersion: batch/v1
       kind: CronJob
-      name: opnsense-backup
+      name: opnsense-backup-cron
       namespace: default
   interval: 30m
   retryInterval: 1m

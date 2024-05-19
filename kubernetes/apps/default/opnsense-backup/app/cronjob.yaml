@@ -1,9 +1,9 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: opnsense-weekly-backup
+  name: opnsense-backup-cron
 spec:
-  schedule: "0 0 * * 0"  # This sets the schedule to run at midnight (00:00) every Sunday
+  schedule: "0 0 */3 * *"  # Run every 3 days
   successfulJobsHistoryLimit: 2
   failedJobsHistoryLimit: 1
   jobTemplate:
