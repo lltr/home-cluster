@@ -12,6 +12,11 @@ spec:
   sourceRef:
     kind: GitRepository
     name: home-kubernetes
+  healthChecks:
+    - apiVersion: batch/v1
+      kind: CronJob
+      name: opnsense-backup
+      namespace: default
   interval: 30m
   retryInterval: 1m
   timeout: 3m
