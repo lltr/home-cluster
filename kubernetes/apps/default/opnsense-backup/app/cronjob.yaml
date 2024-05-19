@@ -16,7 +16,7 @@ spec:
               volumeMounts:
                 - name: backup-script-volume
                   mountPath: /etc/scripts
-                  defaultMode: 0666
+                  defaultMode: 666
                 - name: backup-volume
                   mountPath: /backups
           restartPolicy: OnFailure
