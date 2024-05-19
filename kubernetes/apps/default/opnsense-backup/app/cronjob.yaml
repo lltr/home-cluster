@@ -17,6 +17,7 @@ spec:
                 - name: backup-script-volume
                   mountPath: /etc/scripts
                   readOnly: true
+                  defaultMode: 0666
                 - name: backup-volume
                   mountPath: /backups
           restartPolicy: OnFailure
