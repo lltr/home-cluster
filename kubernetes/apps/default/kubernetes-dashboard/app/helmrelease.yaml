@@ -54,7 +54,7 @@ spec:
       containers:
         args:
           # - --enable-skip-login
-          - --token-ttl=43200
+          # - --token-ttl=43200
 
     metricsScraper:
       enabled: true
