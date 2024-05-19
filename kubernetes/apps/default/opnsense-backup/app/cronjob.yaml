@@ -19,7 +19,6 @@ spec:
                   readOnly: true
                 - name: backup-volume
                   mountPath: /backups
-              restartPolicy: OnFailure
               volumes:
                 - name: backup-script-volume
                   secret:
