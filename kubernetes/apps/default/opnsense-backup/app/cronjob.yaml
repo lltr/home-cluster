@@ -16,7 +16,6 @@ spec:
               volumeMounts:
                 - name: backup-script-volume
                   mountPath: /etc/scripts
-                  defaultMode: 666
                 - name: backup-volume
                   mountPath: /backups
           restartPolicy: OnFailure
@@ -24,6 +23,7 @@ spec:
             - name: backup-script-volume
               secret:
                 secretName: backup-script-secret  # Secret containing your script
+                defaultMode: 666
             - name: backup-volume
               persistentVolumeClaim:
                 claimName: opnsense-backups-nfs
