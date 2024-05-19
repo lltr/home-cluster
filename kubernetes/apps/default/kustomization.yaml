@@ -22,3 +22,4 @@ resources:
   - ./ittools/ks.yaml
   # - ./localai/ks.yaml
   - ./stirling-pdf/ks.yaml
+  - ./opnsense-backup/ks.yaml
