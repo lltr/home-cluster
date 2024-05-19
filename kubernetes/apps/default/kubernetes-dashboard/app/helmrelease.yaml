@@ -24,6 +24,10 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    extraArgs:
+      - --enable-skip-login
+      - --disable-settings-authorizer
+      - --token-ttl=43200
     env:
       TZ: ${TIMEZONE}
     # image:
