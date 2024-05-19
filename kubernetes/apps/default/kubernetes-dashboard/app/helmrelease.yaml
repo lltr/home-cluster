@@ -55,12 +55,12 @@ spec:
         paths:
           web: /
           api: /api
-    api:
-      containers:
-        args:
-          - --enable-skip-login
-          - --disable-settings-authorizer
-          # - --token-ttl=43200
+    # api:
+    #   containers:
+    #     args:
+    #       - --enable-skip-login
+    #       - --disable-settings-authorizer
+    #       - --token-ttl=43200
 
     metricsScraper:
       enabled: true
