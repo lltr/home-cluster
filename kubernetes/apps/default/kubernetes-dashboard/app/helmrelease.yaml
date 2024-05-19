@@ -53,7 +53,8 @@ spec:
     api:
       containers:
         args:
-          # - --enable-skip-login
+          - --enable-skip-login
+          - --disable-settings-authorizer
           # - --token-ttl=43200
 
     metricsScraper:
