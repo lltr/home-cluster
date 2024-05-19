@@ -4,7 +4,7 @@ metadata:
   name: opnsense-backup-cron
 spec:
   schedule: "0 0 */3 * *"  # Run every 3 days
-  successfulJobsHistoryLimit: 2
+  successfulJobsHistoryLimit: 1
   failedJobsHistoryLimit: 1
   jobTemplate:
     spec:
