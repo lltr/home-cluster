@@ -4,6 +4,8 @@ metadata:
   name: opnsense-weekly-backup
 spec:
   schedule: "0 0 * * 0"  # This sets the schedule to run at midnight (00:00) every Sunday
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
   jobTemplate:
     spec:
       template:
