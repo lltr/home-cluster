@@ -55,6 +55,8 @@ access_control:
   rules:
     - domain: ["grafana.${SECRET_DOMAIN}"]
       policy: bypass
+    - domain: ["dashboard.${SECRET_DOMAIN}"]
+      policy: one_factor
 
 notifier:
   disable_startup_check: true
