@@ -24,14 +24,19 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    env:
-      TZ: ${TIMEZONE}
+
     # image:
     #   repository: kubernetesui/dashboard
     #   tag: "v2.7.0"  # If not defined, uses appVersion of Chart.yaml
     #   pullPolicy: IfNotPresent
     #   pullSecrets: []
     app:
+      env:
+        TZ: ${TIMEZONE}
+      extraArgs:
+        - --enable-skip-login
+        - --disable-settings-authorizer
+        - --token-ttl=43200
       scaling:
         replicas: 1
         revisionHistoryLimit: 3
@@ -55,10 +60,6 @@ spec:
         paths:
           web: /
           api: /api
-      extraArgs:
-        - --enable-skip-login
-        - --disable-settings-authorizer
-        - --token-ttl=43200
     # api:
     #   containers:
     #     args:
