@@ -19,10 +19,11 @@ spec:
                   readOnly: true
                 - name: backup-volume
                   mountPath: /backups
-              volumes:
-                - name: backup-script-volume
-                  secret:
-                    secretName: backup-script-secret  # Secret containing your script
-                - name: backup-volume
-                  persistentVolumeClaim:
-                    claimName: opnsense-backups-nfs
+          restartPolicy: OnFailure
+          volumes:
+            - name: backup-script-volume
+              secret:
+                secretName: backup-script-secret  # Secret containing your script
+            - name: backup-volume
+              persistentVolumeClaim:
+                claimName: opnsense-backups-nfs
