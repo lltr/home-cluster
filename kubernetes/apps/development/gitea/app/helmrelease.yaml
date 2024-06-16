@@ -133,6 +133,8 @@ spec:
           WHITELISTED_URIS: "auth.${SECRET_DOMAIN}"
         actions:
           enabled: true
+        ui:
+          DEFAULT_THEME: gitea-auto
 
       oauth:
         - name: Authelia
