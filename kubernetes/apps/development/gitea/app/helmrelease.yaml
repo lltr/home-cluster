@@ -134,7 +134,7 @@ spec:
         actions:
           enabled: true
         ui:
-          DEFAULT_THEME: gitea-auto
+          DEFAULT_THEME: gitea-dark
 
       oauth:
         - name: Authelia
