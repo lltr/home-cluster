@@ -17,7 +17,7 @@ metadata:
     app: act-runner
   name: act-runner
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: act-runner
@@ -38,7 +38,7 @@ spec:
           emptyDir: {}
       containers:
         - name: runner
-          image: vegardit/gitea-act-runner:dind-0.2.6
+          image: vegardit/gitea-act-runner:dind-0.2.10
           imagePullPolicy: Always
           env:
             - name: GITEA_INSTANCE_URL
