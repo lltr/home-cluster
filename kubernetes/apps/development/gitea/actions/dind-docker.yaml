@@ -17,7 +17,7 @@ metadata:
     app: act-runner
   name: act-runner
 spec:
-  replicas: 3
+  replicas: 5
   selector:
     matchLabels:
       app: act-runner
