@@ -32,8 +32,7 @@ spec:
       restartPolicy: Always
       volumes:
         - name: runner-data
-          persistentVolumeClaim:
-            claimName: runner-vol
+          emptyDir: {}
         - name: runner-cache
           emptyDir: {}
       containers:
