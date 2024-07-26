@@ -25,7 +25,7 @@ spec:
   values:
     image:
       repository: ghcr.io/onedr0p/prowlarr-develop
-      tag: 1.20.0.4590
+      tag: 1.21.2.4649
       pullPolicy: IfNotPresent
     env:
       TZ: ${TIMEZONE}
