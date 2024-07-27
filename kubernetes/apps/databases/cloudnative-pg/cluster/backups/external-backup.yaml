@@ -15,7 +15,7 @@ spec:
           restartPolicy: OnFailure
           containers:
             - name: *app
-              image: prodrigestivill/postgres-backup-local:16-alpine@sha256:54173896c4d4d24a0a934e867205a957a7094356e0c0b10427fd240c4d9f2df0
+              image: prodrigestivill/postgres-backup-local:16-alpine@sha256:29318f48f3a16844671d27c331c5b35d1e8e25c37bfe3929d8c22bc7ea585b33
               env:
                 - name: POSTGRES_HOST
                   value: ${POSTGRES_HOST}
