@@ -45,7 +45,7 @@ metadata:
   name: external-ip-wjp-dev-api
 spec:
   ports:
-    - name: app
+    - name: api
       port: 80
       protocol: TCP
       targetPort: 8080
