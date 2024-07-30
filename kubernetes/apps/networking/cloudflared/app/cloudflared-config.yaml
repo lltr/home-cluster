@@ -51,5 +51,10 @@ ingress:
   #   originRequest:
   #     noTLSVerify: true
 
+  - hostname: "wjp.${SECRET_INTERNAL_DEPLOY_DOMAIN}"
+    service: http://192.168.0.181
+    originRequest:
+      noTLSVerify: true
+
   ### "Else" rule matches any traffic which didn't match a previous rule, and responds with HTTP 404.
   - service: http_status:404
