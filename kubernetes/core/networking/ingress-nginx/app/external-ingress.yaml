@@ -51,6 +51,13 @@ spec:
                 name: external-ip-wjp-dev
                 port:
                   number: 80
+          - pathType: Prefix
+            path: /api
+            backend:
+              service:
+                name: external-ip-wjp-dev-api
+                port:
+                  number: 80
   tls:
     - hosts:
         - *host

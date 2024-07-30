@@ -40,6 +40,19 @@ spec:
   type: ClusterIP
 ---
 apiVersion: v1
+kind: Service
+metadata:
+  name: external-ip-wjp-dev
+spec:
+  ports:
+    - name: app
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+  clusterIP: None
+  type: ClusterIP
+---
+apiVersion: v1
 kind: Endpoints
 metadata:
   name: external-ip-wjp-dev
@@ -49,4 +62,7 @@ subsets:
     ports:
       - name: app
         port: 5173
+        protocol: TCP
+      - name: api
+        port: 8080
         protocol: TCP
