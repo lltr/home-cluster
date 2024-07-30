@@ -44,7 +44,7 @@ spec:
     - host: &host "wjp.${SECRET_B1_DOMAIN}"
       http:
         paths:
-          - pathType: ImplementationSpecific
+          - pathType: Prefix
             path: /
             backend:
               service:
