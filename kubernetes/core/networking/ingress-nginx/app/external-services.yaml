@@ -42,7 +42,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: external-ip-wjp-dev
+  name: external-ip-wjp-dev-api
 spec:
   ports:
     - name: app
