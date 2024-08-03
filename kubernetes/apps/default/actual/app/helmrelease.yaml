@@ -30,7 +30,7 @@ spec:
           main:
             image:
               repository: ghcr.io/actualbudget/actual-server
-              tag: 24.7.0-alpine
+              tag: 24.8.0-alpine
               pullPolicy: IfNotPresent
             env:
               TZ: ${TIMEZONE}
