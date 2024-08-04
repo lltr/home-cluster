@@ -63,8 +63,8 @@ spec:
         proxy-buffer-size: "16k"
         ssl-protocols: "TLSv1.3 TLSv1.2"
         use-forwarded-headers: "true"
-        custom-http-errors: |-
-          400,401,403,404,500,502,503,504
+        # custom-http-errors: |-
+        #   400,401,403,404,500,502,503,504
         forwarded-for-header: "CF-Connecting-IP"
 
       metrics:
@@ -77,17 +77,17 @@ spec:
           memory: 250Mi
         limits:
           memory: 500Mi
-    defaultBackend:
-      enabled: false
-      # image:
-      #   repository: ghcr.io/tarampampam/error-pages
-      #   tag: 3.2.0
-      # replicaCount: 1
-      # extraEnvs:
-      #   - name: TEMPLATE_NAME
-      #     value: lost-in-space
-      #   - name: SHOW_DETAILS
-      #     value: "false"
+    # defaultBackend:
+    #   enabled: false
+    #   image:
+    #     repository: ghcr.io/tarampampam/error-pages
+    #     tag: 3.2.0
+    #   replicaCount: 1
+    #   extraEnvs:
+    #     - name: TEMPLATE_NAME
+    #       value: lost-in-space
+    #     - name: SHOW_DETAILS
+    #       value: "false"
   valuesFrom:
     # Cloudflare Networks
     # https://www.cloudflare.com/ips/
