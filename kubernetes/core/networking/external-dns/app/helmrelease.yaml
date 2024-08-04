@@ -53,6 +53,7 @@ spec:
       - "${SECRET_B1_DOMAIN}"
       - "${SECRET_INTERNAL_DEPLOY_DOMAIN}"
       - "${SECRET_APPSPLATFORM_PRD_DOMAIN}"
+      - "${SECRET_WEATHERJP_DOMAIN}"
     serviceMonitor:
       enabled: true
     podAnnotations:
