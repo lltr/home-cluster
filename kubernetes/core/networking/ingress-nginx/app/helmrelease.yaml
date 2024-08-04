@@ -64,7 +64,7 @@ spec:
         ssl-protocols: "TLSv1.3 TLSv1.2"
         use-forwarded-headers: "true"
         custom-http-errors: |-
-          502,503
+          400,401,403,404,500,502,503,504
         forwarded-for-header: "CF-Connecting-IP"
 
       metrics:
@@ -78,7 +78,7 @@ spec:
         limits:
           memory: 500Mi
     defaultBackend:
-      enabled: true
+      enabled: false
       image:
         repository: ghcr.io/tarampampam/error-pages
         tag: 3.2.0
