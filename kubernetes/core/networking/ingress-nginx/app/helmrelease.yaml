@@ -64,7 +64,7 @@ spec:
         ssl-protocols: "TLSv1.3 TLSv1.2"
         use-forwarded-headers: "true"
         custom-http-errors: |-
-          404,502,503
+          502,503
         forwarded-for-header: "CF-Connecting-IP"
 
       metrics:
