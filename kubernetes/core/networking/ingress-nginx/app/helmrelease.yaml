@@ -66,7 +66,11 @@ spec:
         # custom-http-errors: |-
         #   400,401,403,404,500,502,503,504
         forwarded-for-header: "CF-Connecting-IP"
-
+      useExternalDNS:
+        enabled: true
+        suffix: redis.${SECRET_DOMAIN}
+        additionalAnnotations:
+          ttl: 10
       metrics:
         enabled: false
       podAnnotations:
