@@ -68,7 +68,7 @@ spec:
         forwarded-for-header: "CF-Connecting-IP"
       useExternalDNS:
         enabled: true
-        suffix: redis.${SECRET_DOMAIN}
+        suffix: redis-sen.${SECRET_DOMAIN}
         additionalAnnotations:
           ttl: 10
       metrics:
