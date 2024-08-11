@@ -45,6 +45,11 @@ spec:
         failureThreshold: 2
       persistence:
         enabled: false
+    useExternalDNS:
+      enabled: true
+      suffix: redis-sen.${SECRET_DOMAIN}
+      additionalAnnotations:
+        ttl: 10
     metrics:
       enabled: true
       serviceMonitor:
