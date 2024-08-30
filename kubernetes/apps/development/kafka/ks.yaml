@@ -35,7 +35,7 @@ spec:
     kind: GitRepository
     name: home-kubernetes
   dependsOn:
-    - name: strimzi
+    - name: cluster-apps-strimzi
   healthChecks:
     - apiVersion: kafka.strimzi.io/v1beta2
       kind: Kafka
