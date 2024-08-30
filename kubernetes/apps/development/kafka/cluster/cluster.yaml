@@ -63,7 +63,18 @@ spec:
       type: persistent-claim
       class: local-path
       size: 10Gi
-
+    template:
+      pod:
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              - labelSelector:
+                  matchExpressions:
+                    - key: strimzi.io/name
+                      operator: In
+                      values:
+                        - kafka-at-home-kafka
+                topologyKey: kubernetes.io/hostname
   zookeeper:
     replicas: 3
     storage:
