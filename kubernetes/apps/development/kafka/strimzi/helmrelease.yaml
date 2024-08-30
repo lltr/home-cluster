@@ -27,7 +27,6 @@ spec:
     fullReconciliationIntervalMs: 120000
     operationTimeoutMs: 300000
     kubernetesServiceDnsDomain: cluster.local
-    featureGates: "+KafkaNodePools,+UnidirectionalTopicOperator"
     tmpDirSizeLimit: 1Mi
     dashboards:
       enabled: false
