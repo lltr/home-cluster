@@ -40,31 +40,8 @@ spec:
         tls: true
       - name: external
         port: 9094
-        type: ingress
+        type: loadbalancer
         tls: false
-        configuration:
-          class: nginx
-          bootstrap:
-            host: kafka-bootstrap.${SECRET_DOMAIN}
-            annotations:
-              external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
-              external-dns.home.arpa/enabled: "true"
-          brokers:
-            - broker: 0
-              host: kafka-0.${SECRET_DOMAIN}
-              annotations:
-                external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
-                external-dns.home.arpa/enabled: "true"
-            - broker: 1
-              host: kafka-1.${SECRET_DOMAIN}
-              annotations:
-                external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
-                external-dns.home.arpa/enabled: "true"
-            - broker: 2
-              host: kafka-2.${SECRET_DOMAIN}
-              annotations:
-                external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
-                external-dns.home.arpa/enabled: "true"
     config:
       offsets.topic.replication.factor: 3
       transaction.state.log.replication.factor: 3
