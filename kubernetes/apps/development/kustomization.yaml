@@ -7,3 +7,4 @@ resources:
   - ./gitea/ks.yaml
   # - ./renovate/ks.yaml
   - ./harbor/ks.yaml
+  - ./kafka/ks.yaml
