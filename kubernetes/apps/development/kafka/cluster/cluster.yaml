@@ -63,6 +63,7 @@ spec:
       type: persistent-claim
       class: local-path
       size: 10Gi
+
   zookeeper:
     replicas: 3
     storage:
