@@ -5,4 +5,4 @@ namespace: development
 resources:
   # - ./cluster.yaml
   # - ./topics.yaml
-  # - ./users.yaml
+  - ./users.yaml
