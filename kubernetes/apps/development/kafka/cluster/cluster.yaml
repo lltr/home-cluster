@@ -41,32 +41,28 @@ spec:
       - name: external
         port: 9094
         type: ingress
-        tls: true
+        tls: false
         configuration:
           class: nginx
           bootstrap:
             host: kafka-bootstrap.${SECRET_DOMAIN}
             annotations:
-              cert-manager.io/cluster-issuer: letsencrypt-production
               external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
               external-dns.home.arpa/enabled: "true"
           brokers:
             - broker: 0
               host: kafka-0.${SECRET_DOMAIN}
               annotations:
-                cert-manager.io/cluster-issuer: letsencrypt-production
                 external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
                 external-dns.home.arpa/enabled: "true"
             - broker: 1
               host: kafka-1.${SECRET_DOMAIN}
               annotations:
-                cert-manager.io/cluster-issuer: letsencrypt-production
                 external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
                 external-dns.home.arpa/enabled: "true"
             - broker: 2
               host: kafka-2.${SECRET_DOMAIN}
               annotations:
-                cert-manager.io/cluster-issuer: letsencrypt-production
                 external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
                 external-dns.home.arpa/enabled: "true"
     config:
