@@ -33,3 +33,4 @@ resources:
   - ./kong.yaml
   - ./authentik.yaml
   - ./go-skynet.yaml
+  - ./strimzi.yaml
