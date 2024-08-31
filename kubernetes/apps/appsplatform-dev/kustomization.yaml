@@ -6,3 +6,4 @@ resources:
   - ./dev-postgresql/ks.yaml
   - ./dev-etcd/ks.yaml
   - ./dev-authentik/ks.yaml
+  - ./weatherjp-bullmq-common-externalsecrets.yaml
