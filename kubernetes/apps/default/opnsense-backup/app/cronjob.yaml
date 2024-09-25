@@ -12,7 +12,7 @@ spec:
         spec:
           containers:
             - name: bash-script-container
-              image: ghcr.io/onedr0p/alpine:3.19.1@sha256:3fbc581cb0fe29830376161ae026e2a765dcc11e1747477fe9ebf155720b8638
+              image: alpine:3.19.4
               command: ["/bin/sh", "-c"]
               args: ["/scripts/script.sh && ls -l /backups"]
               volumeMounts:
