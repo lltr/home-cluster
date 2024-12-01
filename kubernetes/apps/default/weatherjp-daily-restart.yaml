@@ -42,4 +42,5 @@ spec:
                 - /bin/sh
                 - -c
                 - "kubectl rollout restart -n default deployment bullmq-media-worker"
+                - "kubectl rollout restart -n default deployment bullmq-main-worker"
           restartPolicy: OnFailure
