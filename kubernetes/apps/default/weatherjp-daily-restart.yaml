@@ -28,6 +28,7 @@ apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: restart-weatherjp-daily
+  namespace: default
 spec:
   schedule: "15 0 * * *" # 8:15am daily
   jobTemplate:
