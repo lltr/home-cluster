@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   - ./harbor-registry-cluster-external-secret.yaml
+  - ./weatherjp-daily-restart.yaml
   - ./etherpad/ks.yaml
   - ./discord-watcher/ks.yaml
   - ./changedetection/ks.yaml

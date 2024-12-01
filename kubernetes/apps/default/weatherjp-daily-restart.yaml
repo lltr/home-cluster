@@ -1,0 +1,44 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: default
+  name: restart-weatherjp-role
+rules:
+  - apiGroups: ["apps"]
+    resources: ["deployments"]
+    verbs: ["get", "update"]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: restart-weatherjp-rolebinding
+  namespace: default
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: restart-weatherjp-role
+subjects:
+  - kind: ServiceAccount
+    name: default
+    namespace: default
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: restart-weatherjp-daily
+spec:
+  schedule: "15 0 * * *"  # Runs every day at midnight
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: restart-container
+              image: bitnami/kubectl:latest
+              command:
+                - /bin/sh
+                - -c
+                - "kubectl rollout restart -n default deployment bullmq-media-worker"
+          restartPolicy: OnFailure
