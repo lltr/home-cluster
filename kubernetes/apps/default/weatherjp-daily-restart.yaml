@@ -29,7 +29,7 @@ kind: CronJob
 metadata:
   name: restart-weatherjp-daily
 spec:
-  schedule: "15 0 * * *"  # Runs every day at midnight
+  schedule: "15 0 * * *" # 8:15am daily
   jobTemplate:
     spec:
       template:
