@@ -30,7 +30,7 @@ metadata:
   name: restart-weatherjp-daily
   namespace: default
 spec:
-  schedule: "15 0 * * *" # 8:15am daily
+  schedule: "20 22 * * *" # 6:20am daily
   jobTemplate:
     spec:
       template:
@@ -41,6 +41,7 @@ spec:
               command:
                 - /bin/sh
                 - -c
-                - "kubectl rollout restart -n default deployment bullmq-media-worker"
-                - "kubectl rollout restart -n default deployment bullmq-main-worker"
+                - |
+                  kubectl rollout restart -n default deployment bullmq-media-worker
+                  kubectl rollout restart -n default deployment bullmq-main-worker
           restartPolicy: OnFailure
