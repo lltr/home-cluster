@@ -31,6 +31,8 @@ metadata:
   namespace: default
 spec:
   schedule: "20 22 * * *" # 6:20am daily
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
   jobTemplate:
     spec:
       template:
