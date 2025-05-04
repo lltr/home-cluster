@@ -5,5 +5,3 @@ namespace: default
 resources:
   - ./helmrelease.yaml
   - ./pvc.yaml
-patchesStrategicMerge:
-  - ./patches/browser.yaml
