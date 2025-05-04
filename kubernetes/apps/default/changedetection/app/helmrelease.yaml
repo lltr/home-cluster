@@ -30,19 +30,23 @@ spec:
         fsGroup: 568
         fsGroupChangePolicy: "OnRootMismatch"
     controllers:
-      app:
+      main:
+        type: statefulset
+        replicas: 1
+        strategy: RollingUpdate
         containers:
           main:
             image:
               repository: ghcr.io/dgtlmoon/changedetection.io
               tag: "0.49.15@sha256:34e1487e9ba06a9dd3251f13ceddec80360b957c9258aee8a200adf350a328b6"
-
+              pullPolicy: IfNotPresent
             env:
-              TZ: ${CONFIG_TIMEZONE}
+              TZ: ${TIMEZONE}
               PORT: &port 5000
               USE_X_SETTINGS: 1
-              PLAYWRIGHT_DRIVER_URL: ws://localhost:3000/?stealth=1&--disable-web-security=true&--user-data-dir=~/browserless-cache-123
-
+              PLAYWRIGHT_DRIVER_URL: ws://localhost:3000/?stealth=1&--disable-web-security=true&--user-data-dir=~/tmp/cache
+              PUID: 568
+              PGID: 568
           browser:
             image:
               repository: docker.io/browserless/chrome
@@ -60,6 +64,13 @@ spec:
               - {name: CHROME_REFRESH_TIME, value: "600000"}
               - {name: DEFAULT_BLOCK_ADS, value: "true"}
               - {name: DEFAULT_STEALTH, value: "true"}
+
+            resources:
+              requests:
+                cpu: 25m
+                memory: 512Mi
+              limits:
+                memory: 1Gi
 
     service:
       main:
