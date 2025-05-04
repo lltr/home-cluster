@@ -131,7 +131,7 @@ spec:
               - path: /
                 pathType: Prefix
                 service:
-                  port: *console-port
+                  port: *api-port
         tls:
           - secretName: minio-s3-tls
             hosts:
