@@ -23,10 +23,14 @@ spec:
     remediation:
       retries: 3
   values:
+    replicas: 1
     podAnnotations:
       reloader.stakater.com/search: "true"
-    gitlabUrl: https://gitlab.srv1.com/
+    gitlabUrl: https://gitlab.${SECRET_DOMAIN}
     rbac:
       create: true
     runners:
+      executor: kubernetes
       secret: gitlab-runner-internal-secret
+    unregisterRunners: true
+    concurrent: 2
