@@ -5,4 +5,4 @@ namespace: monitoring
 resources:
   - ./helmrelease.yaml
   - ./additional-scrape-configs.sops.yaml
-  - ./volsync.yaml
+  # - ./volsync.yaml
