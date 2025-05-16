@@ -1,0 +1,32 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: gitlab-runner-internal
+  namespace: development
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: gitlab-runner
+      version: 0.77.0
+      sourceRef:
+        kind: HelmRepository
+        name: gitlab
+        namespace: flux-system
+  maxHistory: 3
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  values:
+    podAnnotations:
+      reloader.stakater.com/search: "true"
+    gitlabUrl: https://gitlab.srv1.com/
+    rbac:
+      create: true
+    runners:
+      secret: gitlab-runner-internal-secret

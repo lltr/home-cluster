@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   - ./gitlab-runner/ks.yaml
+  - ./gitlab-runner-internal/ks.yaml
   - ./gitea/ks.yaml
   # - ./renovate/ks.yaml
   - ./harbor/ks.yaml
