@@ -25,6 +25,9 @@ spec:
     csi:
       enableVolumeGroupSnapshot: false # TODO: enable this when v1beta1 CRDs are available
       enableLiveness: true
+      snapshotter:
+        repository: registry.k8s.io/sig-storage/csi-snapshotter
+        tag: v8.2.0
     crds:
       enabled: true
     pspEnable: false
