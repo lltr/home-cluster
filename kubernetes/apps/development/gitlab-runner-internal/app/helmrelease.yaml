@@ -31,6 +31,7 @@ spec:
       create: true
     runners:
       executor: kubernetes
+      runUntagged: true
       secret: gitlab-runner-internal-secret
     unregisterRunners: true
     concurrent: 2
