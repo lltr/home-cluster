@@ -29,6 +29,12 @@ spec:
     gitlabUrl: https://gitlab.${SECRET_DOMAIN}
     rbac:
       create: true
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+    service:
+      enabled: true
     runners:
       executor: kubernetes
       runUntagged: true
