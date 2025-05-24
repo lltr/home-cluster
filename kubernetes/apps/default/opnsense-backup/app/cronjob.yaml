@@ -25,7 +25,7 @@ spec:
             - name: backup-script-volume
               secret:
                 secretName: backup-script-secret  # Secret containing your script
-                defaultMode: 504
+                defaultMode: 0755
             - name: backup-volume
               persistentVolumeClaim:
                 claimName: opnsense-backups-nfs
