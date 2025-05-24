@@ -12,7 +12,7 @@ spec:
         spec:
           containers:
             - name: bash-script-container
-              image: debian:bookworm-slim
+              image: debian:bookworm
               command: ["/bin/sh", "-c"]
               args: ["/scripts/script.sh && ls -l /backups"]
               volumeMounts:
