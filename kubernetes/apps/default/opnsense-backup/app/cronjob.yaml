@@ -14,7 +14,7 @@ spec:
             - name: bash-script-container
               image: alpine:3.21.0
               command: ["/bin/sh", "-c"]
-              args: ["/scripts/script.sh && ls -l /backups"]
+              args: ["ls -l /scripts && /scripts/script.sh && ls -l /backups"]
               volumeMounts:
                 - name: backup-script-volume
                   mountPath: /scripts
