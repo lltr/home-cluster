@@ -40,7 +40,7 @@ cameras:
   e1pro:
     ffmpeg:
       inputs:
-        - path: rtsp://localhost:554/e1pro
+        - path: rtsp://localhost:8554/e1pro
           # input_args: preset-rtsp-restream
           roles:
             - record
