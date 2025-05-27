@@ -32,7 +32,7 @@ go2rtc:
       - ffmpeg:e1pro#audio=aac
   webrtc:
     candidates:
-      - 192.168.2.210:8555
+      - 192.168.0.210:8555
       - stun:8555
 
 cameras:
