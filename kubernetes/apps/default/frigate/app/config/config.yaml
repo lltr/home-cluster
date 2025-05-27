@@ -12,12 +12,6 @@ mqtt:
 database:
   path: /data/frigate.db
 
-ffmpeg:
-  global_args: ["-hide_banner", "-loglevel", "warning"]
-  hwaccel_args: preset-vaapi
-  output_args:
-    record: preset-record-generic-audio-aac
-
 snapshots:
   enabled: true
   timestamp: false
@@ -37,8 +31,11 @@ cameras:
     ffmpeg:
       inputs:
         - path: rtsp://go2rtc.default.svc.cluster.local:554/e1pro
+          # input_args: preset-rtsp-restream
           roles:
             - record
+      # output_args:
+      #   record: preset-record-generic-audio-aac
     onvif:
       host: 192.168.42.20
       port: 8000

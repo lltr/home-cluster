@@ -12,4 +12,6 @@ webrtc:
         - stun:stun.cloudflare.com:3478
 
 streams:
-  e1pro: rtsp://frigate:P12345678@192.168.42.20:554/Preview_01_main
+  e1pro:
+    - rtsp://frigate:P12345678@192.168.42.20:554/Preview_01_main
+    - ffmpeg:e1pro#audio=aac
