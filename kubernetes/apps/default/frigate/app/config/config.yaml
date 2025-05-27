@@ -30,12 +30,9 @@ cameras:
   e1pro:
     ffmpeg:
       inputs:
-        - path: rtsp://frigate:P12345678@192.168.42.20:554/Preview_01_main
-          input_args: preset-rtsp-restream
+        - path: rtsp://go2rtc.default.svc.cluster.local:554/e1pro
           roles:
             - record
-      output_args:
-        record: preset-record-generic-audio-aac
     onvif:
       host: 192.168.42.20
       port: 8000

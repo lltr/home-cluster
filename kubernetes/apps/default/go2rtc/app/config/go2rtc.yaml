@@ -1,0 +1,15 @@
+---
+api:
+  listen: :80
+rtsp:
+  listen: :554
+webrtc:
+  listen: :8555
+  candidates:
+    - stun:8555
+  ice_servers:
+    - urls:
+        - stun:stun.cloudflare.com:3478
+
+streams:
+  e1pro: rtsp://frigate:P12345678@192.168.42.20:554/Preview_01_main

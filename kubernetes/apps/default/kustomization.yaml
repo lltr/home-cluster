@@ -25,3 +25,4 @@ resources:
   - ./stirling-pdf/ks.yaml
   - ./opnsense-backup/ks.yaml
   - ./frigate/ks.yaml
+  - ./go2rtc/ks.yaml
