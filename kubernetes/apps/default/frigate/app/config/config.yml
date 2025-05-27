@@ -1,0 +1,40 @@
+logger:
+  default: info
+
+auth:
+  enabled: False
+  trusted_proxies:
+    - 192.168.0.0/24
+
+mqtt:
+  enabled: False
+
+database:
+  path: /data/frigate.db
+
+snapshots:
+  enabled: true
+  timestamp: false
+  bounding_box: true
+  retain:
+    default: 30
+
+record:
+  enabled: true
+  retain:
+    days: 14
+    mode: all
+
+cameras:
+  # --
+  e1pro:
+    ffmpeg:
+      inputs:
+        - path: rtsp://frigate:P12345678@192.168.42.20:554/Preview_01_main
+          roles:
+            - record
+    onvif:
+      host: 192.168.42.20
+      port: 8000
+      user: frigate
+      password: P12345678
