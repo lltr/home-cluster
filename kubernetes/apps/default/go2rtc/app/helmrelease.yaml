@@ -37,6 +37,19 @@ spec:
             image:
               repository: ghcr.io/alexxit/go2rtc
               tag: 1.9.9@sha256:7d31dcb73633310e80497c431f4534c81ed55ec0708db3262bc56918e654bba5
+            probes:
+              liveness: &probes
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /
+                    port: &port 80
+                  initialDelaySeconds: 0
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
@@ -52,7 +65,7 @@ spec:
         type: LoadBalancer
         ports:
           http:
-            port: 80
+            port: *port
           rtsp:
             port: 554
           webrtc-tcp:
@@ -82,6 +95,7 @@ spec:
             secretName: go2rtc-tls
     persistence:
       config:
+        enabled: true
         type: configMap
         name: go2rtc-config
         globalMounts:
