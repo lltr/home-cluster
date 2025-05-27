@@ -25,17 +25,25 @@ record:
     days: 7
     mode: all
 
+go2rtc:
+  streams:
+    e1pro:
+      - rtsp://frigate:P12345678@192.168.42.20:554/Preview_01_main
+      - ffmpeg:e1pro#audio=aac
+
 cameras:
   # --
   e1pro:
     ffmpeg:
       inputs:
-        - path: rtsp://go2rtc.default.svc.cluster.local:554/e1pro
+        - path: rtsp://localhost:554/e1pro
           # input_args: preset-rtsp-restream
           roles:
             - record
       # output_args:
       #   record: preset-record-generic-audio-aac
+    live:
+      stream_name: frigate_e1pro
     onvif:
       host: 192.168.42.20
       port: 8000
