@@ -30,6 +30,10 @@ go2rtc:
     e1pro:
       - rtsp://frigate:P12345678@192.168.42.20:554/Preview_01_main
       - ffmpeg:e1pro#audio=aac
+  webrtc:
+    candidates:
+      - 192.168.2.210:8555
+      - stun:8555
 
 cameras:
   # --

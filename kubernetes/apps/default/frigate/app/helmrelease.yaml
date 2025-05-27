@@ -43,6 +43,10 @@ spec:
             port: 5000
           rtsp:
             port: 8554
+          rtsps:
+            port: 8555
+        type: LoadBalancer
+        loadBalancerIP: 192.168.0.210
     ingress:
       main:
         enabled: true
