@@ -63,8 +63,6 @@ spec:
       main:
         controller: main
         type: LoadBalancer
-        annotations:
-          external-dns.alpha.kubernetes.io/hostname: go2rtc.${SECRET_DOMAIN}
         ports:
           http:
             port: *port
@@ -78,14 +76,23 @@ spec:
             protocol: UDP
     ingress:
       main:
+        enabled: true
         className: nginx
+        annotations:
+          cert-manager.io/cluster-issuer: letsencrypt-production
+          external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
+          external-dns.home.arpa/enabled: "true"
         hosts:
-          - host: go2rtc.${SECRET_DOMAIN}
+          - host: &host go2rtc.${SECRET_DOMAIN}
             paths:
               - path: /
                 service:
                   name: main
                   port: http
+        tls:
+          - hosts:
+              - *host
+            secretName: go2rtc-tls
     persistence:
       config:
         type: configMap
