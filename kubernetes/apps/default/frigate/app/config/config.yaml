@@ -41,11 +41,11 @@ cameras:
     ffmpeg:
       inputs:
         - path: rtsp://localhost:8554/e1pro
-          # input_args: preset-rtsp-restream
+          input_args: preset-rtsp-restream
           roles:
             - record
-      # output_args:
-      #   record: preset-record-generic-audio-aac
+      output_args:
+        record: preset-record-generic-audio-aac
     live:
       stream_name: frigate_e1pro
     onvif:
