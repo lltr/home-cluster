@@ -45,7 +45,7 @@ cameras:
           roles:
             - record
       output_args:
-        record: preset-record-generic-audio-copy
+        record: preset-record-generic-audio-aac
     live:
       stream_name: e1pro
     onvif:
