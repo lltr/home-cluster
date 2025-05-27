@@ -97,7 +97,7 @@ spec:
       config:
         enabled: true
         type: configMap
-        name: go2rtc-config
+        name: go2rtc-configmap
         globalMounts:
           - path: /config/go2rtc.yaml
             subPath: go2rtc.yaml
