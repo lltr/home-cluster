@@ -27,6 +27,8 @@ spec:
     keepHistory: false
   values:
     global:
+      security:
+        allowInsecureImages: true
       postgresql:
         auth:
           database: appsplatform-dev
