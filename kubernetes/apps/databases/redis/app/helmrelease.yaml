@@ -28,6 +28,10 @@ spec:
   values:
     global:
       storageClass: ceph-block
+    image:
+      registry: docker.io
+      repository: bitnamilegacy/redis
+      tag: 7.4.1-debian-12-r3
     auth:
       enabled: false
       sentinel: false
@@ -39,6 +43,10 @@ spec:
         enabled: false
     sentinel:
       enabled: true
+      image:
+        registry: docker.io
+        repository: bitnamilegacy/redis-sentinel
+        tag: 7.4.1-debian-12-r3
       masterSet: redis-master
       getMasterTimeout: 10
       startupProbe:
@@ -47,5 +55,9 @@ spec:
         enabled: false
     metrics:
       enabled: true
+      image:
+        registry: docker.io
+        repository: bitnamilegacy/redis-exporter
+        tag: 1.67.0-debian-12-r0
       serviceMonitor:
         enabled: true

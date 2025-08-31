@@ -33,7 +33,7 @@ spec:
           existingSecret: dev-postgresql-secrets
     image:
       registry: docker.io
-      repository: bitnami/postgresql
+      repository: bitnamilegacy/postgresql
       tag: "16.6.0"
     primary:
       persistence:
