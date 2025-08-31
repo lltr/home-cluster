@@ -28,6 +28,8 @@ spec:
   values:
     global:
       storageClass: ceph-block
+      security:
+        allowInsecureImages: true
     image:
       registry: docker.io
       repository: bitnamilegacy/redis
