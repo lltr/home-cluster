@@ -29,7 +29,7 @@ spec:
         # ! ingress=none/secret, clusterip=auto
         certSource: secret
         # auto:
-        #   commonName: "${SECRET_REGISTRY_DOMAIN}"
+        #   commonName: "${SECRET_PACKAGES_DOMAIN}"
         secret:
           secretName: "harbor-tls"
       ingress:
