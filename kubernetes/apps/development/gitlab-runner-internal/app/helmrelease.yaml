@@ -43,5 +43,10 @@ spec:
       executor: kubernetes
       runUntagged: true
       secret: gitlab-runner-internal-secret
+      config: |
+        [[runners]]
+          [runners.kubernetes]
+            # Run all containers with the privileged flag enabled.
+            privileged = true
     unregisterRunners: true
     concurrent: 2
