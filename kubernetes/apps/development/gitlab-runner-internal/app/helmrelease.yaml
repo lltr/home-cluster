@@ -61,3 +61,16 @@ spec:
       privileged: true
       capabilities:
         drop: ["ALL"]
+
+    extraContainers:
+      - name: docker
+        image: docker:dind
+        securityContext:
+          privileged: true
+        volumeMounts:
+          - mountPath: /var/run/
+            name: dind-socket
+        lifecycle:
+          postStart:
+            exec:
+              command: ["sh", "-c", "until docker info; do sleep 1; done;"]
