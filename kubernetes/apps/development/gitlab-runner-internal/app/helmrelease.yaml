@@ -54,6 +54,7 @@ spec:
             privileged = true
             image_pull_secrets=["harbor-registry-secret"]
             image = "docker:latest"
+            allow_privilege_escalation = true
     unregisterRunners: true
     concurrent: 2
     securityContext:
