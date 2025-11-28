@@ -88,10 +88,10 @@ spec:
         kind: Service
         metadata:
           name: buildkitd
-          namespace: gitlab-runner
+          namespace: development
         spec:
           selector:
-            app: gitlab-runner
+            app: gitlab-runner-internal
           ports:
             - protocol: TCP
               port: 1234
