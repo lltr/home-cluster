@@ -50,6 +50,7 @@ spec:
         [[runners]]
           [runners.kubernetes]
             image_pull_secrets=["harbor-registry-secret"]
+            privileged = true
     unregisterRunners: true
     concurrent: 2
 
