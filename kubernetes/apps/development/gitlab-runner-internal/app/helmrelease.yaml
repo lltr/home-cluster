@@ -49,15 +49,10 @@ spec:
         [[runners]]
           name = "internal-gitlab-runner"
           executor="kubernetes"
-          environment = [
-            "FF_KUBERNETES_HONOR_ENTRYPOINT=false",
-            "FF_USE_LEGACY_KUBERNETES_EXECUTION_STRATEGY=true",
-            ]
           [runners.kubernetes]
             # Run all containers with the privileged flag enabled.
             privileged = true
             image_pull_secrets=["harbor-registry-secret"]
-            image = "docker:latest"
             allow_privilege_escalation = true
     unregisterRunners: true
     concurrent: 2
