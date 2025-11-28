@@ -5,3 +5,4 @@ namespace: development
 resources:
   - ./helmrelease.yaml
   - ./gitlab-runner-secret.sops.yaml
+  - ./buildkit.yaml

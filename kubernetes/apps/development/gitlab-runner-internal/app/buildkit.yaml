@@ -1,0 +1,40 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: buildkit
+  namespace: development
+spec:
+  replicas: 1  # ou plus si tu veux scale horizontalement
+  selector:
+    matchLabels:
+      app: buildkit
+  template:
+    metadata:
+      labels:
+        app: buildkit
+    spec:
+      serviceAccountName: gitlab-runner-internal
+      containers:
+        - name: buildkitd
+          image: moby/buildkit:latest
+          args:
+            - --addr=tcp://0.0.0.0:1234
+          securityContext:
+            privileged: true
+          ports:
+            - containerPort: 1234
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: buildkit
+  namespace: development
+spec:
+  selector:
+    app: buildkit
+  ports:
+    - protocol: TCP
+      port: 1234
+      targetPort: 1234

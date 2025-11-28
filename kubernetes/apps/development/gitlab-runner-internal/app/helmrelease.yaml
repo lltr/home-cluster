@@ -50,7 +50,6 @@ spec:
         [[runners]]
           [runners.kubernetes]
             image_pull_secrets=["harbor-registry-secret"]
-            image = "moby/buildkit:rootless"
-            privileged = false
+            service_account = "gitlab-runner-internal"
     unregisterRunners: true
     concurrent: 2
