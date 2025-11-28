@@ -26,7 +26,7 @@ spec:
     image:
       registry: registry.gitlab.com
       image: gitlab-org/gitlab-runner
-      tag: alpine-v18.6.1
+      tag: alpine-v18.6.2
     replicas: 1
     imagePullSecrets:
       - name: harbor-registry-secret
