@@ -49,18 +49,9 @@ spec:
       config: |
         [[runners]]
           [runners.kubernetes]
-            privileged = true
             image_pull_secrets=["harbor-registry-secret"]
-            allow_privilege_escalation = true
     unregisterRunners: true
     concurrent: 2
-    securityContext:
-      allowPrivilegeEscalation: true
-      readOnlyRootFilesystem: false
-      runAsNonRoot: false
-      privileged: true
-      capabilities:
-        drop: ["ALL"]
 
     extraContainers:
       - name: buildkitd
