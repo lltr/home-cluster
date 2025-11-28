@@ -63,14 +63,45 @@ spec:
         drop: ["ALL"]
 
     extraContainers:
-      - name: docker
-        image: docker:dind
+      - name: buildkitd
+        image: moby/buildkit:rootless
+        args:
+          - --addr
+          - unix:///run/user/1000/buildkit/buildkitd.sock
+          - --addr
+          - tcp://0.0.0.0:1234
+          - --oci-worker-no-process-sandbox
+        ports:
+          - containerPort: 1234
         securityContext:
-          privileged: true
+          seccompProfile:
+            type: Unconfined
+          appArmorProfile:
+            type: Unconfined
+          # To change UID/GID, you need to rebuild the image
+          runAsUser: 1000
+          runAsGroup: 1000
         volumeMounts:
-          - mountPath: /var/run/
-            name: dind-socket
-        lifecycle:
-          postStart:
-            exec:
-              command: ["sh", "-c", "until docker info; do sleep 1; done;"]
+          # Dockerfile has `VOLUME /home/user/.local/share/buildkit` by default too,
+          # but the default VOLUME does not work with rootless on Google's Container-Optimized OS
+          # as it is mounted with `nosuid,nodev`.
+          # https://github.com/moby/buildkit/issues/879#issuecomment-1240347038
+          - mountPath: /home/user/.local/share/buildkit
+            name: buildkitd
+
+    volumes:
+      - name: buildkitd
+        emptyDir: {}
+    extraObjects:
+      - apiVersion: v1
+        kind: Service
+        metadata:
+          name: buildkitd
+          namespace: gitlab-runner
+        spec:
+          selector:
+            app: gitlab-runner
+          ports:
+            - protocol: TCP
+              port: 1234
+              targetPort: 1234
