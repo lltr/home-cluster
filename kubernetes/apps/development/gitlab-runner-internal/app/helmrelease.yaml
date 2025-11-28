@@ -49,6 +49,10 @@ spec:
         [[runners]]
           name = "internal-gitlab-runner"
           executor="kubernetes"
+          environment = [
+            "FF_KUBERNETES_HONOR_ENTRYPOINT=false",
+            "FF_USE_LEGACY_KUBERNETES_EXECUTION_STRATEGY=true",
+            ]
           [runners.kubernetes]
             # Run all containers with the privileged flag enabled.
             privileged = true
