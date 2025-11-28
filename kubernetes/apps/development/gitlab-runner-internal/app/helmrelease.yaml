@@ -51,6 +51,7 @@ spec:
           executor="kubernetes"
           [runners.kubernetes]
             # Run all containers with the privileged flag enabled.
+            privileged = true
             image_pull_secrets=["harbor-registry-secret"]
             image = "docker:latest"
     unregisterRunners: true
