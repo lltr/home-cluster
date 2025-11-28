@@ -28,6 +28,8 @@ spec:
       image: gitlab-org/gitlab-runner
       tag: alpine-v18.6.1
     replicas: 1
+    imagePullSecrets:
+      - name: harbor-registry-secret
     podAnnotations:
       reloader.stakater.com/search: "true"
     gitlabUrl: https://gitlab.${SECRET_DOMAIN}
@@ -45,8 +47,18 @@ spec:
       secret: gitlab-runner-internal-secret
       config: |
         [[runners]]
+          name = "gitlab-runner"
+          executor="kubernetes"
           [runners.kubernetes]
             # Run all containers with the privileged flag enabled.
             privileged = true
+            image_pull_secrets=["harbor-registry-secret"]
     unregisterRunners: true
     concurrent: 2
+    securityContext:
+      allowPrivilegeEscalation: true
+      readOnlyRootFilesystem: false
+      runAsNonRoot: true
+      privileged: true
+      capabilities:
+        drop: ["ALL"]
