@@ -47,12 +47,12 @@ spec:
       secret: gitlab-runner-internal-secret
       config: |
         [[runners]]
-          name = "gitlab-runner"
+          name = "internal-gitlab-runner"
           executor="kubernetes"
           [runners.kubernetes]
             # Run all containers with the privileged flag enabled.
-            privileged = true
             image_pull_secrets=["harbor-registry-secret"]
+            image = "docker:latest"
     unregisterRunners: true
     concurrent: 2
     securityContext:
