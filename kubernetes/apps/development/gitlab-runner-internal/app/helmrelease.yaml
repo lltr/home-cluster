@@ -42,16 +42,13 @@ spec:
     service:
       enabled: true
     runners:
+      name: "internal-gitlab-runner"
       executor: kubernetes
       runUntagged: true
-      tags: "kubernetes,privileged,internal"
       secret: gitlab-runner-internal-secret
       config: |
         [[runners]]
-          name = "internal-gitlab-runner"
-          executor="kubernetes"
           [runners.kubernetes]
-            # Run all containers with the privileged flag enabled.
             privileged = true
             image_pull_secrets=["harbor-registry-secret"]
             allow_privilege_escalation = true
