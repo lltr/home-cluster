@@ -53,6 +53,14 @@ spec:
     unregisterRunners: true
     concurrent: 2
 
+    securityContext:
+      allowPrivilegeEscalation: true
+      readOnlyRootFilesystem: false
+      runAsNonRoot: true
+      privileged: true
+      capabilities:
+        drop: ["ALL"]
+
     extraContainers:
       - name: buildkitd
         image: moby/buildkit:rootless
