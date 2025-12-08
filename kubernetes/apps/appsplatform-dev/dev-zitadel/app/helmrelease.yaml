@@ -54,7 +54,7 @@ spec:
         tls:
           - hosts:
               - *host
-            secretName: dev-zitadel-tls
+            secretName: dev-zitadel-login-tls
     env:
       - name: ZITADEL_DATABASE_POSTGRES_HOST
         valueFrom:
