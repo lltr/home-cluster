@@ -38,7 +38,7 @@ spec:
           Enabled: false
       masterkeySecretName: dev-zitadel-masterkey-secret
     login:
-      enabled: false
+      enabled: true
     env:
       - name: ZITADEL_DATABASE_POSTGRES_HOST
         valueFrom:
