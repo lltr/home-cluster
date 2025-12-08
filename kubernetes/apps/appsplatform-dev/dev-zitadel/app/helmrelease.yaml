@@ -47,14 +47,14 @@ spec:
           external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
           external-dns.home.arpa/enabled: "true"
         hosts:
-          - host: &host zitadel-ui.${SECRET_EXT_DOMAIN}
+          - host: &host zitadel.${SECRET_EXT_DOMAIN}
             paths:
               - path: /ui/v2/login
                 pathType: Prefix
         tls:
           - hosts:
               - *host
-            secretName: dev-zitadel-login-tls
+            secretName: dev-zitadel-tls
     env:
       - name: ZITADEL_DATABASE_POSTGRES_HOST
         valueFrom:
