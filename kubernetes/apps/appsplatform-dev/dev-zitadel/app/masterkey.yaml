@@ -1,0 +1,30 @@
+# yamllint disable
+apiVersion: v1
+kind: Secret
+metadata:
+    name: dev-zitadel-masterkey-secret
+    annotations:
+        reloader.stakater.com/match: "true"
+type: Opaque
+stringData:
+    masterkey: ENC[AES256_GCM,data:Zo+AhHQy7cve8pvKnBGlOl71M16sb+YIZ4/gwso9ZDE=,iv:3ar38dhNmEJmCKZ7WMQHXfSg6Ne3G/M33Ep6B5rfAPY=,tag:wq+Gpj+fGVRSdv7RVVrRCg==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1k8xaut2yz4ttudhtwxk0jf8ckrav2rugjup5vyqu3tyzp2lxhgxq93u2mf
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBid0VNWjhPZWpCUWN6elgx
+            cXdCd0M2KzBMalp5L2ttMml2dXJCUEcxSkU0Cm16SzZjNVFGSVpZald6c2ZnQ0FY
+            T3pBeUF3VjNJOWtiRzF2S3B5VCsxem8KLS0tIGs1aCtLK1lsU1pBRHhPbWsvbTlN
+            MVFydnZMdDA4eFo1L3hEU3hUTHNOeEEKyQlKWtiz02JWm6A7QHrF+YzQV/0mytC7
+            sSuRV5ZQs8gv4zsKH2GjOh1FgVALkud4FVUAAdW7ma5u5DTiDQW3Cg==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-12-08T03:10:14Z"
+    mac: ENC[AES256_GCM,data:K3OSV7Ka+u+IVIovMHXQEUFbom6ZF9Ge+GOUcGv/gDMCW9ysD9K8XpHYssW3p6y7e/0bjZOLzFnhoynXtmNWD75mlkZiCYsFP7x13snzS6ExaqYOFHqgS7mEnFD2IbJDu7gYWaFB3OelD7eb2vxFy27tvRGnRbtsCJN9/Lh9+po=,iv:2TjgQHx38ykSpfgujRVw8W+aujsEITgFf1A5utwP/B4=,tag:IIv/OT36BRvVH09E79acvg==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.7.3
