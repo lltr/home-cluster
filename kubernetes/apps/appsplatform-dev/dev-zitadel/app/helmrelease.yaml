@@ -84,6 +84,8 @@ spec:
       hosts:
         - host: &host zitadel.${SECRET_EXT_DOMAIN}
           paths:
+            - path: /ui/v2/login
+              pathType: Prefix
             - path: /
               pathType: Prefix
       tls:
