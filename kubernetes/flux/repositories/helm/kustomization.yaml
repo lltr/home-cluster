@@ -34,3 +34,4 @@ resources:
   - ./authentik.yaml
   - ./go-skynet.yaml
   - ./strimzi.yaml
+  - ./zitadel.yaml

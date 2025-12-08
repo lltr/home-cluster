@@ -33,7 +33,7 @@ spec:
         containers:
           main:
             image:
-              repository: ${SECRET_PACKAGES_DOMAIN}/proxy/excalidraw/excalidraw-room
+              repository: ${SECRET_REGISTRY_DOMAIN}/proxy/excalidraw/excalidraw-room
               tag: latest@sha256:aa2dc221fd20047471652bbf5a4c1ee9d1b8165a1f73a34a6a9301114fc9b13a
               pullPolicy: IfNotPresent
             env:
