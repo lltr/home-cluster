@@ -76,29 +76,29 @@ spec:
     portal:
       image:
         repository: goharbor/harbor-portal
-        tag: dev
+        tag: v2.12.0
       revisionHistoryLimit: 3
     core:
       image:
         repository: goharbor/harbor-core
-        tag: dev
+        tag: v2.12.0
       revisionHistoryLimit: 3
       podAnnotations:
         secret.reloader.stakater.com/reload: "harbor-secrets"
     jobservice:
       image:
         repository: goharbor/harbor-jobservice
-        tag: dev
+        tag: v2.12.0
       revisionHistoryLimit: 3
     registry:
       registry:
         image:
           repository: goharbor/registry-photon
-          tag: dev
+          tag: v2.12.0
       controller:
         image:
           repository: goharbor/harbor-registryctl
-          tag: dev
+          tag: v2.12.0
       upload_purging:
         enabled: true
         # remove files in _upload directories which exist for a period of time, default is one week.
@@ -113,7 +113,7 @@ spec:
       enabled: true
       image:
         repository: goharbor/trivy-adapter-photon
-        tag: dev
+        tag: v2.12.0
     notary:
       enabled: false
 
@@ -124,7 +124,7 @@ spec:
       internal:
         image:
           repository: goharbor/harbor-db
-          tag: dev
+          tag: v2.12.0
       external:
         host: postgres-rw.databases.svc.cluster.local
         port: "5432"
@@ -136,7 +136,7 @@ spec:
       internal:
         image:
           repository: goharbor/redis-photon
-          tag: dev
+          tag: v2.12.0
       external:
         # support redis, redis+sentinel
         # addr for redis: <host_redis>:<port_redis>
@@ -161,7 +161,7 @@ spec:
       revisionHistoryLimit: 3
       image:
         repository: goharbor/harbor-exporter
-        tag: dev
+        tag: v2.12.0
     metrics:
       enabled: true
       core:
