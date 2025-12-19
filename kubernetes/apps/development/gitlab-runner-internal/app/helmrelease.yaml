@@ -50,7 +50,6 @@ spec:
         [[runners]]
           [runners.kubernetes]
             privileged = true
-            allowed_pull_policies = ["always", "if-not-present"]
             image_pull_secrets=["harbor-registry-secret", "prod-artifact-registry-secret"]
             service_account = "gitlab-runner-internal"
           [[runners.kubernetes.volumes.secret]]
