@@ -49,6 +49,7 @@ spec:
       config: |
         [[runners]]
           [runners.kubernetes]
+            privileged = true
             image_pull_secrets=["harbor-registry-secret", "prod-artifact-registry-secret"]
             service_account = "gitlab-runner-internal"
           [[runners.kubernetes.volumes.secret]]
