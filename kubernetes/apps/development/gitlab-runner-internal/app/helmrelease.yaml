@@ -50,6 +50,10 @@ spec:
         [[runners]]
           [runners.kubernetes]
             privileged = true
+            services_privileged = true
+            # (Recommended hardening: allow only docker:dind images to be privileged)
+            allowed_privileged_services = ["docker:*-dind", "docker:dind", "docker:27-dind"]
+
             image_pull_secrets=["harbor-registry-secret", "prod-artifact-registry-secret"]
             service_account = "gitlab-runner-internal"
           [[runners.kubernetes.volumes.secret]]
