@@ -49,7 +49,11 @@ spec:
       config: |
         [[runners]]
           [runners.kubernetes]
-            image_pull_secrets=["harbor-registry-secret"]
+            image_pull_secrets=["harbor-registry-secret", "prod-artifact-registry-secret"]
             service_account = "gitlab-runner-internal"
+          [[runners.kubernetes.volumes.secret]]
+            name = "prod-artifact-registry-secret"
+            mount_path = "~/.docker/config.json"
+            read_only = true
     unregisterRunners: true
     concurrent: 2
