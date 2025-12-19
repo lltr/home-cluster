@@ -4,7 +4,7 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   - ./harbor-registry-cluster-external-secret.yaml
-  - ./prod-artifact-registry-non-prod-cluster-secret.yaml
+  - ./prod-artifact-registry-cluster-secret.yaml
   - ./weatherjp-daily-restart.yaml
   - ./etherpad/ks.yaml
   - ./discord-watcher/ks.yaml
