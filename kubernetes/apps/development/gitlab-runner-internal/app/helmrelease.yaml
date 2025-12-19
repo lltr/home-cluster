@@ -53,7 +53,7 @@ spec:
             service_account = "gitlab-runner-internal"
           [[runners.kubernetes.volumes.secret]]
             name = "prod-artifact-registry-secret"
-            mount_path = "~/.docker/config.json"
+            mount_path = "/run/registry-auth"
             read_only = true
     unregisterRunners: true
     concurrent: 2
