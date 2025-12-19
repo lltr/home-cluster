@@ -7,3 +7,4 @@ metadata:
     kustomize.toolkit.fluxcd.io/prune: disabled
     cluster-secret.home.arpa/harbor-registry: "true"
     cluster-secret.home.arpa/prod-artifact-registry: "true"
+    pod-security.kubernetes.io/enforce: "privileged"
