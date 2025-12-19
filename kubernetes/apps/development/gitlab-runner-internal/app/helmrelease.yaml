@@ -27,7 +27,7 @@ spec:
       registry: registry.gitlab.com
       image: gitlab-org/gitlab-runner
       tag: alpine-v18.6.2
-    replicas: 3
+    replicas: 2
     imagePullSecrets:
       - name: harbor-registry-secret
     podAnnotations:
