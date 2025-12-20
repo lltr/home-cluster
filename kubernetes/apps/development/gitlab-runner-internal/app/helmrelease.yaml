@@ -46,6 +46,8 @@ spec:
       executor: kubernetes
       runUntagged: true
       secret: gitlab-runner-internal-secret
+      cache:
+        secretName: gitlab-runner-r2cache
       config: |
         [[runners]]
           [runners.kubernetes]
@@ -56,5 +58,15 @@ spec:
             name = "master-artifact-registry-secret"
             mount_path = "/run/registry-auth"
             read_only = true
+          [runners.cache]
+            Type = "s3"
+            Path = "runner"
+            Shared = true
+            [runners.cache.s3]
+              ServerAddress = "https://10dc9276173a3ea25ef1e0d77b69f3ae.r2.cloudflarestorage.com"
+              BucketName = "gitlab-runner-cache"
+              BucketLocation = "apac"
+              Insecure = false
+              AuthenticationType = "access-key"
     unregisterRunners: true
     concurrent: 2

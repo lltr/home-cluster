@@ -6,3 +6,4 @@ resources:
   - ./helmrelease.yaml
   - ./gitlab-runner-secret.sops.yaml
   - ./buildkit.yaml
+  - ./r2cache-externalsecrets.yaml
