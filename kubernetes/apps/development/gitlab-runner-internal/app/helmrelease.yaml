@@ -50,10 +50,10 @@ spec:
         [[runners]]
           [runners.kubernetes]
             privileged = true
-            image_pull_secrets=["harbor-registry-secret", "prod-artifact-registry-secret"]
+            image_pull_secrets=["harbor-registry-secret", "master-artifact-registry-secret"]
             service_account = "gitlab-runner-internal"
           [[runners.kubernetes.volumes.secret]]
-            name = "prod-artifact-registry-secret"
+            name = "master-artifact-registry-secret"
             mount_path = "/run/registry-auth"
             read_only = true
     unregisterRunners: true

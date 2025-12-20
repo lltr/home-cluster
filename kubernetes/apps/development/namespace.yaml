@@ -6,4 +6,4 @@ metadata:
   labels:
     kustomize.toolkit.fluxcd.io/prune: disabled
     cluster-secret.home.arpa/harbor-registry: "true"
-    cluster-secret.home.arpa/prod-artifact-registry: "true"
+    cluster-secret.home.arpa/master-artifact-registry: "true"
