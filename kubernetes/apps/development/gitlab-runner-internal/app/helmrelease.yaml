@@ -69,4 +69,4 @@ spec:
               Insecure = false
               AuthenticationType = "access-key"
     unregisterRunners: true
-    concurrent: 2
+    concurrent: 10
