@@ -23,3 +23,29 @@ subsets:
       - name: app
         port: 8123
         protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: external-ip-plex
+spec:
+  ports:
+    - name: app
+      port: 80
+      protocol: TCP
+      targetPort: 32400
+  clusterIP: None
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: external-ip-plex
+subsets:
+  - addresses:
+      - ip: 192.168.0.110
+    ports:
+      - name: app
+        port: 32400
+        protocol: TCP

@@ -15,8 +15,8 @@ ingress:
   # - hostname: "${SECRET_OTHER_DOMAIN_1}"
   #   service: https://etherpad.${SECRET_DOMAIN}
 
-  - hostname: "${SECRET_SHORT_DOMAIN}"
-    service: http://ingress-nginx-controller.networking
+  - hostname: "plex.${SECRET_EXT_INFRA_DOMAIN}"
+    service: http://192.168.0.110:32400
   - hostname: "*.${SECRET_SHORT_DOMAIN}"
     service: http://ingress-nginx-controller.networking
     originRequest:
@@ -41,9 +41,6 @@ ingress:
       originServerName: "ingress.${SECRET_EXT_INFRA_DOMAIN}"
   - hostname: "*.${SECRET_WEATHERJP_DOMAIN}"
     service: http://ingress-nginx-controller.networking
-
-  - hostname: "plex.${SECRET_EXT_INFRA_DOMAIN}"
-    service: http://192.168.0.110:32400
 
   ### Proxy traffic to the Kubernetes Services directly
   # - hostname: "echo.${SECRET_EXT_DOMAIN}"
