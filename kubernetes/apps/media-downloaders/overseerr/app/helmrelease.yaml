@@ -30,6 +30,7 @@ spec:
               repository: ghcr.io/sct/overseerr
               tag: develop@sha256:568f126f69663cf764d12bf19ba5a250be2246cca49852e556f363d0acac2603
             env:
+              TZ: ${TIMEZONE}
               LOG_LEVEL: "info"
               PORT: &port 80
             probes:
