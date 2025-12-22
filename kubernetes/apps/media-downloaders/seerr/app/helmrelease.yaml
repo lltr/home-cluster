@@ -30,6 +30,9 @@ spec:
     env:
       TZ: ${TIMEZONE}
       PORT: &port 80
+    envFrom:
+      - secretRef:
+          name: "seerr-secret"
 
     service:
       main:
