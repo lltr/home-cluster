@@ -42,6 +42,9 @@ ingress:
   - hostname: "*.${SECRET_WEATHERJP_DOMAIN}"
     service: http://ingress-nginx-controller.networking
 
+  - hostname: "plex.${SECRET_EXT_INFRA_DOMAIN}"
+    service: http://192.168.0.110:32400
+
   ### Proxy traffic to the Kubernetes Services directly
   # - hostname: "echo.${SECRET_EXT_DOMAIN}"
   #   service: http://echo-server.default:8080
