@@ -57,6 +57,8 @@ spec:
               - *host
             secretName: dev-zitadel-tls
     env:
+      - name: ZITADEL_EXTERNALPORT
+        value: "443"
       - name: ZITADEL_DATABASE_POSTGRES_HOST
         valueFrom:
           secretKeyRef:
