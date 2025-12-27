@@ -114,7 +114,7 @@ spec:
           paths:
             - path: /
               pathType: Prefix
-        - host: &host2 zitadel..zitadel.${SECRET_EXT_DOMAIN}
+        - host: &host2 zitadel.zitadel.${SECRET_EXT_DOMAIN}
           paths:
             - path: /
               pathType: Prefix
