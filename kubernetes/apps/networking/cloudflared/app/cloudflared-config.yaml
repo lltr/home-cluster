@@ -43,6 +43,7 @@ ingress:
     service: http://ingress-nginx-controller.networking
     originRequest:
       protocol: http2
+      noTLSVerify: true
       originServerName: "ingress.${SECRET_EXT_INFRA_DOMAIN}"
   - hostname: "*.${SECRET_WEATHERJP_DOMAIN}"
     service: http://ingress-nginx-controller.networking
