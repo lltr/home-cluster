@@ -44,8 +44,8 @@ spec:
         className: nginx
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-production
-          external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
-          external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_EXT_INFRA_DOMAIN}"
+          external-dns.alpha.kubernetes.io/cloudflare-proxied: "false"
+          external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
           external-dns.home.arpa/enabled: "true"
         hosts:
           - host: &host zitadel.${SECRET_EXT_DOMAIN}
@@ -101,11 +101,11 @@ spec:
           proxy_set_header X-Forwarded-Host $host;
           proxy_set_header X-Forwarded-Proto $scheme;
           proxy_set_header X-Forwarded-Port $server_port;
-        external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
-        external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_EXT_INFRA_DOMAIN}"
+        external-dns.alpha.kubernetes.io/cloudflare-proxied: "false"
+        external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
         external-dns.home.arpa/enabled: "true"
       hosts:
-        - host: &host zitadel.${SECRET_EXT_DOMAIN}
+        - host: &host zitadel.${SECRET_DOMAIN}
           paths:
             - path: /
               pathType: Prefix
