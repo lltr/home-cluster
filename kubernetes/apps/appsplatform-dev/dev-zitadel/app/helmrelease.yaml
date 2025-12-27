@@ -47,6 +47,9 @@ spec:
           external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
           external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_EXT_INFRA_DOMAIN}"
           external-dns.home.arpa/enabled: "true"
+          nginx.ingress.kubernetes.io/backend-protocol: "GRPC"
+          nginx.ingress.kubernetes.io/configuration-snippet: |
+            grpc_set_header Host $host;
         hosts:
           - host: &host zitadel.${SECRET_EXT_DOMAIN}
             paths:
