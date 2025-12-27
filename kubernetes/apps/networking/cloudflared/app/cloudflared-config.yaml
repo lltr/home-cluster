@@ -19,6 +19,8 @@ ingress:
     service: http://192.168.0.110:32400
     originRequest:
       noTLSVerify: true
+  - hostname: "${SECRET_SHORT_DOMAIN}"
+    service: http://ingress-nginx-controller.networking
   - hostname: "*.${SECRET_SHORT_DOMAIN}"
     service: http://ingress-nginx-controller.networking
     originRequest:
