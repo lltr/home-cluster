@@ -96,6 +96,7 @@ spec:
         nginx.ingress.kubernetes.io/backend-protocol: "GRPC"
         nginx.ingress.kubernetes.io/proxy-request-buffering: "off"
         nginx.ingress.kubernetes.io/configuration-snippet: |
+          grpc_set_header Host $host;
           proxy_set_header Host $http_host;
           proxy_set_header X-Forwarded-Host $host;
           proxy_set_header X-Forwarded-Proto $scheme;
