@@ -50,6 +50,9 @@ spec:
           nginx.ingress.kubernetes.io/backend-protocol: "GRPC"
           nginx.ingress.kubernetes.io/configuration-snippet: |
             grpc_set_header Host $host;
+            more_clear_input_headers "Host" "X-Forwarded-Host";
+            proxy_set_header Host $http_host;
+            proxy_set_header X-Forwarded-Host $http_x_forwarded_host;
         hosts:
           - host: &host zitadel.${SECRET_EXT_DOMAIN}
             paths:
