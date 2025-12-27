@@ -52,9 +52,14 @@ spec:
             paths:
               - path: /ui/v2/login
                 pathType: Prefix
+          - host: &host2 zitadel.zitadel.${SECRET_EXT_DOMAIN}
+            paths:
+              - path: /ui/v2/login
+                pathType: Prefix
         tls:
           - hosts:
               - *host
+              - *host2
             secretName: dev-zitadel-tls
     env:
       - name: ZITADEL_DATABASE_POSTGRES_HOST
@@ -109,9 +114,14 @@ spec:
           paths:
             - path: /
               pathType: Prefix
+        - host: &host2 zitadel..zitadel.${SECRET_EXT_DOMAIN}
+          paths:
+            - path: /
+              pathType: Prefix
       tls:
         - hosts:
             - *host
+            - *host2
           secretName: dev-zitadel-tls
     resources:
       limits:
