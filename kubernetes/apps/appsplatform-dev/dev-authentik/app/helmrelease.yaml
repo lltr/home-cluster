@@ -30,7 +30,7 @@ spec:
     global:
       image:
         repository: ghcr.io/goauthentik/server
-        tag: 2024.12.1
+        tag: 2025.10.3
         pullPolicy: IfNotPresent
       podAnnotations:
         secret.reloader.stakater.com/reload: &secret dev-authentik-secret
