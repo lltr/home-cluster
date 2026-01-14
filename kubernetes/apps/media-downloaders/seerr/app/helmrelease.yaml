@@ -44,7 +44,8 @@ spec:
         enabled: true
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-production
-          external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
+          external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_EXT_INFRA_DOMAIN}"
+          external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
           external-dns.home.arpa/enabled: "true"
         ingressClassName: "nginx"
         hosts:
