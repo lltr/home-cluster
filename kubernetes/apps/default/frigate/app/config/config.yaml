@@ -30,6 +30,9 @@ go2rtc:
     e1pro:
       - rtsp://frigate:P12345678@192.168.42.20:554/Preview_01_main
       - ffmpeg:e1pro#audio=aac
+    e1zoom:
+      - rtsp://frigate:P12345678@192.168.42.19:554/Preview_01_main
+      - ffmpeg:e1pro#audio=aac
   webrtc:
     candidates:
       - 192.168.0.210:8555
@@ -50,6 +53,22 @@ cameras:
       stream_name: e1pro
     onvif:
       host: 192.168.42.20
+      port: 8000
+      user: frigate
+      password: P12345678
+  e1zoom:
+    ffmpeg:
+      inputs:
+        - path: rtsp://localhost:8554/e1zoom
+          input_args: preset-rtsp-restream
+          roles:
+            - record
+      output_args:
+        record: preset-record-generic-audio-aac
+    live:
+      stream_name: e1pro
+    onvif:
+      host: 192.168.42.19
       port: 8000
       user: frigate
       password: P12345678
