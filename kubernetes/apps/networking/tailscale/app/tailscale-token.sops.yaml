@@ -7,12 +7,8 @@ metadata:
     annotations:
         reloader.stakater.com/match: "true"
 stringData:
-    TS_AUTHKEY: ENC[AES256_GCM,data:4HN6PX7+LGFd8pOm7psjusbQEMeK25FpVQTjBKfBtjLkBCRopxJ/YY9/oF5RL/KUk1vlH8iWwmg=,iv:1jJcq7P0xFhkdVTOewYNDz7/2n2PCLMrFpGLQ84Cd8s=,tag:a1mc16YO+uHtajfUF9YCCQ==,type:str]
+    TS_AUTHKEY: ENC[AES256_GCM,data:ODn3SgORdaoDKMDcJ4NbY70uzA82EUgvwU3oz4fub3prZ08xFQRB5OFdUN+3CPNvDB7Cf/C06QTTO/cvGg==,iv:FtBy0P2k/Lc9kvpqEf3Cm6ROjvJc6nCXauRQydTvjgY=,tag:UQE/rAiPesJKPHecdvsgbQ==,type:str]
 sops:
-    kms: []
-    gcp_kms: []
-    azure_kv: []
-    hc_vault: []
     age:
         - recipient: age1k8xaut2yz4ttudhtwxk0jf8ckrav2rugjup5vyqu3tyzp2lxhgxq93u2mf
           enc: |
@@ -23,8 +19,7 @@ sops:
             ZndUS1NPQy8vd3RsWjBCME9xMHB3VGsK7eIPpeOQJKOcLfdGd5xSyjaVD01w77kX
             O8w0g//KmkKHPFba7GwCQHil3J9Qsv4QmMKKFHnrjs3kGHVlBPpLkg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2023-11-01T09:20:17Z"
-    mac: ENC[AES256_GCM,data:WPKIO5HRjIDW7G7uAwui6VLc1W5Riw2ynZ7dN+aWak7EDBopEtrIYYE51CwQ810n2v+IFB+o0y7FPG88l4q+vrjJOoDHhFy0dH5kJesj8RI2EfJxwxkbzo4V0JZqdcqNFTZc+XCi/zdDACYzIMiQ7BqiGrVTfw/nIxYqV2U5dmg=,iv:YkYQ5gS4LjfJ91ZYqJniLFii55GjBnFa4XIFli3ACQo=,tag:jxARuYaotkYLgzMlkBGsAQ==,type:str]
-    pgp: []
+    lastmodified: "2026-03-07T10:40:46Z"
+    mac: ENC[AES256_GCM,data:FQJMQ9f2lAD0b3+g8P6FgRkxaQNeniuvHBiD/+siS068dvLD5EKjkEuA4a+NGnFFrgJMVS8/ahmTpi/C0ziS0y1+wx8M0T95GLWM+hEc8g4pHkvZT5G8YKqM+jlyF46HuTI+Sv7IBdP5Dp+p790vyYdxrqm6wPzxM8IC+UIvvkA=,iv:tbFM9iUOAnUVqD7Zmig8Ni4r3g5eTR3wSLUPkQAMnnw=,tag:Uvv45HMDcgq8mFW8seRoWw==,type:str]
     encrypted_regex: ^(data|stringData)$
-    version: 3.7.3
+    version: 3.11.0
